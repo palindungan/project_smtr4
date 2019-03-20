@@ -2,6 +2,7 @@
 
 class Barang_model extends CI_Model
 {
+    //menampung nama tabel di database
     private $_table = "tbl_barang";
 
     public $kodeBarang;
@@ -38,9 +39,9 @@ class Barang_model extends CI_Model
     }
 
     //untuk ambil data per baris berdasarkan ID barang 
-    public function getById($kodeBarang)
+    public function getById($kode_barang)
     {
-        return $this->db->get_where($this->_table, ["kodeBarang" => $kodeBarang])->row();
+        return $this->db->get_where($this->_table, ["kodeBarang" => $kode_barang])->row();
     }
 
     // untuk menyimpan data ke database
@@ -48,7 +49,10 @@ class Barang_model extends CI_Model
     {
         $post = $this->input->post();
         //
-        $this->kodeBarang = $post['kodeBarang'];
+
+        //$this->kodeBarang = $post['kodeBarang'];
+
+        $this->kodeBarang = uniqid();
         $this->namaBarang = $post['namaBarang'];
         $this->deskripsiBarang = $post['deskripsiBarang'];
         $this->stokBarang = $post['stokBarang'];

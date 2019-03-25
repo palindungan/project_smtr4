@@ -13,7 +13,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="<?php echo base_url() . 'admin/Home'; ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -28,7 +28,7 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="<?php echo base_url() . 'admin/Barang'; ?>">
             <i class="fas fa-fw fa-truck"></i>
             <span>Barang</span></a>
     </li>

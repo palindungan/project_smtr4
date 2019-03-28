@@ -15,21 +15,6 @@ class Barang extends CI_Controller
     }
     // konstraktor
 
-    /**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
     function index()
     {
         // mengambil data dari model
@@ -37,7 +22,7 @@ class Barang extends CI_Controller
         // mengambil data dari model
 
         // memparsing data untuk ditampilkan ke view
-        $this->load->view('admin/barang', $data);
+        $this->load->view('admin/barang/barang', $data);
         // memparsing data untuk ditampilkan ke view
     }
 
@@ -92,9 +77,10 @@ class Barang extends CI_Controller
         // fungsi result adalah mengenerate hasil querry menjadi array untuk di tampilkan
         $data['tbl_barang1'] = $this->M_barang->edit_data($where, 'tbl_barang')->result();
         // fungsi result adalah mengenerate hasil querry menjadi array untuk di tampilkan
+        $data['tbl_barang2'] = $this->M_barang->tampil_data()->result();
 
         // memparsing data untuk ditampilkan ke view
-        $this->load->view('admin/barang_edit', $data);
+        $this->load->view('admin/barang/barang_edit', $data);
         // memparsing data untuk ditampilkan ke view
     }
 
@@ -125,5 +111,12 @@ class Barang extends CI_Controller
         $this->M_barang->update_data($where, $data, 'tbl_barang');
 
         redirect('admin/Barang');
+    }
+
+    function menu_barang_tambah()
+    {
+        // memparsing data untuk ditampilkan ke view
+        $this->load->view('admin/barang/barang_tambah');
+        // memparsing data untuk ditampilkan ke view
     }
 }

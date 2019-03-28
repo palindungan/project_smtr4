@@ -50,7 +50,7 @@
                                     <th>Opsi</th>
                                 </tr>
                                 <?php 
-                                foreach ($tbl_barang as $u) {
+                                foreach ($tbl_barang2 as $u) {
                                     ?>
                                 <tr>
                                     <td><?php echo $u->id_barang ?></td>
@@ -79,36 +79,47 @@
 
                         <div class="col-lg-6 mb-4">
 
+                            <?php foreach ($tbl_barang1 as $u1) { ?>
+
                             <!-- form inputan data -->
-                            <form action="<?php echo base_url() . 'admin/Barang/tambah_aksi'; ?>" method="post">
+                            <form action="<?php echo base_url() . 'admin/Barang/update'; ?>" method="post">
                                 <table style="margin:20px auto;">
                                     <tr>
-                                        <td>Kode Barang :</td>
-                                        <td><input type="text" name="id_barang"></td>
+                                        <td>Kode Barang</td>
+                                        <td> :</td>
+                                        <td><input type="text" name="id_barang" value="<?php echo $u1->id_barang ?>"></td>
                                     </tr>
                                     <tr>
-                                        <td>Nama :</td>
-                                        <td><input type="text" name="nm_barang"></td>
+                                        <td>Nama</td>
+                                        <td> :</td>
+                                        <td><input type="text" name="nm_barang" value="<?php echo $u1->nm_barang ?>"></td>
                                     </tr>
                                     <tr>
-                                        <td>Deskripsi :</td>
-                                        <td><input type="text" name="desk_barang"></td>
+                                        <td>Deskripsi</td>
+                                        <td> :</td>
+                                        <td><input type="text" name="desk_barang" value="<?php echo $u1->desk_barang ?>"></td>
                                     </tr>
                                     <tr>
-                                        <td>Stok :</td>
-                                        <td><input type="text" name="stok_barang"></td>
+                                        <td>Stok</td>
+                                        <td> :</td>
+                                        <td><input type="text" name="stok_barang" value="<?php echo $u1->stok_barang ?>"></td>
                                     </tr>
                                     <tr>
-                                        <td>Harga :</td>
-                                        <td><input type="text" name="hrg_barang"></td>
+                                        <td>Harga</td>
+                                        <td> :</td>
+                                        <td><input type="text" name="hrg_barang" value="<?php echo $u1->hrg_barang ?>"></td>
                                     </tr>
                                     <tr>
                                         <td></td>
-                                        <td><input type="submit" value="Tambah"></td>
+                                        <td> </td>
+                                        <td><input type="submit" value="Update"><a href="<?php echo base_url() . 'admin/Barang'; ?>"> Batal</a></td>
                                     </tr>
                                 </table>
                             </form>
                             <!-- form inputan data -->
+
+                            <?php 
+                        } ?>
 
                         </div>
 

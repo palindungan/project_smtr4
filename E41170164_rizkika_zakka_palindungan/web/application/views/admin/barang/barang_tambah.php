@@ -31,8 +31,6 @@
 
                     <!-- Isi konten -->
 
-
-
                     <div class="row">
                         <div class="container-fluid">
 
@@ -44,7 +42,7 @@
 
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Data Barang</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Data Barang / Tambah Barang</h6>
                                 </div>
                                 <div class="card-body">
 
@@ -97,8 +95,8 @@
                                                     <input type="number" class="form-control" name="stok_barang" placeholder="Stok Barang">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Stok Barang</label>
-                                                    <input type="number" class="form-control" name="hrg_barang" placeholder="Stok Barang">
+                                                    <label>Harga Barang</label>
+                                                    <input type="number" class="form-control" name="hrg_barang" placeholder="Harga Barang">
                                                 </div>
                                             </div>
 

@@ -15,6 +15,29 @@ class Barang extends CI_Controller
     }
     // konstraktor
 
+    public function rules()
+    {
+        return [
+            [
+                'field' => 'id_barang',
+                'label' => 'Kode Barang',
+                'rules' => 'required'
+            ],
+
+            [
+                'field' => 'nm_barang',
+                'label' => 'Nama Barang',
+                'rules' => 'int'
+            ],
+
+            [
+                'field' => 'description',
+                'label' => 'Description',
+                'rules' => 'required'
+            ]
+        ];
+    }
+
     function index()
     {
         // mengambil data dari model
@@ -55,8 +78,9 @@ class Barang extends CI_Controller
         // kembali ke halaman Barang
     }
 
-    function hapus($id_barang)
+    function hapus()
     {
+        $id_barang = $this->input->post('id_barang');
         // memasukkan data ke array
         $where = array('id_barang' => $id_barang);
         // memasukkan data ke array
@@ -64,24 +88,8 @@ class Barang extends CI_Controller
         // menghapus data dengan memparsing ke model
         $this->M_barang->hapus_data($where, 'tbl_barang');
         // menghapus data dengan memparsing ke model
-
-        redirect('admin/Barang');
-    }
-
-    function edit($id_barang)
-    {
-        // memasukkan data ke array
-        $where = array('id_barang' => $id_barang);
-        // memasukkan data ke array
-
-        // fungsi result adalah mengenerate hasil querry menjadi array untuk di tampilkan
-        $data['tbl_barang1'] = $this->M_barang->edit_data($where, 'tbl_barang')->result();
-        // fungsi result adalah mengenerate hasil querry menjadi array untuk di tampilkan
-        $data['tbl_barang2'] = $this->M_barang->tampil_data()->result();
-
-        // memparsing data untuk ditampilkan ke view
-        $this->load->view('admin/barang/barang_edit', $data);
-        // memparsing data untuk ditampilkan ke view
+        echo $id_barang;
+        // redirect('admin/Barang');
     }
 
     function update()
@@ -113,10 +121,28 @@ class Barang extends CI_Controller
         redirect('admin/Barang');
     }
 
+    // link menu dibawah sini 
+
     function menu_barang_tambah()
     {
         // memparsing data untuk ditampilkan ke view
         $this->load->view('admin/barang/barang_tambah');
+        // memparsing data untuk ditampilkan ke view
+    }
+
+    function edit($id_barang)
+    {
+        // memasukkan data ke array
+        $where = array('id_barang' => $id_barang);
+        // memasukkan data ke array
+
+        // fungsi result adalah mengenerate hasil querry menjadi array untuk di tampilkan
+        $data['tbl_barang1'] = $this->M_barang->edit_data($where, 'tbl_barang')->result();
+        // fungsi result adalah mengenerate hasil querry menjadi array untuk di tampilkan
+        $data['tbl_barang2'] = $this->M_barang->tampil_data()->result();
+
+        // memparsing data untuk ditampilkan ke view
+        $this->load->view('admin/barang/barang_edit', $data);
         // memparsing data untuk ditampilkan ke view
     }
 }

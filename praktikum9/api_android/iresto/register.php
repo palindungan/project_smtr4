@@ -1,12 +1,12 @@
 <?php
 // $_SERVER untuk menampilkan data dari server (sebuah fungsi)
 // Returns the request method used to access the page (such as POST)
-if ($_SERVER('REQUEST_METHOD') == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // menangkap data dari post
-    $id_user = $_POST('id_user');
-    $nama_user = $_POST('nama_user');
-    $password = $_POST('password');
+    $id_user = $_POST['id_user'];
+    $nama_user = $_POST['nama_user'];
+    $password = $_POST['password'];
 
     // mengubah password menjadi hash / diEnkirpsi
     $password = password_hash($password, PASSWORD_DEFAULT);

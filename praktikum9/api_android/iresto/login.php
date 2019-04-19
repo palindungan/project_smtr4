@@ -3,11 +3,11 @@
 // Returns the request method used to access the page (such as POST)
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // menangkap data dari post
-    $id_user = $_POST('id_user');
-    $nama_user = $_POST('nama_user');
+    $id_user = $_POST['id_user'];
+    $password = $_POST['password'];
 
     // menyertakan sebuah file PHP kedalam file PHP lainnya
-    require_once('konekidb.php');
+    require_once 'koneksidb.php';
 
     // query database
     $sql = "    SELECT *

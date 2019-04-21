@@ -1,0 +1,60 @@
+Sprint Planning :
+1. Waktu Pengerjaan -+ 3 bulan
+	Dengan total 6 sprint, masing-masing sprint berdurasi 2 minggu.
+	Mulai dari minggu ke-3 bulan April
+		Sprint 1. Makanan (data paket, kategori,bonus),Pengelolaan Data User(Admin,Kasir dan Customer)
+		Sprint 2. Paket(data paket, keterangan paket),daftar menu(makanan dan minuman) yang tersedia
+		Sprint 3. Transaksi Pemesanan Offline(keterangan pemesanan)
+		Sprint 4. Transaksi Pemesanan Online(keterangan pemesanan)
+		Sprint 5. Laporan dan Login
+		Sprint 6. Testing
+	
+2. Pembagian tugas pengerjaan PBI per anggota
+3. 
+
+Semua Fitur :
+	-Login
+	-Pengelolaan Data User(Admin,Kasir dan Customer)
+	-Pengolahan Data Makanan(data makanan, kategori, bonus)
+	-Pengolahan Data Paket(data paket, keterangan paket)
+	-Daftar menu(makanan dan minuman) yang tersedia
+	-Transaksi Pemesanan (keterangan pemesanan,OFFLINE) : 	-> daftar menu(makanan dan minuman) yang tersedia 
+								-> prasmanan
+								-> perporsi (kotak'an)
+	-Transaksi Pemesanan (keterangan pemesanan,ONLINE) : 	-> daftar menu(makanan dan minuman) yang tersedia
+								-> prasmanan
+								-> perporsi (kotak'an) 
+								-> tranfer DP dan Media diskusi 
+	-Laporan :(Banyak transaksi dan Laba/Rugi dalam periode tertentu)
+
+Pembagian Fitur Di Perusahaan :
+	Pelayan(Kasir) -> Offline :	-Login
+					-Daftar menu(makanan dan minuman) yang tersedia
+					-Transaksi Pemesanan (keterangan pemesanan,OFFLINE) : 	-> daftar menu(makanan dan minuman) yang tersedia
+												-> prasmanan
+												-> perporsi (kotak'an)
+
+	Admin :				-Login
+					-Pengelolaan Data User(Admin,Kasir dan Customer)
+					-Pengolahan Data Makanan(data makanan, kategori, bonus)
+					-Pengolahan Data Paket(data paket, keterangan paket)
+					-Laporan :(Banyak transaksi dan Laba/Rugi dalam periode tertentu)
+		
+	pelanggan(customer) :		-Login
+					-Daftar menu(makanan dan minuman) yang tersedia
+					-Transaksi Pemesanan (keterangan pemesanan,ONLINE) : 	-> daftar menu(makanan dan minuman) yang tersedia
+												-> prasmanan
+												-> perporsi (kotak'an) 
+												-> ditambah tranfer DP dan Media diskusi 
+
+
+
+// dibawah ini bukan bagian sprint planning , cuma dokumentasi
+database:	kategori makanan (nasi, kambing, mie, cha, sup, sea food, ayam, daging, bistik, salad, fuyung hay, masakan traditional, desert, bubur),
+		pengolahan data makanan,
+		keterangan paket(ketentuan dan aturan),
+		keterangan pemesanan(pernikahan, rapat, sekolah, tahlilan, dll),
+		pengolahan pesanan paket catering,
+		pilihan bonus makanan,
+		transaksi(status),
+		 

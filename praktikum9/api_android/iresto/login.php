@@ -30,6 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // jika paswordnya benar 
         if (password_verify($password, $row['password'])) {
+
+            // mengambil data di database dimasukkan ke variable index berupa array
             $index['nama_user'] = $row['nama_user'];
             $index['id_user'] = $row['id_user'];
 

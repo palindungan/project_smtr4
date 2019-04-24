@@ -1,4 +1,4 @@
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
 <script>
     window.jQuery || document.write('<script src="<?php echo base_url(); ?>/assets/template/back/src/js/vendor/jquery-3.3.1.min.js"><\/script>')
 </script>
@@ -24,3 +24,18 @@
     ga('create', 'UA-XXXXX-X', 'auto');
     ga('send', 'pageview');
 </script>
+
+<!-- tambahan menu home -->
+<script src="<?php echo base_url(); ?>/assets/template/back/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url(); ?>/assets/template/back/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?php echo base_url(); ?>/assets/template/back/plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?php echo base_url(); ?>/assets/template/back/plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+<script src="<?php echo base_url(); ?>/assets/template/back/plugins/jvectormap/jquery-jvectormap.min.js"></script>
+<script src="<?php echo base_url(); ?>/assets/template/back/plugins/jvectormap/tests/assets/jquery-jvectormap-world-mill-en.js"></script>
+<script src="<?php echo base_url(); ?>/assets/template/back/plugins/moment/moment.js"></script>
+<script src="<?php echo base_url(); ?>/assets/template/back/plugins/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="<?php echo base_url(); ?>/assets/template/back/plugins/d3/dist/d3.min.js"></script>
+<script src="<?php echo base_url(); ?>/assets/template/back/plugins/c3/c3.min.js"></script>
+<script src="<?php echo base_url(); ?>/assets/template/back/js/tables.js"></script>
+<script src="<?php echo base_url(); ?>/assets/template/back/js/widgets.js"></script>
+<script src="<?php echo base_url(); ?>/assets/template/back/js/charts.js"></script>

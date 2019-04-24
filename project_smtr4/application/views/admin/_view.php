@@ -27,7 +27,7 @@
             <?php $this->load->view('admin/_partials/chat_sidebar'); ?>
 
             <!-- bagian FOOTER -->
-            <?php $this->load->view('admin/_partials/footer'); ?>
+
 
         </div>
     </div>

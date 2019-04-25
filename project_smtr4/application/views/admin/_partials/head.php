@@ -14,5 +14,11 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/template/back/plugins/ionicons/dist/css/ionicons.min.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/template/back/plugins/icon-kit/dist/css/iconkit.min.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/template/back/plugins/perfect-scrollbar/css/perfect-scrollbar.css">
+
+<!-- untuk data table -->
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/template/back/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/template/back/dist/css/theme.min.css">
 <script src="<?php echo base_url(); ?>assets/template/back/src/js/vendor/modernizr-2.8.3.min.js"></script>
+
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/template/back/dist/css/style.css">

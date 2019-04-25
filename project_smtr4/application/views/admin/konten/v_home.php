@@ -8,8 +8,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-command bg-blue"></i>
                         <div class="d-inline">
-                            <h5>Home</h5>
-                            <span>ini adalah deksripsi menu Home</span>
+                            <h2>Home</h2>
+                            <!-- <span>ini adalah deksripsi menu user</span> -->
                         </div>
                     </div>
                 </div>
@@ -17,7 +17,7 @@
                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="../../index.html"><i class="ik ik-home"></i></a>
+                                <a href="<?php echo base_url(); ?>admin/home/"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item"><a href="">UI</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Home</li>
@@ -41,3 +41,11 @@
 
     </div>
 </div>
+
+<!-- untuk ajax -->
+<!-- <script src="<?= base_url(); ?>assets/template/back/js/jquery.min.js"></script> -->
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="<?php echo base_url(); ?>assets/template/back/src/js/vendor/jquery-3.3.1.min.js"><\/script>')
+</script>

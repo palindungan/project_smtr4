@@ -1,12 +1,18 @@
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script>
-    window.jQuery || document.write('<script src="<?php echo base_url(); ?>assets/template/back/src/js/vendor/jquery-3.3.1.min.js"><\/script>')
-</script>
 <script src="<?php echo base_url(); ?>assets/template/back/plugins/popper.js/dist/umd/popper.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/template/back/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/template/back/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/template/back/plugins/screenfull/dist/screenfull.js"></script>
+
+<!-- untuk data table -->
+<script src="<?php echo base_url(); ?>assets/template/back/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/template/back/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+
 <script src="<?php echo base_url(); ?>assets/template/back/dist/js/theme.min.js"></script>
+
+<!-- untuk data table -->
+<script src="<?php echo base_url(); ?>assets/template/back/js/datatables.js"></script>
+
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
     (function(b, o, i, l, e, r) {

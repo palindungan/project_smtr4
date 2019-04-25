@@ -18,7 +18,7 @@
                 <div class="nav-item <?php if ($this->uri->segment('2') == 'home') {
                                             echo 'active';
                                         } ?>">
-                    <a href="<?php echo base_url(); ?>admin/home/"><i class="ik ik-bar-chart-2"></i><span>Home</span></a>
+                    <a href="<?php echo base_url(); ?>admin/home/"><i class="ik ik-home"></i><span>Home</span></a>
                 </div>
                 <div class="nav-item <?php if ($this->uri->segment('2') == 'daftar_menu') {
                                             echo 'active';
@@ -30,7 +30,7 @@
                 <div class="nav-item <?php if ($this->uri->segment('2') == 'data_user') {
                                             echo 'active';
                                         } ?>">
-                    <a href="<?php echo base_url(); ?>admin/data_user/"><i class="ik ik-bar-chart-2"></i><span>Data User</span></a>
+                    <a href="<?php echo base_url(); ?>admin/data_user/"><i class="ik ik-users"></i><span>Data User</span></a>
                 </div>
                 <div class="nav-item has-sub <?php if ($this->uri->segment('2') == 'menu') {
                                                     echo 'active open';

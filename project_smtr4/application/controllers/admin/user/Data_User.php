@@ -9,7 +9,7 @@ class Data_User extends CI_Controller
         parent::__construct();
 
         // untuk mengakses model data_user (database)
-        $this->load->model("admin/M_data_user");
+        $this->load->model("admin/user/M_data_user");
     }
 
     public function index()

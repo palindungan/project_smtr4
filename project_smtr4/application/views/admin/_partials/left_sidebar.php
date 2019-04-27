@@ -27,10 +27,18 @@
                 </div>
 
                 <div class="nav-lavel">Pengolahan Data</div>
-                <div class="nav-item <?php if ($this->uri->segment('2') == 'data_user') {
-                                            echo 'active';
-                                        } ?>">
-                    <a href="<?php echo base_url(); ?>admin/data_user/"><i class="ik ik-users"></i><span>Data User</span></a>
+                <div class="nav-item has-sub <?php if ($this->uri->segment('2') == 'user') {
+                                                    echo 'active open';
+                                                } ?>">
+                    <a href="javascript:void(0)"><i class="ik ik-list"></i><span>User</span></a>
+                    <div class="submenu-content">
+                        <a href="<?php echo base_url(); ?>admin/user/data_user/" class="menu-item <?php if ($this->uri->segment('3') == 'data_user') {
+                                                                                                        echo 'active';
+                                                                                                    } ?>">Data User</a>
+                        <a href="<?php echo base_url(); ?>admin/user/data_customer/" class="menu-item <?php if ($this->uri->segment('3') == 'data_customer') {
+                                                                                                            echo 'active';
+                                                                                                        } ?>">Data Customer</a>
+                    </div>
                 </div>
                 <div class="nav-item has-sub <?php if ($this->uri->segment('2') == 'menu') {
                                                     echo 'active open';

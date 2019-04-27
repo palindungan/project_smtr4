@@ -45,6 +45,7 @@
                             <th>Nama</th>
                             <th>Alamat</th>
                             <th>Jenis Kelamin</th>
+                            <th>No Telepon</th>
                             <th>Username</th>
                             <th>Level</th>
                             <th class="nosort">&nbsp;</th>
@@ -57,6 +58,7 @@
                                 <td><?php echo $d->nm_user ?></td>
                                 <td><?php echo $d->almt_user ?></td>
                                 <td><?php echo $d->jenkel_user ?></td>
+                                <td><?php echo $d->no_hp ?></td>
                                 <td><?php echo $d->username ?></td>
                                 <td><?php echo $d->level ?></td>
                                 <td>
@@ -86,12 +88,12 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="<?php echo base_url() . 'admin/data_user/tambah_aksi'; ?>" method="post" class="forms-sample form_data">
+                        <form action="<?php echo base_url() . 'admin/user/data_user/tambah_aksi'; ?>" method="post" class="forms-sample form_data">
                             <div class="modal-body">
                                 <div class="form-group row">
                                     <label for="exampleInput1" class="col-sm-3 col-form-label">Kode User</label>
                                     <div class="col-sm-9">
-                                        <input name="id_user" type="text" class="form-control form_data1" id="exampleInput1">
+                                        <input name="id_user" type="text" class="form-control form_data1" id="exampleInput1" value="<?php echo $kode; ?>" readonly="">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -114,6 +116,12 @@
                                             <option value="pria">Pria</option>
                                             <option value="wanita">Wanita</option>
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="exampleInput9" class="col-sm-3 col-form-label">No Telepon</label>
+                                    <div class="col-sm-9">
+                                        <input name="no_hp" type="text" class="form-control form_data1" id="exampleInput9" placeholder="No Telepon">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -168,13 +176,13 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="<?php echo base_url() . 'admin/data_user/tambah_aksi'; ?>" method="post" class="forms-sample form_data">
+                        <form action="<?php echo base_url() . 'admin/user/data_user/update_aksi'; ?>" method="post" class="forms-sample form_data">
                             <div class="modal-body isi_modal_edit">
-
+                                <!-- modal edit form disini -->
                             </div>
 
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary mr-2">Simpan</button>
+                                <button type="submit" class="btn btn-primary mr-2" onclick="return confirm('Ingin Mengupdate Data ?');">Update</button>
                                 <button type="button" class="btn btn-light" data-dismiss="modal">Kembali</button>
                             </div>
                         </form>
@@ -210,7 +218,7 @@
                     var m = $(this).attr("id");
                     // alert(m);
                     $.ajax({
-                        url: "<?php echo base_url() . 'admin/data_user/hapus_aksi'; ?>",
+                        url: "<?php echo base_url() . 'admin/user/data_user/hapus_aksi'; ?>",
                         type: "post",
                         data: {
                             id_user: m
@@ -233,9 +241,8 @@
         $(".tombol_edit").click(function() {
             // ajax
             var m = $(this).attr("id");
-            // alert(m);
             $.ajax({
-                url: "<?php echo base_url() . 'admin/data_user/edit_modal'; ?>",
+                url: "<?php echo base_url() . 'admin/user/data_user/edit_modal'; ?>",
                 type: "post",
                 data: {
                     id_user: m
@@ -293,6 +300,12 @@
                                     <option value="pria" ` + pria + `>Pria</option>
                                     <option value="wanita" ` + wanita + `>Wanita</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="exampleInput9" class="col-sm-3 col-form-label">No Telepon</label>
+                            <div class="col-sm-9">
+                                <input name="no_hp" type="text" class="form-control form_data1" id="exampleInput9" placeholder="No Telepon" value="` + obj['tbl_user'][0]['no_hp'] + `">
                             </div>
                         </div>
                         <div class="form-group row">

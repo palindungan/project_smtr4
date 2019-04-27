@@ -15,10 +15,11 @@ class Data_User extends CI_Controller
     public function index()
     {
         // alamat page yang ingin dibuka
-        $data['path'] = 'admin/konten/v_data_user';
+        $data['path'] = 'admin/konten/user/v_data_user';
 
         // mengambil data dari model
         $data['tbl_data_user'] = $this->M_data_user->tampil_data_user()->result();
+        $data['kode'] = $this->M_data_user->get_no_user();
 
         // mengakses viewnya
         $this->load->view('admin/_view', $data);
@@ -31,6 +32,7 @@ class Data_User extends CI_Controller
         $nm_user = $this->input->post('nm_user');
         $almt_user = $this->input->post('almt_user');
         $jenkel_user = $this->input->post('jenkel_user');
+        $no_hp = $this->input->post('no_hp');
         $username = $this->input->post('username');
         $password = $this->input->post('password');
         $level = $this->input->post('level');
@@ -41,6 +43,7 @@ class Data_User extends CI_Controller
             'nm_user' => $nm_user,
             'almt_user' => $almt_user,
             'jenkel_user' => $jenkel_user,
+            'no_hp' => $no_hp,
             'username' => $username,
             'password' => $password,
             'level' => $level
@@ -50,7 +53,7 @@ class Data_User extends CI_Controller
         $this->M_data_user->input_data('user', $data);
 
         // kembali ke halaman utama
-        redirect('admin/data_user');
+        redirect('admin/user/data_user');
     }
 
     function hapus_aksi()
@@ -62,14 +65,6 @@ class Data_User extends CI_Controller
         $where['id_user'] = $id_user;
 
         $this->M_data_user->hapus_data('user', $where);
-    }
-
-    function edit_aksi($id_user)
-    {
-        // memasukkan data ke dalam array assoc
-        $where['id_user'] = $id_user;
-
-        $data['tbl_user'] = $this->M_data_user->edit_data('user', $where)->result();
     }
 
     function edit_modal()
@@ -85,5 +80,38 @@ class Data_User extends CI_Controller
         $data = json_encode($data_edit);
 
         echo $data;
+    }
+
+    function update_aksi()
+    {
+        // mengambil dari inputan (name)
+        $id_user = $this->input->post('id_user');
+        $nm_user = $this->input->post('nm_user');
+        $almt_user = $this->input->post('almt_user');
+        $jenkel_user = $this->input->post('jenkel_user');
+        $no_hp = $this->input->post('no_hp');
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+        $level = $this->input->post('level');
+
+        // memasukkan data ke dalam array assoc
+        $data = array(
+            'id_user' => $id_user,
+            'nm_user' => $nm_user,
+            'almt_user' => $almt_user,
+            'jenkel_user' => $jenkel_user,
+            'no_hp' => $no_hp,
+            'username' => $username,
+            'password' => $password,
+            'level' => $level
+        );
+
+        // memasukkan data ke dalam array assoc
+        $where['id_user'] = $id_user;
+
+        $this->M_data_user->update_data($where, $data, 'user');
+
+        // kembali ke halaman utama
+        redirect('admin/user/data_user');
     }
 }

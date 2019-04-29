@@ -48,6 +48,8 @@
 
                 <div id="uploaded_image">
 
+                    <?php echo $image_data; ?>
+
                 </div>
 
 

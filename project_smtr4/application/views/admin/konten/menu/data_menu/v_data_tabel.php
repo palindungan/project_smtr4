@@ -52,18 +52,25 @@
                 <table id="data_table" class="table">
                     <thead>
                         <tr>
-                            <th>Kode User</th>
+                            <th>Kode Menu</th>
                             <th>Nama</th>
-                            <th>Alamat</th>
-                            <th>Jenis Kelamin</th>
-                            <th>No Telepon</th>
-                            <th>Username</th>
-                            <th>Level</th>
+                            <th>Kategori</th>
+                            <th>Tipe</th>
+                            <th>Harga Perporsi</th>
+                            <th>Gambar</th>
+                            <th>Deksripsi</th>
                             <th class="nosort">&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
-
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>disini btn</td>
                     </tbody>
                 </table>
 

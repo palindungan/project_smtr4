@@ -30,11 +30,36 @@
         <!-- bagian ISI KONTEN -->
         <div class="card">
             <div class="card-header justify-content-between">
-                <h3>Judul Menu User</h3>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah_modal">Tambah Bonus Menu</button>
             </div>
             <div class="card-body">
 
                 <!-- disini isinya konten -->
+
+                <!-- data table -->
+                <table id="data_table" class="table">
+                    <thead>
+                        <tr>
+                            <th>Kode Kategori</th>
+                            <th>Nama Kategori</th>
+                            <th class="nosort">&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($tbl_data as $d) {  ?>
+                            <tr>
+                                <td><?php echo $d->id_kat ?></td>
+                                <td><?php echo $d->nm_kat ?></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <a href="javascript:void(0)" class="tombol_edit" data-toggle="modal" data-target="#edit_modal" id="<?php echo $d->id_kat ?>"><i class="ik ik-edit-2"></i></a>
+                                        <a href="javascript:void(0)" class="hapus" id="<?php echo $d->id_kat ?>" name="<?php echo $d->nm_kat ?>"><i class="ik ik-trash-2"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
 
             </div>
         </div>

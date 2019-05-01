@@ -16,46 +16,50 @@ class Tambah_Form extends CI_Controller
     {
         $data['path'] = 'admin/konten/menu/data_menu/v_tambah_form';
 
-        $data["image_data"] = $this->M_data_menu->fetch_image();
+        // $data["image_data"] = $this->M_data_menu->fetch_image();
+
+        $data['kode'] = $this->M_data_menu->get_no();
+        $data['tbl_data_kat'] = $this->M_data_menu->tampil_data_kat()->result();
 
         $this->load->view('admin/_view', $data);
     }
 
-    function ajax_upload()
+    function tambah_aksi()
     {
-        if (isset($_FILES['image_file']['name'])) {
-            $config['upload_path'] = './upload/';
-            $config['allowed_types'] = 'jpg|jpeg|png|gif';
-            $this->load->library('upload', $config);
-            if (!$this->upload->do_upload('image_file')) {
-                echo $this->upload->display_errors();
-            } else {
-                $data = $this->upload->data();
+        $config['upload_path']          = './upload/gambar_menu';
+        $config['allowed_types']        = 'gif|jpg|png';
 
-                // untuk compres and resize images
-                $data = $this->upload->data();
-                $config['image_library'] = 'gd2';
-                $config['source_image'] = './upload/' . $data["file_name"];
-                $config['create_thumb'] = FALSE;
-                $config['maintain_ratio'] = true; // jika false maka ratio akan tidak sesuai original
-                $config['quality'] = '60%';
-                $config['width'] = 200;
-                // $config['height'] = 200;
-                $config['new_image'] = './upload/' . $data["file_name"];
-                $this->load->library('image_lib', $config);
-                $this->image_lib->resize();
-                $image_data = array(
-                    'name' => $data["file_name"]
-                );
+        $this->load->library('upload', $config);
 
-                // mengirim data ke model untuk diinputkan ke dalam database
-                $this->M_data_menu->insert_image($image_data);
+        if (!$this->upload->do_upload('gambar')) {
+            echo $this->upload->display_errors();
+        } else {
+            $data = $this->upload->data();
 
-                echo $this->M_data_menu->fetch_image();
-                // End of untuk compres and resize images
+            // code tambah ke database
 
-                // echo '<img src="' . base_url() . 'upload/' . $data["file_name"] . '" />';
-            }
+            $id_menu = $this->input->post('id_menu');
+            $nm_menu = $this->input->post('nm_menu');
+            $id_kat = $this->input->post('id_kat');
+            $tipe = $this->input->post('tipe');
+            $hrg_porsi = $this->input->post('hrg_porsi');
+            $deskripsi = $this->input->post('deskripsi');
+
+            $data2 = array(
+                'id_menu' => $id_menu,
+                'nm_menu' => $nm_menu,
+                'id_kat' => $id_kat,
+                'tipe' => $tipe,
+                'hrg_porsi' => $hrg_porsi,
+                'gambar' => $data["file_name"],
+                'deskripsi' => $deskripsi
+            );
+
+            $this->M_data_menu->input_data('tbl_menu', $data2);
+
+            redirect('admin/menu/data_menu/tambah_form');
+
+            // end of code tambah ke database
         }
     }
 }

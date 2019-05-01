@@ -4,6 +4,12 @@ class M_data_menu extends CI_Model
     // mengambil semua data pada tabel
     function tampil_data()
     {
+        return $this->db->get('tbl_menu');
+    }
+
+    // mengambil semua data pada tabel
+    function tampil_data_kat()
+    {
         return $this->db->get('tbl_kategori');
     }
 
@@ -39,10 +45,10 @@ class M_data_menu extends CI_Model
     // autogenerate kode / ID
     function get_no()
     {
-        $field = "id_kat";
-        $tabel = "tbl_kategori";
-        $digit = "2";
-        $kode = "KT-";
+        $field = "id_menu";
+        $tabel = "tbl_menu";
+        $digit = "3";
+        $kode = "MN-";
 
         $q = $this->db->query("SELECT MAX(RIGHT($field,$digit)) AS kd_max FROM $tabel");
         $kd = "";
@@ -52,31 +58,31 @@ class M_data_menu extends CI_Model
                 $kd = $kode . sprintf('%0' . $digit . 's',  $tmp);
             }
         } else {
-            $kd = "KT-01";
+            $kd = "MN-001";
         }
         return $kd;
     }
 
-    function insert_image($data)
-    {
-        $this->db->insert("tbl_images", $data);
-    }
+    // function insert_image($data)
+    // {
+    //     $this->db->insert("tbl_images", $data);
+    // }
 
-    function fetch_image()
-    {
-        $output = '';
-        $this->db->select('name');
-        $this->db->from('tbl_images');
-        $this->db->order_by('id', 'DESC');
-        $query = $this->db->get();
+    // function fetch_image()
+    // {
+    //     $output = '';
+    //     $this->db->select('name');
+    //     $this->db->from('tbl_images');
+    //     $this->db->order_by('id', 'DESC');
+    //     $query = $this->db->get();
 
-        foreach ($query->result() as $row) {
-            $output .= '  
-            <div class="col-md-3">  
-                 <img src="' . base_url() . 'upload/' . $row->name . '" class="img-responsive img-thumbnail" />  
-            </div>  
-            ';
-        }
-        return $output;
-    }
+    //     foreach ($query->result() as $row) {
+    //         $output .= '  
+    //         <div class="col-md-3">  
+    //              <img src="' . base_url() . 'upload/' . $row->name . '" class="img-responsive img-thumbnail" />  
+    //         </div>  
+    //         ';
+    //     }
+    //     return $output;
+    // }
 }

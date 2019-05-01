@@ -27,7 +27,6 @@
             </div>
         </div>
 
-
         <!-- bagian ISI KONTEN -->
         <div class="card">
             <div class="card-header">
@@ -48,73 +47,79 @@
 
                 <!-- disini isinya konten -->
 
-                <form class="forms-sample">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleInput1">Kode Menu</label>
-                                <input type="text" class="form-control" id="exampleInput1" readonly="">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleInput2">Nama</label>
-                                <input type="text" class="form-control" id="exampleInput2" placeholder="Nama">
-                            </div>
+                <?php echo form_open_multipart('admin/menu/data_menu/tambah_form/tambah_aksi'); ?>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="id_menu">Kode Menu</label>
+                            <input type="text" class="form-control" id="id_menu" readonly="" name="id_menu" value="<?php echo $kode; ?>">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleSelectGender">Kategori</label>
-                                <select class="form-control select2" id="exampleSelectGender">
-                                    <option>-</option>
-                                    <option>Aneka1</option>
-                                    <option>Aneka2</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleSelectGender">Tipe</label>
-                                <select class="form-control" id="exampleSelectGender">
-                                    <option>-</option>
-                                    <option>Makanan</option>
-                                    <option>Dessert</option>
-                                    <option>Bonus</option>
-                                </select>
-                            </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nm_menu">Nama</label>
+                            <input type="text" class="form-control" id="nm_menu" placeholder="Nama" name="nm_menu">
                         </div>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="id_kat">Kategori</label>
+                            <select class="form-control select2" id="id_kat" name="id_kat">
+                                <option>-</option>
+                                <?php foreach ($tbl_data_kat as $d) {  ?>
+                                    <option value="<?php echo $d->id_kat ?>"><?php echo $d->nm_kat ?></option>
+                                <?php } ?>
+                            </select>
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleInput2">Harga Perporsi</label>
-                                <input type="text" class="form-control" id="exampleInput2" placeholder="Harga">
-                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>File upload</label>
-                                <input type="file" name="img[]" class="file-upload-default">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="tipe">Tipe</label>
+                            <select class="form-control" id="tipe" name="tipe">
+                                <option>-</option>
+                                <option value="makanan">Makanan</option>
+                                <option value="dessert">Dessert</option>
+                                <option value="bonus">Bonus</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="hrg_porsi">Harga Porsi</label>
+                            <input type="number" class="form-control" id="hrg_porsi" placeholder="Harga" name="hrg_porsi">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>File upload</label>
+                            <!-- <input type="file" name="gambar" class="file-upload-default" id="image_file">
                                 <div class="input-group col-xs-12">
-                                    <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                    <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Gambar">
                                     <span class="input-group-append">
                                         <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                                     </span>
-                                </div>
-                            </div>
+                                </div> -->
+                            <input type="file" name="gambar" />
                         </div>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label for="exampleTextarea1">Deksripsi</label>
-                        <textarea class="form-control" id="exampleTextarea1" rows="3"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
+                <div class="form-group">
+                    <label for="deskripsi">Deksripsi</label>
+                    <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary mr-2">Simpan</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal">Kembali</button>
+
                 </form>
+
 
 
             </div>
@@ -128,6 +133,8 @@
 
 <script src="<?php echo base_url(); ?>assets/template/back/src/js/vendor/jquery-3.3.1.min.js"></script>
 
+<script src="<?php echo base_url(); ?>assets/template/back/js/form-components.js"></script>
+
 <!-- script logika -->
 <script type="text/javascript">
     $(document).ready(function() {
@@ -139,21 +146,24 @@
             e.preventDefault();
             if ($('#image_file').val() == '') {
                 alert("please select the file");
-            } else {
-                $.ajax({
-                    url: "<?php echo base_url(); ?>admin/menu/data_menu/ajax_upload",
-                    method: "post",
-                    data: new FormData(this),
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    success: function(data) {
-
-                        $('#uploaded_image').html(data);
-
-                    }
-                });
             }
+
+            // else {
+            //     $.ajax({
+            //         url: "<?php echo base_url(); ?>admin/menu/data_menu/tambah_form/tambah_aksi",
+            //         type: "post",
+            //         data: new FormData(this),
+            //         // contentType: false,
+            //         // cache: false,
+            //         // processData: false,
+            //         success: function(data) {
+
+            //             alert(data);
+            //             console.log(data);
+
+            //         }
+            //     });
+            // }
         });
 
     });

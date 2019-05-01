@@ -48,20 +48,73 @@
 
                 <!-- disini isinya konten -->
 
-                <form action="" method="post" id="upload_form">
-                    <input type="file" name="image_file" id="image_file">
-                    <br />
-                    <br />
-                    <input type="submit" name="upload" id="upload" value="Upload">
+                <form class="forms-sample">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInput1">Kode Menu</label>
+                                <input type="text" class="form-control" id="exampleInput1" readonly="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInput2">Nama</label>
+                                <input type="text" class="form-control" id="exampleInput2" placeholder="Nama">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleSelectGender">Kategori</label>
+                                <select class="form-control select2" id="exampleSelectGender">
+                                    <option>-</option>
+                                    <option>Aneka1</option>
+                                    <option>Aneka1</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleSelectGender">Tipe</label>
+                                <select class="form-control" id="exampleSelectGender">
+                                    <option>-</option>
+                                    <option>Makanan</option>
+                                    <option>Dessert</option>
+                                    <option>Bonus</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInput2">Harga Perporsi</label>
+                                <input type="text" class="form-control" id="exampleInput2" placeholder="Harga">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>File upload</label>
+                                <input type="file" name="img[]" class="file-upload-default">
+                                <div class="input-group col-xs-12">
+                                    <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                    <span class="input-group-append">
+                                        <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleTextarea1">Deksripsi</label>
+                        <textarea class="form-control" id="exampleTextarea1" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
                 </form>
-                <br />
-                <br />
-
-                <div id="uploaded_image">
-
-                    <?php echo $image_data; ?>
-
-                </div>
 
 
             </div>

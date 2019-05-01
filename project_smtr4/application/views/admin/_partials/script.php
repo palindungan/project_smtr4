@@ -3,10 +3,12 @@
 <script src="<?php echo base_url(); ?>assets/template/back/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/template/back/plugins/screenfull/dist/screenfull.js"></script>
 
+<!-- untuk select search -->
+<script src="<?php echo base_url(); ?>assets/template/back/plugins/select2/dist/js/select2.min.js"></script>
+
 <!-- untuk data table -->
 <script src="<?php echo base_url(); ?>assets/template/back/plugins/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/template/back/plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-
 
 <script src="<?php echo base_url(); ?>assets/template/back/dist/js/theme.min.js"></script>
 

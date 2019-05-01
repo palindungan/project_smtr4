@@ -15,6 +15,9 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/template/back/plugins/icon-kit/dist/css/iconkit.min.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/template/back/plugins/perfect-scrollbar/css/perfect-scrollbar.css">
 
+<!-- untuk select search -->
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/template/back/plugins/select2/dist/css/select2.min.css">
+
 <!-- untuk data table -->
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/template/back/plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
 

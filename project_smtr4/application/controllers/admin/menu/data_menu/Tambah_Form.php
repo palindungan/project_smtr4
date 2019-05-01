@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Data_Menu extends CI_Controller
+class Tambah_Form extends CI_Controller
 {
     // konstraktor
     function __construct()
@@ -14,7 +14,7 @@ class Data_Menu extends CI_Controller
 
     public function index()
     {
-        $data['path'] = 'admin/konten/menu/v_data_menu';
+        $data['path'] = 'admin/konten/menu/data_menu/v_tambah_form';
 
         $data["image_data"] = $this->M_data_menu->fetch_image();
 

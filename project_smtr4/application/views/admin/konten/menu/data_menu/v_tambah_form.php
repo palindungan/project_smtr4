@@ -30,8 +30,19 @@
 
         <!-- bagian ISI KONTEN -->
         <div class="card">
-            <div class="card-header justify-content-between">
-                <h3>Data Menu</h3>
+            <div class="card-header">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link <?php if ($this->uri->segment('4') == 'tambah_form') {
+                                                echo 'active';
+                                            } ?>" href="<?php echo base_url(); ?>admin/menu/data_menu/tambah_form">Tambah Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if ($this->uri->segment('4') == 'data_tabel') {
+                                                echo 'active';
+                                            } ?>" href="<?php echo base_url(); ?>admin/menu/data_menu/data_tabel">Data Tabel Menu</a>
+                    </li>
+                </ul>
             </div>
             <div class="card-body">
 

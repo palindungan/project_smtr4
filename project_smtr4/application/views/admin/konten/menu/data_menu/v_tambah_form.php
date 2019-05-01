@@ -98,14 +98,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>File upload</label>
-                            <!-- <input type="file" name="gambar" class="file-upload-default" id="image_file">
-                                <div class="input-group col-xs-12">
-                                    <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Gambar">
-                                    <span class="input-group-append">
-                                        <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                                    </span>
-                                </div> -->
-                            <input type="file" name="gambar" />
+                            <input type="file" name="gambar" class="file-upload-default" id="image_file">
+                            <div class="input-group col-xs-12">
+                                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Gambar">
+                                <span class="input-group-append">
+                                    <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>

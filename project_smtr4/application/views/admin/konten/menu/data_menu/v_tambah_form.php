@@ -70,7 +70,7 @@
                                 <select class="form-control select2" id="exampleSelectGender">
                                     <option>-</option>
                                     <option>Aneka1</option>
-                                    <option>Aneka1</option>
+                                    <option>Aneka2</option>
                                 </select>
                             </div>
                         </div>
@@ -131,6 +131,9 @@
 <!-- script logika -->
 <script type="text/javascript">
     $(document).ready(function() {
+
+        // deklarasi selec2 picker
+        $(".select2").select2();
 
         $('#upload_form').on('submit', function(e) {
             e.preventDefault();

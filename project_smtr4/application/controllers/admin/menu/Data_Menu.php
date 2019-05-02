@@ -108,15 +108,16 @@ class Data_Menu extends CI_Controller
 
     function update_aksi()
     {
-        $id = $this->input->post('id_menu');
         // hapus file lama
+        $id = $this->input->post('id_menu');
+
         // mengambil nama gambar
         $data = $this->M_data_menu->get_nama_gambar($id);
 
         // lokasi gambar berada
         $path = './upload/gambar_menu/';
         unlink($path . $data->gambar); // hapus data di folder dimana data tersimpan
-        // hapus file lama
+        // end of hapus file lama
 
         // tambah gambar ke database dan local folder
         $config['upload_path']          = './upload/gambar_menu/';

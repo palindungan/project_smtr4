@@ -48,9 +48,9 @@
                         <a href="<?php echo base_url(); ?>admin/menu/data_menu/tambah_menu" class="menu-item <?php if ($this->uri->segment('3') == 'data_menu') {
                                                                                                                     echo 'active';
                                                                                                                 } ?>">Data Menu</a>
-                        <a href="<?php echo base_url(); ?>admin/menu/data_bonus/" class="menu-item <?php if ($this->uri->segment('3') == 'data_bonus') {
-                                                                                                        echo 'active';
-                                                                                                    } ?>">Data Bonus</a>
+                        <a href="<?php echo base_url(); ?>admin/menu/data_bonus/tambah_bonus" class="menu-item <?php if ($this->uri->segment('3') == 'data_bonus') {
+                                                                                                                    echo 'active';
+                                                                                                                } ?>">Data Bonus</a>
                         <a href="<?php echo base_url(); ?>admin/menu/data_kategori/" class="menu-item <?php if ($this->uri->segment('3') == 'data_kategori') {
                                                                                                             echo 'active';
                                                                                                         } ?>">Data Kategori</a>

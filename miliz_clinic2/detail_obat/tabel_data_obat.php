@@ -1,4 +1,3 @@
-
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-success mb-1" data-toggle="modal" data-target="#obat_modal"><i class="fa fa-plus-circle"></i> Obat</button> <br><br>
 <!-- Button trigger modal -->
@@ -16,30 +15,29 @@
     </thead>
     <tbody>
         <?php
-            $data = mysqli_query($koneksi," select o.id_obat, o.nm_obat , jo.nm_jenis_obat, o.hrg_beli, o.hrg_jual
+        $data = mysqli_query($koneksi, " select o.id_obat, o.nm_obat , jo.nm_jenis_obat, o.hrg_beli, o.hrg_jual
 											from jenis_obat jo, obat o
 											where jo.id_jenis_obat = o.id_jenis_obat
 											order by o.id_obat;
 								");
-            foreach ($data as $d) 
-            {
-        ?>
-                <tr>
-                    <td><?php echo $d["id_obat"]; ?></td>
-                    <td><?php echo $d["nm_obat"]; ?></td> 
-                    <td><?php echo $d["nm_jenis_obat"]; ?></td>
-                    <td><?php echo $d["hrg_beli"]; ?></td>
-                    <td><?php echo $d["hrg_jual"]; ?></td>
-                    <td>
-                      <button type="button" class="btn btn-warning mb-1 click_edit_obat" data-toggle="modal" data-target="#edit_modal_2" id="<?php echo $d["id_obat"]; ?>"><i class="fa fa-pencil"></i></button>
+        foreach ($data as $d) {
+            ?>
+            <tr>
+                <td><?php echo $d["id_obat"]; ?></td>
+                <td><?php echo $d["nm_obat"]; ?></td>
+                <td><?php echo $d["nm_jenis_obat"]; ?></td>
+                <td><?php echo $d["hrg_beli"]; ?></td>
+                <td><?php echo $d["hrg_jual"]; ?></td>
+                <td>
+                    <button type="button" class="btn btn-warning mb-1 click_edit_obat" data-toggle="modal" data-target="#edit_modal_2" id="<?php echo $d["id_obat"]; ?>"><i class="fa fa-pencil"></i></button>
 
-                      <button type="button" class="btn btn-danger mb-1 hapus_obat" id="<?php echo $d["id_obat"]; ?>" name="<?php echo $d["nm_obat"]; ?>" ><i class="fa fa-trash"></i>
-                      </button>
-                    </td>
-                </tr>
-        <?php 
-            }
-        ?>
+                    <button type="button" class="btn btn-danger mb-1 hapus_obat" id="<?php echo $d["id_obat"]; ?>" name="<?php echo $d["nm_obat"]; ?>"><i class="fa fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        <?php
+    }
+    ?>
     </tbody>
 </table>
 
@@ -64,7 +62,7 @@
                             <label for="id_obat" class="form-control-label">Kode Obat</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input type="text" id="" id="id_obat" name="id_obat" placeholder="" class="form-control" value="<?php echo kode('id_obat','obat',6,'O'); ?>" readonly="">
+                            <input type="text" id="" id="id_obat" name="id_obat" placeholder="" class="form-control" value="<?php echo kode('id_obat', 'obat', 6, 'O'); ?>" readonly="">
                         </div>
                     </div>
                     <div class="row form-group">
@@ -81,19 +79,18 @@
                             <select name="id_jenis_obat" id="id_jenis_obat" class="form-control selectpicker" data-live-search="true" required="">
                                 <option value="">Please select</option>
                                 <?php
-                                    $data2 = mysqli_query($koneksi,"select jo.nm_jenis_obat, jo.id_jenis_obat
+                                $data2 = mysqli_query($koneksi, "select jo.nm_jenis_obat, jo.id_jenis_obat
                                                                     from jenis_obat jo
                                                                     order by jo.nm_jenis_obat;
                                                         ");
-                                    foreach ($data2 as $d2) 
-                                    {
-                                ?>
-                                <option value="<?php echo $d2["id_jenis_obat"]; ?>">
-                                    <?php echo $d2["nm_jenis_obat"]; ?>
-                                </option>
-                                <?php 
-                                    }
-                                ?>
+                                foreach ($data2 as $d2) {
+                                    ?>
+                                    <option value="<?php echo $d2["id_jenis_obat"]; ?>">
+                                        <?php echo $d2["nm_jenis_obat"]; ?>
+                                    </option>
+                                <?php
+                            }
+                            ?>
                             </select>
                         </div>
                     </div>
@@ -166,16 +163,18 @@
 <!-- untuk selectpicker -->
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
 
         // untuk menampilkan edit modal
-        $(".click_edit_obat").click(function(e){
+        $(".click_edit_obat").click(function(e) {
             var m2 = $(this).attr("id");
             $.ajax({
-                url : "crud/obat/edit_modal.php",
-                type : "POST",
-                data : {id:m2},
-                success : function(ajaxData){
+                url: "crud/obat/edit_modal.php",
+                type: "POST",
+                data: {
+                    id: m2
+                },
+                success: function(ajaxData) {
                     $("#isi_modal_obat").html(ajaxData);
                 }
             });
@@ -184,29 +183,25 @@
         // untuk menampilkan edit modal
 
         // pemberitahuan berhasil tambah karyawan
-        $(document).on('click','#tambah_obat',function()
-        {
+        $(document).on('click', '#tambah_obat', function() {
 
             var nm_obat = document.getElementsByName("nm_obat")[0].value;
             var id_jenis_obat = document.getElementsByName("id_jenis_obat")[0].value;
             var hrg_beli = document.getElementsByName("hrg_beli")[0].value;
             var hrg_jual = document.getElementsByName("hrg_jual")[0].value;
-            
-            if (nm_obat != "" && id_jenis_obat != "" && hrg_beli != "" && hrg_jual != "" && hrg_beli <= 2000000000 && hrg_jual <= 2000000000) 
-                {
-                    return alert("Anda Telah Berhasil Menambahkan "+nm_obat);
-                }
+
+            if (nm_obat != "" && id_jenis_obat != "" && hrg_beli != "" && hrg_jual != "" && hrg_beli <= 2000000000 && hrg_jual <= 2000000000) {
+                return alert("Anda Telah Berhasil Menambahkan " + nm_obat);
+            }
 
         });
         // pemberitahuan berhasil tambah karyawan
-        
+
         // delete dan validasinya
-        $(".hapus_obat").click(function() 
-        {
+        $(".hapus_obat").click(function() {
             var name2 = $(this).attr("name");
-            var jawab2 = confirm("Ingin Menghapus Data "+name2+" ?");
-            if (jawab2 === true) 
-            {
+            var jawab2 = confirm("Ingin Menghapus Data " + name2 + " ?");
+            if (jawab2 === true) {
                 // kita set hapus false untuk mencegah duplicate request
                 var hapus = false;
                 if (!hapus) {
@@ -214,21 +209,20 @@
                     // ajax
                     var m2 = $(this).attr("id");
                     $.ajax({
-                        url : "crud/obat/hapus.php",
-                        type : "POST",
-                        data : {id_obat:m2},
-                        success : function(data)
-                        {                                
-                            alert("Data "+name2+" berhasil Terhapus");
+                        url: "crud/obat/hapus.php",
+                        type: "POST",
+                        data: {
+                            id_obat: m2
+                        },
+                        success: function(data) {
+                            alert("Data " + name2 + " berhasil Terhapus");
                             location.reload();
                         }
                     });
                     // ajax
                     hapus = false;
                 }
-            } 
-            else 
-            {
+            } else {
                 return false;
             }
         });

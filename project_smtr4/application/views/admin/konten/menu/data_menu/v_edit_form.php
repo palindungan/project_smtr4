@@ -49,7 +49,7 @@
 
                 <?php foreach ($tbl_data as $d2) { ?>
 
-                    <?php echo form_open_multipart('admin/menu/data_menu/tambah_aksi'); ?>
+                    <?php echo form_open_multipart('admin/menu/data_menu/update_aksi'); ?>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -60,7 +60,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nm_menu">Nama</label>
-                                <input type="text" class="form-control" id="nm_menu" placeholder="Nama" name="nm_menu">
+                                <input type="text" class="form-control" id="nm_menu" placeholder="Nama" name="nm_menu" value="<?php echo $d2->nm_menu ?>">
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,9 @@
                                 <select class="form-control select2" id="id_kat" name="id_kat">
                                     <option>-</option>
                                     <?php foreach ($tbl_data_kat as $d) {  ?>
-                                        <option value="<?php echo $d->id_kat ?>"><?php echo $d->nm_kat ?></option>
+                                        <option value="<?php echo $d->id_kat ?>" <?php if ($d2->id_kat == $d->id_kat) {
+                                                                                        echo "selected";
+                                                                                    } ?>><?php echo $d->nm_kat ?></option>
                                     <?php } ?>
                                 </select>
 
@@ -82,9 +84,15 @@
                                 <label for="tipe">Tipe</label>
                                 <select class="form-control" id="tipe" name="tipe">
                                     <option>-</option>
-                                    <option value="makanan">Makanan</option>
-                                    <option value="dessert">Dessert</option>
-                                    <option value="bonus">Bonus</option>
+                                    <option value="makanan" <?php if ($d2->tipe == "makanan") {
+                                                                echo "selected";
+                                                            } ?>>Makanan</option>
+                                    <option value="dessert" <?php if ($d2->tipe == "dessert") {
+                                                                echo "selected";
+                                                            } ?>>Dessert</option>
+                                    <option value="bonus" <?php if ($d2->tipe == "bonus") {
+                                                                echo "selected";
+                                                            } ?>>Bonus</option>
                                 </select>
                             </div>
                         </div>
@@ -94,13 +102,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="hrg_porsi">Harga Porsi</label>
-                                <input type="number" class="form-control" id="hrg_porsi" placeholder="Harga" name="hrg_porsi">
+                                <input type="number" class="form-control" id="hrg_porsi" placeholder="Harga" name="hrg_porsi" value="<?php echo $d2->hrg_porsi ?>">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>File upload</label>
-                                <input type="file" name="gambar" class="file-upload-default" id="image_file">
+                                <input type="file" name="gambar" class="file-upload-default" id="image_file" value="<?php echo $d2->gambar ?>">
                                 <div class="input-group col-xs-12">
                                     <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Gambar">
                                     <span class="input-group-append">
@@ -113,10 +121,10 @@
 
                     <div class="form-group">
                         <label for="deskripsi">Deksripsi</label>
-                        <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi"></textarea>
+                        <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi"><?php echo $d2->deskripsi ?></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary mr-2">Simpan</button>
+                    <button type="submit" class="btn btn-primary mr-2">Update</button>
                     <button type="button" class="btn btn-light" data-dismiss="modal">Kembali</button>
 
                     </form>
@@ -143,30 +151,6 @@
 
         // deklarasi selec2 picker
         $(".select2").select2();
-
-        $('#upload_form').on('submit', function(e) {
-            e.preventDefault();
-            if ($('#image_file').val() == '') {
-                alert("please select the file");
-            }
-
-            // else {
-            //     $.ajax({
-            //         url: "<?php echo base_url(); ?>admin/menu/data_menu/tambah_form/tambah_aksi",
-            //         type: "post",
-            //         data: new FormData(this),
-            //         // contentType: false,
-            //         // cache: false,
-            //         // processData: false,
-            //         success: function(data) {
-
-            //             alert(data);
-            //             console.log(data);
-
-            //         }
-            //     });
-            // }
-        });
 
     });
 </script>

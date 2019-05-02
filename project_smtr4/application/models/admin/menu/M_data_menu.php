@@ -4,14 +4,7 @@ class M_data_menu extends CI_Model
     // mengambil semua data pada tabel
     function tampil_data()
     {
-        $this->db->select('tm.id_menu, tm.nm_menu, tk.nm_kat , tm.tipe, tm.hrg_porsi, tm.gambar, tm.deskripsi');
-        $this->db->from('tbl_menu tm, tbl_kategori tk');
-
-        $where = "tm.id_kat = tk.id_kat";
-        $this->db->where($where);
-        $this->db->order_by('tm.id_menu', 'ASC');
-
-        return $this->db->get();
+        return $this->db->get('tabel_menu');
     }
 
     // mengambil semua data pada tabel
@@ -41,10 +34,10 @@ class M_data_menu extends CI_Model
     {
         // return $this->db->get_where($table, $where);
 
-        $this->db->select('tm.id_menu, tm.nm_menu, tk.nm_kat , tm.tipe, tm.hrg_porsi, tm.gambar, tm.deskripsi');
+        $this->db->select('tm.id_menu, tm.nm_menu, tk.nm_kat , tm.tipe, tm.hrg_porsi, tm.gambar, tm.deskripsi , tk.id_kat');
         $this->db->from('tbl_menu tm, tbl_kategori tk');
 
-        $where = "tm.id_kat = tk.id_kat && tm.id_menu ='.$id_menu.'";
+        $where = "tm.id_kat = tk.id_kat && tm.id_menu ='" . $id_menu . "'";
         $this->db->where($where);
         $this->db->order_by('tm.id_menu', 'ASC');
 
@@ -79,26 +72,14 @@ class M_data_menu extends CI_Model
         return $kd;
     }
 
-    // function insert_image($data)
-    // {
-    //     $this->db->insert("tbl_images", $data);
-    // }
-
-    // function fetch_image()
-    // {
-    //     $output = '';
-    //     $this->db->select('name');
-    //     $this->db->from('tbl_images');
-    //     $this->db->order_by('id', 'DESC');
-    //     $query = $this->db->get();
-
-    //     foreach ($query->result() as $row) {
-    //         $output .= '  
-    //         <div class="col-md-3">  
-    //              <img src="' . base_url() . 'upload/' . $row->name . '" class="img-responsive img-thumbnail" />  
-    //         </div>  
-    //         ';
-    //     }
-    //     return $output;
-    // }
+    function get_nama_gambar($id_menu)
+    {
+        $this->db->from('tbl_menu');
+        $this->db->where('id_menu', $id_menu);
+        $result = $this->db->get('');
+        // periksa ada datanya atau tidak
+        if ($result->num_rows() > 0) {
+            return $result->row(); //ambil datanya berdasrka row id
+        }
+    }
 }

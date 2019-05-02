@@ -4,7 +4,14 @@ class M_data_menu extends CI_Model
     // mengambil semua data pada tabel
     function tampil_data()
     {
-        return $this->db->get('tbl_menu');
+        $this->db->select('tm.id_menu, tm.nm_menu, tk.nm_kat , tm.tipe, tm.hrg_porsi, tm.gambar, tm.deskripsi');
+        $this->db->from('tbl_menu tm, tbl_kategori tk');
+
+        $where = "tm.id_kat = tk.id_kat";
+        $this->db->where($where);
+        $this->db->order_by('tm.id_menu', 'ASC');
+
+        return $this->db->get();
     }
 
     // mengambil semua data pada tabel

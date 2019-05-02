@@ -63,14 +63,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>disini btn</td>
+                        <?php foreach ($tbl_data as $d) {  ?>
+                            <td><?php echo $d->id_menu ?></td>
+                            <td><?php echo $d->nm_menu ?></td>
+                            <td><?php echo $d->nm_kat ?></td>
+                            <td><?php echo $d->tipe ?></td>
+                            <td><?php echo $d->hrg_porsi ?></td>
+                            <td><img src="<?php echo base_url(); ?>upload/gambar_menu/<?php echo $d->gambar ?>" style="height:100px;width:100px;" /></td>
+                            <td><?php echo $d->deskripsi ?></td>
+                            <td>
+                                <div class="table-actions">
+                                    <a href="<?php echo site_url('admin/menu/data_menu/edit_form/' . $d->id_menu) ?>"><i class="ik ik-edit-2"></i></a>
+                                    <a href="javascript:void(0)" class="hapus" id="<?php echo $d->id_menu ?>" name="<?php echo $d->nm_menu ?>"><i class="ik ik-trash-2"></i></a>
+                                </div>
+                            </td>
+                        <?php } ?>
                     </tbody>
                 </table>
 

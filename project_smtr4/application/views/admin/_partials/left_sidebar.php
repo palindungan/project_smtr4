@@ -45,7 +45,7 @@
                                                 } ?>">
                     <a href="javascript:void(0)"><i class="ik ik-list"></i><span>Menu</span></a>
                     <div class="submenu-content">
-                        <a href="<?php echo base_url(); ?>admin/menu/data_menu/tambah_form" class="menu-item <?php if ($this->uri->segment('3') == 'data_menu') {
+                        <a href="<?php echo base_url(); ?>admin/menu/data_menu/tambah_menu" class="menu-item <?php if ($this->uri->segment('3') == 'data_menu') {
                                                                                                                     echo 'active';
                                                                                                                 } ?>">Data Menu</a>
                         <a href="<?php echo base_url(); ?>admin/menu/data_bonus/" class="menu-item <?php if ($this->uri->segment('3') == 'data_bonus') {

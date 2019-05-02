@@ -37,9 +37,18 @@ class M_data_menu extends CI_Model
     }
 
     // untuk mengambil nilai data yg di edit
-    function edit_data($table, $where)
+    function get_edit_data($id_menu)
     {
-        return $this->db->get_where($table, $where);
+        // return $this->db->get_where($table, $where);
+
+        $this->db->select('tm.id_menu, tm.nm_menu, tk.nm_kat , tm.tipe, tm.hrg_porsi, tm.gambar, tm.deskripsi');
+        $this->db->from('tbl_menu tm, tbl_kategori tk');
+
+        $where = "tm.id_kat = tk.id_kat && tm.id_menu ='.$id_menu.'";
+        $this->db->where($where);
+        $this->db->order_by('tm.id_menu', 'ASC');
+
+        return $this->db->get();
     }
 
     // untuk update data

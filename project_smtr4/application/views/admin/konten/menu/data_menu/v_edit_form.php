@@ -32,14 +32,14 @@
             <div class="card-header">
                 <ul class="nav nav-pills">
                     <li class="nav-item">
-                        <a class="nav-link <?php if ($this->uri->segment('4') == 'tambah_form') {
+                        <a class="nav-link <?php if ($this->uri->segment('4') == 'tambah_menu') {
                                                 echo 'active';
-                                            } ?>" href="<?php echo base_url(); ?>admin/menu/data_menu/tambah_form">Tambah Menu</a>
+                                            } ?>" href="<?php echo base_url(); ?>admin/menu/data_menu/tambah_menu">Tambah Menu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php if ($this->uri->segment('4') == 'data_tabel') {
+                        <a class="nav-link <?php if ($this->uri->segment('4') == 'edit_menu') {
                                                 echo 'active';
-                                            } ?>" href="<?php echo base_url(); ?>admin/menu/data_menu/data_tabel">Data Tabel Menu</a>
+                                            } ?>" href="<?php echo base_url(); ?>admin/menu/data_menu/data_tabel_menu">Data Tabel Menu</a>
                     </li>
                 </ul>
             </div>
@@ -47,79 +47,82 @@
 
                 <!-- disini isinya konten -->
 
-                <?php echo form_open_multipart('admin/menu/data_menu/tambah_form/tambah_aksi'); ?>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="id_menu">Kode Menu</label>
-                            <input type="text" class="form-control" id="id_menu" readonly="" name="id_menu" value="<?php echo $kode; ?>">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="nm_menu">Nama</label>
-                            <input type="text" class="form-control" id="nm_menu" placeholder="Nama" name="nm_menu">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="id_kat">Kategori</label>
-                            <select class="form-control select2" id="id_kat" name="id_kat">
-                                <option>-</option>
-                                <?php foreach ($tbl_data_kat as $d) {  ?>
-                                    <option value="<?php echo $d->id_kat ?>"><?php echo $d->nm_kat ?></option>
-                                <?php } ?>
-                            </select>
+                <?php foreach ($tbl_data as $d2) { ?>
 
+                    <?php echo form_open_multipart('admin/menu/data_menu/tambah_aksi'); ?>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="id_menu">Kode Menu</label>
+                                <input type="text" class="form-control" id="id_menu" readonly="" name="id_menu" value="<?php echo $d2->id_menu ?>">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="tipe">Tipe</label>
-                            <select class="form-control" id="tipe" name="tipe">
-                                <option>-</option>
-                                <option value="makanan">Makanan</option>
-                                <option value="dessert">Dessert</option>
-                                <option value="bonus">Bonus</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="hrg_porsi">Harga Porsi</label>
-                            <input type="number" class="form-control" id="hrg_porsi" placeholder="Harga" name="hrg_porsi">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>File upload</label>
-                            <input type="file" name="gambar" class="file-upload-default" id="image_file">
-                            <div class="input-group col-xs-12">
-                                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Gambar">
-                                <span class="input-group-append">
-                                    <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                                </span>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="nm_menu">Nama</label>
+                                <input type="text" class="form-control" id="nm_menu" placeholder="Nama" name="nm_menu">
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="id_kat">Kategori</label>
+                                <select class="form-control select2" id="id_kat" name="id_kat">
+                                    <option>-</option>
+                                    <?php foreach ($tbl_data_kat as $d) {  ?>
+                                        <option value="<?php echo $d->id_kat ?>"><?php echo $d->nm_kat ?></option>
+                                    <?php } ?>
+                                </select>
 
-                <div class="form-group">
-                    <label for="deskripsi">Deksripsi</label>
-                    <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi"></textarea>
-                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="tipe">Tipe</label>
+                                <select class="form-control" id="tipe" name="tipe">
+                                    <option>-</option>
+                                    <option value="makanan">Makanan</option>
+                                    <option value="dessert">Dessert</option>
+                                    <option value="bonus">Bonus</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
 
-                <button type="submit" class="btn btn-primary mr-2">Simpan</button>
-                <button type="button" class="btn btn-light" data-dismiss="modal">Kembali</button>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="hrg_porsi">Harga Porsi</label>
+                                <input type="number" class="form-control" id="hrg_porsi" placeholder="Harga" name="hrg_porsi">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>File upload</label>
+                                <input type="file" name="gambar" class="file-upload-default" id="image_file">
+                                <div class="input-group col-xs-12">
+                                    <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Gambar">
+                                    <span class="input-group-append">
+                                        <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                </form>
+                    <div class="form-group">
+                        <label for="deskripsi">Deksripsi</label>
+                        <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi"></textarea>
+                    </div>
 
+                    <button type="submit" class="btn btn-primary mr-2">Simpan</button>
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Kembali</button>
 
+                    </form>
+
+                <?php
+            } ?>
 
             </div>
         </div>

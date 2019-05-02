@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Tambah_Form extends CI_Controller
+class Data_Menu extends CI_Controller
 {
     // konstraktor
     function __construct()
@@ -12,13 +12,35 @@ class Tambah_Form extends CI_Controller
         $this->load->model("admin/menu/M_data_menu");
     }
 
-    public function index()
+    // untuk ke menu tambah menu
+    public function tambah_menu()
     {
-        $data['path'] = 'admin/konten/menu/data_menu/v_tambah_form';
-
-        // $data["image_data"] = $this->M_data_menu->fetch_image();
-
         $data['kode'] = $this->M_data_menu->get_no();
+        $data['tbl_data_kat'] = $this->M_data_menu->tampil_data_kat()->result();
+
+        $data['path'] = 'admin/konten/menu/data_menu/v_tambah_form';
+        $this->load->view('admin/_view', $data);
+    }
+
+    // untuk ke menu data tabel menu
+    public function data_tabel_menu()
+    {
+        $data['path'] = 'admin/konten/menu/data_menu/v_data_tabel';
+        $data['tbl_data'] = $this->M_data_menu->tampil_data()->result();
+
+        $this->load->view('admin/_view', $data);
+    }
+
+    // untuk ke menu edit data
+    public function edit_menu($id_menu)
+    {
+        $data['path'] = 'admin/konten/menu/data_menu/v_edit_form';
+
+        // memasukkan data ke array
+        $where = array('id_menu' => $id_menu);
+
+        // fungsi result adalah mengenerate hasil querry menjadi array untuk di tampilkan
+        $data['tbl_data'] = $this->M_data_menu->get_edit_data($where)->result();
         $data['tbl_data_kat'] = $this->M_data_menu->tampil_data_kat()->result();
 
         $this->load->view('admin/_view', $data);
@@ -57,7 +79,7 @@ class Tambah_Form extends CI_Controller
 
             $this->M_data_menu->input_data('tbl_menu', $data2);
 
-            redirect('admin/menu/data_menu/tambah_form');
+            redirect('admin/menu/data_menu/tambah_menu');
 
             // end of code tambah ke database
         }

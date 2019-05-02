@@ -32,14 +32,14 @@
             <div class="card-header">
                 <ul class="nav nav-pills">
                     <li class="nav-item">
-                        <a class="nav-link <?php if ($this->uri->segment('4') == 'tambah_form') {
+                        <a class="nav-link <?php if ($this->uri->segment('4') == 'tambah_menu') {
                                                 echo 'active';
-                                            } ?>" href="<?php echo base_url(); ?>admin/menu/data_menu/tambah_form">Tambah Menu</a>
+                                            } ?>" href="<?php echo base_url(); ?>admin/menu/data_menu/tambah_menu">Tambah Menu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php if ($this->uri->segment('4') == 'data_tabel') {
+                        <a class="nav-link <?php if ($this->uri->segment('4') == 'data_tabel_menu') {
                                                 echo 'active';
-                                            } ?>" href="<?php echo base_url(); ?>admin/menu/data_menu/data_tabel">Data Tabel Menu</a>
+                                            } ?>" href="<?php echo base_url(); ?>admin/menu/data_menu/data_tabel_menu">Data Tabel Menu</a>
                     </li>
                 </ul>
             </div>
@@ -47,7 +47,7 @@
 
                 <!-- disini isinya konten -->
 
-                <?php echo form_open_multipart('admin/menu/data_menu/tambah_form/tambah_aksi'); ?>
+                <?php echo form_open_multipart('admin/menu/data_menu/tambah_aksi'); ?>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">

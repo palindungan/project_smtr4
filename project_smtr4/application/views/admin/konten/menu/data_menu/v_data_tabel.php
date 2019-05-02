@@ -33,14 +33,14 @@
             <div class="card-header">
                 <ul class="nav nav-pills">
                     <li class="nav-item">
-                        <a class="nav-link <?php if ($this->uri->segment('4') == 'tambah_form') {
+                        <a class="nav-link <?php if ($this->uri->segment('4') == 'tambah_menu') {
                                                 echo 'active';
-                                            } ?>" href="<?php echo base_url(); ?>admin/menu/data_menu/tambah_form">Tambah Menu</a>
+                                            } ?>" href="<?php echo base_url(); ?>admin/menu/data_menu/tambah_menu">Tambah Menu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php if ($this->uri->segment('4') == 'data_tabel') {
+                        <a class="nav-link <?php if ($this->uri->segment('4') == 'data_tabel_menu') {
                                                 echo 'active';
-                                            } ?>" href="<?php echo base_url(); ?>admin/menu/data_menu/data_tabel">Data Tabel Menu</a>
+                                            } ?>" href="<?php echo base_url(); ?>admin/menu/data_menu/data_tabel_menu">Data Tabel Menu</a>
                     </li>
                 </ul>
             </div>
@@ -50,6 +50,7 @@
 
                 <!-- data table -->
                 <table id="data_table" class="table">
+
                     <thead>
                         <tr>
                             <th>Kode Menu</th>
@@ -64,19 +65,21 @@
                     </thead>
                     <tbody>
                         <?php foreach ($tbl_data as $d) {  ?>
-                            <td><?php echo $d->id_menu ?></td>
-                            <td><?php echo $d->nm_menu ?></td>
-                            <td><?php echo $d->nm_kat ?></td>
-                            <td><?php echo $d->tipe ?></td>
-                            <td><?php echo $d->hrg_porsi ?></td>
-                            <td><img src="<?php echo base_url(); ?>upload/gambar_menu/<?php echo $d->gambar ?>" style="height:100px;width:100px;" /></td>
-                            <td><?php echo $d->deskripsi ?></td>
-                            <td>
-                                <div class="table-actions">
-                                    <a href="<?php echo site_url('admin/menu/data_menu/edit_form/' . $d->id_menu) ?>"><i class="ik ik-edit-2"></i></a>
-                                    <a href="javascript:void(0)" class="hapus" id="<?php echo $d->id_menu ?>" name="<?php echo $d->nm_menu ?>"><i class="ik ik-trash-2"></i></a>
-                                </div>
-                            </td>
+                            <tr>
+                                <td><?php echo $d->id_menu ?></td>
+                                <td><?php echo $d->nm_menu ?></td>
+                                <td><?php echo $d->nm_kat ?></td>
+                                <td><?php echo $d->tipe ?></td>
+                                <td><?php echo $d->hrg_porsi ?></td>
+                                <td><img src="<?php echo base_url(); ?>upload/gambar_menu/<?php echo $d->gambar ?>" style="height:100px;width:100px;" /></td>
+                                <td><?php echo $d->deskripsi ?></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <a href="<?php echo site_url('admin/menu/data_menu/edit_menu/' . $d->id_menu) ?>"><i class="ik ik-edit-2"></i></a>
+                                        <a href="javascript:void(0)" class="hapus" id="<?php echo $d->id_menu ?>" name="<?php echo $d->nm_menu ?>"><i class="ik ik-trash-2"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
                         <?php } ?>
                     </tbody>
                 </table>

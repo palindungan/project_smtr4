@@ -32,17 +32,36 @@ class Data_Bonus extends CI_Controller
     }
 
     // untuk ke menu edit data
-    public function edit_bonus($id_menu)
+    public function edit_bonus($id_bonus)
     {
         $data['path'] = 'admin/konten/menu/data_bonus/v_edit_form';
 
         // memasukkan data ke array
-        $where = array('id_menu' => $id_menu);
+        $where = array('id_bonus' => $id_bonus);
 
         // fungsi result adalah mengenerate hasil querry menjadi array untuk di tampilkan
-        $data['tbl_data'] = $this->M_data_menu->get_edit_data($id_menu)->result();
-        $data['tbl_data_kat'] = $this->M_data_menu->tampil_data_kat()->result();
+        $data['tbl_data'] = $this->M_data_bonus->get_edit_data($id_bonus)->result();
+        $data['tbl_data_menu'] = $this->M_data_bonus->tampil_data_menu()->result();
 
         $this->load->view('admin/_view', $data);
+    }
+
+    function tambah_aksi()
+    {
+        // mengambil dari inputan (name)
+        $id_bonus = $this->input->post('id_bonus');
+        $id_menu = $this->input->post('id_menu');
+
+        // memasukkan data ke dalam array assoc
+        $data = array(
+            'id_bonus' => $id_bonus,
+            'id_menu' => $id_menu
+        );
+
+        // mengirim data ke model untuk diinputkan ke dalam database
+        $this->M_data_bonus->input_data('tbl_bonus', $data);
+
+        // kembali ke halaman utama
+        redirect('admin/menu/data_bonus/tambah_bonus');
     }
 }

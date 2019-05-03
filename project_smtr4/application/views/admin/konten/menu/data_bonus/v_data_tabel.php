@@ -64,7 +64,7 @@
                                 <td><?php echo $d->nm_menu ?></td>
                                 <td>
                                     <div class="table-actions">
-                                        <a href="javascript:void(0)" class="tombol_edit" data-toggle="modal" data-target="#edit_modal" id="<?php echo $d->id_bonus ?>"><i class="ik ik-edit-2"></i></a>
+                                        <a href="<?php echo site_url('admin/menu/data_bonus/edit_bonus/' . $d->id_bonus) ?>"><i class="ik ik-edit-2"></i></a>
                                         <a href="javascript:void(0)" class="hapus" id="<?php echo $d->id_bonus ?>" name="<?php echo $d->nm_menu ?>"><i class="ik ik-trash-2"></i></a>
                                     </div>
                                 </td>

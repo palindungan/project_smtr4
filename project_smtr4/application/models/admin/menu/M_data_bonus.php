@@ -62,4 +62,19 @@ class M_data_bonus extends CI_Model
         }
         return $kd;
     }
+
+    // untuk mengambil nilai data yg di edit
+    function get_edit_data($id_bonus)
+    {
+        // return $this->db->get_where($table, $where);
+
+        $this->db->select('tb.id_bonus , tm.id_menu , tm.nm_menu');
+        $this->db->from('tbl_bonus tb , tbl_menu tm');
+
+        $where = "tb.id_menu = tm.id_menu && tb.id_bonus ='" . $id_bonus . "'";
+        $this->db->where($where);
+        $this->db->order_by('tb.id_bonus', 'ASC');
+
+        return $this->db->get();
+    }
 }

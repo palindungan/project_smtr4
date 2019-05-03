@@ -64,4 +64,36 @@ class Data_Bonus extends CI_Controller
         // kembali ke halaman utama
         redirect('admin/menu/data_bonus/tambah_bonus');
     }
+
+    function update_aksi()
+    {
+        // mengambil dari inputan (name)
+        $id_bonus = $this->input->post('id_bonus');
+        $id_menu = $this->input->post('id_menu');
+
+        // memasukkan data ke dalam array assoc
+        $data = array(
+            'id_bonus' => $id_bonus,
+            'id_menu' => $id_menu
+        );
+
+        // memasukkan data ke dalam array assoc
+        $where['id_bonus'] = $id_bonus;
+
+        $this->M_data_bonus->update_data($where, $data, 'tbl_bonus');
+
+        // kembali ke halaman utama
+        redirect('admin/menu/data_bonus/data_tabel_bonus');
+    }
+
+    function hapus_aksi()
+    {
+        // mengambil data dari ajax bertipe post
+        $id_bonus = $this->input->post('id_bonus');
+
+        // memasukkan data ke dalam array assoc
+        $where['id_bonus'] = $id_bonus;
+
+        $this->M_data_bonus->hapus_data('tbl_bonus', $where);
+    }
 }

@@ -8,4 +8,7 @@ class Daftar_Menu extends CI_Controller
         $data['path'] = 'admin/konten/v_daftar_menu';
         $this->load->view('admin/_view', $data);
     }
+
+    function cari_menu()
+    { }
 }

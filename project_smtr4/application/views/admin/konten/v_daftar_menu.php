@@ -6,8 +6,11 @@
             <div class="col-md-8">
                 <h1 class="text-center">Search Daftar Menu</h1>
                 <div class="input-group mb-3">
-                    <select class="form-control form_data1 select2 col-md-3" id="id_menu" name="id_menu">
-                        <option>All Kategori</option>
+                    <select class="form-control form_data1 select2 col-md-3" id="id_kat" name="id_kat">
+                        <option value="All Kategori">All Kategori</option>
+                        <?php foreach ($tbl_data_kat as $d) {  ?>
+                            <option value="<?php echo $d->id_kat ?>"><?php echo $d->nm_kat ?></option>
+                        <?php } ?>
 
                     </select>
                     <input type="text" class="form-control" id="search-input" placeholder="Nama Menu...">
@@ -61,52 +64,18 @@
     function searchMovie() {
         $('#movie-list').html('');
 
-        // $.getJSON('http://www.omdbapi.com/?apikey=d5a98ffa');
-
-        var input_cari = $('#search-input').val();
+        var search_input = $('#search-input').val();
+        var kategori = $('#id_kat').val();
 
         $.ajax({
-            url: "<?php echo base_url() . 'admin/daftar_menu'; ?>",
+            url: "<?php echo base_url() . 'admin/daftar_menu/cari_menu'; ?>",
             type: 'post',
             data: {
-                'apikey': 'd5a98ffa',
-                's': $('#search-input').val()
+                search_input: search_input,
+                kategori: kategori
             },
-            success: function(result) {
-                if (result.Response == "True") {
-
-                    // let movies = result.Search;
-
-                    // $.each(movies, function(i, data) {
-
-                    //     $('#movie-list').append(`
-
-                    // <div class="col-md-4">
-                    //     <div class="card mb-3">
-                    //         <img src="` + data.Poster + `" class="card-img-top" alt="...">
-                    //         <div class="card-body">
-                    //             <h5 class="card-title">` + data.Title + `</h5>
-                    //             <h6 class="card-subtitle mb-2 text-muted">` + data.Year + `</h6>
-                    //             <a href="#" class="card-link see-detail" data-toggle="modal" data-target="#exampleModal" data-id="` + data.imdbID + `">See Detail</a>
-                    //         </div>
-                    //     </div>
-                    // </div>
-
-                    // `);
-
-                    // });
-
-                    // $('#search-input').val('');
-
-                } else {
-                    $('#movie-list').html(`
-
-                <div class="col">
-                <h1 class="text-center">` + result.Error + `</h1>
-                </div>
-                
-                `);
-                }
+            success: function(data) {
+                alert(data);
             }
         });
     }

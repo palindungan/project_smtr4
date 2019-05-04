@@ -37,7 +37,7 @@ class Data_Menu extends CI_Controller
         $data['path'] = 'admin/konten/menu/data_menu/v_edit_form';
 
         // memasukkan data ke array
-        $where = array('id_menu' => $id_menu);
+        // $where = array('id_menu' => $id_menu);
 
         // fungsi result adalah mengenerate hasil querry menjadi array untuk di tampilkan
         $data['tbl_data'] = $this->M_data_menu->get_edit_data($id_menu)->result();

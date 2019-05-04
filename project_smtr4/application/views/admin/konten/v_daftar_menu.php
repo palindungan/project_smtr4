@@ -7,11 +7,10 @@
                 <h1 class="text-center">Search Daftar Menu</h1>
                 <div class="input-group mb-3">
                     <select class="form-control form_data1 select2 col-md-3" id="id_kat" name="id_kat">
-                        <option value="All Kategori">All Kategori</option>
+                        <option value="All Kategori" id="default_kategori">All Kategori</option>
                         <?php foreach ($tbl_data_kat as $d) {  ?>
                             <option value="<?php echo $d->id_kat ?>"><?php echo $d->nm_kat ?></option>
                         <?php } ?>
-
                     </select>
                     <input type="text" class="form-control" id="search-input" placeholder="Nama Menu...">
                     <div class="input-group-append">
@@ -23,7 +22,7 @@
 
         <!-- disini isinya konten -->
 
-        <div class="row" id="movie-list">
+        <div class="row" id="menu-list">
 
         </div>
 
@@ -62,7 +61,7 @@
 
     // script untuk menu pencarian
     function searchMovie() {
-        $('#movie-list').html('');
+        $('#menu-list').html('');
 
         var search_input = $('#search-input').val();
         var kategori = $('#id_kat').val();
@@ -81,11 +80,10 @@
 
                 $.each(menu_menu, function (i, data) {
 
-                    $('#movie-list').append(`
+                    $('#menu-list').append(`
 
                     <div class="col-md-4">
                         <div class="card mb-3">
-                            
                             <div class="card-body">
                                 <h5 class="card-title">` + data.id_menu + `</h5>
                                 <h5 class="card-title">` + data.nm_menu + `</h5>
@@ -103,6 +101,9 @@
 
                 });
 
+                // untuk mengembalikan nilai ke default
+                document.getElementById("default_kategori").selected = "true";
+                $(".select2").select2();
                 $('#search-input').val('');
             }
         });
@@ -122,7 +123,7 @@
 
     });
 
-    $('#movie-list').on('click', '.see-detail', function() {
+    $('#menu-list').on('click', '.see-detail', function() {
 
         $.ajax({
 

@@ -75,7 +75,35 @@
                 kategori: kategori
             },
             success: function(data) {
-                console.log(data);
+                var obj = JSON.parse(data);
+
+                let menu_menu = obj['tbl_data'];
+
+                $.each(menu_menu, function (i, data) {
+
+                    $('#movie-list').append(`
+
+                    <div class="col-md-4">
+                        <div class="card mb-3">
+                            
+                            <div class="card-body">
+                                <h5 class="card-title">` + data.id_menu + `</h5>
+                                <h5 class="card-title">` + data.nm_menu + `</h5>
+                                <h5 class="card-title">` + data.nm_kat + `</h5>
+                                <h5 class="card-title">` + data.tipe + `</h5>
+                                <h5 class="card-title">` + data.hrg_porsi + `</h5>
+                                <h5 class="card-title">` + data.gambar + `</h5>
+                                <h5 class="card-title">` + data.deskripsi + `</h5>
+                                <h5 class="card-title">` + data.id_kat + `</h5>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    `);
+
+                });
+
+                $('#search-input').val('');
             }
         });
     }

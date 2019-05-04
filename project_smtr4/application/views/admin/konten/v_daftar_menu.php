@@ -30,7 +30,7 @@
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
-                    
+
                     <div class="modal-body">
                     </div>
                     <div class="modal-footer">
@@ -73,11 +73,11 @@
 
                 let menu_menu = obj['tbl_data'];
 
-                $.each(menu_menu, function (i, data) {
+                $.each(menu_menu, function(i, data) {
 
                     $('#menu-list').append(`
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="card" >
                             <img class="card-img-top" src="/project_smtr4/upload/gambar_menu/` + data.gambar + `" alt="gambar_menu" >
                             <div class="card-body">
@@ -121,7 +121,7 @@
             url: "<?php echo base_url() . 'admin/daftar_menu/lihat_detail'; ?>",
             type: "post",
             data: {
-                id_menu: $(this).data('id')       
+                id_menu: $(this).data('id')
             },
             success: function(result) {
 

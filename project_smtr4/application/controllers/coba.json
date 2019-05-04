@@ -1,0 +1,32 @@
+{
+	"tbl_data": [{
+			"id_menu": "MN-001",
+			"nm_menu": "123",
+			"nm_kat": "aneka bubur",
+			"tipe": "makanan",
+			"hrg_porsi": "123",
+			"gambar": "superthumb.jpg",
+			"deskripsi": "123",
+			"id_kat": "KT-01"
+		},
+		{
+			"id_menu": "MN-003",
+			"nm_menu": "gwwg",
+			"nm_kat": "aneka mie",
+			"tipe": "dessert",
+			"hrg_porsi": "123",
+			"gambar": "gaga.jpg",
+			"deskripsi": "123213",
+			"id_kat": "KT-03"
+		}, {
+			"id_menu": "MN-002",
+			"nm_menu": "menu1",
+			"nm_kat": "aneka sup",
+			"tipe": "makanan",
+			"hrg_porsi": "123",
+			"gambar": "APK_format_icon.png",
+			"deskripsi": "12323",
+			"id_kat": "KT-02"
+		}
+	]
+}

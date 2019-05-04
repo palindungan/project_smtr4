@@ -30,12 +30,7 @@
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">See Details</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                    
                     <div class="modal-body">
                     </div>
                     <div class="modal-footer">
@@ -83,16 +78,12 @@
                     $('#menu-list').append(`
 
                     <div class="col-md-4">
-                        <div class="card mb-3">
+                        <div class="card" >
+                            <img class="card-img-top" src="/project_smtr4/upload/gambar_menu/` + data.gambar + `" alt="gambar_menu" >
                             <div class="card-body">
-                                <h5 class="card-title">` + data.id_menu + `</h5>
-                                <h5 class="card-title">` + data.nm_menu + `</h5>
-                                <h5 class="card-title">` + data.nm_kat + `</h5>
-                                <h5 class="card-title">` + data.tipe + `</h5>
-                                <h5 class="card-title">` + data.hrg_porsi + `</h5>
-                                <h5 class="card-title">` + data.gambar + `</h5>
-                                <h5 class="card-title">` + data.deskripsi + `</h5>
-                                <h5 class="card-title">` + data.id_kat + `</h5>
+                                <h5 class="card-title">Nama : ` + data.nm_menu + `</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Tipe : ` + data.tipe + `</h6>
+                                <a href="javascript:void(0)" class="card-link see-detail" data-toggle="modal" data-target="#exampleModal" data-id="` + data.id_menu + `">Lihat Detail...</a>
                             </div>
                         </div>
                     </div>
@@ -127,38 +118,37 @@
 
         $.ajax({
 
-            url: "http://www.omdbapi.com",
-            type: "GET",
-            dataType: "json",
+            url: "<?php echo base_url() . 'admin/daftar_menu/lihat_detail'; ?>",
+            type: "post",
             data: {
-                'apikey': 'd5a98ffa',
-                'i': $(this).data('id')
+                id_menu: $(this).data('id')       
             },
-            success: function(movie) {
-                if (movie.Response === "True") {
+            success: function(result) {
 
-                    $('.modal-body').html(`
+                var obj = JSON.parse(result);
+
+                let data = obj['tbl_data'][0];
+
+                $('.modal-body').html(`
                 
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="` + movie.Poster + `" class="img-fluid">
+                            <img src="/project_smtr4/upload/gambar_menu/` + data.gambar + `" class="img-fluid">
                         </div>
                         <div class="col-md-8">
                             <ul class="list-group">
-                                <li class="list-group-item"><h3>` + movie.Title + `</h3></li>
-                                <li class="list-group-item"> Realeased : ` + movie.Realeased + `</li>
-                                <li class="list-group-item"> Genre : ` + movie.Genre + `</li>
-                                <li class="list-group-item"> Director : ` + movie.Director + `</li>
-                                <li class="list-group-item"> Actors : ` + movie.Actors + `</li>
+                                <li class="list-group-item"><h3>` + data.id_menu + `</h3></li>
+                                <li class="list-group-item"> Nama : ` + data.nm_menu + `</li>
+                                <li class="list-group-item"> Kategori : ` + data.nm_kat + `</li>
+                                <li class="list-group-item"> Harga : ` + data.hrg_porsi + `</li>
+                                <li class="list-group-item"> Deskripsi : ` + data.deskripsi + `</li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 
                 `);
-
-                }
             }
 
         });

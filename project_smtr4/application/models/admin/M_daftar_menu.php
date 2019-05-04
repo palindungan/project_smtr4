@@ -50,4 +50,14 @@ class M_daftar_menu extends CI_Model
             return $this->db->get();
         }
     }
+    function get_by_id_menu($id_menu)
+    {
+        $this->db->select('*');
+        $this->db->from('tabel_menu tm');
+
+        $where = "tm.id_menu ='" . $id_menu . "'";
+        $this->db->where($where);
+        $this->db->order_by('tm.nm_menu', 'ASC');
+
+        return $this->db->get();}
 }

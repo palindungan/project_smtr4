@@ -33,4 +33,16 @@ class Daftar_Menu extends CI_Controller
 
         echo $data;
     }
+
+    function lihat_detail()
+    {
+        // mengambil data dari ajax bertipe post
+        $id_menu = $this->input->post('id_menu');
+
+        $data_cari['tbl_data'] = $this->M_daftar_menu->get_by_id_menu($id_menu)->result();
+
+        $data = json_encode($data_cari);
+
+        echo $data;
+    }
 }

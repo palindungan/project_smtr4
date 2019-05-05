@@ -87,12 +87,9 @@
                                     <option value="makanan" <?php if ($d2->tipe == "makanan") {
                                                                 echo "selected";
                                                             } ?>>Makanan</option>
-                                    <option value="dessert" <?php if ($d2->tipe == "dessert") {
+                                    <option value="minuman" <?php if ($d2->tipe == "minuman") {
                                                                 echo "selected";
-                                                            } ?>>Dessert</option>
-                                    <option value="bonus" <?php if ($d2->tipe == "bonus") {
-                                                                echo "selected";
-                                                            } ?>>Bonus</option>
+                                                            } ?>>Minuman</option>
                                 </select>
                             </div>
                         </div>

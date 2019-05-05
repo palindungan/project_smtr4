@@ -81,8 +81,7 @@
                             <select class="form-control" id="tipe" name="tipe">
                                 <option>-</option>
                                 <option value="makanan">Makanan</option>
-                                <option value="dessert">Dessert</option>
-                                <option value="bonus">Bonus</option>
+                                <option value="minuman">Minuman</option>
                             </select>
                         </div>
                     </div>

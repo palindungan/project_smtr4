@@ -8,8 +8,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-command bg-blue"></i>
                         <div class="d-inline">
-                            <h5>User</h5>
-                            <span>ini adalah deksripsi menu user</span>
+                            <h2>Paket Prasmanan</h2>
+                            <!-- <span>ini adalah deksripsi menu user</span> -->
                         </div>
                     </div>
                 </div>
@@ -17,10 +17,10 @@
                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="../../index.html"><i class="ik ik-home"></i></a>
+                                <a href="<?php echo base_url(); ?>admin/home/"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item"><a href="">UI</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">User</li>
+                            <li class="breadcrumb-item active" aria-current="page">Home</li>
                         </ol>
                     </nav>
                 </div>
@@ -30,7 +30,7 @@
         <!-- bagian ISI KONTEN -->
         <div class="card">
             <div class="card-header justify-content-between">
-                <h3>Judul Menu User</h3>
+                <h3>Judul Menu</h3>
             </div>
             <div class="card-body">
 

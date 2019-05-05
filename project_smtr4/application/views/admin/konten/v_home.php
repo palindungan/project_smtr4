@@ -42,4 +42,7 @@
     </div>
 </div>
 
+<!-- untuk ajax -->
+<!-- <script src="<?= base_url(); ?>assets/template/back/js/jquery.min.js"></script> -->
+
 <script src="<?php echo base_url(); ?>assets/template/back/src/js/vendor/jquery-3.3.1.min.js"></script>

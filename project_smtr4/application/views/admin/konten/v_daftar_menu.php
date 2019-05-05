@@ -52,6 +52,9 @@
     $(document).ready(function() {
         // deklarasi selec2 picker
         $(".select2").select2();
+
+        // untuk ketika halaman pertama dieksekusi
+        searchMovie();
     });
 
     // script untuk menu pencarian

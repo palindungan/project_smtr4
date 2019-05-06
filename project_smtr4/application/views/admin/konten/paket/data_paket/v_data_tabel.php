@@ -61,7 +61,7 @@
                         <td>Pesanan Paket 1</td>
                         <td>
                             <div class="table-actions">
-                                <a href="<?php echo site_url('admin/paket/data_paket/edit_paket/' . "id_paket") ?>"><i class="ik ik-edit-2"></i></a>
+                                <a href="<?php echo site_url('admin/paket/data_paket/edit_paket/' . "id_paket") ?>"><i class="ik ik-eye"></i></a>
                                 <a href="javascript:void(0)" class="hapus" id="<?php echo "id_paket" ?>" name="<?php echo "nm_paket" ?>"><i class="ik ik-trash-2"></i></a>
                             </div>
                         </td>

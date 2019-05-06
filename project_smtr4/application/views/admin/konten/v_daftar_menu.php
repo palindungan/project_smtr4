@@ -143,6 +143,7 @@
                             <ul class="list-group">
                                 <li class="list-group-item"><h3>` + data.id_menu + `</h3></li>
                                 <li class="list-group-item"> Nama : ` + data.nm_menu + `</li>
+                                <li class="list-group-item"> Nama : ` + data.tipe + `</li>
                                 <li class="list-group-item"> Kategori : ` + data.nm_kat + `</li>
                                 <li class="list-group-item"> Harga : ` + data.hrg_porsi + `</li>
                                 <li class="list-group-item"> Deskripsi : ` + data.deskripsi + `</li>

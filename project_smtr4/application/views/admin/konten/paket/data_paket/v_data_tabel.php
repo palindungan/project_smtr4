@@ -47,7 +47,26 @@
 
                 <!-- disini isinya konten -->
 
-                <p>disini data table</p>
+                <!-- data table -->
+                <table id="data_table" class="table">
+                    <thead>
+                        <tr>
+                            <th>Kode Paket</th>
+                            <th>Nama Paket</th>
+                            <th class="nosort">&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <td>PK-001</td>
+                        <td>Pesanan Paket 1</td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="<?php echo site_url('admin/paket/data_paket/edit_paket/' . "id_paket") ?>"><i class="ik ik-edit-2"></i></a>
+                                <a href="javascript:void(0)" class="hapus" id="<?php echo "id_paket" ?>" name="<?php echo "nm_paket" ?>"><i class="ik ik-trash-2"></i></a>
+                            </div>
+                        </td>
+                    </tbody>
+                </table>
 
 
             </div>

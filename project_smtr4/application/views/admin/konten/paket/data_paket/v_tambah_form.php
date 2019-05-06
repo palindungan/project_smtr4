@@ -174,8 +174,6 @@
             }
         }
 
-
-
     }
 
     // jika kita tekan / click button

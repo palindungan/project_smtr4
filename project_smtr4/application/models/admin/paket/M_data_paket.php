@@ -79,8 +79,11 @@ class M_data_paket extends CI_Model
                 $kd = $kode . sprintf('%0' . $digit . 's',  $tmp);
             }
         } else {
-            $kd = "MN-001";
+            $kd = "PK-001";
         }
+
+        $kd = "PK-001";
+
         return $kd;
     }
 

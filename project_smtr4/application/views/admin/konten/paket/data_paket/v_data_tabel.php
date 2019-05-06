@@ -29,12 +29,26 @@
 
         <!-- bagian ISI KONTEN -->
         <div class="card">
-            <div class="card-header justify-content-between">
-                <h3>Judul Menu</h3>
+            <div class="card-header">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link <?php if ($this->uri->segment('4') == 'tambah_paket') {
+                                                echo 'active';
+                                            } ?>" href="<?php echo base_url(); ?>admin/paket/data_paket/tambah_paket">Tambah Paket</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if ($this->uri->segment('4') == 'data_tabel_paket') {
+                                                echo 'active';
+                                            } ?>" href="<?php echo base_url(); ?>admin/paket/data_paket/data_tabel_paket">Data Tabel Paket</a>
+                    </li>
+                </ul>
             </div>
             <div class="card-body">
 
                 <!-- disini isinya konten -->
+
+                <p>disini data table</p>
+
 
             </div>
         </div>

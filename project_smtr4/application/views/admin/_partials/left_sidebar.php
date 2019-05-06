@@ -61,9 +61,9 @@
                                                 } ?>">
                     <a href="javascript:void(0)"><i class="ik ik-list"></i><span>Paket</span></a>
                     <div class="submenu-content">
-                        <a href="<?php echo base_url(); ?>admin/paket/data_paket/" class="menu-item <?php if ($this->uri->segment('3') == 'data_paket') {
-                                                                                                        echo 'active';
-                                                                                                    } ?>">Data Paket</a>
+                        <a href="<?php echo base_url(); ?>admin/paket/data_paket/tambah_paket" class="menu-item <?php if ($this->uri->segment('3') == 'data_paket') {
+                                                                                                                    echo 'active';
+                                                                                                                } ?>">Data Paket</a>
                         <a href="<?php echo base_url(); ?>admin/paket/data_keterangan_paket/" class="menu-item <?php if ($this->uri->segment('3') == 'data_keterangan_paket') {
                                                                                                                     echo 'active';
                                                                                                                 } ?>">Data Keterangan Paket</a>

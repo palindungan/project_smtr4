@@ -2,18 +2,6 @@
 class M_data_paket extends CI_Model
 {
     // mengambil semua data pada tabel
-    function tampil_data()
-    {
-        return $this->db->get('tabel_menu');
-    }
-
-    // mengambil semua data pada tabel
-    function tampil_data_kat()
-    {
-        return $this->db->get('tbl_kategori');
-    }
-
-    // mengambil semua data pada tabel
     function tampil_data_menu()
     {
         return $this->db->get('tabel_menu');

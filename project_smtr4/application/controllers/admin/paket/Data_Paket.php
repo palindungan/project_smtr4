@@ -17,7 +17,7 @@ class Data_Paket extends CI_Controller
     public function tambah_paket()
     {
         $data['kode'] = $this->M_data_paket->get_no();
-        // $data['tbl_data_kat'] = $this->M_data_paket->tampil_data_kat()->result();
+
         $data['tbl_data_menu'] = $this->M_data_paket->tampil_data_menu()->result();
 
         $data['tbl_data_bonus'] = $this->M_data_paket->tampil_data_bonus()->result();
@@ -34,5 +34,25 @@ class Data_Paket extends CI_Controller
 
         $data['path'] = 'admin/konten/paket/data_paket/v_data_tabel';
         $this->load->view('admin/_view', $data);
+    }
+
+    // untuk ke menu data tabel 
+    public function tambah_aksi()
+    {
+        $id_paket = $this->input->post('id_paket');
+        $nm_paket = $this->input->post('nm_paket');
+        $hrg_paket = $this->input->post('hrg_paket');
+        $jml_menu = $this->input->post('jml_menu');
+        $jml_bonus = $this->input->post('jml_bonus');
+
+        $data = array(
+            'id_paket' => $id_paket,
+            'nm_paket' => $nm_paket,
+            'hrg_paket' => $hrg_paket,
+            'jml_menu' => $jml_menu,
+            'jml_bonus' => $jml_bonus
+        );
+
+        $this->M_data_paket->input_data('tbl_paket', $data);
     }
 }

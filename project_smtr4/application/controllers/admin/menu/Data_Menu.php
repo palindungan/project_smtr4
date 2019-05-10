@@ -1,4 +1,4 @@
-[<?php
+<?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Data_Menu extends CI_Controller
@@ -10,42 +10,10 @@ class Data_Menu extends CI_Controller
 
         // untuk mengakses model data (database)
         $this->load->model("admin/menu/M_data_menu");
-        $this->load->library('form_validation';)
     }
 
     // untuk ke menu tambah menu
     public function tambah_menu()
-    {
-        $validation = $this->form_validation;
-        $validation->set_message(
-            ['required' => '{field} harus di isi']
-        );
-        $validation->set_rules(array(
-            [
-                'field' => 'nm_menu',
-                'label' => 'Nama'
-                'rules' => 'required'
-            ],
-            [
-                'field' => 'id_kat',
-                'label' => 'Kategori'
-                'rules' => 'required'
-            ]
-            ));
-
-            if($validation->run()){
-                $config['upload_path'] ='./upload/gambar_menu';
-                $config['allowed_types'] ='gif|jpg|png';
-
-                $this->load->libary('upload', $config);
-                if(!$this->upload->do_upload('gambar')){
-                    echo $this->upload->display_errors();
-                }else{
-                    $data = $this->upload->data();
-                }
-            }
-
-    }
     {
         $data['kode'] = $this->M_data_menu->get_no();
         $data['tbl_data_kat'] = $this->M_data_menu->tampil_data_kat()->result();

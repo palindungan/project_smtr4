@@ -33,15 +33,13 @@
 				<ul class="nav nav-pills">
 					<li class="nav-item">
 						<a class="nav-link <?php if ($this->uri->segment('4') == 'tambah_paket') {
-                                                echo 'active';
-                                            } ?>"
-							href="<?php echo base_url(); ?>admin/paket/data_paket/tambah_paket">Tambah Paket</a>
+												echo 'active';
+											} ?>" href="<?php echo base_url(); ?>admin/paket/data_paket/tambah_paket">Tambah Paket</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link <?php if ($this->uri->segment('4') == 'data_tabel_paket') {
-                                                echo 'active';
-                                            } ?>"
-							href="<?php echo base_url(); ?>admin/paket/data_paket/data_tabel_paket">Data Tabel Paket</a>
+												echo 'active';
+											} ?>" href="<?php echo base_url(); ?>admin/paket/data_paket/data_tabel_paket">Data Tabel Paket</a>
 					</li>
 				</ul>
 			</div>
@@ -149,7 +147,7 @@
 
 		if (jml_menu > 0) {
 
-			for (let index = 1; index <= jml_menu; index++) {
+			for (let index = 0; index < jml_menu; index++) {
 
 				$('#detail_list').append(`
 
@@ -178,7 +176,7 @@
 
 		if (jml_bonus > 0) {
 
-			for (let index = 1; index <= jml_bonus; index++) {
+			for (let index = 0; index < jml_bonus; index++) {
 
 				$('#detail_list').append(`
 

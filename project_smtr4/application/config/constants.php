@@ -49,6 +49,7 @@ defined('FOPEN_WRITE_CREATE_STRICT')            or define('FOPEN_WRITE_CREATE_ST
 defined('FOPEN_READ_WRITE_CREATE_STRICT')       or define('FOPEN_READ_WRITE_CREATE_STRICT', 'x+b');
 
 define('SITE_NAME', 'CATERINGIN');
+
 /*
 |--------------------------------------------------------------------------
 | Exit Status Codes

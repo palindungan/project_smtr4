@@ -54,10 +54,10 @@ class M_data_paket extends CI_Model
     // autogenerate kode / ID
     function get_no()
     {
-        $field = "id_paket";
-        $tabel = "tbl_paket";
+        $field = "id_menu";
+        $tabel = "tbl_menu";
         $digit = "3";
-        $kode = "PK-";
+        $kode = "MN-";
 
         $q = $this->db->query("SELECT MAX(RIGHT($field,$digit)) AS kd_max FROM $tabel");
         $kd = "";
@@ -69,6 +69,8 @@ class M_data_paket extends CI_Model
         } else {
             $kd = "PK-001";
         }
+
+        $kd = "PK-001";
 
         return $kd;
     }

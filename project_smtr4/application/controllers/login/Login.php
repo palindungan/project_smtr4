@@ -8,7 +8,61 @@ class Login extends CI_Controller
     {
         parent::__construct();
 
-        // untuk mengakses model data_user (database)
-        $this->load->model("admin/user/M_data_user");
+        // untuk mengakses model user (database)
+        $this->load->model("login/M_login");
+    }
+
+    function index()
+    {
+        $this->load->view('login/v_login');
+    }
+
+    function aksi_login()
+    {
+        // ambil data dari inputan 
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+
+        // mengambil jumlah baris
+        $cek = $this->M_login->ambil_data($username)->num_rows();
+
+        echo $cek;
+
+        // cek apakah ada data dari username
+        if ($cek > 0) {
+
+            // mengambil data dari database berdasarkan username
+            $query = $this->M_login->ambil_data($username);
+
+            // mengeluarkan data dari database
+            foreach ($query->result_array() as $row) {
+
+                // dicek apakah data inputan sama dengan data di database
+                if (password_verify($password, $row["password"])) {
+
+                    // session
+                    $data_session = array(
+                        'id_user' => $row['id_user'],
+                        'username' => $username,
+                        'level' => $row['level'],
+                        'status' => 'login'
+                    );
+                    $this->session->set_userdata($data_session);
+
+                    // link
+                    redirect('admin/home');
+                } else {
+                    echo "Password Anda Salah !";
+                }
+            }
+        } else {
+            echo "Username Tidak Ada !";
+        }
+    }
+
+    function logout()
+    {
+        $this->session->sess_destroy();
+        redirect(base_url('login/login'));
     }
 }

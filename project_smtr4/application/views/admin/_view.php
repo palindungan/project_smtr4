@@ -1,3 +1,11 @@
+<?php
+
+if ($this->session->userdata('level') != "admin") {
+    redirect('login/login');
+}
+
+?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 

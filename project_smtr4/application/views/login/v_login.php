@@ -11,7 +11,6 @@
 <body>
 
     <!-- konten -->
-
     <div class="auth-wrapper">
         <div class="container-fluid h-100">
             <div class="row flex-row h-100 bg-white">
@@ -25,27 +24,18 @@
                         <div class="logo-centered">
                             <a href=""><img src="<?php echo base_url(); ?>assets/template/back/src/img/brand.svg" alt=""></a>
                         </div>
-                        <h3>Sign In to ThemeKit</h3>
-                        <p>Happy to see you again!</p>
-                        <form action="">
+                        <h3>Masuk Ke Dalam Cateringin</h3>
+                        <form action="<?php echo base_url('login/login/aksi_login'); ?>" method="post">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Email" required="">
+                                <input type="text" class="form-control" placeholder="Username" required="" name="username">
                                 <i class="ik ik-user"></i>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password" required="">
+                                <input type="password" class="form-control" placeholder="Password" required="" name="password">
                                 <i class="ik ik-lock"></i>
                             </div>
-                            <div class="row">
-                                <div class="col text-left">
-                                    <label class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="item_checkbox" name="item_checkbox" value="option1">
-                                        <span class="custom-control-label">&nbsp;Remember Me</span>
-                                    </label>
-                                </div>
-                            </div>
                             <div class="sign-btn text-center">
-                                <button class="btn btn-theme">Sign In</button>
+                                <button class="btn btn-theme">Masuk</button>
                             </div>
                         </form>
                     </div>
@@ -53,7 +43,6 @@
             </div>
         </div>
     </div>
-
     <!-- end of konten -->
 
     <!-- bagian script -->

@@ -116,12 +116,22 @@ class Data_User extends CI_Controller
             'level' => $level
         );
 
-        // memasukkan data ke dalam array assoc
-        $where['id_user'] = $id_user;
+        // mengambil jumlah baris
+        $cek = $this->M_data_user->ambil_data($username)->num_rows();
 
-        $this->M_data_user->update_data($where, $data, 'user');
+        if ($cek > 1) {
 
-        // kembali ke halaman utama
-        redirect('admin/user/data_user');
+            // pemberitahuan dan pindah page window
+            echo "<script>alert('Tidak Boleh Ada 2 Username yang Sama'); window.location = '" . base_url('admin/user/data_user') . "';</script>";
+        } else {
+
+            // memasukkan data ke dalam array assoc
+            $where['id_user'] = $id_user;
+
+            $this->M_data_user->update_data($where, $data, 'user');
+
+            // kembali ke halaman utama
+            redirect('admin/user/data_user');
+        }
     }
 }

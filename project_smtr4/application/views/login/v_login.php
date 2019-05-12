@@ -4,7 +4,7 @@
 <head>
 
     <!-- bagian head -->
-    <?php $this->load->view('admin/_partials/head'); ?>
+    <?php $this->load->view('_partials/head'); ?>
 
 </head>
 
@@ -46,7 +46,7 @@
     <!-- end of konten -->
 
     <!-- bagian script -->
-    <?php $this->load->view('admin/_partials/script'); ?>
+    <?php $this->load->view('_partials/script'); ?>
 </body>
 
 </html>

@@ -12,7 +12,7 @@ if ($this->session->userdata('level') != "admin") {
 <head>
 
     <!-- bagian head -->
-    <?php $this->load->view('admin/_partials/head'); ?>
+    <?php $this->load->view('_partials/head'); ?>
 
 </head>
 
@@ -21,12 +21,12 @@ if ($this->session->userdata('level') != "admin") {
     <div class="wrapper">
 
         <!-- bagian header -->
-        <?php $this->load->view('admin/_partials/header'); ?>
+        <?php $this->load->view('_partials/header'); ?>
 
         <div class="page-wrap">
 
             <!-- bagian left_sidebar -->
-            <?php $this->load->view('admin/_partials/left_sidebar'); ?>
+            <?php $this->load->view('_partials/left_sidebar'); ?>
 
             <!-- bagian isi konten -->
             <?php $this->load->view($path); ?>
@@ -34,24 +34,24 @@ if ($this->session->userdata('level') != "admin") {
             <!-- bagian chat sistem -->
 
             <!-- bagian right_sidebar_chat -->
-            <?php $this->load->view('admin/_partials/right_sidebar_chat'); ?>
+            <?php $this->load->view('_partials/right_sidebar_chat'); ?>
 
             <!-- bagian isi chat -->
-            <?php $this->load->view('admin/_partials/isi_chat'); ?>
+            <?php $this->load->view('_partials/isi_chat'); ?>
 
             <!-- end of bagian chat sistem -->
 
             <!-- bagian footer -->
-            <!-- <?php $this->load->view('admin/_partials/footer'); ?> -->
+            <!-- <?php $this->load->view('_partials/footer'); ?> -->
 
         </div>
     </div>
 
     <!-- bagian modal_pilihan_menu -->
-    <?php $this->load->view('admin/_partials/modal_pilihan_menu'); ?>
+    <?php $this->load->view('_partials/modal_pilihan_menu'); ?>
 
     <!-- bagian script -->
-    <?php $this->load->view('admin/_partials/script'); ?>
+    <?php $this->load->view('_partials/script'); ?>
 </body>
 
 </html>

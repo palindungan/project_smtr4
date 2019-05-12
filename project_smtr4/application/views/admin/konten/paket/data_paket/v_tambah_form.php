@@ -130,7 +130,8 @@
 				method: "POST",
 				data: form_data,
 				success: function (data) {
-					// console.log(data);
+					alert("Data berhasil Ditambahkan");
+					location.reload();
 				}
 			});
 		});

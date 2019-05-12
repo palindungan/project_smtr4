@@ -22,7 +22,6 @@ class Data_Paket extends CI_Controller
 
         $data['tbl_data_bonus'] = $this->M_data_paket->tampil_data_bonus()->result();
 
-
         $data['path'] = 'admin/konten/paket/data_paket/v_tambah_form';
         $this->load->view('admin/_view', $data);
     }
@@ -30,7 +29,7 @@ class Data_Paket extends CI_Controller
     // untuk ke menu data tabel 
     public function data_tabel_paket()
     {
-        // $data['tbl_data'] = $this->M_data_paket->tampil_data()->result();
+        $data['tbl_data_paket'] = $this->M_data_paket->tampil_data_paket()->result();
 
         $data['path'] = 'admin/konten/paket/data_paket/v_data_tabel';
         $this->load->view('admin/_view', $data);
@@ -85,5 +84,33 @@ class Data_Paket extends CI_Controller
                 $this->M_data_paket->input_data('tbl_detail_paket_bonus', $data3);
             }
         }
+    }
+
+    function edit_modal()
+    {
+        // mengambil data dari ajax bertipe post
+        $id_paket = $this->input->post('id_paket');
+
+        $data_edit['tbl_data_paket_menu'] = $this->M_data_paket->tampil_data_paket_menu($id_paket)->result();
+        $data_edit['tbl_data_paket_bonus'] = $this->M_data_paket->tampil_data_paket_bonus($id_paket)->result();
+
+        $data = json_encode($data_edit);
+
+        echo $data;
+    }
+
+    function hapus_aksi()
+    {
+        // mengambil data dari ajax bertipe post
+        $id_paket = $this->input->post('id_paket');
+
+        // memasukkan data ke dalam array assoc
+        $where['id_paket'] = $id_paket;
+
+        $this->M_data_paket->hapus_data('tbl_detail_paket_menu', $where);
+
+        $this->M_data_paket->hapus_data('tbl_detail_paket_bonus', $where);
+
+        $this->M_data_paket->hapus_data('tbl_paket', $where);
     }
 }

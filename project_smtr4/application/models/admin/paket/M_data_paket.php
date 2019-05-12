@@ -13,6 +13,40 @@ class M_data_paket extends CI_Model
         return $this->db->get('tabel_bonus');
     }
 
+    // mengambil semua data pada tabel
+    function tampil_data_paket()
+    {
+        return $this->db->get('tbl_paket');
+    }
+
+    // mengambil semua data pada tabel
+    function tampil_data_paket_menu($id_paket)
+    {
+        // pencarian semua yang sesuai id_paket
+        $this->db->select('*');
+        $this->db->from('tabel_detail_paket_menu dm');
+
+        $where = "dm.id_paket ='" . $id_paket . "'";
+        $this->db->where($where);
+        $this->db->order_by('dm.id_paket', 'ASC');
+
+        return $this->db->get();
+    }
+
+    // mengambil semua data pada tabel
+    function tampil_data_paket_bonus($id_paket)
+    {
+        // pencarian semua yang sesuai id_paket
+        $this->db->select('*');
+        $this->db->from('tabel_detail_paket_bonus db');
+
+        $where = "db.id_paket ='" . $id_paket . "'";
+        $this->db->where($where);
+        $this->db->order_by('db.id_paket', 'ASC');
+
+        return $this->db->get();
+    }
+
     // untuk input data ke dalam database
     function input_data($table, $data)
     {

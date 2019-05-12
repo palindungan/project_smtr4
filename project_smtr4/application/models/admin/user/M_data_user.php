@@ -56,4 +56,17 @@ class M_data_user extends CI_Model
         }
         return $kd;
     }
+
+    // mengambil data berdasarkan username
+    function ambil_data($username)
+    {
+        $this->db->select('*');
+        $this->db->from('user u');
+
+        $where = "u.username ='" . $username . "'";
+        $this->db->where($where);
+        $this->db->order_by('u.username', 'ASC');
+
+        return $this->db->get();
+    }
 }

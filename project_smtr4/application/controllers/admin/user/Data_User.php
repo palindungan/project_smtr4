@@ -49,11 +49,21 @@ class Data_User extends CI_Controller
             'level' => $level
         );
 
-        // mengirim data ke model untuk diinputkan ke dalam database
-        $this->M_data_user->input_data('user', $data);
+        // mengambil jumlah baris
+        $cek = $this->M_data_user->ambil_data($username)->num_rows();
 
-        // kembali ke halaman utama
-        redirect('admin/user/data_user');
+        if ($cek > 0) {
+
+            // pemberitahuan dan pindah page window
+            echo "<script>alert('Tidak Boleh Ada 2 Username yang Sama'); window.location = '" . base_url('admin/user/data_user') . "';</script>";
+        } else {
+
+            // mengirim data ke model untuk diinputkan ke dalam database
+            $this->M_data_user->input_data('user', $data);
+
+            // kembali ke halaman utama
+            redirect('admin/user/data_user');
+        }
     }
 
     function hapus_aksi()

@@ -45,7 +45,7 @@ class Data_User extends CI_Controller
             'jenkel_user' => $jenkel_user,
             'no_hp' => $no_hp,
             'username' => $username,
-            'password' => $password,
+            'password' => password_hash($password, PASSWORD_DEFAULT),
             'level' => $level
         );
 

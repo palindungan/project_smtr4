@@ -9,6 +9,7 @@ class Data_User extends CI_Controller
         parent::__construct();
 
         // untuk mengakses model data_user (database)
+        $this->load->library('form_validation');
         $this->load->model("admin/user/M_data_user");
     }
 
@@ -47,7 +48,22 @@ class Data_User extends CI_Controller
             'username' => $username,
             'password' => password_hash($password, PASSWORD_DEFAULT),
             'level' => $level
-        );
+
+        // Cek input kosong
+        if(empty($nm_user)){
+            $nm_userErr = "Nama masih kosong.<br>";
+        }
+        if(empty($username)){
+            $UsernameErr = "Username masih kosong.<br>";
+        }
+        if(empty($password)){
+            $PasswordErr = "Password masih kosong.<br>";
+        }
+        
+        // Cek semua input sudah diisi apa belum
+        if( !empty($nm_user) and !empty($username) and !empty($password) ){
+            echo "Selamat semua input sudah diisi.<br>";
+        }
 
         // mengambil jumlah baris
         $cek = $this->M_data_user->ambil_data($username)->num_rows();
@@ -103,6 +119,12 @@ class Data_User extends CI_Controller
         $username = $this->input->post('username');
         $password = $this->input->post('password');
         $level = $this->input->post('level');
+
+        if(isset($_GET['nm_user'])){
+        if($_GET['nm_user'] == " "){
+        echo "<h4 style='color:red'>Nama Belum Di Masukkan !</h4>";
+    }
+}
 
         // memasukkan data ke dalam array assoc
         $data = array(

@@ -49,21 +49,6 @@ class Data_User extends CI_Controller
             'password' => password_hash($password, PASSWORD_DEFAULT),
             'level' => $level
 
-        // Cek input kosong
-        if(empty($nm_user)){
-            $nm_userErr = "Nama masih kosong.<br>";
-        }
-        if(empty($username)){
-            $UsernameErr = "Username masih kosong.<br>";
-        }
-        if(empty($password)){
-            $PasswordErr = "Password masih kosong.<br>";
-        }
-        
-        // Cek semua input sudah diisi apa belum
-        if( !empty($nm_user) and !empty($username) and !empty($password) ){
-            echo "Selamat semua input sudah diisi.<br>";
-        }
 
         // mengambil jumlah baris
         $cek = $this->M_data_user->ambil_data($username)->num_rows();

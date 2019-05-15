@@ -55,7 +55,7 @@ class Data_Customer extends CI_Controller
             'no_hp' => $no_hp,
             'email' => $email,
             'username' => $username,
-            'password' => $password
+            'password' => password_hash($password, PASSWORD_DEFAULT)
         );
 
         // mengirim data ke model untuk diinputkan ke dalam database
@@ -97,7 +97,7 @@ class Data_Customer extends CI_Controller
             'no_hp' => $no_hp,
             'email' => $email,
             'username' => $username,
-            'password' => $password
+            'password' => password_hash($password, PASSWORD_DEFAULT)
         );
 
         // memasukkan data ke dalam array assoc

@@ -48,7 +48,7 @@ class Data_User extends CI_Controller
             'username' => $username,
             'password' => password_hash($password, PASSWORD_DEFAULT),
             'level' => $level
-
+        );
 
         // mengambil jumlah baris
         $cek = $this->M_data_user->ambil_data($username)->num_rows();
@@ -105,11 +105,11 @@ class Data_User extends CI_Controller
         $password = $this->input->post('password');
         $level = $this->input->post('level');
 
-        if(isset($_GET['nm_user'])){
-        if($_GET['nm_user'] == " "){
-        echo "<h4 style='color:red'>Nama Belum Di Masukkan !</h4>";
-    }
-}
+        if (isset($_GET['nm_user'])) {
+            if ($_GET['nm_user'] == " ") {
+                echo "<h4 style='color:red'>Nama Belum Di Masukkan !</h4>";
+            }
+        }
 
         // memasukkan data ke dalam array assoc
         $data = array(

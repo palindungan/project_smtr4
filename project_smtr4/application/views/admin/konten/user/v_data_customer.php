@@ -169,7 +169,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="<?php echo base_url() . 'admin/menu/data_kategori/update_aksi'; ?>" method="post" class="forms-sample form_data">
+                        <form action="<?php echo base_url() . 'admin/user/data_customer/update_aksi'; ?>" method="post" class="forms-sample form_data">
                             <div class="modal-body isi_modal_edit">
                                 <!-- modal edit form disini -->
                             </div>

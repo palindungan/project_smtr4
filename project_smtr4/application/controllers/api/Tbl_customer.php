@@ -29,6 +29,9 @@ class Tbl_customer extends REST_Controller
     //Mengirim atau menambah data kontak baru
     function index_post()
     {
+
+        $password = $this->post('password');
+
         $data = array(
             'id_customer'           => $this->post('id_customer'),
             'nm_customer'          => $this->post('nm_customer'),
@@ -37,14 +40,20 @@ class Tbl_customer extends REST_Controller
             'no_hp'          => $this->post('no_hp'),
             'email'    => $this->post('email'),
             'username'           => $this->post('username'),
-            'password'          => $this->post('password')
+            'password'          => password_hash($password, PASSWORD_DEFAULT)
         );
 
         $insert = $this->db->insert('tbl_customer', $data);
         if ($insert) {
-            $this->response($data, 200);
+            // membuat array untuk di transfer ke API
+            $result["success"] = "1";
+            $result["message"] = "success";
+            $this->response($result, 200);
         } else {
-            $this->response(array('status' => 'fail', 502));
+            // membuat array untuk di transfer ke API
+            $result["success"] = "0";
+            $result["message"] = "error";
+            $this->response(array($result, 502));
         }
     }
 
@@ -52,6 +61,7 @@ class Tbl_customer extends REST_Controller
     function index_put()
     {
         $id_customer = $this->put('id_customer');
+        $password = $this->post('password');
         $data = array(
             'id_customer'           => $this->put('id_customer'),
             'nm_customer'          => $this->put('nm_customer'),
@@ -60,7 +70,7 @@ class Tbl_customer extends REST_Controller
             'no_hp'          => $this->put('no_hp'),
             'email'    => $this->put('email'),
             'username'           => $this->put('username'),
-            'password'          => $this->put('password')
+            'password'          => password_hash($password, PASSWORD_DEFAULT)
         );
 
         $this->db->where('id_customer', $id_customer);

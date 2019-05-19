@@ -26,6 +26,38 @@ class Data_User extends CI_Controller
         $this->load->view('admin/_view', $data);
     }
 
+    // untuk ke menu tambah user
+    public function tambah_user()
+    {
+        $data['kode'] = $this->M_data_user->get_no_user();
+
+        $data['path'] = 'admin/konten/user/data_user/v_tambah_form';
+        $this->load->view('admin/_view', $data);
+    }
+
+    // untuk ke menu data tabel user
+    public function data_tabel_user()
+    {
+        $data['path'] = 'admin/konten/user/data_user/v_data_tabel';
+        $data['tbl_data_user'] = $this->M_data_user->tampil_data_user()->result();
+
+        $this->load->view('admin/_view', $data);
+    }
+
+    // untuk ke menu edit data
+    public function edit_user($id_user)
+    {
+        $data['path'] = 'admin/konten/user/data_user/v_edit_form';
+
+        // memasukkan data ke array
+        $where['id_user'] = $id_user;
+
+        // fungsi result adalah mengenerate hasil querry menjadi array untuk di tampilkan
+        $data['tbl_data'] = $this->M_data_user->get_edit_data("user", $where)->result();
+
+        $this->load->view('admin/_view', $data);
+    }
+
     function tambah_aksi()
     {
         // mengambil dari inputan (name)
@@ -63,7 +95,7 @@ class Data_User extends CI_Controller
             $this->M_data_user->input_data('user', $data);
 
             // kembali ke halaman utama
-            redirect('admin/user/data_user');
+            redirect('admin/user/data_user/tambah_user');
         }
     }
 
@@ -76,21 +108,6 @@ class Data_User extends CI_Controller
         $where['id_user'] = $id_user;
 
         $this->M_data_user->hapus_data('user', $where);
-    }
-
-    function edit_modal()
-    {
-        // mengambil data dari ajax bertipe post
-        $id_user = $this->input->post('id_user');
-
-        // memasukkan data ke dalam array assoc
-        $where['id_user'] = $id_user;
-
-        $data_edit['tbl_user'] = $this->M_data_user->edit_data('user', $where)->result();
-
-        $data = json_encode($data_edit);
-
-        echo $data;
     }
 
     function update_aksi()
@@ -138,7 +155,7 @@ class Data_User extends CI_Controller
             $this->M_data_user->update_data($where, $data, 'user');
 
             // kembali ke halaman utama
-            redirect('admin/user/data_user');
+            redirect('admin/user/data_user/data_tabel_user');
         }
     }
 }

@@ -32,9 +32,9 @@
                                                 } ?>">
                     <a href="javascript:void(0)"><i class="ik ik-list"></i><span>User</span></a>
                     <div class="submenu-content">
-                        <a href="<?php echo base_url(); ?>admin/user/data_user/" class="menu-item <?php if ($this->uri->segment('3') == 'data_user') {
-                                                                                                        echo 'active';
-                                                                                                    } ?>">Data User</a>
+                        <a href="<?php echo base_url(); ?>admin/user/data_user/tambah_user" class="menu-item <?php if ($this->uri->segment('3') == 'data_user') {
+                                                                                                                    echo 'active';
+                                                                                                                } ?>">Data User</a>
                         <a href="<?php echo base_url(); ?>admin/user/data_customer/" class="menu-item <?php if ($this->uri->segment('3') == 'data_customer') {
                                                                                                             echo 'active';
                                                                                                         } ?>">Data Customer</a>

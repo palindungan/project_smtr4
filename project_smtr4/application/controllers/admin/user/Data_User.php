@@ -13,19 +13,6 @@ class Data_User extends CI_Controller
         $this->load->model("admin/user/M_data_user");
     }
 
-    public function index()
-    {
-        // alamat page yang ingin dibuka
-        $data['path'] = 'admin/konten/user/v_data_user';
-
-        // mengambil data dari model
-        $data['tbl_data_user'] = $this->M_data_user->tampil_data_user()->result();
-        $data['kode'] = $this->M_data_user->get_no_user();
-
-        // mengakses viewnya
-        $this->load->view('admin/_view', $data);
-    }
-
     // untuk ke menu tambah user
     public function tambah_user()
     {

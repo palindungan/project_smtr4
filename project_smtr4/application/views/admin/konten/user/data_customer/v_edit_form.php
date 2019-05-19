@@ -8,7 +8,7 @@
                     <div class="page-header-title">
                         <i class="ik ik-command bg-blue"></i>
                         <div class="d-inline">
-                            <h2>Data User</h2>
+                            <h2>Data Customer</h2>
                             <!-- <span>ini adalah deksripsi menu user</span> -->
                         </div>
                     </div>
@@ -20,7 +20,7 @@
                                 <a href="<?php echo base_url(); ?>admin/home/"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item"><a href="">UI</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">User</li>
+                            <li class="breadcrumb-item active" aria-current="page">Customer</li>
                         </ol>
                     </nav>
                 </div>
@@ -32,14 +32,14 @@
             <div class="card-header">
                 <ul class="nav nav-pills">
                     <li class="nav-item">
-                        <a class="nav-link <?php if ($this->uri->segment('4') == 'tambah_user') {
+                        <a class="nav-link <?php if ($this->uri->segment('4') == 'tambah_customer') {
                                                 echo 'active';
-                                            } ?>" href="<?php echo base_url(); ?>admin/user/data_user/tambah_user">Tambah User</a>
+                                            } ?>" href="<?php echo base_url(); ?>admin/user/data_customer/tambah_customer">Tambah Customer</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php if ($this->uri->segment('4') == 'edit_user') {
+                        <a class="nav-link <?php if ($this->uri->segment('4') == 'edit_customer') {
                                                 echo 'active';
-                                            } ?>" href="<?php echo base_url(); ?>admin/user/data_user/data_tabel_user">Data Tabel User</a>
+                                            } ?>" href="<?php echo base_url(); ?>admin/user/data_customer/data_tabel_customer">Data Tabel Customer</a>
                     </li>
                 </ul>
             </div>
@@ -49,31 +49,31 @@
 
                 <?php foreach ($tbl_data as $d) { ?>
 
-                    <?php echo form_open_multipart('admin/user/data_user/update_aksi'); ?>
+                    <?php echo form_open_multipart('admin/user/data_customer/update_aksi'); ?>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="id_user">Kode User</label>
-                                <input type="text" class="form-control" id="id_user" readonly="" name="id_user" value="<?php echo $d->id_user; ?>">
+                                <label for="id_customer">Kode Customer</label>
+                                <input type="text" class="form-control" id="id_customer" readonly="" name="id_customer" value="<?php echo $d->id_customer; ?>">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="nm_user">Nama</label>
-                                <input type="text" class="form-control" id="nm_user" placeholder="Nama" name="nm_user" value="<?php echo $d->nm_user; ?>">
+                                <label for="nm_customer">Nama</label>
+                                <input type="text" class="form-control" id="nm_customer" placeholder="Nama" name="nm_customer" value="<?php echo $d->nm_customer; ?>">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="jenkel_user">Jenis Kelamin</label>
-                                <select class="form-control" id="jenkel_user" name="jenkel_user">
+                                <label for="jenkel_customer">Jenis Kelamin</label>
+                                <select class="form-control" id="jenkel_customer" name="jenkel_customer">
                                     <option>-</option>
-                                    <option value="pria" <?php if ($d->jenkel_user == "pria") {
+                                    <option value="pria" <?php if ($d->jenkel_customer == "pria") {
                                                                 echo "selected";
                                                             } ?>>Pria</option>
-                                    <option value="wanita" <?php if ($d->jenkel_user == "wanita") {
+                                    <option value="wanita" <?php if ($d->jenkel_customer == "wanita") {
                                                                 echo "selected";
                                                             } ?>>Wanita</option>
                                 </select>
@@ -91,25 +91,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="username">Username</label>
-                                <input type="text" class="form-control" id="username" placeholder="Username" name="username" value="<?php echo $d->username; ?>">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Email" name="email" value="<?php echo $d->email; ?>">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="level">Level</label>
-                                <select class="form-control" id="level" name="level">
-                                    <option>-</option>
-                                    <option value="owner" <?php if ($d->level == "owner") {
-                                                                echo "selected";
-                                                            } ?>>Owner</option>
-                                    <option value="admin" <?php if ($d->level == "admin") {
-                                                                echo "selected";
-                                                            } ?>>Admin</option>
-                                    <option value="kasir" <?php if ($d->level == "kasir") {
-                                                                echo "selected";
-                                                            } ?>>Kasir</option>
-                                </select>
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username" placeholder="Username" name="username" value="<?php echo $d->username; ?>">
                             </div>
                         </div>
                     </div>
@@ -130,8 +119,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="almt_user">Alamat</label>
-                        <textarea class="form-control" id="almt_user" rows="3" name="almt_user"><?php echo $d->almt_user; ?></textarea>
+                        <label for="almt_customer">Alamat</label>
+                        <textarea class="form-control" id="almt_customer" rows="3" name="almt_customer"><?php echo $d->almt_customer; ?></textarea>
                     </div>
 
                     <button type="submit" class="btn btn-primary mr-2">Simpan</button>

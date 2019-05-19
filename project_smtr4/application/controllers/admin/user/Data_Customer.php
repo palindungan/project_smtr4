@@ -11,27 +11,36 @@ class Data_Customer extends CI_Controller
         $this->load->model("admin/user/M_data_customer");
     }
 
-    public function index()
+    // untuk ke menu tambah
+    public function tambah_customer()
     {
-        $data['path'] = 'admin/konten/user/v_data_customer';
-
-        $data['tbl_data'] = $this->M_data_customer->tampil_data()->result();
         $data['kode'] = $this->M_data_customer->get_no();
+
+        $data['path'] = 'admin/konten/user/data_customer/v_tambah_form';
+        $this->load->view('admin/_view', $data);
+    }
+
+    // untuk ke menu data tabel user
+    public function data_tabel_customer()
+    {
+        $data['path'] = 'admin/konten/user/data_customer/v_data_tabel';
+        $data['tbl_data'] = $this->M_data_customer->tampil_data()->result();
 
         $this->load->view('admin/_view', $data);
     }
 
-    function edit_modal()
+    // untuk ke menu edit data
+    public function edit_customer($id_customer)
     {
-        $id_customer = $this->input->post('id_customer');
+        $data['path'] = 'admin/konten/user/data_customer/v_edit_form';
 
+        // memasukkan data ke array
         $where['id_customer'] = $id_customer;
 
-        $data_edit['data_tbl'] = $this->M_data_customer->edit_data('tbl_customer', $where)->result();
+        // fungsi result adalah mengenerate hasil querry menjadi array untuk di tampilkan
+        $data['tbl_data'] = $this->M_data_customer->get_edit_data("tbl_customer", $where)->result();
 
-        $data = json_encode($data_edit);
-
-        echo $data;
+        $this->load->view('admin/_view', $data);
     }
 
     function tambah_aksi()
@@ -62,7 +71,7 @@ class Data_Customer extends CI_Controller
         $this->M_data_customer->input_data('tbl_customer', $data);
 
         // kembali ke halaman utama
-        redirect('admin/user/data_customer');
+        redirect('admin/user/data_customer/tambah_customer');
     }
 
     function hapus_aksi()
@@ -106,6 +115,6 @@ class Data_Customer extends CI_Controller
         $this->M_data_customer->update_data($where, $data, 'tbl_customer');
 
         // kembali ke halaman utama
-        redirect('admin/user/data_customer');
+        redirect('admin/user/data_customer/data_tabel_customer');
     }
 }

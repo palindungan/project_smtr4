@@ -24,7 +24,7 @@ class M_data_customer extends CI_Model
     }
 
     // untuk mengambil nilai data yg di edit
-    function edit_data($table, $where)
+    function get_edit_data($table, $where)
     {
         return $this->db->get_where($table, $where);
     }

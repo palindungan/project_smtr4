@@ -35,9 +35,9 @@
                         <a href="<?php echo base_url(); ?>admin/user/data_user/tambah_user" class="menu-item <?php if ($this->uri->segment('3') == 'data_user') {
                                                                                                                     echo 'active';
                                                                                                                 } ?>">Data User</a>
-                        <a href="<?php echo base_url(); ?>admin/user/data_customer/" class="menu-item <?php if ($this->uri->segment('3') == 'data_customer') {
-                                                                                                            echo 'active';
-                                                                                                        } ?>">Data Customer</a>
+                        <a href="<?php echo base_url(); ?>admin/user/data_customer/tambah_customer" class="menu-item <?php if ($this->uri->segment('3') == 'data_customer') {
+                                                                                                                            echo 'active';
+                                                                                                                        } ?>">Data Customer</a>
                     </div>
                 </div>
                 <div class="nav-item has-sub <?php if ($this->uri->segment('2') == 'menu') {

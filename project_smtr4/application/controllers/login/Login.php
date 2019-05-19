@@ -26,8 +26,6 @@ class Login extends CI_Controller
         // mengambil jumlah baris
         $cek = $this->M_login->ambil_data($username)->num_rows();
 
-        echo $cek;
-
         // cek apakah ada data dari username
         if ($cek > 0) {
 

@@ -11,6 +11,7 @@ class Tbl_customer extends REST_Controller
     {
         parent::__construct($config);
         $this->load->database();
+        $this->load->model("admin/user/M_data_customer");
     }
 
     //Menampilkan data kontak
@@ -31,9 +32,10 @@ class Tbl_customer extends REST_Controller
     {
 
         $password = $this->post('password');
+        $kode = $data['kode'] = $this->M_data_customer->get_no();
 
         $data = array(
-            'id_customer'           => $this->post('id_customer'),
+            'id_customer'           => $kode,
             'nm_customer'          => $this->post('nm_customer'),
             'almt_customer'    => $this->post('almt_customer'),
             'jenkel_customer'           => $this->post('jenkel_customer'),

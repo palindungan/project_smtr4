@@ -8,7 +8,7 @@
                     <div class="page-header-title">
                         <i class="ik ik-command bg-blue"></i>
                         <div class="d-inline">
-                            <h2>Data Bonus Menu</h2>
+                            <h2>Data Kategori</h2>
                             <!-- <span>ini adalah deksripsi menu user</span> -->
                         </div>
                     </div>
@@ -20,26 +20,27 @@
                                 <a href="<?php echo base_url(); ?>admin/home/"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item"><a href="">UI</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Data Bonus Menu</li>
+                            <li class="breadcrumb-item active" aria-current="page">Kategori</li>
                         </ol>
                     </nav>
                 </div>
             </div>
         </div>
 
+
         <!-- bagian ISI KONTEN -->
         <div class="card">
             <div class="card-header">
                 <ul class="nav nav-pills">
                     <li class="nav-item">
-                        <a class="nav-link <?php if ($this->uri->segment('4') == 'tambah_bonus') {
+                        <a class="nav-link <?php if ($this->uri->segment('4') == 'tambah_kategori') {
                                                 echo 'active';
-                                            } ?>" href="<?php echo base_url(); ?>admin/menu/data_bonus/tambah_bonus">Tambah Bonus</a>
+                                            } ?>" href="<?php echo base_url(); ?>admin/menu/data_kategori/tambah_kategori">Tambah Kategori</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php if ($this->uri->segment('4') == 'edit_bonus') {
+                        <a class="nav-link <?php if ($this->uri->segment('4') == 'edit_kategori') {
                                                 echo 'active';
-                                            } ?>" href="<?php echo base_url(); ?>admin/menu/data_bonus/data_tabel_bonus">Data Tabel Bonus</a>
+                                            } ?>" href="<?php echo base_url(); ?>admin/menu/data_kategori/data_tabel_kategori">Data Tabel Kategori</a>
                     </li>
                 </ul>
             </div>
@@ -48,28 +49,20 @@
                 <!-- disini isinya konten -->
                 <?php foreach ($tbl_data as $d2) { ?>
 
-                    <?php echo form_open_multipart('admin/menu/data_bonus/update_aksi'); ?>
+                    <?php echo form_open_multipart('admin/menu/data_kategori/update_aksi'); ?>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="id_bonus">Kode Bonus</label>
-                                <input type="text" class="form-control" id="id_bonus" readonly="" name="id_bonus" value="<?php echo $d2->id_bonus ?>">
+                                <label for="id_kat">Kode Kategori</label>
+                                <input type="text" class="form-control" id="id_kat" readonly="" name="id_kat" value="<?php echo $d2->id_kat ?>">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="id_menu">Menu</label>
-                                <select class="form-control select2" id="id_menu" name="id_menu">
-                                    <option>-</option>
-                                    <?php foreach ($tbl_data_menu as $d) {  ?>
-                                        <option value="<?php echo $d->id_menu ?>" <?php if ($d2->id_menu == $d->id_menu) {
-                                                                                        echo "selected";
-                                                                                    } ?>><?php echo $d->nm_menu ?></option>
-                                    <?php } ?>
-                                </select>
-
+                                <label for="nm_kat">Nama Kategori</label>
+                                <input type="text" class="form-control" id="nm_kat" name="nm_kat" placeholder="Nama Kategori" value="<?php echo $d2->nm_kat ?>">
                             </div>
                         </div>
                     </div>

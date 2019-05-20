@@ -51,9 +51,9 @@
                         <a href="<?php echo base_url(); ?>admin/menu/data_bonus/tambah_bonus" class="menu-item <?php if ($this->uri->segment('3') == 'data_bonus') {
                                                                                                                     echo 'active';
                                                                                                                 } ?>">Data Bonus</a>
-                        <a href="<?php echo base_url(); ?>admin/menu/data_kategori/" class="menu-item <?php if ($this->uri->segment('3') == 'data_kategori') {
-                                                                                                            echo 'active';
-                                                                                                        } ?>">Data Kategori</a>
+                        <a href="<?php echo base_url(); ?>admin/menu/data_kategori/tambah_kategori" class="menu-item <?php if ($this->uri->segment('3') == 'data_kategori') {
+                                                                                                                            echo 'active';
+                                                                                                                        } ?>">Data Kategori</a>
                     </div>
                 </div>
                 <div class="nav-item has-sub <?php if ($this->uri->segment('2') == 'paket') {

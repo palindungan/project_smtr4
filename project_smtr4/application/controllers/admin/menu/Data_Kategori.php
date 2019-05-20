@@ -12,12 +12,36 @@ class Data_Kategori extends CI_Controller
         $this->load->model("admin/menu/M_data_kategori");
     }
 
-    public function index()
+    // untuk ke menu tambah bonus
+    public function tambah_kategori()
     {
-        $data['tbl_data'] = $this->M_data_kategori->tampil_data()->result();
         $data['kode'] = $this->M_data_kategori->get_no();
+        $data['tbl_data'] = $this->M_data_kategori->tampil_data()->result();
 
-        $data['path'] = 'admin/konten/menu/v_data_kategori';
+        $data['path'] = 'admin/konten/menu/data_kategori/v_tambah_form';
+        $this->load->view('admin/_view', $data);
+    }
+
+    // untuk ke menu data tabel bonus
+    public function data_tabel_kategori()
+    {
+        $data['path'] = 'admin/konten/menu/data_kategori/v_data_tabel';
+        $data['tbl_data'] = $this->M_data_kategori->tampil_data()->result();
+
+        $this->load->view('admin/_view', $data);
+    }
+
+    // untuk ke menu edit data
+    public function edit_kategori($id_kat)
+    {
+        $data['path'] = 'admin/konten/menu/data_kategori/v_edit_form';
+
+        // memasukkan data ke array
+        $where = array('id_kat' => $id_kat);
+
+        // fungsi result adalah mengenerate hasil querry menjadi array untuk di tampilkan
+        $data['tbl_data'] = $this->M_data_kategori->edit_data("tbl_kategori", $where)->result();
+
         $this->load->view('admin/_view', $data);
     }
 
@@ -37,7 +61,7 @@ class Data_Kategori extends CI_Controller
         $this->M_data_kategori->input_data('tbl_kategori', $data);
 
         // kembali ke halaman utama
-        redirect('admin/menu/data_kategori');
+        redirect('admin/menu/data_kategori/tambah_kategori');
     }
 
     function hapus_aksi()
@@ -49,19 +73,6 @@ class Data_Kategori extends CI_Controller
         $where['id_kat'] = $id_kat;
 
         $this->M_data_kategori->hapus_data('tbl_kategori', $where);
-    }
-
-    function edit_modal()
-    {
-        $id_kat = $this->input->post('id_kat');
-
-        $where['id_kat'] = $id_kat;
-
-        $data_edit['data_tbl'] = $this->M_data_kategori->edit_data('tbl_kategori', $where)->result();
-
-        $data = json_encode($data_edit);
-
-        echo $data;
     }
 
     function update_aksi()
@@ -82,6 +93,6 @@ class Data_Kategori extends CI_Controller
         $this->M_data_kategori->update_data($where, $data, 'tbl_kategori');
 
         // kembali ke halaman utama
-        redirect('admin/menu/data_kategori');
+        redirect('admin/menu/data_kategori/data_tabel_kategori');
     }
 }

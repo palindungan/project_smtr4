@@ -12,7 +12,7 @@ class Data_Kategori extends CI_Controller
         $this->load->model("admin/menu/M_data_kategori");
     }
 
-    // untuk ke menu tambah bonus
+    // untuk ke menu tambah 
     public function tambah_kategori()
     {
         $data['kode'] = $this->M_data_kategori->get_no();
@@ -22,7 +22,7 @@ class Data_Kategori extends CI_Controller
         $this->load->view('admin/_view', $data);
     }
 
-    // untuk ke menu data tabel bonus
+    // untuk ke menu data tabel 
     public function data_tabel_kategori()
     {
         $data['path'] = 'admin/konten/menu/data_kategori/v_data_tabel';

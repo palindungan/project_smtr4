@@ -64,9 +64,9 @@
                         <a href="<?php echo base_url(); ?>admin/paket/data_paket/tambah_paket" class="menu-item <?php if ($this->uri->segment('3') == 'data_paket') {
                                                                                                                     echo 'active';
                                                                                                                 } ?>">Data Paket</a>
-                        <a href="<?php echo base_url(); ?>admin/paket/data_keterangan_paket/" class="menu-item <?php if ($this->uri->segment('3') == 'data_keterangan_paket') {
-                                                                                                                    echo 'active';
-                                                                                                                } ?>">Data Keterangan Paket</a>
+                        <a href="<?php echo base_url(); ?>admin/paket/data_keterangan_paket/tambah_keterangan_paket/" class="menu-item <?php if ($this->uri->segment('3') == 'data_keterangan_paket') {
+                                                                                                                                            echo 'active';
+                                                                                                                                        } ?>">Data Keterangan Paket</a>
                     </div>
                 </div>
 

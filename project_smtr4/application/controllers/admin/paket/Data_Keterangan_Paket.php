@@ -11,12 +11,37 @@ class Data_Keterangan_Paket extends CI_Controller
         // untuk mengakses model data (database)
         $this->load->model("admin/paket/M_data_keterangan_paket");
     }
-    public function index()
+
+    // untuk ke menu tambah 
+    public function tambah_keterangan_paket()
     {
         $data['tbl_data'] = $this->M_data_keterangan_paket->tampil_data()->result();
         $data['kode'] = $this->M_data_keterangan_paket->get_no();
 
-        $data['path'] = 'admin/konten/paket/v_data_keterangan_paket';
+        $data['path'] = 'admin/konten/paket/data_keterangan_paket/v_tambah_form';
+        $this->load->view('admin/_view', $data);
+    }
+
+    // untuk ke menu data tabel 
+    public function data_tabel_keterangan_paket()
+    {
+        $data['path'] = 'admin/konten/paket/data_keterangan_paket/v_data_tabel';
+        $data['tbl_data'] = $this->M_data_keterangan_paket->tampil_data()->result();
+
+        $this->load->view('admin/_view', $data);
+    }
+
+    // untuk ke menu edit data
+    public function edit_keterangan_paket($id_keterangan_paket)
+    {
+        $data['path'] = 'admin/konten/paket/data_keterangan_paket/v_edit_form';
+
+        // memasukkan data ke array
+        $where = array('id_keterangan_paket' => $id_keterangan_paket);
+
+        // fungsi result adalah mengenerate hasil querry menjadi array untuk di tampilkan
+        $data['tbl_data'] = $this->M_data_keterangan_paket->edit_data('tbl_keterangan_paket', $where)->result();
+
         $this->load->view('admin/_view', $data);
     }
 
@@ -36,7 +61,7 @@ class Data_Keterangan_Paket extends CI_Controller
         $this->M_data_keterangan_paket->input_data('tbl_keterangan_paket', $data);
 
         // kembali ke halaman utama
-        redirect('admin/paket/data_keterangan_paket');
+        redirect('admin/paket/data_keterangan_paket/tambah_keterangan_paket/');
     }
 
     function hapus_aksi()
@@ -81,6 +106,6 @@ class Data_Keterangan_Paket extends CI_Controller
         $this->M_data_keterangan_paket->update_data($where, $data, 'tbl_keterangan_paket');
 
         // kembali ke halaman utama
-        redirect('admin/paket/data_keterangan_paket');
+        redirect('admin/paket/data_keterangan_paket/data_tabel_keterangan_paket');
     }
 }

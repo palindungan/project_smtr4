@@ -1,6 +1,7 @@
 package com.example.sicat.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -34,46 +35,40 @@ public class HomeActivity extends AppCompatActivity {
         sessionManager.checkLogin(); // untuk mengecek apakah sudah login apa belum
 
         // untuk drawer
-        dl = (DrawerLayout)findViewById(R.id.activity_home);
-        t = new ActionBarDrawerToggle(this, dl,R.string.Open, R.string.Close);
+        dl = (DrawerLayout) findViewById(R.id.activity_home);
+        t = new ActionBarDrawerToggle(this, dl, R.string.Open, R.string.Close);
 
         dl.addDrawerListener(t);
         t.syncState();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        nv = (NavigationView)findViewById(R.id.nv);
+        nv = (NavigationView) findViewById(R.id.nv);
 
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                switch(id)
-                {
+                switch (id) {
                     case R.id.account:
-                        Toast.makeText(HomeActivity.this, "My Account",Toast.LENGTH_SHORT).show();break;
-                    case R.id.settings:
-                        Toast.makeText(HomeActivity.this, "Settings",Toast.LENGTH_SHORT).show();break;
-                    case R.id.mycart:
-                        Toast.makeText(HomeActivity.this, "My Cart",Toast.LENGTH_SHORT).show();break;
+                        startActivity(new Intent(HomeActivity.this, AccountActivity.class));
+                        break;
                     case R.id.log_out:
                         sessionManager.logout();
+                        break;
                     default:
                         return true;
                 }
-
                 return true;
-
             }
         });
-
     }
 
     // method untuk aksi option menu (jika di pilih / click)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if(t.onOptionsItemSelected(item)) {
+        if (t.onOptionsItemSelected(item)) {
             return true;
         }
 

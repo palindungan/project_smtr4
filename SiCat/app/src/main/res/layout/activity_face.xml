@@ -6,4 +6,88 @@
     android:layout_height="match_parent"
     tools:context=".activities.FaceActivity">
 
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background"
+            android:visibility="visible"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/bg_face"
+            android:alpha="0.2"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/text_logo"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SiCat"
+            android:textColor="@color/colorWhite"
+            android:fontFamily="@font/gitchgitch"/>
+
+        <TextView
+            android:id="@+id/label_1"
+            android:layout_above="@id/label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="0dp"
+            android:text="Segera Login"
+            android:textColor="@color/colorWhite"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/btn_login"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:text="Login Atau Daftar Akun"
+            android:textColor="@color/colorWhite"
+            android:textSize="12dp" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/btn_signup"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button_white"
+            android:text="Log In"
+            android:textAllCaps="false"
+            android:textColor="@color/color1"
+            android:textSize="12dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_signup"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button_transparent"
+            android:text="Tidak Punya Akun ? Sign Up"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="12dp"/>
+
+    </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

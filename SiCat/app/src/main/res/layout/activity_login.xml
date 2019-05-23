@@ -6,4 +6,141 @@
     android:layout_height="match_parent"
     tools:context=".activities.LoginActivity">
 
+    <RelativeLayout
+        android:id="@+id/rootView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.2"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_face" />
+
+        <TextView
+            android:id="@+id/text_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/gitchgitch"
+            android:text="SiCat"
+            android:textColor="@color/colorWhite"
+            android:textSize="30dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layout_email"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.mikepenz.iconics.view.IconicsImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    app:iiv_color="@color/colorWhite"
+                    app:iiv_icon="faw_user" />
+
+                <EditText
+                    android:id="@+id/txt_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/username"
+                    android:imeOptions="actionNext"
+                    android:backgroundTint="@color/colorWhite"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="@color/colorHint"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_below="@id/layout_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layout_password"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+
+                <com.mikepenz.iconics.view.IconicsImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    app:iiv_color="@color/colorWhite"
+                    app:iiv_icon="faw_user" />
+
+                <EditText
+                    android:id="@+id/txt_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password"
+                    android:imeOptions="actionNext"
+                    android:backgroundTint="@color/colorWhite"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="@color/colorHint"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btlogin"
+                android:layout_below="@id/layout_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/button_white"
+                android:text="@string/Login"
+                android:textAllCaps="false"
+                android:textColor="@color/colorRose"
+                android:textSize="12dp" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:layout_below="@id/btlogin"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/fab_undo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                app:backgroundTint="@color/colorDark"
+                android:src="@drawable/ic_undo"
+                android:layout_marginTop="20dp"
+                android:padding="0dp"
+                app:elevation="10dp"
+                android:scaleType="center" />
+
+            <TextView
+                android:id="@+id/label_1"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/colorWhite"
+                android:textSize="12dp"
+                android:layout_below="@id/fab_undo"
+                android:text="@string/kembali"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

@@ -7,10 +7,9 @@
 
     <color name="color1">#9C27B0</color>
     <color name="color2">#1C1D1C</color>
+    <color name="colorRose">#b11946</color>
+    <color name="colorDark">#1b0045</color>
     <color name="colorDarkApha">#7a071724</color>
     <color name="colorHint">#7fffffff</color>
     <color name="colorFacebook">#3b5998</color>
-
-    <color name="colorRose">#b11946</color>
-    <color name="colorDark">#1b0045</color>
 </resources>

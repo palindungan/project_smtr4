@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import com.example.sicat.activities.FaceActivity;
 import com.example.sicat.activities.HomeActivity;
 import com.example.sicat.activities.LoginActivity;
 
@@ -60,7 +61,7 @@ public class SessionManager {
 
     public void checkLogin(){
         if (!this.isLogin()){
-            Intent i = new Intent(context, LoginActivity.class);
+            Intent i = new Intent(context, FaceActivity.class);
             context.startActivity(i);
             ((HomeActivity) context).finish();
         }
@@ -86,7 +87,7 @@ public class SessionManager {
         editor.clear();
         editor.commit();
 
-        Intent i = new Intent(context, LoginActivity.class);
+        Intent i = new Intent(context, FaceActivity.class);
         context.startActivity(i);
         ((HomeActivity) context).finish();
     }

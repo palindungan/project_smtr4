@@ -32,7 +32,6 @@ public class LoginActivity extends AppCompatActivity {
     // deklarasi variable
     private EditText username , password; // text input
     private Button btn_login; // btn login
-    private FloatingActionButton fab; // fab kembali
     private ProgressBar loading; // loading
     private static String URL_LOGIN="http://192.168.56.1/project_smtr4/api/login/login/"; // url http request
     SessionManager sessionManager; // session
@@ -104,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                     // data yang akan dikirim ke dalam intent / halaman lain
                                     Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
-                                    startActivity(intent);
+                                    startActivity(intent); // membuka activity lain
 
                                     loading.setVisibility(View.GONE);
                                     btn_login.setVisibility(View.VISIBLE);

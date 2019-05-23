@@ -34,6 +34,7 @@ public class FaceActivity extends AppCompatActivity {
                 loading.setVisibility(View.VISIBLE);
                 startActivity(new Intent(FaceActivity.this,LoginActivity.class));
                 btn_login.setVisibility(View.VISIBLE);
+                loading.setVisibility(View.GONE);
             }
         });
 
@@ -45,6 +46,7 @@ public class FaceActivity extends AppCompatActivity {
                 loading.setVisibility(View.VISIBLE);
                 startActivity(new Intent(FaceActivity.this,RegisterActivity.class));
                 btn_login.setVisibility(View.VISIBLE);
+                loading.setVisibility(View.GONE);
             }
         });
 

@@ -12,4 +12,6 @@
     <color name="colorDarkApha">#7a071724</color>
     <color name="colorHint">#7fffffff</color>
     <color name="colorFacebook">#3b5998</color>
+
+    <color name="colorText">#1984b4</color>
 </resources>

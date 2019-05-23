@@ -10,4 +10,7 @@
     <string name="password">Enter Password</string>
     <string name="kembali">Kembali Ke Awal</string>
     <string name="facebook">Facebook</string>
+
+    <string name="Open">+</string>
+    <string name="Close">-</string>
 </resources>

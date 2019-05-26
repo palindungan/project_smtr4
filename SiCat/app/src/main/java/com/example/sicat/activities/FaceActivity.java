@@ -13,7 +13,7 @@ import com.example.sicat.R;
 public class FaceActivity extends AppCompatActivity {
 
     // deklarasi variabel
-    private Button btn_login,link_regist; // button
+    private Button btn_login,link_regist,btn_skip; // button
     private ProgressBar loading; // loading
 
     @Override
@@ -23,8 +23,10 @@ public class FaceActivity extends AppCompatActivity {
 
         // inisialisasi
         btn_login = findViewById(R.id.btn_login);
+        btn_skip = findViewById(R.id.btn_skip);
         link_regist = findViewById(R.id.link_regist);
         loading = findViewById(R.id.loading);
+
 
         // jika btn_login di click
         btn_login.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +47,18 @@ public class FaceActivity extends AppCompatActivity {
 
                 loading.setVisibility(View.VISIBLE);
                 startActivity(new Intent(FaceActivity.this,RegisterActivity.class));
+                btn_login.setVisibility(View.VISIBLE);
+                loading.setVisibility(View.GONE);
+            }
+        });
+
+        // jika btn_skip di click
+        btn_skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                loading.setVisibility(View.VISIBLE);
+                startActivity(new Intent(FaceActivity.this,HomeActivity.class));
                 btn_login.setVisibility(View.VISIBLE);
                 loading.setVisibility(View.GONE);
             }

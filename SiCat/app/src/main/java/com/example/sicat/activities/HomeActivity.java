@@ -32,7 +32,6 @@ public class HomeActivity extends AppCompatActivity {
 
         // inisialisasi ojek session
         sessionManager = new SessionManager(this);
-        sessionManager.checkLogin(); // untuk mengecek apakah sudah login apa belum
 
         // untuk drawer
         dl = (DrawerLayout) findViewById(R.id.activity_home);

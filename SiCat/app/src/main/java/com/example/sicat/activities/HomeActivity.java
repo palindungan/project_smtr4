@@ -73,6 +73,7 @@ public class HomeActivity extends AppCompatActivity {
         getID = customer.get(sessionManager.ID_CUSTOMER);
 
         btn_photo = findViewById(R.id.btn_photo); // button untuk upload
+        link_daftar_menu = findViewById(R.id.link_daftar_menu);
         profile_image = findViewById(R.id.profile_image); // untuk gambar yang ingin di upload
 
         // untuk drawer

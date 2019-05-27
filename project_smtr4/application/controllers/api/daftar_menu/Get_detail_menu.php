@@ -62,7 +62,7 @@ class Get_detail_menu extends REST_Controller
         } else {
             // membuat array untuk di transfer ke API
             $result["success"] = "0";
-            $result["message"] = "error username";
+            $result["message"] = "error daftar menu tidak ada";
             $this->response($result, 404);
         }
     }

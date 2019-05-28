@@ -72,7 +72,7 @@ public class ListAdapter extends BaseAdapter {
 // the getTag returns the viewHolder object set as a tag to the view
             holder = (ViewHolder) convertView.getTag();
         }
-        //Picasso.get().load(dataModelArrayList.get(position).getImgURL()).into(holder.iv); // Baris pertama akan memuat gambar dari URL menggunakan Picasso.
+        Picasso.get().load(dataModelArrayList.get(position).getGambar()).into(holder.iv); // Baris pertama akan memuat gambar dari URL menggunakan Picasso.
         // Compiler akan mengatur gambar ini di imageview.
         // Kemudian akan mengatur informasi lain di tampilan teks masing-masing.
         holder.tvname.setText("Nama Menu: " + dataModelArrayList.get(position).getNm_menu());

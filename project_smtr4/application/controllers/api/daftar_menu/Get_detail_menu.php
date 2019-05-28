@@ -35,10 +35,13 @@ class Get_detail_menu extends REST_Controller
             foreach ($query->result_array() as $row) {
 
                 // mengambil gambar dan mengkonversi kedalam string untuk dikirim API
-                $path = "./upload/gambar_menu/";
-                $file = $path . $row["gambar"];
+                // $path = "./upload/gambar_menu/";
+                // $file = $path . $row["gambar"];
 
-                $encode = base64_encode(file_get_contents($file));
+                $path2 = "/upload/gambar_menu/" . $row["gambar"];
+                $finalPath = "http://192.168.56.1/project_smtr4/" . $path2;
+
+                // $encode = base64_encode(file_get_contents($file));
 
                 // kumpulan data
                 $data = array(
@@ -47,7 +50,7 @@ class Get_detail_menu extends REST_Controller
                     'nm_kat' => $row["nm_kat"],
                     'tipe' => $row["tipe"],
                     'hrg_porsi' => $row["hrg_porsi"],
-                    'gambar' => $encode,
+                    'gambar' => $finalPath,
                     'deskripsi' => $row["deskripsi"],
                     'id_kat' => $row["id_kat"]
                 );

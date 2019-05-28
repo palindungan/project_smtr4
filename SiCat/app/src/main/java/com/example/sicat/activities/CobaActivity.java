@@ -64,6 +64,7 @@ public class CobaActivity extends AppCompatActivity {
                             playerModel.setNm_menu(dataobj.getString("nm_menu"));
                             playerModel.setNm_kat(dataobj.getString("nm_kat"));
                             playerModel.setTipe(dataobj.getString("tipe"));
+                            playerModel.setGambar(dataobj.getString("gambar"));
                             //playerModel.setImgURL(dataobj.getString("imgURL"));
                             dataModelArrayList.add(playerModel);
                         }

@@ -15,7 +15,7 @@ class Get_detail_menu extends REST_Controller
     }
 
     //mengirim data detail
-    function index_post()
+    function index_get()
     {
 
         // mengambil jumlah baris

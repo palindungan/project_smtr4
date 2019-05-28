@@ -38,7 +38,7 @@ class Get_detail_menu extends REST_Controller
                 // $path = "./upload/gambar_menu/";
                 // $file = $path . $row["gambar"];
 
-                $path2 = "/upload/gambar_menu/" . $row["gambar"];
+                $path2 = "upload/gambar_menu/" . $row["gambar"];
                 $finalPath = "http://192.168.56.1/project_smtr4/" . $path2;
 
                 // $encode = base64_encode(file_get_contents($file));

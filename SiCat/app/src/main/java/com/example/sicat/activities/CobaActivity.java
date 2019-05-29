@@ -36,7 +36,6 @@ public class CobaActivity extends AppCompatActivity {
     private ListAdapter listAdapter;
 
     private String URLstring = "http://192.168.56.1/project_smtr4/api/daftar_menu/get_detail_menu/";
-    //private String URLstring = "https://demonuts.com/Demonuts/JsonTest/Tennis/json_parsing.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -29,7 +29,7 @@ class Get_detail_menu extends REST_Controller
 
             // variable array
             $result = array();
-            $result['daftar_menu'] = array();
+            $result['meals'] = array();
 
             // mengeluarkan data dari database
             foreach ($query->result_array() as $row) {
@@ -55,7 +55,7 @@ class Get_detail_menu extends REST_Controller
                     'id_kat' => $row["id_kat"]
                 );
 
-                array_push($result['daftar_menu'], $data);
+                array_push($result['meals'], $data);
 
                 // membuat array untuk di transfer
                 $result["success"] = "1";

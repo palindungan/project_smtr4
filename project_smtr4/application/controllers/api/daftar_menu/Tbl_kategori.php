@@ -29,7 +29,7 @@ class Tbl_kategori extends REST_Controller
 
             // variable array
             $result = array();
-            $result['daftar_kategori'] = array();
+            $result['categories'] = array();
 
             // mengeluarkan data dari database
             foreach ($query->result_array() as $row) {
@@ -40,7 +40,7 @@ class Tbl_kategori extends REST_Controller
                     'nm_kat' => $row["nm_kat"]
                 );
 
-                array_push($result['daftar_kategori'], $data);
+                array_push($result['categories'], $data);
 
                 // membuat array untuk di transfer
                 $result["success"] = "1";

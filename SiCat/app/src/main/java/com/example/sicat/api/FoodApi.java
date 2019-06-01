@@ -7,18 +7,12 @@
 package com.example.sicat.api;
 
 import com.example.sicat.model.Categories;
-import com.example.sicat.model.Daftar_menus;
 import com.example.sicat.model.Meals;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface FoodApi {
-
-    @GET("Get_detail_menu.php")
-    Call<Meals> getMeal();
-
-    // TODO 12 also make the Call like getMeals() method for category
 
     /*
      * @GET (" url ") -->
@@ -30,6 +24,10 @@ public interface FoodApi {
      *
      */
 
+    @GET("Get_detail_menu.php")
+    Call<Meals> getMeal();
+
+    // TODO 12 also make the Call like getMeals() method for category
     @GET("Tbl_kategori.php")
     Call<Categories> getCategories();
 }

@@ -56,7 +56,7 @@ public class CobaActivity extends AppCompatActivity {
                     JSONObject obj = new JSONObject(response);
                     if (obj.optString("success").equals("1")) {
                         dataModelArrayList = new ArrayList<>();
-                        JSONArray dataArray = obj.getJSONArray("daftar_menus");
+                        JSONArray dataArray = obj.getJSONArray("meals");
                         for (int i = 0; i < dataArray.length(); i++) {
                             ModelDaftarMenu playerModel = new ModelDaftarMenu();
                             JSONObject dataobj = dataArray.getJSONObject(i);

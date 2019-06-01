@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class FoodClient {
 
     // TODO 10 Add BASE url
-    private static final String BASE_URL = "http://192.168.56.1/project_smtr4/api/daftar_menu/"; // dengan "/" di akhir url
+    private static final String BASE_URL = "http://192.168.56.1/project_smtr4/api/daftar_menu/get_detail_menu/"; // dengan "/" di akhir url
 
     public static Retrofit getFoodClient() {
         // TODO 11 configures Retrofit

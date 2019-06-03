@@ -32,7 +32,6 @@ public class MenuActivity extends AppCompatActivity implements MenuView {
      * 2. recyclerCategory
      *
      */
-
     @BindView(R.id.viewPagerHeader) ViewPager viewPagerMeal;
     @BindView(R.id.recycleCategory) RecyclerView recyclerViewCategory;
 

@@ -49,7 +49,7 @@ public class HomeActivity extends AppCompatActivity {
     SessionManager sessionManager; // session
     String getID;
 
-    private Button btn_photo, link_daftar_menu, link_coba; // btn upload
+    private Button btn_photo, link_daftar_menu; // btn upload
     private Bitmap bitmap;
     CircleImageView profile_image;
 
@@ -75,7 +75,6 @@ public class HomeActivity extends AppCompatActivity {
         btn_photo = findViewById(R.id.btn_photo); // button untuk upload
         link_daftar_menu = findViewById(R.id.link_daftar_menu);
         profile_image = findViewById(R.id.profile_image); // untuk gambar yang ingin di upload
-        link_coba = findViewById(R.id.link_coba);
 
         // untuk drawer
         dl = (DrawerLayout) findViewById(R.id.activity_home);
@@ -117,14 +116,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, MenuActivity.class);
-                startActivity(intent); // membuka activity lain
-            }
-        });
-
-        link_coba.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, CobaActivity.class);
                 startActivity(intent); // membuka activity lain
             }
         });

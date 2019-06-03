@@ -34,13 +34,6 @@
             android:layout_gravity="center"
             android:text="Daftar Menu" />
 
-        <Button
-            android:id="@+id/link_coba"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Coba daftar menu"/>
-
     </LinearLayout>
 
     <android.support.design.widget.NavigationView

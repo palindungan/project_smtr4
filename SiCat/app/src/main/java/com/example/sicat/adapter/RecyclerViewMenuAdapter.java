@@ -45,7 +45,10 @@ public class RecyclerViewMenuAdapter extends RecyclerView.Adapter<RecyclerViewMe
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewMenuAdapter.RecyclerViewHolder viewHolder, int i) {
 
-        String strCategoryName = categories.get(i).getNm_kat();
+        //        String strCategoryThum = categories.get(i).getStrCategoryThumb();
+//        Picasso.get().load(strCategoryThum).placeholder(R.drawable.ic_circle).into(viewHolder.categoryThumb);
+
+        String strCategoryName = categories.get(i).getNmKat();
         viewHolder.categoryName.setText(strCategoryName);
     }
 

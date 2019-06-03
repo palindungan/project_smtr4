@@ -17,6 +17,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="300dp">
+
             <!-- TODO 1 Add <View>-->
             <View
                 android:layout_width="match_parent"

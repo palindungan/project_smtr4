@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.example.sicat.R;
@@ -56,8 +57,11 @@ public class MenuActivity extends AppCompatActivity implements MenuView {
          */
         presenter = new MenuPresenter(this);
         presenter.getMeals();
+        presenter.getCategories();
 
     }
+
+    // TODO 36 Overriding the interface
 
     @Override
     public void showLoading() {
@@ -97,8 +101,5 @@ public class MenuActivity extends AppCompatActivity implements MenuView {
 
         Utils.showDialogMessage(this,"Tittle", message);
 
-        // new AlertDialog.Builder(this).setTitle(message).setMessage(message).show();
     }
-
-    // TODO 36 Overriding the interface
 }

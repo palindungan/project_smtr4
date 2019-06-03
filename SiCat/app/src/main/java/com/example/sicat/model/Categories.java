@@ -9,7 +9,13 @@ public class Categories {
 
     @SerializedName("categories")
     @Expose
-    private List<Category> categories;
+    private List<Category> categories = null;
+    @SerializedName("success")
+    @Expose
+    private String success;
+    @SerializedName("message")
+    @Expose
+    private String message;
 
     public List<Category> getCategories() {
         return categories;
@@ -19,28 +25,45 @@ public class Categories {
         this.categories = categories;
     }
 
+    public String getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(String success) {
+        this.success = success;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public static class Category {
 
         @SerializedName("id_kat")
         @Expose
-        private String id_kat;
-
+        private String idKat;
         @SerializedName("nm_kat")
         @Expose
-        private String nm_kat;
+        private String nmKat;
 
-        public void setId_kat(String id_kat){
-            this.id_kat = id_kat;
-        }
-        public String getId_kat(){
-            return id_kat;
+        public String getIdKat() {
+            return idKat;
         }
 
-        public void setNm_kat(String nm_kat){
-            this.nm_kat = nm_kat;
+        public void setIdKat(String idKat) {
+            this.idKat = idKat;
         }
-        public String getNm_kat(){
-            return nm_kat;
+
+        public String getNmKat() {
+            return nmKat;
+        }
+
+        public void setNmKat(String nmKat) {
+            this.nmKat = nmKat;
         }
 
     }

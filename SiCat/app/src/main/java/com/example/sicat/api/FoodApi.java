@@ -14,6 +14,13 @@ import retrofit2.http.GET;
 
 public interface FoodApi {
 
+    @GET("get_detail_menu") // nama file
+    Call<Meals> getMeal();
+
+    // TODO 12 also make the Call like getMeals() method for category
+    @GET("tbl_kategori") // nama file
+    Call<Categories> getCategories();
+
     /*
      * @GET (" url ") -->
      *     this is the request annotation with REQUEST METHOD [GET]
@@ -24,10 +31,5 @@ public interface FoodApi {
      *
      */
 
-    @GET("Get_detail_menu.php")
-    Call<Meals> getMeal();
 
-    // TODO 12 also make the Call like getMeals() method for category
-    @GET("Tbl_kategori.php")
-    Call<Categories> getCategories();
 }

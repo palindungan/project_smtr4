@@ -72,7 +72,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>File upload</label>
-                            <input type="file" name="gmbr_kat" class="file-upload-default" id="image_file">
+                            <input required="" type="file" name="gmbr_kat" class="file-upload-default" id="image_file">
                             <div class="input-group col-xs-12">
                                 <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Gambar">
                                 <span class="input-group-append">

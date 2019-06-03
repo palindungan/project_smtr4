@@ -97,7 +97,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>File upload</label>
-                            <input type="file" name="gambar" class="file-upload-default" id="image_file">
+                            <input required="" type="file" name="gambar" class="file-upload-default" id="image_file">
                             <div class="input-group col-xs-12">
                                 <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Gambar">
                                 <span class="input-group-append">
@@ -139,30 +139,6 @@
 
         // deklarasi selec2 picker
         $(".select2").select2();
-
-        $('#upload_form').on('submit', function(e) {
-            e.preventDefault();
-            if ($('#image_file').val() == '') {
-                alert("please select the file");
-            }
-
-            // else {
-            //     $.ajax({
-            //         url: "<?php echo base_url(); ?>admin/menu/data_menu/tambah_form/tambah_aksi",
-            //         type: "post",
-            //         data: new FormData(this),
-            //         // contentType: false,
-            //         // cache: false,
-            //         // processData: false,
-            //         success: function(data) {
-
-            //             alert(data);
-            //             console.log(data);
-
-            //         }
-            //     });
-            // }
-        });
 
     });
 </script>

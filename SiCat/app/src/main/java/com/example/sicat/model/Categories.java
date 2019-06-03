@@ -49,6 +49,12 @@ public class Categories {
         @SerializedName("nm_kat")
         @Expose
         private String nmKat;
+        @SerializedName("gmbr_kat")
+        @Expose
+        private String gmbrKat;
+        @SerializedName("desk_kat")
+        @Expose
+        private String deskKat;
 
         public String getIdKat() {
             return idKat;
@@ -64,6 +70,22 @@ public class Categories {
 
         public void setNmKat(String nmKat) {
             this.nmKat = nmKat;
+        }
+
+        public String getGmbrKat() {
+            return gmbrKat;
+        }
+
+        public void setGmbrKat(String gmbrKat) {
+            this.gmbrKat = gmbrKat;
+        }
+
+        public String getDeskKat() {
+            return deskKat;
+        }
+
+        public void setDeskKat(String deskKat) {
+            this.deskKat = deskKat;
         }
 
     }

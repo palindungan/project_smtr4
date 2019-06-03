@@ -34,10 +34,15 @@ class Tbl_kategori extends REST_Controller
             // mengeluarkan data dari database
             foreach ($query->result_array() as $row) {
 
+                $path2 = "upload/gambar_kategori/" . $row["gmbr_kat"];
+                $finalPath = "http://192.168.56.1/project_smtr4/" . $path2;
+
                 // kumpulan data
                 $data = array(
                     'id_kat' => $row["id_kat"],
-                    'nm_kat' => $row["nm_kat"]
+                    'nm_kat' => $row["nm_kat"],
+                    'gmbr_kat' => $finalPath,
+                    'desk_kat' => $row["desk_kat"]
                 );
 
                 array_push($result['categories'], $data);

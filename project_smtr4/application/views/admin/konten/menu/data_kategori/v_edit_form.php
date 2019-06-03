@@ -57,12 +57,30 @@
                                 <input type="text" class="form-control" id="id_kat" readonly="" name="id_kat" value="<?php echo $d2->id_kat ?>">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nm_kat">Nama Kategori</label>
                                 <input type="text" class="form-control" id="nm_kat" name="nm_kat" placeholder="Nama Kategori" value="<?php echo $d2->nm_kat ?>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="desk_kat">Deksripsi</label>
+                                <textarea class="form-control" id="desk_kat" rows="3" name="desk_kat"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>File upload</label>
+                                <input type="file" name="gmbr_kat" class="file-upload-default" id="image_file">
+                                <div class="input-group col-xs-12">
+                                    <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Gambar">
+                                    <span class="input-group-append">
+                                        <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>

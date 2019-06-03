@@ -56,4 +56,15 @@ class M_data_kategori extends CI_Model
         }
         return $kd;
     }
+
+    function get_nama_gambar($id_kat)
+    {
+        $this->db->from('tbl_kategori');
+        $this->db->where('id_kat', $id_kat);
+        $result = $this->db->get('');
+        // periksa ada datanya atau tidak
+        if ($result->num_rows() > 0) {
+            return $result->row(); //ambil datanya berdasrka row id
+        }
+    }
 }

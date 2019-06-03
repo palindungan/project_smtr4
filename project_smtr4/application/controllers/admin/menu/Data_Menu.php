@@ -49,7 +49,7 @@ class Data_Menu extends CI_Controller
     function tambah_aksi()
     {
         $config['upload_path']          = './upload/gambar_menu';
-        $config['allowed_types']        = 'gif|jpg|png';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
 
         $this->load->library('upload', $config);
 

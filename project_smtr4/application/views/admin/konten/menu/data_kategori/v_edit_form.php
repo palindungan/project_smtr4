@@ -68,7 +68,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="desk_kat">Deksripsi</label>
-                                <textarea class="form-control" id="desk_kat" rows="3" name="desk_kat"></textarea>
+                                <textarea class="form-control" id="desk_kat" rows="3" name="desk_kat"><?php echo $d2->desk_kat ?></textarea>
                             </div>
                         </div>
                         <div class="col-md-6">

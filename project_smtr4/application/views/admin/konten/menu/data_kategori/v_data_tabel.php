@@ -54,6 +54,8 @@
                         <tr>
                             <th>Kode Kategori</th>
                             <th>Nama Kategori</th>
+                            <th>Deskripsi</th>
+                            <th>Gambar</th>
                             <th class="nosort">&nbsp;</th>
                         </tr>
                     </thead>
@@ -62,6 +64,8 @@
                             <tr>
                                 <td><?php echo $d->id_kat ?></td>
                                 <td><?php echo $d->nm_kat ?></td>
+                                <td><?php echo $d->desk_kat ?></td>
+                                <td><img src="<?php echo base_url(); ?>upload/gambar_kategori/<?php echo $d->gmbr_kat ?>" style="height:100px;width:100px;" /></td>
                                 <td>
                                     <div class="table-actions">
                                         <a href="<?php echo site_url('admin/menu/data_kategori/edit_kategori/' . $d->id_kat) ?>"><i class="ik ik-edit-2"></i></a>

@@ -82,4 +82,18 @@ class M_data_menu extends CI_Model
             return $result->row(); //ambil datanya berdasrka row id
         }
     }
+
+    function get_by_kategori($nm_kat)
+    {
+         // return $this->db->get_where($table, $where);
+
+         $this->db->select('*');
+         $this->db->from('tabel_menu');
+ 
+         $where = "nm_kat ='" . $nm_kat . "'";
+         $this->db->where($where);
+         $this->db->order_by('nm_menu', 'ASC');
+ 
+         return $this->db->get();
+    }
 }

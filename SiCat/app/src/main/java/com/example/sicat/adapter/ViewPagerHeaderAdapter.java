@@ -64,14 +64,7 @@ public class ViewPagerHeaderAdapter extends PagerAdapter {
         String strMealName = meals.get(position).getNmMenu();
         mealName.setText(strMealName);
 
-        // view.setOnClickListener(v -> clickListener.onClick(v, position));
-
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+        view.setOnClickListener(v -> clickListener.onClick(v, position));
 
         container.addView(view, 0);
         return view;

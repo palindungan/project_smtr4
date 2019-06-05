@@ -93,7 +93,9 @@ public class CategoryFragment extends Fragment implements CategoryView {
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
-        adapter.setOnItemClickListener((view, position) -> Toast.makeText(getActivity(),meals.get(position).getNmMenu() , Toast.LENGTH_SHORT).show());
+        adapter.setOnItemClickListener((view, position) -> {
+            Toast.makeText(getActivity(),"meal : "+ meals.get(position).getNmMenu(),Toast.LENGTH_SHORT).show();
+        });
 
 //        adapter.setOnItemClickListener(new RecyclerViewMealByCategory.ClickListener() {
 //            @Override
@@ -111,13 +113,13 @@ public class CategoryFragment extends Fragment implements CategoryView {
 
     @OnClick(R.id.cardCategory)
     public void onClick(){
-        //descDialog.setPositiveButton("CLOSE", (dialog, which) -> dialog.dismiss());
-        descDialog.setPositiveButton("", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
+        descDialog.setPositiveButton("CLOSE", (dialog, which) -> dialog.dismiss());
+//        descDialog.setPositiveButton("CLOSE", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.dismiss();
+//            }
+//        });
         descDialog.show();
     }
 

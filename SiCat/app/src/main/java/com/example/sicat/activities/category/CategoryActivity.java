@@ -36,7 +36,7 @@ public class CategoryActivity extends AppCompatActivity {
         //TODO 5. Bind ButterKnife
         ButterKnife.bind(this);
 
-        //initActionBar();
+        initActionBar();
 
         // TODO 9. Init GetIntent() data from home activity
         initIntent();

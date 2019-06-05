@@ -13,8 +13,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.category.CategoryActivity"></activity>
-        <activity android:name=".activities.daftar_menu.MenuActivity" />
+        <activity
+            android:name=".activities.category.CategoryActivity"
+            android:theme="@style/AppTheme2"
+            android:screenOrientation="portrait"
+            android:label="Category">
+        </activity>
+        <activity
+            android:name=".activities.daftar_menu.MenuActivity"
+            android:theme="@style/AppTheme2">
+        </activity>
         <activity android:name=".activities.AccountActivity" />
         <activity android:name=".activities.HomeActivity" />
         <activity android:name=".activities.RegisterActivity" />

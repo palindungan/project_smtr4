@@ -91,12 +91,14 @@ public class MenuActivity extends AppCompatActivity implements MenuView {
         viewPagerMeal.setPadding(20,0,150,0);
         headerAdapter.notifyDataSetChanged();
 
-        headerAdapter.setOnItemClickListener(new ViewPagerHeaderAdapter.ClickListener() {
-            @Override
-            public void onClick(View v, int position) {
-                Toast.makeText(MenuActivity.this,meal.get(position).getNmMenu() , Toast.LENGTH_SHORT).show();
-            }
-        });
+        headerAdapter.setOnItemClickListener((v, position) -> Toast.makeText(MenuActivity.this,meal.get(position).getNmMenu() , Toast.LENGTH_SHORT).show());
+
+//        headerAdapter.setOnItemClickListener(new ViewPagerHeaderAdapter.ClickListener() {
+//            @Override
+//            public void onClick(View v, int position) {
+//                Toast.makeText(MenuActivity.this,meal.get(position).getNmMenu() , Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     @Override
@@ -108,17 +110,26 @@ public class MenuActivity extends AppCompatActivity implements MenuView {
         recyclerViewCategory.setNestedScrollingEnabled(true);
         menuAdapter.notifyDataSetChanged();
 
-        menuAdapter.setOnItemClickListener(new RecyclerViewMenuAdapter.ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                Intent intent = new Intent(MenuActivity.this, CategoryActivity.class);
+        menuAdapter.setOnItemClickListener((view, position) -> {
+            Intent intent = new Intent(MenuActivity.this, CategoryActivity.class);
 
-                // TODO 8. add extra data(put intent)
-                intent.putExtra(EXTRA_CATEGORY,(Serializable) category);
-                intent.putExtra(EXTRA_POSITION,position);
-                startActivity(intent);
-            }
+            // TODO 8. add extra data(put intent)
+            intent.putExtra(EXTRA_CATEGORY,(Serializable) category);
+            intent.putExtra(EXTRA_POSITION,position);
+            startActivity(intent);
         });
+
+//        menuAdapter.setOnItemClickListener(new RecyclerViewMenuAdapter.ClickListener() {
+//            @Override
+//            public void onClick(View view, int position) {
+//                Intent intent = new Intent(MenuActivity.this, CategoryActivity.class);
+//
+//                // TODO 8. add extra data(put intent)
+//                intent.putExtra(EXTRA_CATEGORY,(Serializable) category);
+//                intent.putExtra(EXTRA_POSITION,position);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     @Override

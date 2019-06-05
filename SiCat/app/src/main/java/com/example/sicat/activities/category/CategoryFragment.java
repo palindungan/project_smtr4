@@ -93,15 +93,13 @@ public class CategoryFragment extends Fragment implements CategoryView {
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
-        adapter.setOnItemClickListener(new RecyclerViewMealByCategory.ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                Toast.makeText(getActivity(),meals.get(position).getNmMenu() , Toast.LENGTH_SHORT).show();
-            }
-        });
+        adapter.setOnItemClickListener((view, position) -> Toast.makeText(getActivity(),meals.get(position).getNmMenu() , Toast.LENGTH_SHORT).show());
 
-//        adapter.setOnItemClickListener((view, position) -> {
-//            Toast.makeText(getActivity(),"meal : "+ meals.get(position).getNmMenu(),Toast.LENGTH_SHORT).show();
+//        adapter.setOnItemClickListener(new RecyclerViewMealByCategory.ClickListener() {
+//            @Override
+//            public void onClick(View view, int position) {
+//                Toast.makeText(getActivity(),meals.get(position).getNmMenu() , Toast.LENGTH_SHORT).show();
+//            }
 //        });
 
     }

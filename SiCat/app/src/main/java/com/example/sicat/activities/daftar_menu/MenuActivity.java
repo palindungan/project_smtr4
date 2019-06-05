@@ -89,7 +89,7 @@ public class MenuActivity extends AppCompatActivity implements MenuView {
         headerAdapter.notifyDataSetChanged();
 
         headerAdapter.setOnItemClickListener((v,position)->{
-            Toast.makeText(this,"makananoi"+meal.get(position).getNmMenu(),Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,meal.get(position).getNmMenu(),Toast.LENGTH_SHORT).show();
         });
     }
 

@@ -51,7 +51,6 @@ public class MenuActivity extends AppCompatActivity implements MenuView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-
         /*
          *  TODO 34 bind the ButterKnife (2)
          */
@@ -64,7 +63,6 @@ public class MenuActivity extends AppCompatActivity implements MenuView {
         presenter = new MenuPresenter(this);
         presenter.getMeals();
         presenter.getCategories();
-
     }
 
     // TODO 36 Overriding the interface
@@ -79,30 +77,24 @@ public class MenuActivity extends AppCompatActivity implements MenuView {
 
     @Override
     public void hideLoading() {
-
         findViewById(R.id.shimmerMeal).setVisibility(View.GONE);
         findViewById(R.id.shimmerCategory).setVisibility(View.GONE);
     }
 
     @Override
-    public void setMeal(final List<Meals.Meal> meal) {
+    public void setMeal(List<Meals.Meal> meal) {
         ViewPagerHeaderAdapter headerAdapter = new ViewPagerHeaderAdapter(meal,this);
         viewPagerMeal.setAdapter(headerAdapter);
         viewPagerMeal.setPadding(20,0,150,0);
         headerAdapter.notifyDataSetChanged();
 
-        headerAdapter.setOnItemClickListener((v, position) -> Toast.makeText(MenuActivity.this,meal.get(position).getNmMenu() , Toast.LENGTH_SHORT).show());
-
-//        headerAdapter.setOnItemClickListener(new ViewPagerHeaderAdapter.ClickListener() {
-//            @Override
-//            public void onClick(View v, int position) {
-//                Toast.makeText(MenuActivity.this,meal.get(position).getNmMenu() , Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        headerAdapter.setOnItemClickListener((v,position)->{
+            Toast.makeText(this,"makananoi"+meal.get(position).getNmMenu(),Toast.LENGTH_SHORT).show();
+        });
     }
 
     @Override
-    public void setCategory(final List<Categories.Category> category) {
+    public void setCategory(List<Categories.Category> category) {
         RecyclerViewMenuAdapter menuAdapter = new RecyclerViewMenuAdapter(category,this);
         recyclerViewCategory.setAdapter(menuAdapter);
         GridLayoutManager layoutManager = new GridLayoutManager(this,3, GridLayoutManager.VERTICAL,false);
@@ -119,23 +111,11 @@ public class MenuActivity extends AppCompatActivity implements MenuView {
             startActivity(intent);
         });
 
-//        menuAdapter.setOnItemClickListener(new RecyclerViewMenuAdapter.ClickListener() {
-//            @Override
-//            public void onClick(View view, int position) {
-//                Intent intent = new Intent(MenuActivity.this, CategoryActivity.class);
-//
-//                // TODO 8. add extra data(put intent)
-//                intent.putExtra(EXTRA_CATEGORY,(Serializable) category);
-//                intent.putExtra(EXTRA_POSITION,position);
-//                startActivity(intent);
-//            }
-//        });
     }
 
     @Override
     public void onErrorLoading(String message) {
-
         Utils.showDialogMessage(this,"Tittle", message);
-
     }
+
 }

@@ -46,9 +46,7 @@ public class Meals {
     public void setMessage(String message) {
         this.message = message;
     }
-
     public class Meal {
-
         /*
          * TODO 9 Paste the generated results
          *

@@ -11,6 +11,7 @@ import com.example.sicat.model.Meals;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface FoodApi {
 
@@ -20,6 +21,11 @@ public interface FoodApi {
     // TODO 12 also make the Call like getMeals() method for category
     @GET("tbl_kategori") // nama file
     Call<Categories> getCategories();
+
+    // TODO 14. add interface get meals by category
+    @GET("filter")
+    Call<Meals> getMealByCategory(@Query("nm_kat") String category);
+
 
     /*
      * @GET (" url ") -->

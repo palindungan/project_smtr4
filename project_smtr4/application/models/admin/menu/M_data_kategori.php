@@ -4,6 +4,7 @@ class M_data_kategori extends CI_Model
     // mengambil semua data pada tabel
     function tampil_data()
     {
+        $this->db->order_by('nm_kat', 'ASC');
         return $this->db->get('tbl_kategori');
     }
 

@@ -4,6 +4,7 @@ class M_data_menu extends CI_Model
     // mengambil semua data pada tabel
     function tampil_data()
     {
+        $this->db->order_by('nm_menu', 'ASC');
         return $this->db->get('tabel_menu');
     }
 
@@ -85,15 +86,15 @@ class M_data_menu extends CI_Model
 
     function get_by_kategori($nm_kat)
     {
-         // return $this->db->get_where($table, $where);
+        // return $this->db->get_where($table, $where);
 
-         $this->db->select('*');
-         $this->db->from('tabel_menu');
- 
-         $where = "nm_kat ='" . $nm_kat . "'";
-         $this->db->where($where);
-         $this->db->order_by('nm_menu', 'ASC');
- 
-         return $this->db->get();
+        $this->db->select('*');
+        $this->db->from('tabel_menu');
+
+        $where = "nm_kat ='" . $nm_kat . "'";
+        $this->db->where($where);
+        $this->db->order_by('nm_menu', 'ASC');
+
+        return $this->db->get();
     }
 }

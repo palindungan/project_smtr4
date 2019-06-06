@@ -97,4 +97,18 @@ class M_data_menu extends CI_Model
 
         return $this->db->get();
     }
+
+    function get_by_nama($nm_menu)
+    {
+        // return $this->db->get_where($table, $where);
+
+        $this->db->select('*');
+        $this->db->from('tabel_menu');
+
+        $where = "nm_menu ='" . $nm_menu . "'";
+        $this->db->where($where);
+        $this->db->order_by('nm_menu', 'ASC');
+
+        return $this->db->get();
+    }
 }

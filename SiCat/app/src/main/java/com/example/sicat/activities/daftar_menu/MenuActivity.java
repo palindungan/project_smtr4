@@ -9,11 +9,13 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sicat.R;
 import com.example.sicat.Utils;
 import com.example.sicat.activities.category.CategoryActivity;
+import com.example.sicat.activities.detail.DetailActivity;
 import com.example.sicat.adapter.RecyclerViewMenuAdapter;
 import com.example.sicat.adapter.ViewPagerHeaderAdapter;
 import com.example.sicat.model.Categories;
@@ -31,6 +33,7 @@ public class MenuActivity extends AppCompatActivity implements MenuView {
 
     public static final String EXTRA_CATEGORY = "category";
     public static final String EXTRA_POSITION = "position";
+    public static final String EXTRA_DETAIL = "detail";
 
     /*
      * TODO 32 Add @BindView Annotation (1)
@@ -88,8 +91,12 @@ public class MenuActivity extends AppCompatActivity implements MenuView {
         viewPagerMeal.setPadding(20,0,150,0);
         headerAdapter.notifyDataSetChanged();
 
-        headerAdapter.setOnItemClickListener((v,position)->{
-            Toast.makeText(this,meal.get(position).getNmMenu(),Toast.LENGTH_SHORT).show();
+        headerAdapter.setOnItemClickListener((view, position) -> {
+            //TODO #8.1 make an intent to DetailActivity (get the name of the meal from the edit text view, then send the name of the meal to DetailActivity)
+            TextView mealName = view.findViewById(R.id.mealName);
+            Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+            intent.putExtra(EXTRA_DETAIL, mealName.getText().toString());
+            startActivity(intent);
         });
     }
 

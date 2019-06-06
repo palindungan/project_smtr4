@@ -14,15 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.category.CategoryActivity"
-            android:theme="@style/AppTheme2"
-            android:screenOrientation="portrait"
-            android:label="Category">
+            android:name=".activities.detail.DetailActivity"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
+            android:name=".activities.category.CategoryActivity"
+            android:label="Category"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme2"></activity>
+        <activity
             android:name=".activities.daftar_menu.MenuActivity"
-            android:theme="@style/AppTheme2">
-        </activity>
+            android:theme="@style/AppTheme2"></activity>
         <activity android:name=".activities.AccountActivity" />
         <activity android:name=".activities.HomeActivity" />
         <activity android:name=".activities.RegisterActivity" />

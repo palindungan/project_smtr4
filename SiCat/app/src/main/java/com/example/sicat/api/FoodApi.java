@@ -26,6 +26,8 @@ public interface FoodApi {
     @GET("filter")
     Call<Meals> getMealByCategory(@Query("nm_kat") String category);
 
+    @GET("search")
+    Call<Meals> getMealByName(@Query("nm_menu") String mealName);
 
     /*
      * @GET (" url ") -->

@@ -2,6 +2,7 @@ package com.example.sicat.activities.category;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.sicat.R;
 import com.example.sicat.Utils;
+import com.example.sicat.activities.detail.DetailActivity;
 import com.example.sicat.adapter.RecyclerViewMealByCategory;
 import com.example.sicat.model.Meals;
 import com.squareup.picasso.Picasso;
@@ -29,6 +31,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.example.sicat.activities.daftar_menu.MenuActivity.EXTRA_DETAIL;
 
 
 public class CategoryFragment extends Fragment implements CategoryView {
@@ -94,7 +98,11 @@ public class CategoryFragment extends Fragment implements CategoryView {
         adapter.notifyDataSetChanged();
 
         adapter.setOnItemClickListener((view, position) -> {
-            Toast.makeText(getActivity(),"meal : "+ meals.get(position).getNmMenu(),Toast.LENGTH_SHORT).show();
+            //TODO #8.2 make an intent to DetailActivity (get the name of the meal from the edit text view, then send the name of the meal to DetailActivity)
+            TextView mealName = view.findViewById(R.id.mealName);
+            Intent intent = new Intent(getActivity(), DetailActivity.class);
+            intent.putExtra(EXTRA_DETAIL, mealName.getText().toString());
+            startActivity(intent);
         });
 
 //        adapter.setOnItemClickListener(new RecyclerViewMealByCategory.ClickListener() {
@@ -114,12 +122,14 @@ public class CategoryFragment extends Fragment implements CategoryView {
     @OnClick(R.id.cardCategory)
     public void onClick(){
         descDialog.setPositiveButton("CLOSE", (dialog, which) -> dialog.dismiss());
+
 //        descDialog.setPositiveButton("CLOSE", new DialogInterface.OnClickListener() {
 //            @Override
 //            public void onClick(DialogInterface dialog, int which) {
 //                dialog.dismiss();
 //            }
 //        });
+
         descDialog.show();
     }
 

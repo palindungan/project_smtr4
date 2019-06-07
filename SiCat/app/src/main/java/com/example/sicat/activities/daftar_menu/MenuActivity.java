@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,10 +57,17 @@ public class MenuActivity extends AppCompatActivity implements MenuView {
      */
     MenuPresenter presenter;
 
+    private EditText searching;
+    private Button btn_cari; // btn login
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        btn_cari = findViewById(R.id.btn_cari);
+        searching = findViewById(R.id.searching);
+
         /*
          *  TODO 34 bind the ButterKnife (2)
          */
@@ -73,6 +82,14 @@ public class MenuActivity extends AppCompatActivity implements MenuView {
         presenter.getCategories();
 
         initActionBar();
+
+        btn_cari.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String mSearching = searching.getText().toString().trim();
+                presenter.getSearching(mSearching);
+            }
+        });
     }
 
     private void initActionBar(){

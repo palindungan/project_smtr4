@@ -24,38 +24,49 @@ class Search_like extends REST_Controller
         // cek apakah ada data dari username
         if ($nm_menu != "") {
 
-            // mengambil data dari database berdasarkan username
-            $query = $this->M_data_menu->get_by_nama2($nm_menu);
+            $cek = $this->M_data_menu->get_by_nama2($nm_menu)->num_rows();
 
-            // variable array
-            $result = array();
-            $result['meals'] = array();
+            // cek apakah ada data dari username
+            if ($cek > 0) {
 
-            // mengeluarkan data dari database
-            foreach ($query->result_array() as $row) {
+                // mengambil data dari database berdasarkan username
+                $query = $this->M_data_menu->get_by_nama2($nm_menu);
+
+                // variable array
+                $result = array();
+                $result['meals'] = array();
+
+                // mengeluarkan data dari database
+                foreach ($query->result_array() as $row) {
 
 
-                $path2 = "upload/gambar_menu/" . $row["gambar"];
-                $finalPath = "http://192.168.56.1/project_smtr4/" . $path2;
+                    $path2 = "upload/gambar_menu/" . $row["gambar"];
+                    $finalPath = "http://192.168.56.1/project_smtr4/" . $path2;
 
-                // kumpulan data
-                $data = array(
-                    'id_menu' => $row["id_menu"],
-                    'nm_menu' => $row["nm_menu"],
-                    'nm_kat' => $row["nm_kat"],
-                    'tipe' => $row["tipe"],
-                    'hrg_porsi' => $row["hrg_porsi"],
-                    'gambar' => $finalPath,
-                    'deskripsi' => $row["deskripsi"],
-                    'id_kat' => $row["id_kat"]
-                );
+                    // kumpulan data
+                    $data = array(
+                        'id_menu' => $row["id_menu"],
+                        'nm_menu' => $row["nm_menu"],
+                        'nm_kat' => $row["nm_kat"],
+                        'tipe' => $row["tipe"],
+                        'hrg_porsi' => $row["hrg_porsi"],
+                        'gambar' => $finalPath,
+                        'deskripsi' => $row["deskripsi"],
+                        'id_kat' => $row["id_kat"]
+                    );
 
-                array_push($result['meals'], $data);
+                    array_push($result['meals'], $data);
 
-                // membuat array untuk di transfer
-                $result["success"] = "1";
-                $result["message"] = "success";
-                $this->response($result, 200);
+                    // membuat array untuk di transfer
+                    $result["success"] = "1";
+                    $result["message"] = "success";
+                    $this->response($result, 200);
+                }
+            } else {
+                // membuat array untuk di transfer ke API
+                $result["success"] = "0";
+                $result["message"] = "error username";
+                $this->response($result, 404);
             }
         } else {
             // membuat array untuk di transfer ke API

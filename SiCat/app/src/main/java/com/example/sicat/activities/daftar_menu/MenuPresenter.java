@@ -129,6 +129,7 @@ public class MenuPresenter {
                     view.setMeal(response.body().getMeals());
                 } else {
                     view.onErrorLoading(response.message());
+                    getMeals();
                 }
             }
 

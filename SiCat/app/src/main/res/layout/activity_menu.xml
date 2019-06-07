@@ -16,7 +16,8 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:titleTextColor="@color/colorWhite"/>
 
     </android.support.design.widget.AppBarLayout>
 
@@ -120,7 +121,7 @@
                 android:id="@+id/titleCategory"
                 android:text="@string/meal_categories"
                 android:textSize="19dp"
-                android:textColor="@color/colorWhite"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"

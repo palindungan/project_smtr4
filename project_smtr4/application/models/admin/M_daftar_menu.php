@@ -23,7 +23,7 @@ class M_daftar_menu extends CI_Model
             $this->db->select('*');
             $this->db->from('tabel_menu tm');
 
-            $where = "tm.nm_menu ='" . $search_input . "'";
+            $where = "tm.nm_menu like '%" . $search_input . "%'";
             $this->db->where($where);
             $this->db->order_by('tm.nm_menu', 'ASC');
 
@@ -43,7 +43,7 @@ class M_daftar_menu extends CI_Model
             $this->db->select('*');
             $this->db->from('tabel_menu tm');
 
-            $where = "tm.nm_menu ='" . $search_input . "' && tm.id_kat ='" . $kategori . "'";
+            $where = "tm.nm_menu like '%" . $search_input . "%' && tm.id_kat ='" . $kategori . "'";
             $this->db->where($where);
             $this->db->order_by('tm.nm_menu', 'ASC');
 
@@ -59,5 +59,6 @@ class M_daftar_menu extends CI_Model
         $this->db->where($where);
         $this->db->order_by('tm.nm_menu', 'ASC');
 
-        return $this->db->get();}
+        return $this->db->get();
+    }
 }

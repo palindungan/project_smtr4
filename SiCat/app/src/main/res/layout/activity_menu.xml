@@ -1,10 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.daftar_menu.MenuActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppBarLayoutTheme">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.widget.NestedScrollView
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -28,14 +42,15 @@
             <TextView
                 android:id="@+id/title"
                 android:textColor="@color/colorWhite"
-                android:text="@string/app_name"
+                android:text="Daftar Menu"
                 android:textStyle="bold"
                 android:textSize="30sp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
 
             <!-- TODO 3 Add Search container -->
             <!-- We will make a look for the search box with CardView and TextView (this is only for click actions because later we will create another Activity to search) -->
@@ -113,17 +128,6 @@
             <!-- TODO 7 Delete comment to <include below -->
             <include android:id="@+id/shimmerCategory"
                 layout="@layout/item_recycler_category_shimmer" />
-            <TextView
-                android:padding="10dp"
-                android:gravity="center"
-                android:textColor="@color/colorWhite"
-                android:text="@string/app_name"
-                android:background="@color/colorPrimaryLight"
-                android:layout_alignParentBottom="true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"/>
-
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
-</android.support.constraint.ConstraintLayout>
+</android.support.design.widget.CoordinatorLayout>

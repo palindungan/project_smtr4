@@ -7,7 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +32,9 @@ import butterknife.ButterKnife;
 
 // TODO 31 implement the MenuView interface at the end
 public class MenuActivity extends AppCompatActivity implements MenuView {
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     public static final String EXTRA_CATEGORY = "category";
     public static final String EXTRA_POSITION = "position";
@@ -66,6 +71,25 @@ public class MenuActivity extends AppCompatActivity implements MenuView {
         presenter = new MenuPresenter(this);
         presenter.getMeals();
         presenter.getCategories();
+
+        initActionBar();
+    }
+
+    private void initActionBar(){
+        setSupportActionBar(toolbar);
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return true;
     }
 
     // TODO 36 Overriding the interface

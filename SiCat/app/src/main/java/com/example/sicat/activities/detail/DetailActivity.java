@@ -50,20 +50,11 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
     @BindView(R.id.instructions)
     TextView instructions;
 
-    @BindView(R.id.ingredient)
-    TextView ingredients;
-
-    @BindView(R.id.measure)
-    TextView measures;
+    @BindView(R.id.hrg_porsi)
+    TextView hrg_porsi;
 
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
-
-    @BindView(R.id.youtube)
-    TextView youtube;
-
-    @BindView(R.id.source)
-    TextView source;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,6 +140,7 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
         category.setText(meal.getNmKat());
         country.setText(meal.getTipe());
         instructions.setText(meal.getDeskripsi());
+        hrg_porsi.setText(meal.getHrgPorsi());
         setupActionBar();
 
         //===

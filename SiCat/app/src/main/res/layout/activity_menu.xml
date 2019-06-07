@@ -25,7 +25,7 @@
         android:fillViewport="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorDarkApha">
+        android:background="@color/colorBackground">
         <RelativeLayout
             android:id="@+id/headerView"
             android:orientation="vertical"

@@ -12,6 +12,7 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,9 +23,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sicat.Database.ModelDB.Cart;
 import com.example.sicat.R;
 import com.example.sicat.Utils;
+import com.example.sicat.common.Common;
 import com.example.sicat.model.Meals;
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
@@ -158,7 +162,9 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
         String nm_menu = meal.getNmMenu();
         String nm_kat = meal.getNmKat();
         String tipe = meal.getTipe();
+        String hrg_porsi = meal.getHrgPorsi();
         String gambar = meal.getGambar();
+        String deskripsi = meal.getDeskripsi();
         String id_kat = meal.getIdKat();
 
         Map<String,String> params = new HashMap<>();
@@ -166,7 +172,9 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
         params.put("nm_menu",nm_menu);
         params.put("nm_kat",nm_kat);
         params.put("tipe",tipe);
+        params.put("hrg_porsi",hrg_porsi);
         params.put("gambar",gambar);
+        params.put("deskripsi",deskripsi);
         params.put("id_kat",id_kat);
 
         btn_add_cart.setOnClickListener(new View.OnClickListener() {
@@ -222,6 +230,21 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
         builder.setPositiveButton("ADD to Cart", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                // create new cart item
+                Cart cartItem = new Cart();
+                cartItem.id_menu = params.get("id_menu");
+                cartItem.nm_menu = params.get("nm_menu");
+                cartItem.nm_kat = params.get("nm_kat");
+                cartItem.tipe = params.get("tipe");
+                cartItem.hrg_porsi = Integer.parseInt(params.get("hrg_porsi"));
+                cartItem.gambar = params.get("gambar");
+                cartItem.deskripsi = params.get("deskripsi");
+
+                // add to db
+                Common.cartRepository.insertToCart(cartItem);
+
+                Log.d("KIKA_DEBUG", new Gson().toJson(cartItem));
+
                 Toast.makeText(DetailActivity.this,"Add to Cart Berhasil!" , Toast.LENGTH_SHORT).show();
             }
         });

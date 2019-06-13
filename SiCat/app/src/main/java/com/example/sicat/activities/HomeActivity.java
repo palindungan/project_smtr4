@@ -29,8 +29,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.sicat.Database.DataSource.CartRepository;
+import com.example.sicat.Database.Local.CartDataSource;
+import com.example.sicat.Database.Local.CartDatabase;
 import com.example.sicat.R;
 import com.example.sicat.activities.daftar_menu.MenuActivity;
+import com.example.sicat.common.Common;
 import com.example.sicat.controllers.SessionManager;
 
 import org.json.JSONException;
@@ -119,6 +123,14 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent); // membuka activity lain
             }
         });
+
+        // init database
+        iniDB();
+    }
+
+    private void iniDB() {
+        Common.cartDatabase = CartDatabase.getInstance(this);
+        Common.cartRepository = CartRepository.getInstance(CartDataSource.getInstance(Common.cartDatabase.cartDAO()));
     }
 
     // method untuk aksi option menu (jika di pilih / click)

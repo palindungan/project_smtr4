@@ -29,8 +29,8 @@ public class Cart {
     public int hrg_porsi;
 
     @ColumnInfo(name = "gambar")
-    public int gambar;
+    public String gambar;
 
     @ColumnInfo(name = "deskripsi")
-    public int deskripsi;
+    public String deskripsi;
 }

@@ -1,0 +1,75 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "30aba66079f65c8502a87ae8b297cb19",
+    "entities": [
+      {
+        "tableName": "Cart",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `id_menu` TEXT, `nm_menu` TEXT, `nm_kat` TEXT, `tipe` TEXT, `hrg_porsi` INTEGER NOT NULL, `gambar` TEXT, `deskripsi` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id_menu",
+            "columnName": "id_menu",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nm_menu",
+            "columnName": "nm_menu",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nm_kat",
+            "columnName": "nm_kat",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tipe",
+            "columnName": "tipe",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hrg_porsi",
+            "columnName": "hrg_porsi",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gambar",
+            "columnName": "gambar",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "deskripsi",
+            "columnName": "deskripsi",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"30aba66079f65c8502a87ae8b297cb19\")"
+    ]
+  }
+}

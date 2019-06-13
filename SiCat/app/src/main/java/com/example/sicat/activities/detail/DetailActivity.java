@@ -1,5 +1,7 @@
 package com.example.sicat.activities.detail;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -10,17 +12,23 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sicat.R;
 import com.example.sicat.Utils;
 import com.example.sicat.model.Meals;
 import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,6 +63,9 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
 
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
+
+    @BindView(R.id.btn_add_cart)
+    Button btn_add_cart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,6 +154,29 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
         hrg_porsi.setText(meal.getHrgPorsi());
         setupActionBar();
 
+        String id_menu = meal.getIdMenu();
+        String nm_menu = meal.getNmMenu();
+        String nm_kat = meal.getNmKat();
+        String tipe = meal.getTipe();
+        String gambar = meal.getGambar();
+        String id_kat = meal.getIdKat();
+
+        Map<String,String> params = new HashMap<>();
+        params.put("id_menu",id_menu);
+        params.put("nm_menu",nm_menu);
+        params.put("nm_kat",nm_kat);
+        params.put("tipe",tipe);
+        params.put("gambar",gambar);
+        params.put("id_kat",id_kat);
+
+        btn_add_cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showAddToCartDialog(params);
+                // Toast.makeText(DetailActivity.this,"Add to Cart Berhasil!" , Toast.LENGTH_SHORT).show();
+            }
+        });
+
         //===
 //        youtube.setOnClickListener(v -> {
 //            Intent intentYoutube = new Intent(Intent.ACTION_VIEW);
@@ -160,5 +194,37 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
     @Override
     public void onErrorLoading(String message) {
         Utils.showDialogMessage(this,"Error",message);
+    }
+
+    private void showAddToCartDialog(Map<String, String> params){
+        AlertDialog.Builder builder = new AlertDialog.Builder(DetailActivity.this);
+        View itemView = LayoutInflater.from(DetailActivity.this).inflate(R.layout.add_to_cart_layout,null);
+
+        // view
+        ImageView img_product_dialog = (ImageView) itemView.findViewById(R.id.img_cart_product);
+        TextView txt_id_dialog = (TextView) itemView.findViewById(R.id.txt_cart_product_id);
+        TextView txt_name_dialog = (TextView) itemView.findViewById(R.id.txt_cart_name);
+        TextView txt_kat_dialog = (TextView) itemView.findViewById(R.id.txt_cart_kat);
+
+        // set data
+        Picasso.get().load(params.get("gambar")).into(img_product_dialog);
+        txt_id_dialog.setText(params.get("id_menu"));
+        txt_name_dialog.setText(params.get("nm_menu"));
+        txt_kat_dialog.setText(params.get("nm_kat"));
+
+        builder.setView(itemView);
+        builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.setPositiveButton("ADD to Cart", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(DetailActivity.this,"Add to Cart Berhasil!" , Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.show();
     }
 }

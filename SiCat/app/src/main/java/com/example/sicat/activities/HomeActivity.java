@@ -16,6 +16,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -36,6 +38,7 @@ import com.example.sicat.R;
 import com.example.sicat.activities.daftar_menu.MenuActivity;
 import com.example.sicat.common.Common;
 import com.example.sicat.controllers.SessionManager;
+import com.nex3z.notificationbadge.NotificationBadge;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -64,6 +67,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private static String URL_UPLOAD ="http://192.168.56.1/project_smtr4/api/transaksi/upload_gambar/";
     private static final String TAG = HomeActivity.class.getSimpleName(); // getting the info
+
+    NotificationBadge badge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,6 +136,34 @@ public class HomeActivity extends AppCompatActivity {
     private void iniDB() {
         Common.cartDatabase = CartDatabase.getInstance(this);
         Common.cartRepository = CartRepository.getInstance(CartDataSource.getInstance(Common.cartDatabase.cartDAO()));
+    }
+
+    // method untuk menciptakan option menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_action_bar, menu);
+
+        View view = menu.findItem(R.id.cart_menu).getActionView();
+        badge = (NotificationBadge)view.findViewById(R.id.badge);
+        updateCartCount();
+
+        return true;
+    }
+
+    private void updateCartCount() {
+        if(badge == null) return;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (Common.cartRepository.countCartItems() == 0)
+                    badge.setVisibility(View.INVISIBLE);
+                else {
+                    badge.setVisibility(View.VISIBLE);
+                    badge.setText(String.valueOf(Common.cartRepository.countCartItems()));
+                }
+            }
+        });
+
     }
 
     // method untuk aksi option menu (jika di pilih / click)

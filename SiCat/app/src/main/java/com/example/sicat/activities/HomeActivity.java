@@ -145,6 +145,7 @@ public class HomeActivity extends AppCompatActivity {
 
         View view = menu.findItem(R.id.cart_menu).getActionView();
         badge = (NotificationBadge)view.findViewById(R.id.badge);
+
         updateCartCount();
 
         return true;
@@ -170,7 +171,12 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        int id = item.getItemId();
+
         if (t.onOptionsItemSelected(item)) {
+            return true;
+        }
+        if (id == R.id.cart_menu){
             return true;
         }
 
@@ -262,5 +268,11 @@ public class HomeActivity extends AppCompatActivity {
         String encodedImage = Base64.encodeToString(imageByteArray,Base64.DEFAULT);
 
         return encodedImage;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateCartCount();
     }
 }

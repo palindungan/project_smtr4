@@ -22,6 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -69,6 +70,7 @@ public class HomeActivity extends AppCompatActivity {
     private static final String TAG = HomeActivity.class.getSimpleName(); // getting the info
 
     NotificationBadge badge;
+    ImageView cart_icon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,6 +147,14 @@ public class HomeActivity extends AppCompatActivity {
 
         View view = menu.findItem(R.id.cart_menu).getActionView();
         badge = (NotificationBadge)view.findViewById(R.id.badge);
+        cart_icon = (ImageView)view.findViewById(R.id.cart_icon);
+
+        cart_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this,CartActivity.class));
+            }
+        });
 
         updateCartCount();
 

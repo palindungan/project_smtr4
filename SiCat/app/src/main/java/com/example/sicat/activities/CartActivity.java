@@ -13,6 +13,7 @@ import com.example.sicat.R;
 import com.example.sicat.adapter.CartAdapter;
 import com.example.sicat.common.Common;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -30,6 +31,10 @@ public class CartActivity extends AppCompatActivity {
 
     RecyclerView recycler_cart;
     Button btn_place_order;
+
+    List<Cart> cartList = new ArrayList<>();
+
+    CartAdapter cartAdapter;
 
     CompositeDisposable compositeDisposable;
 
@@ -70,7 +75,7 @@ public class CartActivity extends AppCompatActivity {
         return true;
     }
 
-    private void loadCartItems() {
+    public void loadCartItems() {
 
         compositeDisposable.add(
                 Common.cartRepository.getCartItems()
@@ -86,7 +91,8 @@ public class CartActivity extends AppCompatActivity {
     }
 
     private void displayCartItem(List<Cart> carts) {
-        CartAdapter cartAdapter = new CartAdapter(this,carts);
+        cartList = carts;
+        cartAdapter = new CartAdapter(this,carts);
         recycler_cart.setAdapter(cartAdapter);
     }
 
@@ -100,5 +106,11 @@ public class CartActivity extends AppCompatActivity {
     protected void onStop() {
         compositeDisposable.clear();
         super.onStop();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadCartItems();
     }
 }

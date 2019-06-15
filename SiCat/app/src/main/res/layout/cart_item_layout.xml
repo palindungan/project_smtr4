@@ -46,8 +46,8 @@
                     android:layout_height="wrap_content" />
 
                 <Button
-                    android:id="@+id/btn_ubah"
-                    android:text="ubah"
+                    android:id="@+id/btn_hapus"
+                    android:text="hapus"
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp" />

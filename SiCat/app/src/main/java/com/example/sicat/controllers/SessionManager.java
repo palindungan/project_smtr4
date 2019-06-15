@@ -29,6 +29,8 @@ public class SessionManager {
     public static final String EMAIL = "EMAIL";
     public static final String USERNAME = "USERNAME";
 
+    public String CART_STATUS = "CART_STATUS";
+
 
     // konstructor
     public SessionManager(Context context) {
@@ -90,6 +92,14 @@ public class SessionManager {
         Intent i = new Intent(context, FaceActivity.class);
         context.startActivity(i);
         ((HomeActivity) context).finish();
+    }
+
+    public void setCartStatus(boolean status){
+        editor.putBoolean(CART_STATUS,status);
+    }
+
+    public boolean getCartStatus(){
+        return sharedPreferences.getBoolean(CART_STATUS,false);
     }
 
 }

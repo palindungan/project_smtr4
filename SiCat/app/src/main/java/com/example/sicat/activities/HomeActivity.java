@@ -2,6 +2,7 @@ package com.example.sicat.activities;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -12,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -57,7 +59,7 @@ public class HomeActivity extends AppCompatActivity {
     SessionManager sessionManager; // session
     String getID;
 
-    private Button btn_photo, link_daftar_menu; // btn upload
+    private Button btn_photo, link_daftar_menu , btn_prasmanan; // btn
     private Bitmap bitmap;
     CircleImageView profile_image;
 
@@ -71,6 +73,8 @@ public class HomeActivity extends AppCompatActivity {
 
     NotificationBadge badge;
     ImageView cart_icon;
+
+    AlertDialog.Builder descDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +90,7 @@ public class HomeActivity extends AppCompatActivity {
         btn_photo = findViewById(R.id.btn_photo); // button untuk upload
         link_daftar_menu = findViewById(R.id.link_daftar_menu);
         profile_image = findViewById(R.id.profile_image); // untuk gambar yang ingin di upload
+        btn_prasmanan = findViewById(R.id.btn_prasmanan);
 
         // untuk drawer
         dl = (DrawerLayout) findViewById(R.id.activity_home);
@@ -133,6 +138,20 @@ public class HomeActivity extends AppCompatActivity {
 
         // init database
         iniDB();
+
+        btn_prasmanan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //descDialog = new AlertDialog.Builder(getActivity()).setTitle(getArguments().getString("EXTRA_DATA_NAME")).setMessage(getArguments().getString("EXTRA_DATA_DESC"));
+                descDialog = new AlertDialog.Builder(HomeActivity.this).setMessage("Apakah Ingin Membuat Keranjang Baru ?");
+                descDialog.setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                             
+                    }
+                });
+            }
+        });
     }
 
     private void iniDB() {

@@ -243,7 +243,7 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
                 // add to db
                 Common.cartRepository.insertToCart(cartItem);
 
-                Log.d("KIKA_DEBUG", new Gson().toJson(cartItem));
+                //Log.d("KIKA_DEBUG", new Gson().toJson(cartItem));
 
                 Toast.makeText(DetailActivity.this,"Add to Cart Berhasil!" , Toast.LENGTH_SHORT).show();
             }

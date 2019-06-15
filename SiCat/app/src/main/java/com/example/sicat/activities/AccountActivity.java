@@ -8,8 +8,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -38,7 +41,12 @@ public class AccountActivity extends AppCompatActivity {
     Toolbar toolbar;
 
     // deklarasi
-    private EditText id_customer , nm_customer , almt_customer, jenkel_customer, no_hp , email , username , password ,c_password;
+    private Spinner jenkel_customer;
+    String jenkel[]={"Pilih Jenis Kelamin","Pria","Wanita"};
+    ArrayAdapter<String> adapter;
+    String record= "";
+
+    private EditText id_customer , nm_customer , almt_customer, no_hp , email , username , password ,c_password;
     private Button btn_save, btn_cancel;
     SessionManager sessionManager;
     String getID;
@@ -58,8 +66,6 @@ public class AccountActivity extends AppCompatActivity {
         // inisialisasi
         nm_customer = findViewById(R.id.nm_customer);
         almt_customer = findViewById(R.id.almt_customer);
-
-        jenkel_customer = findViewById(R.id.jenkel_customer);
         no_hp = findViewById(R.id.no_hp);
         email = findViewById(R.id.email);
         username = findViewById(R.id.username);
@@ -69,6 +75,43 @@ public class AccountActivity extends AppCompatActivity {
         // button
         btn_save = findViewById(R.id.btn_save);
         btn_cancel = findViewById(R.id.btn_cancel);
+
+        // select option
+        jenkel_customer = (Spinner)findViewById(R.id.jenkel_customer);
+        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,jenkel);
+        jenkel_customer.setAdapter(adapter);
+        jenkel_customer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                switch (position)
+                {
+                    case 0:
+
+                        record = "";
+
+                        break;
+
+                    case 1:
+
+                        record = "pria";
+
+                        break;
+
+                    case 2:
+
+                        record = "wanita";
+
+                        break;
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         // untuk menerima data dari session
         HashMap<String , String> customer = sessionManager.getCustomerDetail();
@@ -129,7 +172,22 @@ public class AccountActivity extends AppCompatActivity {
 
                                     nm_customer.setText(o_nm_customer);
                                     almt_customer.setText(o_almt_customer);
-                                    jenkel_customer.setText(o_jenkel_customer);
+
+                                    switch (o_jenkel_customer)
+                                    {
+                                        case "pria":
+
+                                            jenkel_customer.setSelection(1);
+                                            record = "pria";
+                                            break;
+
+                                        case "wanita":
+
+                                            jenkel_customer.setSelection(2);
+                                            record = "wanita";
+                                            break;
+                                    }
+
                                     no_hp.setText(o_no_hp);
                                     email.setText(o_email);
                                     username.setText(o_username);
@@ -175,7 +233,7 @@ public class AccountActivity extends AppCompatActivity {
 
         final String nm_customer = this.nm_customer.getText().toString().trim();
         final String almt_customer = this.almt_customer.getText().toString().trim();
-        final String jenkel_customer = this.jenkel_customer.getText().toString().trim();
+        final String jenkel_customer = record;
         final String no_hp = this.no_hp.getText().toString().trim();
         final String email = this.email.getText().toString().trim();
         final String username = this.username.getText().toString().trim();

@@ -15,10 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme2"
         tools:replace="android:theme">
-        <activity android:name=".activities.CartActivity"></activity>
+        <activity android:name=".activities.PaketListActivity"></activity>
+        <activity android:name=".activities.CartActivity" />
         <activity
             android:name=".activities.detail.DetailActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.category.CategoryActivity"
             android:label="Category"

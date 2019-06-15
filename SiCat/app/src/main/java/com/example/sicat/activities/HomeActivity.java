@@ -308,7 +308,7 @@ public class HomeActivity extends AppCompatActivity {
                 .setMessage("Klik Ya untuk membuat baru !")
                 .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int id) {
-                        startActivity(new Intent(HomeActivity.this,CartActivity.class));
+                        startActivity(new Intent(HomeActivity.this,PaketListActivity.class));
                     }
                 })
                 .setNegativeButton("Tidak",new DialogInterface.OnClickListener() {

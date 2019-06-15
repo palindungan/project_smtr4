@@ -5,9 +5,12 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -34,7 +37,12 @@ public class RegisterActivity extends AppCompatActivity {
     Toolbar toolbar;
 
     // deklarasi variable
-    private EditText nm_customer, almt_customer, jenkel_customer, no_hp, email, username, password, c_password;
+    private Spinner jenkel_customer;
+    String jenkel[]={"Pilih Jenis Kelamin","Pria","Wanita"};
+    ArrayAdapter <String> adapter;
+    String record= "";
+
+    private EditText nm_customer, almt_customer, no_hp, email, username, password, c_password;
     private Button btn_regist;
     private ProgressBar loading;
     private static String URL_REGIST = "http://192.168.56.1/project_smtr4/api/crud_customer/tbl_customer/";
@@ -47,12 +55,48 @@ public class RegisterActivity extends AppCompatActivity {
         // inisialisasi
         nm_customer = findViewById(R.id.nm_customer);
         almt_customer = findViewById(R.id.almt_customer);
-        jenkel_customer = findViewById(R.id.jenkel_customer);
         no_hp = findViewById(R.id.no_hp);
         email = findViewById(R.id.email);
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         c_password = findViewById(R.id.c_password);
+
+        // select option
+        jenkel_customer = (Spinner)findViewById(R.id.jenkel_customer);
+        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,jenkel);
+        jenkel_customer.setAdapter(adapter);
+        jenkel_customer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                switch (position)
+                {
+                    case 0:
+
+                        record = "";
+
+                        break;
+
+                    case 1:
+
+                        record = "pria";
+
+                        break;
+
+                    case 2:
+
+                        record = "wanita";
+
+                        break;
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         btn_regist = findViewById(R.id.btn_regist);
 
@@ -95,7 +139,7 @@ public class RegisterActivity extends AppCompatActivity {
         // mengambil nilai didalam inputan
         final String nm_customer = this.nm_customer.getText().toString().trim();
         final String almt_customer = this.almt_customer.getText().toString().trim();
-        final String jenkel_customer = this.jenkel_customer.getText().toString().trim();
+        final String jenkel_customer = record;
         final String no_hp = this.no_hp.getText().toString().trim();
         final String email = this.email.getText().toString().trim();
         final String username = this.username.getText().toString().trim();

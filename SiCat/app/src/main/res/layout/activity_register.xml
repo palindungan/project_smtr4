@@ -68,13 +68,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <EditText
+                    <Spinner
                         android:id="@+id/jenkel_customer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Jenis Kelamin"
-                        android:inputType="text"
-                        android:textColor="@color/colorText" />
+                        android:textColor="@color/colorText" ></Spinner>
+
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout

@@ -74,8 +74,6 @@ public class HomeActivity extends AppCompatActivity {
     NotificationBadge badge;
     ImageView cart_icon;
 
-    AlertDialog.Builder descDialog;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -142,14 +140,7 @@ public class HomeActivity extends AppCompatActivity {
         btn_prasmanan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //descDialog = new AlertDialog.Builder(getActivity()).setTitle(getArguments().getString("EXTRA_DATA_NAME")).setMessage(getArguments().getString("EXTRA_DATA_DESC"));
-                descDialog = new AlertDialog.Builder(HomeActivity.this).setMessage("Apakah Ingin Membuat Keranjang Baru ?");
-                descDialog.setPositiveButton("CONFIRM", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                             
-                    }
-                });
+                showDialog();
             }
         });
     }
@@ -303,5 +294,33 @@ public class HomeActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         updateCartCount();
+    }
+
+    private void showDialog(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this);
+
+        // set title dialog
+        alertDialogBuilder.setTitle("Ingin Membuat Keranjang Baru ?");
+
+        // set pesan dari dialog
+        alertDialogBuilder
+                .setMessage("Klik Ya untuk membuat baru !")
+                .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        startActivity(new Intent(HomeActivity.this,CartActivity.class));
+                    }
+                })
+                .setNegativeButton("Tidak",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        // membuat alert dialog dari builder
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // menampilkan alert dialog
+        alertDialog.show();
     }
 }

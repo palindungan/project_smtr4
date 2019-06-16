@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.sicat.R;
+import com.example.sicat.controllers.SessionManager;
 import com.example.sicat.model.Paket;
 import com.squareup.picasso.Picasso;
 
@@ -19,10 +20,14 @@ public class ListPaket extends BaseAdapter {
 
     private Context context;
     private ArrayList<Paket> dataModelArrayList;
+    SessionManager sessionManager; // session
 
     public ListPaket(Context context, ArrayList<Paket> dataModelArrayList) {
         this.context = context;
         this.dataModelArrayList = dataModelArrayList;
+
+        // inisialisasi objek session
+        sessionManager = new SessionManager(context);
     }
 
     @Override
@@ -65,6 +70,15 @@ public class ListPaket extends BaseAdapter {
         holder.tv_hrg_paket.setText("Harga : " + dataModelArrayList.get(position).getHrg_paket());
         holder.tv_jml_menu.setText("Jumlah Menu : " + dataModelArrayList.get(position).getJml_menu());
         holder.tv_jml_bonus.setText("Jumlah Bonus: " + dataModelArrayList.get(position).getJml_bonus());
+
+        holder.btn_pilih.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sessionManager.setCart(true,dataModelArrayList.get(position).getId_paket(),dataModelArrayList.get(position).getNm_paket());
+                
+            }
+        });
+
         return convertView;
     }
 

@@ -30,7 +30,8 @@ public class SessionManager {
     public static final String USERNAME = "USERNAME";
 
     public String CART_STATUS = "CART_STATUS";
-
+    public String ID_PAKET = "ID_PAKET";
+    public String NM_PAKET = "NM_PAKET";
 
     // konstructor
     public SessionManager(Context context) {
@@ -94,11 +95,28 @@ public class SessionManager {
         ((HomeActivity) context).finish();
     }
 
-    public void setCartStatus(boolean status){
+    public void setCart(boolean status,String id_paket,String nm_paket){
         editor.putBoolean(CART_STATUS,status);
+        editor.putString(ID_PAKET,id_paket);
+        editor.putString(NM_PAKET,nm_paket);
+
+        editor.apply();
+    }
+
+    public HashMap<String , String> getCartTittle(){
+        // membuat objek
+        HashMap<String,String> cart = new HashMap<>();
+
+        // menambah data
+        cart.put(ID_PAKET, sharedPreferences.getString(ID_PAKET,null));
+        cart.put(NM_PAKET,sharedPreferences.getString(NM_PAKET,null));
+
+        return cart;
     }
 
     public boolean getCartStatus(){
+
+        // mengembalikan nilai yang diambil dari session
         return sharedPreferences.getBoolean(CART_STATUS,false);
     }
 

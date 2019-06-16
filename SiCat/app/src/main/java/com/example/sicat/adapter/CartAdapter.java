@@ -41,7 +41,21 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
         // set data disini
         Picasso.get().load(cartList.get(position).gambar).into(holder.img_product);
-        holder.txt_product_name.setText(cartList.get(position).nm_menu);
+
+        String id_bonus = cartList.get(position).id_bonus;
+
+        holder.txt_product_name.setText(cartList.get(position).nm_menu+" (Bonus)");
+
+        switch (id_bonus)
+        {
+            case "kosong":
+
+                holder.txt_product_name.setText(cartList.get(position).nm_menu);
+
+                break;
+        }
+
+        // holder.txt_product_name.setText(cartList.get(position).nm_menu);
         holder.txt_product_kat.setText(cartList.get(position).nm_kat);
         holder.txt_product_tipe.setText(cartList.get(position).tipe);
 

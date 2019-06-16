@@ -127,7 +127,7 @@ public class ListPaket extends BaseAdapter {
 
                                     // mengambil data dari api
                                     String id_paket = object.getString("id_paket").trim();
-                                    String id_bonus = "";
+                                    String id_bonus = "kosong";
                                     String id_menu = object.getString("id_menu").trim();
                                     String nm_menu = object.getString("nm_menu").trim();
                                     String id_kat = object.getString("id_kat").trim();
@@ -140,7 +140,7 @@ public class ListPaket extends BaseAdapter {
 
                                         id_bonus = object.getString("id_bonus").trim();
 
-                                        nm_menu = object.getString("nm_menu").trim()+" (BONUS)";
+                                        //nm_menu = object.getString("nm_menu").trim()+" (BONUS)";
 
                                     }catch (Exception e){}
 
@@ -151,6 +151,8 @@ public class ListPaket extends BaseAdapter {
                                     cartItem.hrg_porsi = Integer.parseInt(hrg_porsi);
                                     cartItem.gambar = gambar;
                                     cartItem.deskripsi = deskripsi;
+                                    cartItem.id_bonus=id_bonus;
+                                    cartItem.id_kat=id_kat;
 
                                     // add to db
                                     Common.cartRepository.insertToCart(cartItem);

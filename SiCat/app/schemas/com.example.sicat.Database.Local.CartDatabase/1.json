@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "30aba66079f65c8502a87ae8b297cb19",
+    "identityHash": "e68b0cdc3a5a7a5ff9cf57f00ce0fd6a",
     "entities": [
       {
         "tableName": "Cart",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `id_menu` TEXT, `nm_menu` TEXT, `nm_kat` TEXT, `tipe` TEXT, `hrg_porsi` INTEGER NOT NULL, `gambar` TEXT, `deskripsi` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `id_menu` TEXT, `nm_menu` TEXT, `nm_kat` TEXT, `tipe` TEXT, `hrg_porsi` INTEGER NOT NULL, `gambar` TEXT, `deskripsi` TEXT, `id_bonus` TEXT, `id_kat` TEXT)",
         "fields": [
           {
             "fieldPath": "id",
@@ -55,6 +55,18 @@
             "columnName": "deskripsi",
             "affinity": "TEXT",
             "notNull": false
+          },
+          {
+            "fieldPath": "id_bonus",
+            "columnName": "id_bonus",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "id_kat",
+            "columnName": "id_kat",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -69,7 +81,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"30aba66079f65c8502a87ae8b297cb19\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"e68b0cdc3a5a7a5ff9cf57f00ce0fd6a\")"
     ]
   }
 }

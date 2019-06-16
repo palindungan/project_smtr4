@@ -33,4 +33,10 @@ public class Cart {
 
     @ColumnInfo(name = "deskripsi")
     public String deskripsi;
+
+    @ColumnInfo(name = "id_bonus")
+    public String id_bonus;
+
+    @ColumnInfo(name = "id_kat")
+    public String id_kat;
 }

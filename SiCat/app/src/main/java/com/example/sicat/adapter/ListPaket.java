@@ -1,6 +1,8 @@
 package com.example.sicat.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,19 +10,37 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.sicat.Database.ModelDB.Cart;
 import com.example.sicat.R;
+import com.example.sicat.activities.CartActivity;
+import com.example.sicat.common.Common;
 import com.example.sicat.controllers.SessionManager;
 import com.example.sicat.model.Paket;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ListPaket extends BaseAdapter {
 
     private Context context;
     private ArrayList<Paket> dataModelArrayList;
     SessionManager sessionManager; // session
+    private static String URL_PAKET="http://192.168.56.1/project_smtr4/api/transaksi/Get_paket_by_id"; // url http request
 
     public ListPaket(Context context, ArrayList<Paket> dataModelArrayList) {
         this.context = context;
@@ -75,11 +95,91 @@ public class ListPaket extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 sessionManager.setCart(true,dataModelArrayList.get(position).getId_paket(),dataModelArrayList.get(position).getNm_paket());
-                
+                retrieveJSON(dataModelArrayList.get(position).getId_paket());
+
+                Intent intent = new Intent(context,CartActivity.class);
+                context.startActivity(intent); // membuka activity lain
             }
         });
 
         return convertView;
+    }
+
+    private void retrieveJSON(String id_paket) {
+                //
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_PAKET,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("strrrrr", ">>" + response);
+                        try {
+                            // create new cart item
+                            Cart cartItem = new Cart();
+
+                            JSONObject jsonObject = new JSONObject(response);
+                            String success = jsonObject.getString("success");
+
+                            JSONArray jsonArray = jsonObject.getJSONArray("data");
+
+                            if(success.equals("1")){
+                                for (int i = 0 ; i < jsonArray.length() ; i++){
+                                    JSONObject object = jsonArray.getJSONObject(i);
+
+                                    // mengambil data dari api
+                                    String id_paket = object.getString("id_paket").trim();
+                                    String id_bonus = "";
+                                    String id_menu = object.getString("id_menu").trim();
+                                    String nm_menu = object.getString("nm_menu").trim();
+                                    String id_kat = object.getString("id_kat").trim();
+                                    String tipe = object.getString("tipe").trim();
+                                    String hrg_porsi = object.getString("hrg_porsi").trim();
+                                    String gambar = object.getString("gambar").trim();
+                                    String deskripsi = object.getString("deskripsi").trim();
+
+                                    try{
+
+                                        id_bonus = object.getString("id_bonus").trim();
+
+                                        nm_menu = object.getString("nm_menu").trim()+" (BONUS)";
+
+                                    }catch (Exception e){}
+
+                                    cartItem.id_menu = id_menu;
+                                    cartItem.nm_menu = nm_menu;
+                                    cartItem.nm_kat = id_kat;
+                                    cartItem.tipe = tipe;
+                                    cartItem.hrg_porsi = Integer.parseInt(hrg_porsi);
+                                    cartItem.gambar = gambar;
+                                    cartItem.deskripsi = deskripsi;
+
+                                    // add to db
+                                    Common.cartRepository.insertToCart(cartItem);
+                                }
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(context,"Error api (gagal response) :"+e.toString(),Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(context,"Error volley :"+error.toString(),Toast.LENGTH_SHORT).show();
+                    }
+                })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("id_paket",id_paket);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
     }
 
     // tambahan

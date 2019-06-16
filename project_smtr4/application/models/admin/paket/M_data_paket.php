@@ -28,7 +28,7 @@ class M_data_paket extends CI_Model
 
         $where = "dm.id_paket ='" . $id_paket . "'";
         $this->db->where($where);
-        $this->db->order_by('dm.id_paket', 'ASC');
+        $this->db->order_by('dm.nm_menu', 'ASC');
 
         return $this->db->get();
     }
@@ -42,7 +42,7 @@ class M_data_paket extends CI_Model
 
         $where = "db.id_paket ='" . $id_paket . "'";
         $this->db->where($where);
-        $this->db->order_by('db.id_paket', 'ASC');
+        $this->db->order_by('db.nm_menu', 'ASC');
 
         return $this->db->get();
     }

@@ -1,5 +1,6 @@
 package com.example.sicat.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -69,7 +70,10 @@ public class CartActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case android.R.id.home:
-                onBackPressed();
+                Intent intent = new Intent(CartActivity.this,HomeActivity.class);
+                startActivity(intent);
+
+                //onBackPressed();
                 break;
         }
         return true;

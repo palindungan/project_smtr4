@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 
@@ -67,13 +69,30 @@ public class CartActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.cart_list_menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
+
             case android.R.id.home:
                 Intent intent = new Intent(CartActivity.this,HomeActivity.class);
                 startActivity(intent);
-
                 //onBackPressed();
+                break;
+
+            case R.id.menu_detail_cart:
+
+                break;
+
+            case R.id.menu_cancel:
+                Common.cartRepository.emptyCart();
+                Intent intent2 = new Intent(CartActivity.this,HomeActivity.class);
+                startActivity(intent2);
                 break;
         }
         return true;

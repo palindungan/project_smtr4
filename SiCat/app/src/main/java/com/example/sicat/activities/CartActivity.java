@@ -15,6 +15,7 @@ import com.example.sicat.Database.ModelDB.Cart;
 import com.example.sicat.R;
 import com.example.sicat.adapter.CartAdapter;
 import com.example.sicat.common.Common;
+import com.example.sicat.controllers.SessionManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,10 +42,15 @@ public class CartActivity extends AppCompatActivity {
 
     CompositeDisposable compositeDisposable;
 
+    SessionManager sessionManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
+
+        // inisialisasi objek session
+        sessionManager = new SessionManager(this);
 
         compositeDisposable = new CompositeDisposable();
 
@@ -86,11 +92,13 @@ public class CartActivity extends AppCompatActivity {
                 break;
 
             case R.id.menu_detail_cart:
-
+                Intent intent3 = new Intent(CartActivity.this,CartDetailActivity.class);
+                startActivity(intent3);
                 break;
 
             case R.id.menu_cancel:
                 Common.cartRepository.emptyCart();
+                sessionManager.setCart(false,"KOSONG","KOSONG","KOSONG","KOSONG","KOSONG");
                 Intent intent2 = new Intent(CartActivity.this,HomeActivity.class);
                 startActivity(intent2);
                 break;

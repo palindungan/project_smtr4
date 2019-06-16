@@ -94,8 +94,15 @@ public class ListPaket extends BaseAdapter {
         holder.btn_pilih.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sessionManager.setCart(true,dataModelArrayList.get(position).getId_paket(),dataModelArrayList.get(position).getNm_paket());
-                retrieveJSON(dataModelArrayList.get(position).getId_paket());
+                Boolean status = true;
+                String id_paket = dataModelArrayList.get(position).getId_paket();
+                String nm_paket = dataModelArrayList.get(position).getNm_paket();
+                String hrg_paket = String.valueOf(dataModelArrayList.get(position).getHrg_paket());
+                String jml_menu = String.valueOf(dataModelArrayList.get(position).getJml_menu());
+                String jml_bonus = String.valueOf(dataModelArrayList.get(position).getJml_bonus());
+                sessionManager.setCart(status,id_paket,nm_paket,hrg_paket,jml_menu,jml_bonus);
+
+                retrieveJSON(id_paket);
 
                 Intent intent = new Intent(context,CartActivity.class);
                 context.startActivity(intent); // membuka activity lain

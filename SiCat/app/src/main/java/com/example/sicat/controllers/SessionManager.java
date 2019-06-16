@@ -32,6 +32,9 @@ public class SessionManager {
     public String CART_STATUS = "CART_STATUS";
     public String ID_PAKET = "ID_PAKET";
     public String NM_PAKET = "NM_PAKET";
+    public String HRG_PAKET = "HRG_PAKET";
+    public String JML_MENU = "JML_MENU";
+    public String JML_BONUS = "JML_BONUS";
 
     // konstructor
     public SessionManager(Context context) {
@@ -75,13 +78,13 @@ public class SessionManager {
         HashMap<String,String> customer = new HashMap<>();
 
         // menambah data
-        customer.put(ID_CUSTOMER,sharedPreferences.getString(ID_CUSTOMER,null));
-        customer.put(NM_CUSTOMER, sharedPreferences.getString(NM_CUSTOMER,null));
-        customer.put(ALMT_CUSTOMER,sharedPreferences.getString(ALMT_CUSTOMER,null));
-        customer.put(JENKEL_CUSTOMER, sharedPreferences.getString(JENKEL_CUSTOMER,null));
-        customer.put(NO_HP,sharedPreferences.getString(NO_HP,null));
-        customer.put(EMAIL, sharedPreferences.getString(EMAIL,null));
-        customer.put(USERNAME,sharedPreferences.getString(USERNAME,null));
+        customer.put(ID_CUSTOMER,sharedPreferences.getString(ID_CUSTOMER,"KOSONG"));
+        customer.put(NM_CUSTOMER, sharedPreferences.getString(NM_CUSTOMER,"KOSONG"));
+        customer.put(ALMT_CUSTOMER,sharedPreferences.getString(ALMT_CUSTOMER,"KOSONG"));
+        customer.put(JENKEL_CUSTOMER, sharedPreferences.getString(JENKEL_CUSTOMER,"KOSONG"));
+        customer.put(NO_HP,sharedPreferences.getString(NO_HP,"KOSONG"));
+        customer.put(EMAIL, sharedPreferences.getString(EMAIL,"KOSONG"));
+        customer.put(USERNAME,sharedPreferences.getString(USERNAME,"KOSONG"));
 
         return customer;
     }
@@ -95,21 +98,27 @@ public class SessionManager {
         ((HomeActivity) context).finish();
     }
 
-    public void setCart(boolean status,String id_paket,String nm_paket){
+    public void setCart(boolean status,String id_paket,String nm_paket,String hrg_paket,String jml_menu,String jml_bonus){
         editor.putBoolean(CART_STATUS,status);
         editor.putString(ID_PAKET,id_paket);
         editor.putString(NM_PAKET,nm_paket);
+        editor.putString(HRG_PAKET,hrg_paket);
+        editor.putString(JML_MENU,jml_menu);
+        editor.putString(JML_BONUS,jml_bonus);
 
         editor.apply();
     }
 
-    public HashMap<String , String> getCartTittle(){
+    public HashMap<String , String> getCartDetailPaket(){
         // membuat objek
         HashMap<String,String> cart = new HashMap<>();
 
         // menambah data
-        cart.put(ID_PAKET, sharedPreferences.getString(ID_PAKET,null));
-        cart.put(NM_PAKET,sharedPreferences.getString(NM_PAKET,null));
+        cart.put(ID_PAKET, sharedPreferences.getString(ID_PAKET,"KOSONG"));
+        cart.put(NM_PAKET,sharedPreferences.getString(NM_PAKET,"KOSONG"));
+        cart.put(HRG_PAKET, sharedPreferences.getString(HRG_PAKET,"KOSONG"));
+        cart.put(JML_MENU,sharedPreferences.getString(JML_MENU,"KOSONG"));
+        cart.put(JML_BONUS, sharedPreferences.getString(JML_BONUS,"KOSONG"));
 
         return cart;
     }

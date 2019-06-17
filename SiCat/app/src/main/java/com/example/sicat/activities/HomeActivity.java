@@ -139,6 +139,8 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // masuk ke dalam daftar bonus
+                Intent intent = new Intent(HomeActivity.this, DaftarBonusActivity.class);
+                startActivity(intent); // membuka activity lain
             }
         });
 

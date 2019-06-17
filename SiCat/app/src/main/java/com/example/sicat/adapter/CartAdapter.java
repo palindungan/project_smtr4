@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.sicat.Database.ModelDB.Cart;
 import com.example.sicat.R;
 import com.example.sicat.activities.CartActivity;
+import com.example.sicat.activities.DaftarBonusActivity;
 import com.example.sicat.activities.daftar_menu.MenuActivity;
 import com.example.sicat.common.Common;
 import com.example.sicat.controllers.SessionManager;
@@ -47,18 +48,44 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
+        Cart deletedItem = cartList.get(position);
+        int id_tabel = cartList.get(position).id;
+        String id_bonus = cartList.get(position).id_bonus;
+
         // set data disini
         Picasso.get().load(cartList.get(position).gambar).into(holder.img_product);
 
-        String id_bonus = cartList.get(position).id_bonus;
-
+        // jika menu bonus
         holder.txt_product_name.setText(cartList.get(position).nm_menu+" (Bonus)");
+        holder.btn_ubah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // set session
+                sessionManager.setDataGanti(false,id_tabel,true);
 
+                // ganti activity
+                Intent intent =  new Intent(context, DaftarBonusActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
+        // jika hanya menu biasa
         switch (id_bonus)
         {
             case "kosong":
 
                 holder.txt_product_name.setText(cartList.get(position).nm_menu);
+                holder.btn_ubah.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // set session
+                        sessionManager.setDataGanti(true,id_tabel,false);
+
+                        // ganti activity
+                        Intent intent =  new Intent(context, MenuActivity.class);
+                        context.startActivity(intent);
+                    }
+                });
 
                 break;
         }
@@ -67,25 +94,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.txt_product_kat.setText(cartList.get(position).nm_kat);
         holder.txt_product_tipe.setText(cartList.get(position).tipe);
 
-        Cart deletedItem = cartList.get(position);
-        int id_tabel = cartList.get(position).id;
-
-        holder.btn_ubah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // hapus di adapter
-                //removeItem(position);
-                // hapus di room database
-                //Common.cartRepository.deleteCartItem(deletedItem);
-
-                // set session
-                sessionManager.setDataGanti(true,id_tabel);
-
-                // ganti activity
-                Intent intent =  new Intent(context, MenuActivity.class);
-                context.startActivity(intent);
-            }
-        });
     }
 
     @Override

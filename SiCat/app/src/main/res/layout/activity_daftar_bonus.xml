@@ -32,11 +32,11 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:backgroundTint="@color/colorWhite"
+            android:backgroundTint="@color/color2"
             android:hint="@string/search_your_recipes"
-            android:textColorHint="@color/colorHint"
+            android:textColorHint="@color/color2"
             android:imeOptions="actionNext"
-            android:textColor="@color/colorPrimaryLight"
+            android:textColor="@color/color2"
             android:gravity="center_vertical"
             android:drawableLeft="@drawable/ic_search_primary_light"
             android:drawableStart="@drawable/ic_search_primary_light"
@@ -52,11 +52,11 @@
 
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_cart"
-        android:layout_below="@+id/layout_cari"
+    <ListView
+        android:id="@+id/lv_bonus"
+        android:layout_below="@id/layout_cari"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"></ListView>
 
 </RelativeLayout>

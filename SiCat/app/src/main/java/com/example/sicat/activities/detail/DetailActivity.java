@@ -261,7 +261,7 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
 
                 Common.cartRepository.updateCart(cartItem);
 
-                sessionManager.setDataGanti(false,id);
+                sessionManager.setDataGanti(false,id,false);
 
                 Toast.makeText(DetailActivity.this,"Add to Cart Berhasil!" , Toast.LENGTH_SHORT).show();
 

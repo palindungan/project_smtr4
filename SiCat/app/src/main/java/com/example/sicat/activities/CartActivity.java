@@ -99,7 +99,7 @@ public class CartActivity extends AppCompatActivity {
             case R.id.menu_cancel:
                 Common.cartRepository.emptyCart();
                 sessionManager.setCart(false,"KOSONG","KOSONG","KOSONG","KOSONG","KOSONG");
-                sessionManager.setDataGanti(false,0);
+                sessionManager.setDataGanti(false,0,false);
                 Intent intent2 = new Intent(CartActivity.this,HomeActivity.class);
                 startActivity(intent2);
                 break;

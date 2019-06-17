@@ -35,6 +35,13 @@
             android:text="Daftar Menu" />
 
         <Button
+            android:id="@+id/btn_daftar_bonus"
+            android:text="Daftar Bonus"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
             android:id="@+id/btn_prasmanan"
             android:text="Pemesanan Prasmanan"
             android:layout_gravity="center"

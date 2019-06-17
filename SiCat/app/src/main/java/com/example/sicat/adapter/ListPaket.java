@@ -138,6 +138,7 @@ public class ListPaket extends BaseAdapter {
                                     String id_menu = object.getString("id_menu").trim();
                                     String nm_menu = object.getString("nm_menu").trim();
                                     String id_kat = object.getString("id_kat").trim();
+                                    String nm_kat = object.getString("nm_kat").trim();
                                     String tipe = object.getString("tipe").trim();
                                     String hrg_porsi = object.getString("hrg_porsi").trim();
                                     String gambar = object.getString("gambar").trim();
@@ -153,7 +154,7 @@ public class ListPaket extends BaseAdapter {
 
                                     cartItem.id_menu = id_menu;
                                     cartItem.nm_menu = nm_menu;
-                                    cartItem.nm_kat = id_kat;
+                                    cartItem.nm_kat = nm_kat;
                                     cartItem.tipe = tipe;
                                     cartItem.hrg_porsi = Integer.parseInt(hrg_porsi);
                                     cartItem.gambar = gambar;

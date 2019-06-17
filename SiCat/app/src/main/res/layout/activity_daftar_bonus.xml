@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:backgroundTint="@color/color2"
-            android:hint="@string/search_your_recipes"
+            android:hint="Cari Bonus Menu"
             android:textColorHint="@color/color2"
             android:imeOptions="actionNext"
             android:textColor="@color/color2"

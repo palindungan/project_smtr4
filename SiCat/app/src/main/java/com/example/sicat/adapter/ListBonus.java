@@ -1,6 +1,7 @@
 package com.example.sicat.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +10,12 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.sicat.Database.ModelDB.Cart;
 import com.example.sicat.R;
+import com.example.sicat.activities.CartActivity;
+import com.example.sicat.common.Common;
 import com.example.sicat.controllers.SessionManager;
 import com.example.sicat.model.Bonus;
 import com.squareup.picasso.Picasso;
@@ -85,18 +90,42 @@ public class ListBonus extends BaseAdapter {
         holder.btn_pilih.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Boolean status = true;
-//                String id_paket = dataModelArrayList.get(position).getId_paket();
-//                String nm_paket = dataModelArrayList.get(position).getNm_paket();
-//                String hrg_paket = String.valueOf(dataModelArrayList.get(position).getHrg_paket());
-//                String jml_menu = String.valueOf(dataModelArrayList.get(position).getJml_menu());
-//                String jml_bonus = String.valueOf(dataModelArrayList.get(position).getJml_bonus());
-//                sessionManager.setCart(status,id_paket,nm_paket,hrg_paket,jml_menu,jml_bonus);
-//
-//                retrieveJSON(id_paket);
-//
-//                Intent intent = new Intent(context,CartActivity.class);
-//                context.startActivity(intent); // membuka activity lain
+
+                int id  = sessionManager.getIdTabel();
+
+                //ambil dari model
+                String id_menu = dataModelArrayList.get(position).getId_menu();
+                String nm_menu = dataModelArrayList.get(position).getNm_menu();
+                String nm_kat = dataModelArrayList.get(position).getNm_kat();
+                String tipe = dataModelArrayList.get(position).getTipe();
+                int hrg_porsi = dataModelArrayList.get(position).getHrg_porsi();
+                String gambar = dataModelArrayList.get(position).getGambar();
+                String deskripsi = dataModelArrayList.get(position).getDeskripsi();
+                String id_bonus = dataModelArrayList.get(position).getId_bonus();
+                String id_kat = dataModelArrayList.get(position).getId_kat();
+
+                // create new cart item
+                Cart cartItem = new Cart();
+                cartItem.id = id;
+                cartItem.id_menu = id_menu;
+                cartItem.nm_menu = nm_menu;
+                cartItem.nm_kat = nm_kat;
+                cartItem.tipe = tipe;
+                cartItem.hrg_porsi = hrg_porsi;
+                cartItem.gambar = gambar;
+                cartItem.deskripsi = deskripsi;
+                cartItem.id_bonus = id_bonus;
+                cartItem.id_kat = id_kat;
+
+                Common.cartRepository.updateCart(cartItem);
+
+                sessionManager.setDataGanti(false,id,false);
+
+                Toast.makeText(context,"ADD TO CART Berhasil!" , Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(context, CartActivity.class);
+                context.startActivity(intent);
+
             }
         });
 

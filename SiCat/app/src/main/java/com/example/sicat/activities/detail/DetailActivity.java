@@ -26,7 +26,9 @@ import android.widget.Toast;
 import com.example.sicat.Database.ModelDB.Cart;
 import com.example.sicat.R;
 import com.example.sicat.Utils;
+import com.example.sicat.activities.CartActivity;
 import com.example.sicat.common.Common;
+import com.example.sicat.controllers.SessionManager;
 import com.example.sicat.model.Meals;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
@@ -71,10 +73,15 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
     @BindView(R.id.btn_add_cart)
     Button btn_add_cart;
 
+    SessionManager sessionManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        // inisialisasi session
+        sessionManager = new SessionManager(this);
 
         ButterKnife.bind(this);
 
@@ -177,6 +184,13 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
         params.put("deskripsi",deskripsi);
         params.put("id_kat",id_kat);
 
+        Boolean status = sessionManager.getGantiStatus();
+        if(status==false){
+            btn_add_cart.setVisibility(View.GONE);
+        }else {
+            btn_add_cart.setVisibility(View.VISIBLE);
+        }
+
         btn_add_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -230,8 +244,11 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
         builder.setPositiveButton("ADD to Cart", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                int id  = sessionManager.getIdTabel();
+
                 // create new cart item
                 Cart cartItem = new Cart();
+                cartItem.id = id;
                 cartItem.id_menu = params.get("id_menu");
                 cartItem.nm_menu = params.get("nm_menu");
                 cartItem.nm_kat = params.get("nm_kat");
@@ -239,13 +256,18 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
                 cartItem.hrg_porsi = Integer.parseInt(params.get("hrg_porsi"));
                 cartItem.gambar = params.get("gambar");
                 cartItem.deskripsi = params.get("deskripsi");
+                cartItem.id_bonus = "kosong";
+                cartItem.id_kat = params.get("id_kat");
 
-                // add to db
-                Common.cartRepository.insertToCart(cartItem);
+                Common.cartRepository.updateCart(cartItem);
 
-                //Log.d("KIKA_DEBUG", new Gson().toJson(cartItem));
+                sessionManager.setDataGanti(false,id);
 
                 Toast.makeText(DetailActivity.this,"Add to Cart Berhasil!" , Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(DetailActivity.this, CartActivity.class);
+                startActivity(intent);
+
             }
         });
         builder.show();

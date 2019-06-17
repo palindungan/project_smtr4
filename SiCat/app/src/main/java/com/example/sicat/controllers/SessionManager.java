@@ -36,6 +36,9 @@ public class SessionManager {
     public String JML_MENU = "JML_MENU";
     public String JML_BONUS = "JML_BONUS";
 
+    public String GANTI_STATUS = "GANTI_STATUS";
+    public String ID_TABEL = "ID_TABEL";
+
     // konstructor
     public SessionManager(Context context) {
         this.context = context;
@@ -127,6 +130,26 @@ public class SessionManager {
 
         // mengembalikan nilai yang diambil dari session
         return sharedPreferences.getBoolean(CART_STATUS,false);
+    }
+
+    // untuk button ganti menu di dalam cart
+    public void setDataGanti(boolean ganti_status,int id_tabel){
+        editor.putBoolean(GANTI_STATUS,ganti_status);
+        editor.putInt(ID_TABEL,id_tabel);
+
+        editor.apply();
+    }
+
+    public int getIdTabel(){
+
+        // mengembalikan nilai yang diambil dari session
+        return sharedPreferences.getInt(ID_TABEL,0);
+    }
+
+    public boolean getGantiStatus(){
+
+        // mengembalikan nilai yang diambil dari session
+        return sharedPreferences.getBoolean(GANTI_STATUS,false);
     }
 
 }

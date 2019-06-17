@@ -1,6 +1,7 @@
 package com.example.sicat.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,7 +14,9 @@ import android.widget.TextView;
 import com.example.sicat.Database.ModelDB.Cart;
 import com.example.sicat.R;
 import com.example.sicat.activities.CartActivity;
+import com.example.sicat.activities.daftar_menu.MenuActivity;
 import com.example.sicat.common.Common;
+import com.example.sicat.controllers.SessionManager;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -25,9 +28,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     CartActivity cartActivity = new CartActivity();
 
+    SessionManager sessionManager;
+
     public CartAdapter(Context context, List<Cart> cartList) {
         this.context = context;
         this.cartList = cartList;
+
+        // inisialisasi objek session
+        sessionManager = new SessionManager(context);
     }
 
     @NonNull
@@ -60,14 +68,22 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.txt_product_tipe.setText(cartList.get(position).tipe);
 
         Cart deletedItem = cartList.get(position);
+        int id_tabel = cartList.get(position).id;
 
-        holder.btn_hapus.setOnClickListener(new View.OnClickListener() {
+        holder.btn_ubah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // hapus di adapter
-                removeItem(position);
+                //removeItem(position);
                 // hapus di room database
-                Common.cartRepository.deleteCartItem(deletedItem);
+                //Common.cartRepository.deleteCartItem(deletedItem);
+
+                // set session
+                sessionManager.setDataGanti(true,id_tabel);
+
+                // ganti activity
+                Intent intent =  new Intent(context, MenuActivity.class);
+                context.startActivity(intent);
             }
         });
     }
@@ -81,7 +97,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     {
         ImageView img_product;
         TextView txt_product_name,txt_product_kat,txt_product_tipe;
-        Button btn_hapus;
+        Button btn_ubah;
 
         public CartViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -90,7 +106,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             txt_product_name = (TextView)itemView.findViewById(R.id.txt_product_name);
             txt_product_kat = (TextView)itemView.findViewById(R.id.txt_product_kat);
             txt_product_tipe = (TextView)itemView.findViewById(R.id.txt_product_tipe);
-            btn_hapus = (Button)itemView.findViewById(R.id.btn_hapus);
+            btn_ubah = (Button)itemView.findViewById(R.id.btn_ubah);
         }
     }
 

@@ -44,7 +44,7 @@ public class PaketListActivity extends AppCompatActivity {
     }
 
     private void retrieveJSON() {
-        showSimpleProgressDialog(this, "Loading...", "Fetching Json", false);
+        showSimpleProgressDialog(this, "Loading...", "Fetching Json", true);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URLstring, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

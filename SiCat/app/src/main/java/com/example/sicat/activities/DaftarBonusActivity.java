@@ -60,7 +60,7 @@ public class DaftarBonusActivity extends AppCompatActivity {
     }
 
     private void retrieveJSON() {
-        showSimpleProgressDialog(this, "Loading...", "Fetching Json", false);
+        showSimpleProgressDialog(this, "Loading...", "Fetching Json", true);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URLstring, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -89,6 +89,7 @@ public class DaftarBonusActivity extends AppCompatActivity {
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    removeSimpleProgressDialog();
                 }
             }
         },
@@ -97,6 +98,7 @@ public class DaftarBonusActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         //displaying the error in toast if occurrs
                         Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        removeSimpleProgressDialog();
                     }
                 });
         // request queue

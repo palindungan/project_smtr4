@@ -1,8 +1,10 @@
 package com.example.sicat.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -91,7 +93,7 @@ public class ListBonus extends BaseAdapter {
             @Override
             public void onClick(View v) {
 
-                int id  = sessionManager.getIdTabel();
+                int id_tabel  = sessionManager.getIdTabel();
 
                 //ambil dari model
                 String id_menu = dataModelArrayList.get(position).getId_menu();
@@ -104,27 +106,50 @@ public class ListBonus extends BaseAdapter {
                 String id_bonus = dataModelArrayList.get(position).getId_bonus();
                 String id_kat = dataModelArrayList.get(position).getId_kat();
 
-                // create new cart item
-                Cart cartItem = new Cart();
-                cartItem.id = id;
-                cartItem.id_menu = id_menu;
-                cartItem.nm_menu = nm_menu;
-                cartItem.nm_kat = nm_kat;
-                cartItem.tipe = tipe;
-                cartItem.hrg_porsi = hrg_porsi;
-                cartItem.gambar = gambar;
-                cartItem.deskripsi = deskripsi;
-                cartItem.id_bonus = id_bonus;
-                cartItem.id_kat = id_kat;
+                // dialog
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                        context);
+                // set title dialog
+                alertDialogBuilder.setTitle("Memilih bonus menu "+nm_menu+" ?");
+                // set pesan dari dialog
+                alertDialogBuilder
+                        .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
 
-                Common.cartRepository.updateCart(cartItem);
+                                // create new cart item
+                                Cart cartItem = new Cart();
+                                cartItem.id = id_tabel;
+                                cartItem.id_menu = id_menu;
+                                cartItem.nm_menu = nm_menu;
+                                cartItem.nm_kat = nm_kat;
+                                cartItem.tipe = tipe;
+                                cartItem.hrg_porsi = hrg_porsi;
+                                cartItem.gambar = gambar;
+                                cartItem.deskripsi = deskripsi;
+                                cartItem.id_bonus = id_bonus;
+                                cartItem.id_kat = id_kat;
 
-                sessionManager.setDataGanti(false,id,false);
+                                Common.cartRepository.updateCart(cartItem);
 
-                Toast.makeText(context,"ADD TO CART Berhasil!" , Toast.LENGTH_SHORT).show();
+                                sessionManager.setDataGanti(false,id,false);
 
-                Intent intent = new Intent(context, CartActivity.class);
-                context.startActivity(intent);
+                                Toast.makeText(context,"ADD TO CART Berhasil!" , Toast.LENGTH_SHORT).show();
+
+                                Intent intent = new Intent(context, CartActivity.class);
+                                context.startActivity(intent);
+
+                            }
+                        })
+                        .setNegativeButton("Tidak",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                // membuat alert dialog dari builder
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                // menampilkan alert dialog
+                alertDialog.show();
+                // end of dialog
 
             }
         });

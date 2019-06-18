@@ -148,4 +148,5 @@ public class ListBonus extends BaseAdapter {
         protected TextView txt_product_name, txt_product_kat, txt_product_tipe;
         protected Button btn_pilih;
     }
+
 }

@@ -168,7 +168,8 @@ public class CartActivity extends AppCompatActivity {
                 .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int id) {
                         // masuk form inputan transaksi pemesanan
-
+                        Intent intent = new Intent(CartActivity.this,FormOrderActivity.class);
+                        startActivity(intent);
                     }
                 })
                 .setNegativeButton("Tidak",new DialogInterface.OnClickListener() {

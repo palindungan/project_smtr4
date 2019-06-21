@@ -58,7 +58,7 @@ public class FormOrderActivity extends AppCompatActivity {
         txt_kembalian = (TextView)findViewById(R.id.txt_kembalian);
         sisa = (CardView)findViewById(R.id.sisa);
 
-        //sisa.setVisibility(View.INVISIBLE);
+        sisa.setVisibility(View.INVISIBLE);
 
         String nm_paket = sessionManager.getCartDetailPaket().get("NM_PAKET");
         String hrg_paket = sessionManager.getCartDetailPaket().get("HRG_PAKET");

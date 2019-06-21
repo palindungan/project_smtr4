@@ -108,7 +108,7 @@ public class FormOrderFinishActivity extends AppCompatActivity {
         txt_tgl_pemesanan.setText(dateFormatter.format(newCalendar2.getTime()));
         txt_status.setText("invalid");
 
-        Toast.makeText(this,jml_porsi+" "+tot_biaya+" "+tot_bayar+" "+kembalian,Toast.LENGTH_LONG).show();
+        //Toast.makeText(this,jml_porsi+" "+tot_biaya+" "+tot_bayar+" "+kembalian,Toast.LENGTH_LONG).show();
 
         ButterKnife.bind(this);
         initActionBar();

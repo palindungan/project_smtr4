@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import com.example.sicat.activities.AccountActivity;
 import com.example.sicat.activities.FaceActivity;
 import com.example.sicat.activities.HomeActivity;
 import com.example.sicat.activities.LoginActivity;
@@ -74,7 +75,7 @@ public class SessionManager {
         if (!this.isLogin()){
             Intent i = new Intent(context, FaceActivity.class);
             context.startActivity(i);
-            ((HomeActivity) context).finish();
+            ((AccountActivity) context).finish();
         }
     }
 

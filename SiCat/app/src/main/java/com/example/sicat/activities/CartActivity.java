@@ -8,11 +8,13 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.sicat.Database.ModelDB.Cart;
 import com.example.sicat.R;
@@ -167,9 +169,16 @@ public class CartActivity extends AppCompatActivity {
                 .setMessage("Klik Ya untuk melakukan pemesanan !")
                 .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int id) {
-                        // masuk form inputan transaksi pemesanan
-                        Intent intent = new Intent(CartActivity.this,FormOrderActivity.class);
-                        startActivity(intent);
+                        Boolean login = sessionManager.isLogin();
+                        Boolean cart = sessionManager.getCartStatus();
+
+                        if (login == true && cart ==true){
+                            // masuk form inputan transaksi pemesanan
+                            Intent intent = new Intent(CartActivity.this,FormOrderActivity.class);
+                            startActivity(intent);
+                        }else {
+                            Toast.makeText(CartActivity.this ,"Pastikan Untuk Login dan Lakukan Pemesanan dulu !",Toast.LENGTH_SHORT).show();
+                        }
                     }
                 })
                 .setNegativeButton("Tidak",new DialogInterface.OnClickListener() {

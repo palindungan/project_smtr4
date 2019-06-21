@@ -53,6 +53,8 @@ public class FormOrderFinishActivity extends AppCompatActivity {
 
         sessionManager = new SessionManager(this);
 
+        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+
         txt_id_customer = (TextView) findViewById(R.id.txt_id_customer);
         txt_id_paket = (TextView) findViewById(R.id.txt_id_paket);
         txt_tgl_acara = (TextView) findViewById(R.id.txt_tgl_acara);
@@ -74,6 +76,8 @@ public class FormOrderFinishActivity extends AppCompatActivity {
 
         txt_id_customer.setText(id_customer);
         txt_id_paket.setText(id_paket);
+        Calendar newCalendar2 = Calendar.getInstance();
+        txt_tgl_pemesanan.setText(dateFormatter.format(newCalendar2.getTime()));
         txt_status.setText("Belum Di Konfirmasi");
 
         Toast.makeText(this,jml_porsi+" "+tot_biaya+" "+tot_bayar+" "+kembalian,Toast.LENGTH_LONG).show();
@@ -86,7 +90,7 @@ public class FormOrderFinishActivity extends AppCompatActivity {
          * jadi nanti tanggal nya akan diformat menjadi
          * misalnya 01-12-2017
          */
-        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+
         txt_tgl_acara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,7 +159,6 @@ public class FormOrderFinishActivity extends AppCompatActivity {
          * Calendar untuk mendapatkan tanggal sekarang
          */
         Calendar newCalendar = Calendar.getInstance();
-        txt_tgl_pemesanan.setText(dateFormatter.format(newCalendar.getTime()));
 
         /**
          * Initiate DatePicker dialog

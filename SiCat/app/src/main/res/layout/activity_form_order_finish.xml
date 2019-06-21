@@ -135,9 +135,9 @@
                             android:textColor="@color/colorPrimaryDark"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
-                        <TextView
+                        <EditText
                             android:id="@+id/txt_ket_acara"
-                            android:text="@string/dot_loading"
+                            android:hint="..."
                             android:paddingLeft="14dp"
                             android:paddingRight="14dp"
                             android:paddingTop="5dp"

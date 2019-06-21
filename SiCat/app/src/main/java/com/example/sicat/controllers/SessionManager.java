@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import com.example.sicat.activities.FaceActivity;
 import com.example.sicat.activities.HomeActivity;
 import com.example.sicat.activities.LoginActivity;
+import com.example.sicat.common.Common;
 
 import java.util.HashMap;
 
@@ -94,6 +95,7 @@ public class SessionManager {
     }
 
     public void logout(){
+        Common.cartRepository.emptyCart();
         editor.clear();
         editor.commit();
 

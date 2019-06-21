@@ -1,32 +1,51 @@
 package com.example.sicat.activities;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.sicat.R;
 import com.example.sicat.controllers.SessionManager;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 import butterknife.BindView;
@@ -40,11 +59,18 @@ public class FormOrderFinishActivity extends AppCompatActivity {
     Button btn_confirm;
     TextView txt_id_customer,txt_id_paket,txt_tgl_acara,txt_tgl_pemesanan,txt_tgl_pelunasan,txt_status;
     EditText txt_ket_acara;
+    Button btn_photo;
+
+    ImageView upload_image;
+    private Bitmap bitmap;
 
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
 
     SessionManager sessionManager;
+
+    private static String URL_UPLOAD ="http://192.168.56.1/project_smtr4/api/transaksi/upload_gambar/";
+    private static final String TAG = FormOrderFinishActivity.class.getSimpleName(); // getting the info
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +88,8 @@ public class FormOrderFinishActivity extends AppCompatActivity {
         txt_tgl_pemesanan = (TextView) findViewById(R.id.txt_tgl_pemesanan);
         txt_tgl_pelunasan = (TextView) findViewById(R.id.txt_tgl_pelunasan);
         txt_status = (TextView) findViewById(R.id.txt_status);
+        upload_image = (ImageView) findViewById(R.id.upload_image);
+        btn_photo = (Button) findViewById(R.id.btn_photo);
 
         // untuk menerima data dari session
         HashMap<String , String> customer = sessionManager.getCustomerDetail();
@@ -78,7 +106,7 @@ public class FormOrderFinishActivity extends AppCompatActivity {
         txt_id_paket.setText(id_paket);
         Calendar newCalendar2 = Calendar.getInstance();
         txt_tgl_pemesanan.setText(dateFormatter.format(newCalendar2.getTime()));
-        txt_status.setText("Belum Di Konfirmasi");
+        txt_status.setText("invalid");
 
         Toast.makeText(this,jml_porsi+" "+tot_biaya+" "+tot_bayar+" "+kembalian,Toast.LENGTH_LONG).show();
 
@@ -95,6 +123,13 @@ public class FormOrderFinishActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showDateDialog();
+            }
+        });
+
+        btn_photo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseFile();
             }
         });
 
@@ -197,13 +232,6 @@ public class FormOrderFinishActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-    public static String getCalculatedDate2(String dateFormat, int days) {
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat s = new SimpleDateFormat(dateFormat);
-        cal.add(Calendar.DAY_OF_YEAR, days);
-        return s.format(new Date(cal.getTimeInMillis()));
-    }
-
     public String getCalculatedDate(String date, String dateFormat, int days) {
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat s = new SimpleDateFormat(dateFormat);
@@ -220,5 +248,92 @@ public class FormOrderFinishActivity extends AppCompatActivity {
             Log.e("TAG", "Error in Parsing Date : " + e.getMessage());
         }
         return null;
+    }
+
+    // untuk menampilkan layar pilih gambar
+    private void chooseFile(){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent,"Pilih Gambar"),1);
+    }
+
+    // proses pengolahan gambar
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null){
+            Uri filePath = data.getData();
+            try {
+
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),filePath);
+                upload_image.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // upload fungsi disini
+            // UploadPicture(getStringImage(bitmap));
+        }
+    }
+
+    // proses dengan API
+    private void UploadPicture(final String photo) {
+
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Uploading...");
+        progressDialog.show();
+
+        StringRequest stringRequest =  new StringRequest(Request.Method.POST, URL_UPLOAD,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        Log.i(TAG,response.toString());
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String success = jsonObject.getString("success");
+
+                            if (success.equals("1")){
+                                Toast.makeText(FormOrderFinishActivity.this,"success",Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(FormOrderFinishActivity.this,"Try Again ! "+e.toString(),Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(FormOrderFinishActivity.this,"Try Again "+error.toString(),Toast.LENGTH_SHORT).show();
+                    }
+                })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("photo",photo);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+    }
+
+    // mengkonversi Bitmap ke String
+    public String getStringImage(Bitmap bitmap){
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+
+        byte[] imageByteArray = byteArrayOutputStream.toByteArray();
+        String encodedImage = Base64.encodeToString(imageByteArray,Base64.DEFAULT);
+
+        return encodedImage;
     }
 }

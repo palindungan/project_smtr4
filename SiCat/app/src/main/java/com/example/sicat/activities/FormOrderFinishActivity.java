@@ -65,7 +65,7 @@ public class FormOrderFinishActivity extends AppCompatActivity {
     Toolbar toolbar;
 
     Button btn_confirm;
-    TextView txt_id_customer,txt_id_paket,txt_tgl_acara,txt_tgl_pemesanan,txt_tgl_pelunasan,txt_status;
+    TextView txt_id_customer, txt_id_paket, txt_tgl_acara, txt_tgl_pemesanan, txt_tgl_pelunasan, txt_status;
     EditText txt_ket_acara;
     Button btn_photo;
 
@@ -77,7 +77,8 @@ public class FormOrderFinishActivity extends AppCompatActivity {
 
     SessionManager sessionManager;
 
-    private static String URL_UPLOAD ="http://192.168.56.1/project_smtr4/api/transaksi/Data_prasmanan/";
+    private static String URL_UPLOAD = "http://192.168.56.1/project_smtr4/api/transaksi/Data_prasmanan/";
+    private static String URL_UPLOAD_DETAIL = "http://192.168.56.1/project_smtr4/api/transaksi/Data_prasmanan_detail/";
     private static final String TAG = FormOrderFinishActivity.class.getSimpleName(); // getting the info
 
     List<Cart> cartList = new ArrayList<>();
@@ -92,6 +93,8 @@ public class FormOrderFinishActivity extends AppCompatActivity {
     String tot_biaya;
     String tot_bayar;
     String kembalian;
+
+    String id_prasmanan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,9 +117,9 @@ public class FormOrderFinishActivity extends AppCompatActivity {
         btn_photo = (Button) findViewById(R.id.btn_photo);
 
         // untuk menerima data dari session
-        HashMap<String , String> customer = sessionManager.getCustomerDetail();
+        HashMap<String, String> customer = sessionManager.getCustomerDetail();
         id_customer = customer.get(sessionManager.ID_CUSTOMER);
-        HashMap<String , String> cart = sessionManager.getCartDetailPaket();
+        HashMap<String, String> cart = sessionManager.getCartDetailPaket();
         id_paket = cart.get(sessionManager.ID_PAKET);
 
         jml_porsi = getIntent().getStringExtra("EXTRA_JML_PORSI");
@@ -164,16 +167,16 @@ public class FormOrderFinishActivity extends AppCompatActivity {
         });
     }
 
-    private void initActionBar(){
+    private void initActionBar() {
         setSupportActionBar(toolbar);
-        if(getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
 
             case android.R.id.home:
                 onBackPressed();
@@ -182,7 +185,7 @@ public class FormOrderFinishActivity extends AppCompatActivity {
         return true;
     }
 
-    private void showDialog(){
+    private void showDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 this);
 
@@ -192,32 +195,17 @@ public class FormOrderFinishActivity extends AppCompatActivity {
         // set pesan dari dialog
         alertDialogBuilder
                 .setMessage("Klik Ya untuk melakukan pemesanan !")
-                .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
+                .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
                         // masuk form inputan transaksi pemesanan
-
-                        int count = Common.cartRepository.countCartItems();
-                        String countx = String.valueOf(count);
 
                         // data prasmanan
                         UploadData(data_photo);
 
-                        // data detail prasmanan
-                        compositeDisposable.add(
-                                Common.cartRepository.getCartItems()
-                                        .observeOn(AndroidSchedulers.mainThread())
-                                        .subscribeOn(Schedulers.io())
-                                        .subscribe(new Consumer<List<Cart>>() {
-                                            @Override
-                                            public void accept(List<Cart> carts) throws Exception {
-                                                cartList = carts;
-                                                Toast.makeText(FormOrderFinishActivity.this,countx,Toast.LENGTH_SHORT).show();
-                                            }
-                                        })
-                        );
+
                     }
                 })
-                .setNegativeButton("Tidak",new DialogInterface.OnClickListener() {
+                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                     }
@@ -230,7 +218,7 @@ public class FormOrderFinishActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-    private void showDateDialog(){
+    private void showDateDialog() {
 
         /**
          * Calendar untuk mendapatkan tanggal sekarang
@@ -262,11 +250,11 @@ public class FormOrderFinishActivity extends AppCompatActivity {
 
                 // mengatur -7 hari sebelum acara
                 String acara = txt_tgl_acara.getText().toString().trim();
-                String pelunasan = getCalculatedDate(acara,"yyyy-MM-dd",-7);
+                String pelunasan = getCalculatedDate(acara, "yyyy-MM-dd", -7);
                 txt_tgl_pelunasan.setText(pelunasan);
             }
 
-        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+        }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
 
         /**
          * Tampilkan DatePicker dialog
@@ -293,11 +281,11 @@ public class FormOrderFinishActivity extends AppCompatActivity {
     }
 
     // untuk menampilkan layar pilih gambar
-    private void chooseFile(){
+    private void chooseFile() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent,"Pilih Gambar"),1);
+        startActivityForResult(Intent.createChooser(intent, "Pilih Gambar"), 1);
     }
 
     // proses pengolahan gambar
@@ -305,11 +293,11 @@ public class FormOrderFinishActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null){
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
             Uri filePath = data.getData();
             try {
 
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),filePath);
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 upload_image.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -322,58 +310,122 @@ public class FormOrderFinishActivity extends AppCompatActivity {
     // proses dengan API
     private void UploadData(String photo) {
 
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Uploading...");
-        progressDialog.show();
-
         String ket_acara = txt_ket_acara.getText().toString().trim();
         String tgl_pemesanan = txt_tgl_pemesanan.getText().toString().trim();
         String tgl_pelunasan = txt_tgl_pelunasan.getText().toString().trim();
         String tgl_acara = txt_tgl_acara.getText().toString().trim();
         String status = txt_status.getText().toString().trim();
 
-        StringRequest stringRequest =  new StringRequest(Request.Method.POST, URL_UPLOAD,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_UPLOAD,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        progressDialog.dismiss();
-                        Log.i(TAG,response.toString());
+                        Log.i(TAG, response.toString());
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString("success");
+                            String success = jsonObject.getString("success"); //id_prasmanan
+                            if (success.equals("1")) {
 
-                            if (success.equals("1")){
-                                Toast.makeText(FormOrderFinishActivity.this,"success",Toast.LENGTH_SHORT).show();
+                                id_prasmanan = jsonObject.getString("id_prasmanan");
+
+                                // data detail prasmanan
+                                compositeDisposable.add(
+                                        Common.cartRepository.getCartItems()
+                                                .observeOn(AndroidSchedulers.mainThread())
+                                                .subscribeOn(Schedulers.io())
+                                                .subscribe(new Consumer<List<Cart>>() {
+                                                    @Override
+                                                    public void accept(List<Cart> carts) throws Exception {
+                                                        cartList = carts;
+                                                        int count = Common.cartRepository.countCartItems();
+
+                                                        for (int i = 0; i < count; i++) {
+                                                            String id_menu = cartList.get(i).id_menu;
+                                                            String id_bonus = cartList.get(i).id_bonus;
+
+                                                            Log.d("cobaa", id_prasmanan + " " + id_menu + " " + id_bonus);
+                                                            UploadDataDetail(id_prasmanan,id_menu,id_bonus);
+                                                        }
+
+                                                        Common.cartRepository.emptyCart();
+                                                        sessionManager.setCart(false,"KOSONG","KOSONG","KOSONG","KOSONG","KOSONG");
+                                                        sessionManager.setDataGanti(false,0,false);
+                                                        Intent intent2 = new Intent(FormOrderFinishActivity.this,HomeActivity.class);
+                                                        startActivity(intent2);
+                                                    }
+                                                })
+                                );
+
+                                Toast.makeText(FormOrderFinishActivity.this, "success", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(FormOrderFinishActivity.this,"Try Again ! "+e.toString(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(FormOrderFinishActivity.this, "Try Again ! " + e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
-                        Toast.makeText(FormOrderFinishActivity.this,"Try Again "+error.toString(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(FormOrderFinishActivity.this, "Try Again " + error.toString(), Toast.LENGTH_SHORT).show();
                     }
-                })
-        {
+                }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params = new HashMap<>();
-                params.put("id_customer",id_customer);
-                params.put("id_paket",id_paket);
-                params.put("jml_porsi",jml_porsi);
-                params.put("tot_biaya",tot_biaya);
-                params.put("tot_dp",tot_bayar);
-                params.put("sisa_bayar",kembalian);
-                params.put("photo",photo);
-                params.put("ket_acara",ket_acara);
-                params.put("tgl_pemesanan",tgl_pemesanan);
-                params.put("tgl_pelunasan",tgl_pelunasan);
-                params.put("tgl_acara",tgl_acara);
-                params.put("status",status);
+                Map<String, String> params = new HashMap<>();
+                params.put("id_customer", id_customer);
+                params.put("id_paket", id_paket);
+                params.put("jml_porsi", jml_porsi);
+                params.put("tot_biaya", tot_biaya);
+                params.put("tot_dp", tot_bayar);
+                params.put("sisa_bayar", kembalian);
+                params.put("photo", photo);
+                params.put("ket_acara", ket_acara);
+                params.put("tgl_pemesanan", tgl_pemesanan);
+                params.put("tgl_pelunasan", tgl_pelunasan);
+                params.put("tgl_acara", tgl_acara);
+                params.put("status", status);
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+    }
+
+    private void UploadDataDetail(String id_prasmanan, String id_menu, String id_bonus) {
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_UPLOAD_DETAIL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.i(TAG, response.toString());
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String success = jsonObject.getString("success");
+
+                            if (success.equals("1")) {
+                                Toast.makeText(FormOrderFinishActivity.this, "success", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(FormOrderFinishActivity.this, "Try Again ! " + e.toString(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(FormOrderFinishActivity.this, "Try Again volley error " + error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("id_prasmanan", id_prasmanan);
+                params.put("id_menu", id_menu);
+                params.put("id_bonus", id_bonus);
                 return params;
             }
         };
@@ -384,13 +436,13 @@ public class FormOrderFinishActivity extends AppCompatActivity {
     }
 
     // mengkonversi Bitmap ke String
-    public String getStringImage(Bitmap bitmap){
+    public String getStringImage(Bitmap bitmap) {
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
 
         byte[] imageByteArray = byteArrayOutputStream.toByteArray();
-        String encodedImage = Base64.encodeToString(imageByteArray,Base64.DEFAULT);
+        String encodedImage = Base64.encodeToString(imageByteArray, Base64.DEFAULT);
 
         return encodedImage;
     }

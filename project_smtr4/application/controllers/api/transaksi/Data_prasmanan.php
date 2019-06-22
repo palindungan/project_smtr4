@@ -60,6 +60,7 @@ class Data_prasmanan extends REST_Controller
             if ($insert) {
                 // membuat array untuk di transfer ke API
                 $result["success"] = "1";
+                $result["id_prasmanan"] = $kode;
                 $result["message"] = "success";
                 $this->response($result, 200);
             } else {

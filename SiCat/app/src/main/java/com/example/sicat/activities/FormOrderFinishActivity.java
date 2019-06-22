@@ -77,12 +77,21 @@ public class FormOrderFinishActivity extends AppCompatActivity {
 
     SessionManager sessionManager;
 
-    private static String URL_UPLOAD ="http://192.168.56.1/project_smtr4/api/transaksi/upload_gambar/";
+    private static String URL_UPLOAD ="http://192.168.56.1/project_smtr4/api/transaksi/Data_prasmanan/";
     private static final String TAG = FormOrderFinishActivity.class.getSimpleName(); // getting the info
 
     List<Cart> cartList = new ArrayList<>();
 
     CompositeDisposable compositeDisposable;
+
+    String data_photo;
+
+    String id_customer;
+    String id_paket;
+    String jml_porsi;
+    String tot_biaya;
+    String tot_bayar;
+    String kembalian;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +101,7 @@ public class FormOrderFinishActivity extends AppCompatActivity {
         sessionManager = new SessionManager(this);
         compositeDisposable = new CompositeDisposable();
 
-        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);//"dd-MM-yyyy" "yyyy-MM-dd"
 
         txt_id_customer = (TextView) findViewById(R.id.txt_id_customer);
         txt_id_paket = (TextView) findViewById(R.id.txt_id_paket);
@@ -106,14 +115,14 @@ public class FormOrderFinishActivity extends AppCompatActivity {
 
         // untuk menerima data dari session
         HashMap<String , String> customer = sessionManager.getCustomerDetail();
-        String id_customer = customer.get(sessionManager.ID_CUSTOMER);
+        id_customer = customer.get(sessionManager.ID_CUSTOMER);
         HashMap<String , String> cart = sessionManager.getCartDetailPaket();
-        String id_paket = cart.get(sessionManager.ID_PAKET);
+        id_paket = cart.get(sessionManager.ID_PAKET);
 
-        String jml_porsi = getIntent().getStringExtra("EXTRA_JML_PORSI");
-        String tot_biaya = getIntent().getStringExtra("EXTRA_TOT_BIAYA");
-        String tot_bayar = getIntent().getStringExtra("EXTRA_TOT_BAYAR");
-        String kembalian = getIntent().getStringExtra("EXTRA_SISA_BAYAR");
+        jml_porsi = getIntent().getStringExtra("EXTRA_JML_PORSI");
+        tot_biaya = getIntent().getStringExtra("EXTRA_TOT_BIAYA");
+        tot_bayar = getIntent().getStringExtra("EXTRA_TOT_BAYAR");
+        kembalian = getIntent().getStringExtra("EXTRA_SISA_BAYAR");
 
         txt_id_customer.setText(id_customer);
         txt_id_paket.setText(id_paket);
@@ -190,6 +199,10 @@ public class FormOrderFinishActivity extends AppCompatActivity {
                         int count = Common.cartRepository.countCartItems();
                         String countx = String.valueOf(count);
 
+                        // data prasmanan
+                        UploadData(data_photo);
+
+                        // data detail prasmanan
                         compositeDisposable.add(
                                 Common.cartRepository.getCartItems()
                                         .observeOn(AndroidSchedulers.mainThread())
@@ -249,7 +262,7 @@ public class FormOrderFinishActivity extends AppCompatActivity {
 
                 // mengatur -7 hari sebelum acara
                 String acara = txt_tgl_acara.getText().toString().trim();
-                String pelunasan = getCalculatedDate(acara,"dd-MM-yyyy",-7);
+                String pelunasan = getCalculatedDate(acara,"yyyy-MM-dd",-7);
                 txt_tgl_pelunasan.setText(pelunasan);
             }
 
@@ -302,17 +315,22 @@ public class FormOrderFinishActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            // upload fungsi disini
-            // UploadPicture(getStringImage(bitmap));
+            data_photo = getStringImage(bitmap);
         }
     }
 
     // proses dengan API
-    private void UploadPicture(final String photo) {
+    private void UploadData(String photo) {
 
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Uploading...");
         progressDialog.show();
+
+        String ket_acara = txt_ket_acara.getText().toString().trim();
+        String tgl_pemesanan = txt_tgl_pemesanan.getText().toString().trim();
+        String tgl_pelunasan = txt_tgl_pelunasan.getText().toString().trim();
+        String tgl_acara = txt_tgl_acara.getText().toString().trim();
+        String status = txt_status.getText().toString().trim();
 
         StringRequest stringRequest =  new StringRequest(Request.Method.POST, URL_UPLOAD,
                 new Response.Listener<String>() {
@@ -344,7 +362,18 @@ public class FormOrderFinishActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
+                params.put("id_customer",id_customer);
+                params.put("id_paket",id_paket);
+                params.put("jml_porsi",jml_porsi);
+                params.put("tot_biaya",tot_biaya);
+                params.put("tot_dp",tot_bayar);
+                params.put("sisa_bayar",kembalian);
                 params.put("photo",photo);
+                params.put("ket_acara",ket_acara);
+                params.put("tgl_pemesanan",tgl_pemesanan);
+                params.put("tgl_pelunasan",tgl_pelunasan);
+                params.put("tgl_acara",tgl_acara);
+                params.put("status",status);
                 return params;
             }
         };
@@ -365,4 +394,6 @@ public class FormOrderFinishActivity extends AppCompatActivity {
 
         return encodedImage;
     }
+
+
 }

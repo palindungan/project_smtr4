@@ -55,20 +55,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         // set data disini
         Picasso.get().load(cartList.get(position).gambar).into(holder.img_product);
 
-        // jika menu bonus
-        holder.txt_product_name.setText(cartList.get(position).nm_menu+" (Bonus)");
-        holder.btn_ubah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // set session
-                sessionManager.setDataGanti(false,id_tabel,true);
-
-                // ganti activity
-                Intent intent =  new Intent(context, DaftarBonusActivity.class);
-                context.startActivity(intent);
-            }
-        });
-
         // jika hanya menu biasa
         switch (id_bonus)
         {
@@ -88,6 +74,21 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 });
 
                 break;
+
+            default:
+                // jika menu bonus
+                holder.txt_product_name.setText(cartList.get(position).nm_menu+" (Bonus)");
+                holder.btn_ubah.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // set session
+                        sessionManager.setDataGanti(false,id_tabel,true);
+
+                        // ganti activity
+                        Intent intent =  new Intent(context, DaftarBonusActivity.class);
+                        context.startActivity(intent);
+                    }
+                });
         }
 
         // holder.txt_product_name.setText(cartList.get(position).nm_menu);

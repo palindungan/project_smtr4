@@ -59,17 +59,12 @@ public class HomeActivity extends AppCompatActivity {
     SessionManager sessionManager; // session
     String getID;
 
-    private Button btn_photo, link_daftar_menu, btn_daftar_bonus , btn_prasmanan; // btn
-    private Bitmap bitmap;
-    CircleImageView profile_image;
-
+    private Button link_daftar_menu, btn_daftar_bonus , btn_prasmanan; // btn
+    
     // deklarasi untuk drawer
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
-
-    private static String URL_UPLOAD ="http://192.168.56.1/project_smtr4/api/transaksi/upload_gambar/";
-    private static final String TAG = HomeActivity.class.getSimpleName(); // getting the info
 
     NotificationBadge badge;
     ImageView cart_icon;
@@ -85,10 +80,8 @@ public class HomeActivity extends AppCompatActivity {
         HashMap<String , String> customer = sessionManager.getCustomerDetail();
         getID = customer.get(sessionManager.ID_CUSTOMER);
 
-        btn_photo = findViewById(R.id.btn_photo); // button untuk upload
         link_daftar_menu = findViewById(R.id.link_daftar_menu);
         btn_daftar_bonus = findViewById(R.id.btn_daftar_bonus);
-        profile_image = findViewById(R.id.profile_image); // untuk gambar yang ingin di upload
         btn_prasmanan = findViewById(R.id.btn_prasmanan);
 
         // untuk drawer
@@ -117,13 +110,6 @@ public class HomeActivity extends AppCompatActivity {
                         return true;
                 }
                 return true;
-            }
-        });
-
-        btn_photo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                chooseFile();
             }
         });
 
@@ -211,93 +197,6 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    // untuk menampilkan layar pilih gambar
-    private void chooseFile(){
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent,"Pilih Gambar"),1);
-    }
-
-    // proses pengolahan gambar
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null){
-            Uri filePath = data.getData();
-            try {
-
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),filePath);
-                profile_image.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            UploadPicture(getID,getStringImage(bitmap));
-        }
-    }
-
-    // proses dengan API
-    private void UploadPicture(final String id,final String photo) {
-
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Uploading...");
-        progressDialog.show();
-
-        StringRequest stringRequest =  new StringRequest(Request.Method.POST, URL_UPLOAD,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        progressDialog.dismiss();
-                        Log.i(TAG,response.toString());
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString("success");
-
-                            if (success.equals("1")){
-                                Toast.makeText(HomeActivity.this,"success",Toast.LENGTH_SHORT).show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(HomeActivity.this,"Try Again ! "+e.toString(),Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
-                        Toast.makeText(HomeActivity.this,"Try Again "+error.toString(),Toast.LENGTH_SHORT).show();
-                    }
-        })
-        {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params = new HashMap<>();
-                params.put("id",id);
-                params.put("photo",photo);
-                return params;
-            }
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-
-    }
-
-    // mengkonversi Bitmap ke String
-    public String getStringImage(Bitmap bitmap){
-
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
-
-        byte[] imageByteArray = byteArrayOutputStream.toByteArray();
-        String encodedImage = Base64.encodeToString(imageByteArray,Base64.DEFAULT);
-
-        return encodedImage;
     }
 
     @Override

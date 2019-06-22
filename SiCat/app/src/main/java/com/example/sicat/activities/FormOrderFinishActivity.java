@@ -28,9 +28,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -41,7 +43,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.sicat.Database.ModelDB.Cart;
 import com.example.sicat.R;
+import com.example.sicat.common.Common;
 import com.example.sicat.controllers.SessionManager;
 
 import org.json.JSONException;
@@ -50,6 +54,10 @@ import org.w3c.dom.Text;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 public class FormOrderFinishActivity extends AppCompatActivity {
 
@@ -72,12 +80,17 @@ public class FormOrderFinishActivity extends AppCompatActivity {
     private static String URL_UPLOAD ="http://192.168.56.1/project_smtr4/api/transaksi/upload_gambar/";
     private static final String TAG = FormOrderFinishActivity.class.getSimpleName(); // getting the info
 
+    List<Cart> cartList = new ArrayList<>();
+
+    CompositeDisposable compositeDisposable;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form_order_finish);
 
         sessionManager = new SessionManager(this);
+        compositeDisposable = new CompositeDisposable();
 
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 
@@ -173,6 +186,22 @@ public class FormOrderFinishActivity extends AppCompatActivity {
                 .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int id) {
                         // masuk form inputan transaksi pemesanan
+
+                        int count = Common.cartRepository.countCartItems();
+                        String countx = String.valueOf(count);
+
+                        compositeDisposable.add(
+                                Common.cartRepository.getCartItems()
+                                        .observeOn(AndroidSchedulers.mainThread())
+                                        .subscribeOn(Schedulers.io())
+                                        .subscribe(new Consumer<List<Cart>>() {
+                                            @Override
+                                            public void accept(List<Cart> carts) throws Exception {
+                                                cartList = carts;
+                                                Toast.makeText(FormOrderFinishActivity.this,countx,Toast.LENGTH_SHORT).show();
+                                            }
+                                        })
+                        );
                     }
                 })
                 .setNegativeButton("Tidak",new DialogInterface.OnClickListener() {

@@ -60,7 +60,7 @@ public class HomeActivity extends AppCompatActivity {
     String getID;
 
     private Button link_daftar_menu, btn_daftar_bonus , btn_prasmanan; // btn
-    
+
     // deklarasi untuk drawer
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;

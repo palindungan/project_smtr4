@@ -8,6 +8,7 @@
     tools:context=".activities.HomeActivity">
 
     <LinearLayout
+        android:paddingTop="100dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">

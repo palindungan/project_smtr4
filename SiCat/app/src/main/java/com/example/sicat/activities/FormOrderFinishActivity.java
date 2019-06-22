@@ -352,6 +352,7 @@ public class FormOrderFinishActivity extends AppCompatActivity {
                                                         sessionManager.setDataGanti(false,0,false);
                                                         Intent intent2 = new Intent(FormOrderFinishActivity.this,HomeActivity.class);
                                                         startActivity(intent2);
+                                                        compositeDisposable.clear();
                                                     }
                                                 })
                                 );

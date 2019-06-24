@@ -40,4 +40,10 @@ class M_data_prasmanan extends CI_Model
     {
         return $this->db->get('tabel_prasmanan_valid');
     }
+
+    // untuk mengambil nilai data yg di edit
+    function edit_data($table, $where)
+    {
+        return $this->db->get_where($table, $where);
+    }
 }

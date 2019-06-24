@@ -69,7 +69,7 @@
                                 <td><?php echo $d->status ?></td>
                                 <td>
                                     <div class="table-actions">
-                                        <a href="<?php echo site_url('admin/user/data_user/edit_user/' . $d->id_prasmanan) ?>"><i class="ik ik-eye"></i></a>
+                                        <a href="<?php echo site_url('admin/prasmanan/data_prasmanan/edit_data_invalid/' . $d->id_prasmanan) ?>"><i class="ik ik-eye"></i></a>
                                         <a href="javascript:void(0)" class="hapus" id="<?php echo $d->id_prasmanan ?>" name="<?php echo $d->id_prasmanan ?>"><i class="ik ik-trash-2"></i></a>
                                     </div>
                                 </td>

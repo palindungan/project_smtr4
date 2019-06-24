@@ -27,6 +27,45 @@
             </div>
         </div>
 
+        <!-- modal edit -->
+        <div class="modal fade" id="edit_modal" tabindex="-1" role="dialog" aria-labelledby="demoModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="demoModalLabel">View Detail Prasmanan</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form action="" method="post" class="forms-sample form_data">
+                            <div class="modal-body isi_modal_edit">
+                                <!-- modal edit form disini -->
+
+                                <table id="" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Kode</th>
+                                            <th>Nama Menu</th>
+                                            <th class="nosort">&nbsp;</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="isi_tabel">
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Kembali</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- bagian ISI KONTEN -->
         <div class="card">
             <div class="card-header">
@@ -65,7 +104,7 @@
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label style="visibility:hidden" for="detail_view">none</label>
-                                <button type="button" class="form-control" id="detail_view" name="detail_view"><i class="ik ik-zoom-in"></i> Detail Cart</button>
+                                <button type="button" class="form-control tombol_edit" data-toggle="modal" data-target="#edit_modal" id="<?php echo $d2->id_prasmanan ?>"><i class="ik ik-zoom-in"></i> Detail Cart</button>
                             </div>
                         </div>
                     </div>
@@ -208,12 +247,64 @@
 <script src="<?php echo base_url(); ?>assets/template/back/js/form-components.js"></script>
 
 <!-- script logika -->
-<script type="text/javascript">
+<script>
     $(document).ready(function() {
-
         // deklarasi selec2 picker
         $(".select2").select2();
 
+        // untuk ketika halaman pertama dieksekusi
+        searchMovie();
     });
+
+    // untuk edit modal
+    $(".tombol_edit").click(function() {
+
+        $('.isi_tabel').html('');
+
+        // ajax
+        var m = $(this).attr("id");
+        $.ajax({
+            url: "<?php echo base_url() . 'admin/prasmanan/data_prasmanan/lihat_detail'; ?>",
+            type: "post",
+            data: {
+                id_prasmanan: m
+            },
+            success: function(data) {
+
+                var obj = JSON.parse(data);
+
+                let menu_menu = obj['tbl_detail_menu'];
+                let bonus_bonus = obj['tbl_detail_bonus'];
+
+                $.each(menu_menu, function(i, data) {
+
+                    $('.isi_tabel').append(`
+
+                            <tr>
+                                <td>` + menu_menu[i].id_menu + `</td>
+                                <td>` + menu_menu[i].nm_menu + `</td>
+                            </tr>
+
+                    `);
+
+                });
+
+                $.each(bonus_bonus, function(j, data) {
+
+                    $('.isi_tabel').append(`
+
+                        <tr>
+                            <td>` + bonus_bonus[j].id_bonus + `</td>
+                            <td>` + bonus_bonus[j].nm_menu + `</td>
+                        </tr>
+                    
+                    `);
+
+                });
+            }
+        });
+        // ajax
+    });
+    // end of untuk edit modal
 </script>
 <!-- script logika -->

@@ -81,4 +81,20 @@ class Data_Prasmanan extends CI_Controller
 
         $this->load->view('admin/_view', $data);
     }
+
+    function lihat_detail()
+    {
+        // mengambil data dari ajax bertipe post
+        $id_prasmanan = $this->input->post('id_prasmanan');
+
+        // memasukkan data ke array
+        $where = array('id_prasmanan' => $id_prasmanan);
+
+        $data_edit['tbl_detail_menu'] = $this->M_data_prasmanan->edit_data("tabel_detail_prasmanan_menu", $where)->result();
+        $data_edit['tbl_detail_bonus'] = $this->M_data_prasmanan->edit_data("tabel_detail_prasmanan_bonus", $where)->result();
+
+        $data = json_encode($data_edit);
+
+        echo $data;
+    }
 }

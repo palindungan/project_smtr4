@@ -131,7 +131,7 @@ public class FormOrderFinishActivity extends AppCompatActivity {
         txt_id_paket.setText(id_paket);
         Calendar newCalendar2 = Calendar.getInstance();
         txt_tgl_pemesanan.setText(dateFormatter.format(newCalendar2.getTime()));
-        txt_status.setText("invalid");
+        txt_status.setText("Pending");
 
         //Toast.makeText(this,jml_porsi+" "+tot_biaya+" "+tot_bayar+" "+kembalian,Toast.LENGTH_LONG).show();
 
@@ -314,7 +314,7 @@ public class FormOrderFinishActivity extends AppCompatActivity {
         String tgl_pemesanan = txt_tgl_pemesanan.getText().toString().trim();
         String tgl_pelunasan = txt_tgl_pelunasan.getText().toString().trim();
         String tgl_acara = txt_tgl_acara.getText().toString().trim();
-        String status = txt_status.getText().toString().trim();
+        String status = "pending";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_UPLOAD,
                 new Response.Listener<String>() {

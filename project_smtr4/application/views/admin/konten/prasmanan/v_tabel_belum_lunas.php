@@ -33,14 +33,19 @@
             <div class="card-header">
                 <ul class="nav nav-pills">
                     <li class="nav-item">
-                        <a class="nav-link <?php if ($this->uri->segment('4') == 'data_tabel_invalid') {
+                        <a class="nav-link <?php if ($this->uri->segment('4') == 'data_tabel_pending') {
                                                 echo 'active';
-                                            } ?>" href="<?php echo base_url(); ?>admin/prasmanan/data_prasmanan/data_tabel_invalid">Data Invalid</a>
+                                            } ?>" href="<?php echo base_url(); ?>admin/prasmanan/data_prasmanan/data_tabel_pending">Data Pending</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php if ($this->uri->segment('4') == 'data_tabel_valid') {
+                        <a class="nav-link <?php if ($this->uri->segment('4') == 'data_tabel_belum_lunas') {
                                                 echo 'active';
-                                            } ?>" href="<?php echo base_url(); ?>admin/prasmanan/data_prasmanan/data_tabel_valid">Data Valid</a>
+                                            } ?>" href="<?php echo base_url(); ?>admin/prasmanan/data_prasmanan/data_tabel_belum_lunas">Data Belum Lunas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if ($this->uri->segment('4') == 'data_tabel_lunas') {
+                                                echo 'active';
+                                            } ?>" href="<?php echo base_url(); ?>admin/prasmanan/data_prasmanan/data_tabel_lunas">Data Lunas</a>
                     </li>
                 </ul>
             </div>
@@ -61,7 +66,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($tbl_data_prasmanan_invalid as $d) {  ?>
+                        <?php foreach ($tbl_data_prasmanan_belum_lunas as $d) {  ?>
                             <tr>
                                 <td><?php echo $d->id_prasmanan ?></td>
                                 <td><?php echo $d->nm_customer ?></td>
@@ -69,8 +74,7 @@
                                 <td><?php echo $d->status ?></td>
                                 <td>
                                     <div class="table-actions">
-                                        <a href="<?php echo site_url('admin/prasmanan/data_prasmanan/edit_data_invalid/' . $d->id_prasmanan) ?>"><i class="ik ik-eye"></i></a>
-                                        <a href="javascript:void(0)" class="hapus" id="<?php echo $d->id_prasmanan ?>" name="<?php echo $d->id_prasmanan ?>"><i class="ik ik-trash-2"></i></a>
+                                        <a href="<?php echo site_url('admin/prasmanan/data_prasmanan/edit_data_belum_lunas/' . $d->id_prasmanan) ?>"><i class="ik ik-eye"></i></a>
                                     </div>
                                 </td>
                             </tr>

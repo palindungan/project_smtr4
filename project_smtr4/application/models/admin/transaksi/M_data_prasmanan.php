@@ -30,15 +30,21 @@ class M_data_prasmanan extends CI_Model
     }
 
     // mengambil semua data pada tabel
-    function tampil_data_prasmanan_invalid()
+    function tampil_data_prasmanan_lunas()
     {
-        return $this->db->get('tabel_prasmanan_invalid');
+        return $this->db->get('tabel_prasmanan_lunas');
     }
 
     // mengambil semua data pada tabel
-    function tampil_data_prasmanan_valid()
+    function tampil_data_prasmanan_belum_lunas()
     {
-        return $this->db->get('tabel_prasmanan_valid');
+        return $this->db->get('tabel_prasmanan_belum_lunas');
+    }
+
+    // mengambil semua data pada tabel
+    function tampil_data_prasmanan_pending()
+    {
+        return $this->db->get('tabel_prasmanan_pending');
     }
 
     // untuk mengambil nilai data yg di edit

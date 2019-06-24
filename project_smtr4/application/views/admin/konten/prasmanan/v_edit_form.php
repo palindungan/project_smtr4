@@ -32,14 +32,19 @@
             <div class="card-header">
                 <ul class="nav nav-pills">
                     <li class="nav-item">
-                        <a class="nav-link <?php if ($this->uri->segment('4') == 'edit_data_invalid') {
+                        <a class="nav-link <?php if ($this->uri->segment('4') == 'edit_data_pending') {
                                                 echo 'active';
-                                            } ?>" href="<?php echo base_url(); ?>admin/prasmanan/data_prasmanan/data_tabel_invalid">Data Invalid</a>
+                                            } ?>" href="<?php echo base_url(); ?>admin/prasmanan/data_prasmanan/data_tabel_pending">Data Pending</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php if ($this->uri->segment('4') == 'edit_data_valid') {
+                        <a class="nav-link <?php if ($this->uri->segment('4') == 'edit_data_belum_lunas') {
                                                 echo 'active';
-                                            } ?>" href="<?php echo base_url(); ?>admin/prasmanan/data_prasmanan/data_tabel_valid">Data Valid</a>
+                                            } ?>" href="<?php echo base_url(); ?>admin/prasmanan/data_prasmanan/data_tabel_belum_lunas">Data Belum Lunas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php if ($this->uri->segment('4') == 'edit_data_lunas') {
+                                                echo 'active';
+                                            } ?>" href="<?php echo base_url(); ?>admin/prasmanan/data_prasmanan/data_tabel_lunas">Data Lunas</a>
                     </li>
                 </ul>
             </div>
@@ -53,17 +58,127 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="id_menu">Kode Menu</label>
-                                <input type="text" class="form-control" id="id_menu" readonly="" name="id_menu" value="">
+                                <label for="id_prasmanan">Kode Prasmanan</label>
+                                <input type="text" class="form-control" id="id_prasmanan" readonly="" name="id_prasmanan" value="<?php echo $d2->id_prasmanan ?>">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="id_customer">Kode Pelanggan</label>
+                                <input type="text" class="form-control" id="id_customer" readonly="" name="id_customer" value="<?php echo $d2->id_customer ?>">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="nm_menu">Nama</label>
-                                <input type="text" class="form-control" id="nm_menu" placeholder="Nama" name="nm_menu" value="">
+                                <label for="nm_customer">Nama Pelanggan</label>
+                                <input type="text" class="form-control" id="nm_customer" readonly="" name="nm_customer" value="<?php echo $d2->nm_customer ?>">
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="id_paket">Kode Paket</label>
+                                <input type="text" class="form-control" id="id_paket" readonly="" name="id_paket" value="<?php echo $d2->id_paket ?>">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="nm_paket">Nama Paket</label>
+                                <input type="text" class="form-control" id="nm_paket" readonly="" name="nm_paket" value="<?php echo $d2->nm_paket ?>">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="jml_porsi">Jumlah Porsi</label>
+                                <input type="text" class="form-control" id="jml_porsi" readonly="" name="jml_porsi" value="<?php echo $d2->jml_porsi ?>">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="tot_biaya">Total Biaya</label>
+                                <input type="text" class="form-control" id="tot_biaya" readonly="" name="tot_biaya" value="<?php echo $d2->tot_biaya ?>">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="tot_dp">Total DP</label>
+                                <input type="text" class="form-control" id="tot_dp" readonly="" name="tot_dp" value="<?php echo $d2->tot_dp ?>">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="sisa_bayar">Sisa Bayar</label>
+                                <input type="text" class="form-control" id="sisa_bayar" readonly="" name="sisa_bayar" value="<?php echo $d2->sisa_bayar ?>">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="upload_bukti_bayar">Upload Bukti Bayar</label>
+                                <input type="text" class="form-control" id="upload_bukti_bayar" readonly="" name="upload_bukti_bayar" value="<?php echo $d2->upload_bukti_bayar ?>">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="ket_acara">Keterangan Acara</label>
+                                <input type="text" class="form-control" id="ket_acara" readonly="" name="ket_acara" value="<?php echo $d2->ket_acara ?>">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="tgl_pemesanan">Tanggal Pemesanan</label>
+                                <input type="text" class="form-control" id="tgl_pemesanan" readonly="" name="tgl_pemesanan" value="<?php echo $d2->tgl_pemesanan ?>">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="tgl_pelunasan">Tanggal Pelunasan</label>
+                                <input type="text" class="form-control" id="tgl_pelunasan" readonly="" name="tgl_pelunasan" value="<?php echo $d2->tgl_pelunasan ?>">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="tgl_acara">Tanggal Acara</label>
+                                <input type="text" class="form-control" id="tgl_acara" readonly="" name="tgl_acara" value="<?php echo $d2->tgl_acara ?>">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <select class="form-control" id="status" name="status">
+                                    <option value="pending" <?php if ($d2->status == "pending") {
+                                                                echo "selected";
+                                                            } ?>>Pending</option>
+                                    <option value="belum_lunas" <?php if ($d2->status == "belum_lunas") {
+                                                                    echo "selected";
+                                                                } ?>>Belum Lunas</option>
+                                    <option value="lunas" <?php if ($d2->status == "lunas") {
+                                                                echo "selected";
+                                                            } ?>>Lunas</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <button type="submit" class="btn btn-primary mr-2">Update</button>
                     <button type="button" class="btn btn-light" data-dismiss="modal">Kembali</button>

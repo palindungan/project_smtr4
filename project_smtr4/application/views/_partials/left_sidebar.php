@@ -70,6 +70,13 @@
                     </div>
                 </div>
 
+                <div class="nav-lavel">Transaksi</div>
+                <div class="nav-item <?php if ($this->uri->segment('2') == 'data_prasmanan') {
+                                            echo 'active';
+                                        } ?>">
+                    <a href="<?php echo base_url(); ?>admin/prasmanan/data_prasmanan/data_tabel_invalid"><i class="ik ik-tag"></i><span>Prasmanan</span></a>
+                </div>
+
                 <div class="nav-lavel">Extra</div>
                 <div class="nav-item <?php if ($this->uri->segment('2') == 'laporan') {
                                             echo 'active';

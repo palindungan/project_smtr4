@@ -28,4 +28,16 @@ class M_data_prasmanan extends CI_Model
 
         return $kd;
     }
+
+    // mengambil semua data pada tabel
+    function tampil_data_prasmanan_invalid()
+    {
+        return $this->db->get('tabel_prasmanan_invalid');
+    }
+
+    // mengambil semua data pada tabel
+    function tampil_data_prasmanan_valid()
+    {
+        return $this->db->get('tabel_prasmanan_valid');
+    }
 }

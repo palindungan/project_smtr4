@@ -62,6 +62,12 @@
                                 <input type="text" class="form-control" id="id_prasmanan" readonly="" name="id_prasmanan" value="<?php echo $d2->id_prasmanan ?>">
                             </div>
                         </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label style="visibility:hidden" for="detail_view">none</label>
+                                <button type="button" class="form-control" id="detail_view" name="detail_view"><i class="ik ik-zoom-in"></i> Detail Cart</button>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="row">

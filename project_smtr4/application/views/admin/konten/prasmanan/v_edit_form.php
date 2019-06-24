@@ -93,7 +93,7 @@
 
                 <?php foreach ($tbl_prasmanan as $d2) { ?>
 
-                    <?php echo form_open_multipart('admin/menu/data_menu/update_aksi'); ?>
+                    <?php echo form_open_multipart('admin/prasmanan/data_prasmanan/update_aksi'); ?>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -252,8 +252,6 @@
         // deklarasi selec2 picker
         $(".select2").select2();
 
-        // untuk ketika halaman pertama dieksekusi
-        searchMovie();
     });
 
     // untuk edit modal

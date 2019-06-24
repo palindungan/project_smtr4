@@ -52,4 +52,11 @@ class M_data_prasmanan extends CI_Model
     {
         return $this->db->get_where($table, $where);
     }
+
+    // untuk update data
+    function update_data($where, $data, $table)
+    {
+        $this->db->where($where);
+        $this->db->update($table, $data);
+    }
 }

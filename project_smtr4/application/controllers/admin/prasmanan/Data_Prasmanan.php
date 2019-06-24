@@ -97,4 +97,30 @@ class Data_Prasmanan extends CI_Controller
 
         echo $data;
     }
+
+    function update_aksi()
+    {
+        // mengambil dari inputan (name)
+        $id_prasmanan = $this->input->post('id_prasmanan');
+        $status = $this->input->post('status');
+
+        // memasukkan data ke dalam array assoc
+        $data = array(
+            'status' => $status
+        );
+
+        // memasukkan data ke dalam array assoc
+        $where['id_prasmanan'] = $id_prasmanan;
+
+        $this->M_data_prasmanan->update_data($where, $data, 'tbl_prasmanan');
+
+        // kembali ke halaman utama
+        if ($status == "pending") {
+            redirect('admin/prasmanan/data_prasmanan/data_tabel_pending');
+        } elseif ($status == "belum_lunas") {
+            redirect('admin/prasmanan/data_prasmanan/data_tabel_belum_lunas');
+        } elseif ($status == "lunas") {
+            redirect('admin/prasmanan/data_prasmanan/data_tabel_lunas');
+        }
+    }
 }

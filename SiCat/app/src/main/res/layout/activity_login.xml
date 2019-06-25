@@ -25,7 +25,7 @@
             android:layout_height="match_parent"
             android:alpha="0.2"
             android:scaleType="centerCrop"
-            android:src="@drawable/bg_face" />
+            android:src="@drawable/bg_front" />
 
         <TextView
             android:id="@+id/text_logo"
@@ -34,7 +34,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/gitchgitch"
-            android:text="SiCat"
+            android:text="SIKat"
             android:textColor="@color/colorWhite"
             android:textSize="30dp" />
 
@@ -70,7 +70,7 @@
                     android:inputType="textEmailAddress"
                     android:textColor="@color/colorWhite"
                     android:textColorHint="@color/colorHint"
-                    android:textSize="20dp" />
+                    android:textSize="18dp" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -93,7 +93,7 @@
                     android:inputType="textPassword"
                     android:textColor="@color/colorWhite"
                     android:textColorHint="@color/colorHint"
-                    android:textSize="20dp" />
+                    android:textSize="18dp" />
             </android.support.design.widget.TextInputLayout>
 
 
@@ -106,7 +106,7 @@
                 android:background="@drawable/button_white"
                 android:text="@string/Login"
                 android:textAllCaps="false"
-                android:textColor="@color/colorRose"
+                android:textColor="@color/colorDarkPrimaryOrange"
                 android:textSize="12dp" />
 
         </RelativeLayout>

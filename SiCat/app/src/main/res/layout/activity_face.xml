@@ -23,7 +23,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/bg_face"
+            android:src="@drawable/bg_front"
             android:alpha="0.2"
             android:scaleType="centerCrop"/>
 
@@ -34,7 +34,7 @@
             android:textSize="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SiCat"
+            android:text="SIKat"
             android:textColor="@color/colorWhite"
             android:fontFamily="@font/gitchgitch"/>
 
@@ -87,7 +87,7 @@
                 android:layout_weight="1"
                 android:text="Log In"
                 android:textAllCaps="false"
-                android:textColor="@color/color1"
+                android:textColor="@color/colorDarkPrimaryOrange"
                 android:textSize="12dp"/>
 
             <Button
@@ -98,7 +98,7 @@
                 android:layout_weight="1"
                 android:text="Skip"
                 android:textAllCaps="false"
-                android:textColor="@color/color1"
+                android:textColor="@color/colorDarkPrimaryOrange"
                 android:textSize="12dp"/>
 
         </LinearLayout>
@@ -112,7 +112,7 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/button_transparent"
-            android:text="Tidak Punya Akun ? Sign Up"
+            android:text="Tidak Punya Akun ? Daftar Akun"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
             android:textSize="12dp"/>

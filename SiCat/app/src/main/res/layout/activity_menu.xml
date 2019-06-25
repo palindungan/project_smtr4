@@ -10,13 +10,13 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppBarLayoutTheme">
+        android:theme="@style/AppTheme1">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:popupTheme="@style/AppBaseTheme1"
             app:titleTextColor="@color/colorWhite"/>
 
     </android.support.design.widget.AppBarLayout>
@@ -37,7 +37,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
-                android:background="@color/colorRose"/>
+                android:background="@color/colorAccentOrange"/>
 
             <!-- TODO 2 Add <TextView> for Title of Header -->
             <TextView
@@ -63,7 +63,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="15dp"
-                app:cardBackgroundColor="@color/colorPrimaryDark"
+                app:cardBackgroundColor="@color/colorWhite"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="0dp">
 
@@ -80,7 +80,7 @@
                         android:hint="@string/search_your_recipes"
                         android:textColorHint="@color/colorHint"
                         android:imeOptions="actionNext"
-                        android:textColor="@color/colorPrimaryLight"
+                        android:textColor="@color/colorWhite"
                         android:gravity="center_vertical"
                         android:drawableLeft="@drawable/ic_search_primary_light"
                         android:drawableStart="@drawable/ic_search_primary_light"
@@ -90,9 +90,9 @@
                         android:id="@+id/btn_cari"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:backgroundTint="@color/colorWhite"
                         android:text="Cari"
-                        android:textColor="@android:color/white" />
+                        android:textColor="@color/colorSecondaryText" />
 
                 </LinearLayout>
 
@@ -121,7 +121,7 @@
                 android:id="@+id/titleCategory"
                 android:text="@string/meal_categories"
                 android:textSize="19dp"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorPrimaryOrange"
                 android:textStyle="bold"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"

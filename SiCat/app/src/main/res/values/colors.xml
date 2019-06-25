@@ -28,4 +28,5 @@
     <color name="colorAccentOrange">#FFC107</color>
     <color name="colorSecondaryText">#757575</color>
     <color name="colorDivideColor">#BDBDBD</color>
+    <color name="colorWhite1">#FFFFFF</color>
 </resources>

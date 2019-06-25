@@ -39,6 +39,16 @@
             android:fontFamily="@font/gitchgitch"/>
 
         <TextView
+            android:id="@+id/text_logo1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="55dp"
+            android:text="Sistem Informasi Katering"
+            android:textColor="@color/colorWhite"
+            android:textSize="18dp"/>
+
+        <TextView
             android:id="@+id/label_1"
             android:layout_above="@id/label_2"
             android:layout_width="wrap_content"

@@ -6,17 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".activities.RegisterActivity">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.2"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_front" />
+
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppBarLayoutTheme">
+        android:theme="@style/AppTheme1">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+            app:popupTheme="@style/AppBaseTheme1"/>
 
     </android.support.design.widget.AppBarLayout>
 
@@ -36,6 +48,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
                 <android.support.design.widget.TextInputLayout
@@ -48,7 +61,7 @@
                         android:layout_height="wrap_content"
                         android:hint="Nama"
                         android:inputType="textPersonName"
-                        android:textColor="@color/colorText" />
+                        android:textColor="@color/colorWhite" />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -61,7 +74,7 @@
                         android:layout_height="wrap_content"
                         android:hint="Alamat"
                         android:inputType="textMultiLine"
-                        android:textColor="@color/colorText" />
+                        android:textColor="@color/colorWhite" />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -72,7 +85,7 @@
                         android:id="@+id/jenkel_customer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorText" ></Spinner>
+                        android:textColor="@color/colorWhite" ></Spinner>
 
                 </android.support.design.widget.TextInputLayout>
 
@@ -86,7 +99,7 @@
                         android:layout_height="wrap_content"
                         android:hint="No Handphone"
                         android:inputType="text"
-                        android:textColor="@color/colorText" />
+                        android:textColor="@color/colorWhite" />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -99,7 +112,7 @@
                         android:layout_height="wrap_content"
                         android:hint="Email"
                         android:inputType="textEmailAddress"
-                        android:textColor="@color/colorText" />
+                        android:textColor="@color/colorWhite" />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -112,7 +125,7 @@
                         android:layout_height="wrap_content"
                         android:hint="Username"
                         android:inputType="textPersonName"
-                        android:textColor="@color/colorText" />
+                        android:textColor="@color/colorWhite" />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -126,7 +139,7 @@
                         android:layout_height="wrap_content"
                         android:hint="Password"
                         android:inputType="textPassword"
-                        android:textColor="@color/colorText" />
+                        android:textColor="@color/colorWhite" />
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -140,7 +153,8 @@
                         android:layout_height="wrap_content"
                         android:hint="Konfirmasi Password"
                         android:inputType="textPassword"
-                        android:textColor="@color/colorText" />
+                        android:textColor="@color/colorWhite"
+                        android:textColorHint="@color/colorHint"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <ProgressBar
@@ -153,11 +167,13 @@
                 <Button
                     android:id="@+id/btn_regist"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:backgroundTint="@color/colorPrimary"
+                    android:backgroundTint="@color/colorWhite"
+                    android:background="@drawable/button_white"
                     android:text="Register"
-                    android:textColor="@android:color/white" />
+                    android:textSize="12dp"
+                    android:textColor="@color/colorDarkPrimaryOrange" />
             </LinearLayout>
         </ScrollView>
 

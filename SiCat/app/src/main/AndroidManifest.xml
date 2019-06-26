@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme2"
         tools:replace="android:theme">
-        <activity android:name=".activities.FormOrderFinishActivity"></activity>
+        <activity android:name=".activities.TransaksiListActivity"></activity>
+        <activity android:name=".activities.FormOrderFinishActivity" />
         <activity android:name=".activities.FormOrderActivity" />
         <activity android:name=".activities.DaftarBonusActivity" />
         <activity android:name=".activities.CartDetailActivity" />

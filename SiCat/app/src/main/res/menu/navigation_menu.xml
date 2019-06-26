@@ -4,6 +4,10 @@
     <item android:id="@+id/account"
         android:title="My Account"/>
 
+    <item android:id="@+id/transaksi_list"
+        android:title="Transaksi"
+        />
+
     <item android:id="@+id/log_out"
         android:title="Log Out"/>
 

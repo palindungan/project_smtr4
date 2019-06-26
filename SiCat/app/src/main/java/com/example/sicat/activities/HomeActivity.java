@@ -106,6 +106,9 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.log_out:
                         sessionManager.logout();
                         break;
+                    case  R.id.transaksi_list:
+                        startActivity(new Intent(HomeActivity.this, TransaksiListActivity.class));
+                        break;
                     default:
                         return true;
                 }

@@ -185,7 +185,7 @@ public class TransaksiListActivity extends AppCompatActivity {
         transaksiListAdapter.setOnItemClickListener(new TransaksiListAdapter.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Toast.makeText(TransaksiListActivity.this ,"click array ke "+position,Toast.LENGTH_SHORT).show();
+                Toast.makeText(TransaksiListActivity.this ,dataModelArrayList.get(position).getId_prasmanan(),Toast.LENGTH_SHORT).show();
             }
         });
     }

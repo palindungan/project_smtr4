@@ -45,10 +45,16 @@ public class TransaksiListAdapter extends RecyclerView.Adapter<TransaksiListAdap
     public void onBindViewHolder(@NonNull TransaksiViewHolder transaksiViewHolder, int i) {
 
         //dataModelArrayList.get(position).getNm_menu()
-        transaksiViewHolder.txt_id_prasmanan.setText(dataModelArrayList.get(i).getId_prasmanan());
-        transaksiViewHolder.txt_nm_paket.setText(dataModelArrayList.get(i).getNm_paket());
-        transaksiViewHolder.txt_status.setText(dataModelArrayList.get(i).getStatus());
+        transaksiViewHolder.txt_id_prasmanan.setText("KODE PRASMANAN : "+dataModelArrayList.get(i).getId_prasmanan());
+        transaksiViewHolder.txt_nm_paket.setText("NAMA PAKET : "+dataModelArrayList.get(i).getNm_paket());
 
+        String status = dataModelArrayList.get(i).getStatus();
+
+        if(status.equals("belum_lunas")){
+            transaksiViewHolder.txt_status.setText("STATUS : Belum Lunas");
+        }else if(status.equals("pending")){
+            transaksiViewHolder.txt_status.setText("STATUS : Pending");
+        }
     }
 
     @Override

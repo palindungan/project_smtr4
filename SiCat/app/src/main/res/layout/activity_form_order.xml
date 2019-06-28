@@ -203,7 +203,7 @@
                         android:orientation="vertical">
                         <TextView
                             android:id="@+id/lbl_tot_bayar"
-                            android:text="Total Bayar "
+                            android:text="Total DP "
                             android:paddingLeft="14dp"
                             android:paddingRight="14dp"
                             android:paddingTop="14dp"
@@ -237,7 +237,7 @@
                         android:orientation="vertical">
                         <TextView
                             android:id="@+id/lbl_kembalian"
-                            android:text="Kembalian"
+                            android:text="Sisa Bayar"
                             android:paddingLeft="14dp"
                             android:paddingRight="14dp"
                             android:paddingTop="14dp"

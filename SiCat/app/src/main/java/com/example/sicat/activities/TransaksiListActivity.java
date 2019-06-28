@@ -49,6 +49,19 @@ public class TransaksiListActivity extends AppCompatActivity {
     private static String URL_Nya="http://192.168.56.1/project_smtr4/api/transaksi_list/Get_prasmanan_by_id/"; // url http request
     String id_customer;
 
+    String EXTRA_ID_PRASMANAN = "EXTRA_ID_PRASMANAN";
+    String EXTRA_NM_PAKET = "EXTRA_NM_PAKET";
+    String EXTRA_JML_PORSI = "EXTRA_JML_PORSI";
+    String EXTRA_TOT_BIAYA  = "EXTRA_TOT_BIAYA";
+    String EXTRA_TOT_DP = "EXTRA_TOT_DP";
+    String EXTRA_SISA_BAYAR = "EXTRA_SISA_BAYAR";
+    String EXTRA_KET_ACARA = "EXTRA_KET_ACARA";
+    String EXTRA_TGL_ACARA  = "EXTRA_TGL_ACARA";
+    String EXTRA_TGL_PEMESANAN = "EXTRA_TGL_PEMESANAN";
+    String EXTRA_TGL_PELUNASAN = "EXTRA_TGL_PELUNASAN";
+    String EXTRA_UPLOAD_BUKTI_BAYAR = "EXTRA_UPLOAD_BUKTI_BAYAR";
+    String EXTRA_STATUS  = "EXTRA_STATUS";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -185,7 +198,37 @@ public class TransaksiListActivity extends AppCompatActivity {
         transaksiListAdapter.setOnItemClickListener(new TransaksiListAdapter.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Toast.makeText(TransaksiListActivity.this ,dataModelArrayList.get(position).getId_prasmanan(),Toast.LENGTH_SHORT).show();
+
+                String id_prasmanan = dataModelArrayList.get(position).getId_prasmanan();
+                String nm_paket = dataModelArrayList.get(position).getNm_paket();
+                int jml_porsi = dataModelArrayList.get(position).getJml_porsi();
+                int tot_biaya = dataModelArrayList.get(position).getTot_biaya();
+                int tot_dp = dataModelArrayList.get(position).getTot_dp();
+                int sisa_bayar = dataModelArrayList.get(position).getSisa_bayar();
+                String ket_acara = dataModelArrayList.get(position).getKet_acara();
+                String tgl_acara = dataModelArrayList.get(position).getTgl_acara();
+                String tgl_pemesanan = dataModelArrayList.get(position).getTgl_pemesanan();
+                String tgl_pelunasan = dataModelArrayList.get(position).getTgl_pelunasan();
+                String upload_bukti_bayar = dataModelArrayList.get(position).getUpload_bukti_bayar();
+                String status = dataModelArrayList.get(position).getStatus();
+
+                Intent intent = new Intent(TransaksiListActivity.this,TransaksiListDetailActivity.class);
+                intent.putExtra(EXTRA_ID_PRASMANAN, id_prasmanan);
+                intent.putExtra(EXTRA_NM_PAKET, nm_paket);
+                intent.putExtra(EXTRA_JML_PORSI, jml_porsi);
+                intent.putExtra(EXTRA_TOT_BIAYA, tot_biaya);
+                intent.putExtra(EXTRA_TOT_DP, tot_dp);
+                intent.putExtra(EXTRA_SISA_BAYAR, sisa_bayar);
+                intent.putExtra(EXTRA_KET_ACARA, ket_acara);
+                intent.putExtra(EXTRA_TGL_ACARA, tgl_acara);
+                intent.putExtra(EXTRA_TGL_PEMESANAN, tgl_pemesanan);
+                intent.putExtra(EXTRA_TGL_PELUNASAN, tgl_pelunasan);
+                intent.putExtra(EXTRA_UPLOAD_BUKTI_BAYAR, upload_bukti_bayar);
+                intent.putExtra(EXTRA_STATUS, status);
+
+                //Toast.makeText(TransaksiListActivity.this ,dataModelArrayList.get(position).getStatus(),Toast.LENGTH_SHORT).show();
+
+                startActivity(intent);
             }
         });
     }

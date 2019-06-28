@@ -72,4 +72,30 @@ class M_data_prasmanan extends CI_Model
         $this->db->where($where);
         $this->db->update($table, $data);
     }
+
+    // mengambil semua data pada tabel
+    function tampil_data_detail_menu($id_prasmanan)
+    {
+        // pencarian semua yang sesuai id_paket
+        $this->db->select('*');
+        $this->db->from('tabel_detail_prasmanan_menu tb');
+
+        $where = "tb.id_prasmanan ='" . $id_prasmanan . "'";
+        $this->db->where($where);
+
+        return $this->db->get();
+    }
+
+    // mengambil semua data pada tabel
+    function tampil_data_detail_bonus($id_prasmanan)
+    {
+        // pencarian semua yang sesuai id_paket
+        $this->db->select('*');
+        $this->db->from('tabel_detail_prasmanan_bonus tb');
+
+        $where = "tb.id_prasmanan ='" . $id_prasmanan . "'";
+        $this->db->where($where);
+
+        return $this->db->get();
+    }
 }

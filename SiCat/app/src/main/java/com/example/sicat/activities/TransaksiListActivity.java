@@ -72,7 +72,7 @@ public class TransaksiListActivity extends AppCompatActivity {
 
         // inisialisasi objek session
         sessionManager = new SessionManager(this);
-        sessionManager.checkLogin(); // untuk mengecek apakah sudah login apa belum
+        sessionManager.checkLogin2(); // untuk mengecek apakah sudah login apa belum
 
         // untuk menerima data dari session
         HashMap<String, String> customer = sessionManager.getCustomerDetail();
@@ -82,9 +82,6 @@ public class TransaksiListActivity extends AppCompatActivity {
         recycler_transaksi.setLayoutManager(new LinearLayoutManager(this));
         recycler_transaksi.setNestedScrollingEnabled(true);
         recycler_transaksi.setHasFixedSize(true);
-
-        // ambil semua data
-        retrieveJSON(id_customer);
     }
 
     private void initActionBar(){
@@ -231,5 +228,13 @@ public class TransaksiListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // ambil semua data
+        retrieveJSON(id_customer);
     }
 }

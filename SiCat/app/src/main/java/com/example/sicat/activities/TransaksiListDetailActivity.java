@@ -1,9 +1,12 @@
 package com.example.sicat.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +38,7 @@ public class TransaksiListDetailActivity extends AppCompatActivity {
 
     TextView txt_id_prasmanan,txt_nm_paket,txt_jml_porsi,txt_tot_biaya,txt_tot_dp,txt_sisa_bayar,txt_ket_acara,txt_tgl_acara,txt_tgl_pemesanan,txt_tgl_pelunasan,txt_status;
     ImageView upload_image;
+    Button btn_link_detail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +74,8 @@ public class TransaksiListDetailActivity extends AppCompatActivity {
         upload_image = (ImageView) findViewById(R.id.upload_image);
         txt_status = (TextView) findViewById(R.id.txt_status);
 
+        btn_link_detail = (Button) findViewById(R.id.btn_link_detail);
+
         txt_id_prasmanan.setText(id_prasmanan);
         txt_nm_paket.setText(nm_paket);
         txt_jml_porsi.setText(String.valueOf(jml_porsi));
@@ -91,6 +97,15 @@ public class TransaksiListDetailActivity extends AppCompatActivity {
             String x = "Belum Lunas";
             txt_status.setText(x);
         }
+
+        btn_link_detail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TransaksiListDetailActivity.this,TransaksiListDetalItemActivity.class);
+                intent.putExtra("EXTRA_ID_PRASMANAN", id_prasmanan);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initActionBar(){

@@ -3,6 +3,7 @@ package com.example.sicat.controllers;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.widget.Toast;
 
 import com.example.sicat.activities.AccountActivity;
 import com.example.sicat.activities.FaceActivity;
@@ -77,6 +78,7 @@ public class SessionManager {
             Intent i = new Intent(context, FaceActivity.class);
             context.startActivity(i);
             ((AccountActivity) context).finish();
+            Toast.makeText(context,"Pastikan Anda Login Dahulu !" , Toast.LENGTH_LONG).show();
         }
     }
 
@@ -85,6 +87,7 @@ public class SessionManager {
             Intent i = new Intent(context, FaceActivity.class);
             context.startActivity(i);
             ((TransaksiListActivity) context).finish();
+            Toast.makeText(context,"Pastikan Anda Login Dahulu !" , Toast.LENGTH_LONG).show();
         }
     }
 

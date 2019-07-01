@@ -89,7 +89,12 @@ public class HomeActivity extends AppCompatActivity {
 
         try {
             String getNM = customer.get(SessionManager.NM_CUSTOMER);
-            txt_welcome.setText("WELCOME, "+getNM+" !");
+
+            if (getNM.equals("KOSONG")){
+                txt_welcome.setText("WELCOME, User !");
+            }else {
+                txt_welcome.setText("WELCOME, "+getNM+" !");
+            }
         } catch (Exception e) {}
 
         // untuk drawer

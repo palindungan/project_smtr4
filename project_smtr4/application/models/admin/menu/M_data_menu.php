@@ -64,7 +64,7 @@ class M_data_menu extends CI_Model
         $kd = "";
         if ($q->num_rows() > 0) {
             foreach ($q->result() as $k) {
-                $tmp = ((int)$k->kd_max) + 1;
+                $tmp = ((int) $k->kd_max) + 1;
                 $kd = $kode . sprintf('%0' . $digit . 's',  $tmp);
             }
         } else {
@@ -120,6 +120,20 @@ class M_data_menu extends CI_Model
         $this->db->from('tabel_menu');
 
         $where = "nm_menu like '%" . $nm_menu . "%'";
+        $this->db->where($where);
+        $this->db->order_by('nm_menu', 'ASC');
+
+        return $this->db->get();
+    }
+
+    function get_by_nama_dan_kat($nm_menu, $nm_kat)
+    {
+        // return $this->db->get_where($table, $where);
+
+        $this->db->select('*');
+        $this->db->from('tabel_menu');
+
+        $where = "nm_menu like '%" . $nm_menu . "%' && nm_kat ='" . $nm_kat . "'";
         $this->db->where($where);
         $this->db->order_by('nm_menu', 'ASC');
 

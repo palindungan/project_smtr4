@@ -32,6 +32,9 @@ public interface FoodApi {
     @GET("search_like")
     Call<Meals> getMealByNameLike(@Query("nm_menu") String mealName);
 
+    @GET("search_like_and_category")
+    Call<Meals> getMealByNameLikeAndCategory(@Query("nm_menu") String mealName,@Query("nm_kat") String category);
+
     /*
      * @GET (" url ") -->
      *     this is the request annotation with REQUEST METHOD [GET]

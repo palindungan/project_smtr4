@@ -14,6 +14,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -50,11 +52,18 @@ public class CategoryFragment extends Fragment implements CategoryView {
 
     AlertDialog.Builder descDialog;
 
+    private EditText searching;
+    private Button btn_cari; // btn login
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_category, container, false);
         ButterKnife.bind(this, view);
+
+        btn_cari = view.findViewById(R.id.btn_cari);
+        searching = view.findViewById(R.id.searching);
+
         return view;
     }
 
@@ -76,6 +85,14 @@ public class CategoryFragment extends Fragment implements CategoryView {
         // declare presenter
         CategoryPresenter presenter = new CategoryPresenter(this);
         presenter.getMealByCategory(getArguments().getString("EXTRA_DATA_NAME"));
+
+        btn_cari.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String mSearching = searching.getText().toString().trim();
+                presenter.getSearching(mSearching,getArguments().getString("EXTRA_DATA_NAME"));
+            }
+        });
     }
 
     @Override

@@ -155,17 +155,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginTop="20dp"
-                    android:backgroundTint="@color/colorPrimary"
+                    android:backgroundTint="@color/colorWhite"
+                    android:background="@drawable/button_white"
                     android:text="Save"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@color/colorDarkPrimaryOrange" />
 
                 <Button
                     android:id="@+id/btn_cancel"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    android:backgroundTint="@color/colorPrimary"
+                    android:backgroundTint="@color/colorWhite"
+                    android:background="@drawable/button_white"
                     android:text="Cancel"
-                    android:textColor="@android:color/white" />
+                    android:layout_marginTop="17dp"
+                    android:textColor="@color/colorDarkPrimaryOrange" />
             </LinearLayout>
         </ScrollView>
 

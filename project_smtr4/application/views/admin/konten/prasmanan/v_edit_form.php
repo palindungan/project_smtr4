@@ -164,7 +164,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="sisa_bayar">Sisa Bayar</label>
-                                <input type="text" class="form-control" id="sisa_bayar" readonly="" name="sisa_bayar" value="<?php echo $d2->sisa_bayar ?>">
+                                <input type="number" class="form-control" id="sisa_bayar" name="sisa_bayar" value="<?php echo $d2->sisa_bayar ?>">
                             </div>
                         </div>
                     </div>

@@ -47,6 +47,19 @@ class M_data_prasmanan extends CI_Model
         return $this->db->get('tabel_prasmanan_pending');
     }
 
+    // mengambil semua data pada tabel
+    function tampil_data_prasmanan_pending_dan_belum_lunas($id_customer)
+    {
+        // pencarian semua yang sesuai id_paket
+        $this->db->select('*');
+        $this->db->from('tabel_prasmanan_pending_dan_belum_lunas tb');
+
+        $where = "tb.id_customer ='" . $id_customer . "'";
+        $this->db->where($where);
+
+        return $this->db->get();
+    }
+
     // untuk mengambil nilai data yg di edit
     function edit_data($table, $where)
     {
@@ -58,5 +71,31 @@ class M_data_prasmanan extends CI_Model
     {
         $this->db->where($where);
         $this->db->update($table, $data);
+    }
+
+    // mengambil semua data pada tabel
+    function tampil_data_detail_menu($id_prasmanan)
+    {
+        // pencarian semua yang sesuai id_paket
+        $this->db->select('*');
+        $this->db->from('tabel_detail_prasmanan_menu tb');
+
+        $where = "tb.id_prasmanan ='" . $id_prasmanan . "'";
+        $this->db->where($where);
+
+        return $this->db->get();
+    }
+
+    // mengambil semua data pada tabel
+    function tampil_data_detail_bonus($id_prasmanan)
+    {
+        // pencarian semua yang sesuai id_paket
+        $this->db->select('*');
+        $this->db->from('tabel_detail_prasmanan_bonus tb');
+
+        $where = "tb.id_prasmanan ='" . $id_prasmanan . "'";
+        $this->db->where($where);
+
+        return $this->db->get();
     }
 }

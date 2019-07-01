@@ -103,10 +103,12 @@ class Data_Prasmanan extends CI_Controller
         // mengambil dari inputan (name)
         $id_prasmanan = $this->input->post('id_prasmanan');
         $status = $this->input->post('status');
+        $sisa_bayar = $this->input->post('sisa_bayar');
 
         // memasukkan data ke dalam array assoc
         $data = array(
-            'status' => $status
+            'status' => $status,
+            'sisa_bayar' => $sisa_bayar
         );
 
         // memasukkan data ke dalam array assoc

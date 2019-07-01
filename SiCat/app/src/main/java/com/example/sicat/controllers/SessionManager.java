@@ -8,6 +8,7 @@ import com.example.sicat.activities.AccountActivity;
 import com.example.sicat.activities.FaceActivity;
 import com.example.sicat.activities.HomeActivity;
 import com.example.sicat.activities.LoginActivity;
+import com.example.sicat.activities.TransaksiListActivity;
 import com.example.sicat.common.Common;
 
 import java.util.HashMap;
@@ -76,6 +77,14 @@ public class SessionManager {
             Intent i = new Intent(context, FaceActivity.class);
             context.startActivity(i);
             ((AccountActivity) context).finish();
+        }
+    }
+
+    public void checkLogin2(){
+        if (!this.isLogin()){
+            Intent i = new Intent(context, FaceActivity.class);
+            context.startActivity(i);
+            ((TransaksiListActivity) context).finish();
         }
     }
 

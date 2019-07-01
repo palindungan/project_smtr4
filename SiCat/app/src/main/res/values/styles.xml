@@ -32,26 +32,5 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <!-- Custom Style  -->
-    <style name="Base.Theme.RAKHMAT_FADILAH" parent="Theme.AppCompat.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimaryOrange</item>
-
-        <!-- Warna Gelap Untuk Status Bar -->
-        <item name="colorPrimaryDark">@color/colorDarkPrimaryOrange</item>
-
-        <!-- Warna untuk Radio Button / FloatActionButton -->
-        <item name="colorAccent">@color/colorAccentOrange</item>
-
-        <!-- Warna Untuk Judul Text  -->
-        <item name="android:textColorPrimary">@color/colorPrimaryText</item>
-
-        <!-- Warna untuk menu overflow icon -->
-        <item name="android:textColorSecondary">@color/colorSecondaryText</item>
-    </style>
-    <!-- Base Application Theme -->
-    <style name="AppBaseTheme1" parent="Base.Theme.RAKHMAT_FADILAH"></style>
-
-    <!-- Application Theme -->
-    <style name="AppTheme1" parent="AppBaseTheme1"></style>
 
 </resources>

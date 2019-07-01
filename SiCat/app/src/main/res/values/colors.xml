@@ -21,12 +21,4 @@
     <color name="colorWhiteDark">#DBDBDB</color>
     <color name="colorPrimaryLight">#CA7474</color>
     <color name="colorBackground">#F4F7F7</color>
-    
-    <color name="colorDarkPrimaryOrange">#F57C00</color>
-    <color name="colorLightPrimaryOrange">#FFE0B2</color>
-    <color name="colorPrimaryOrange">#FF9800</color>
-    <color name="colorAccentOrange">#FFC107</color>
-    <color name="colorSecondaryText">#757575</color>
-    <color name="colorDivideColor">#BDBDBD</color>
-    <color name="colorWhite1">#FFFFFF</color>
 </resources>

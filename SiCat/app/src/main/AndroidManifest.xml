@@ -13,13 +13,12 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme1"
+        android:theme="@style/AppTheme2"
         tools:replace="android:theme">
-        <activity android:name=".activities.FormOrderFinishActivity" />
-        <activity android:name=".activities.TransaksiListActivity" />
-        <activity android:name=".activities.TransaksiListDetailActivity" />
         <activity android:name=".activities.TransaksiListDetalItemActivity"></activity>
-        <activity android:name=".activities.FormOrderFinishActivity"></activity>
+        <activity android:name=".activities.TransaksiListDetailActivity" />
+        <activity android:name=".activities.TransaksiListActivity" />
+        <activity android:name=".activities.FormOrderFinishActivity" />
         <activity android:name=".activities.FormOrderActivity" />
         <activity android:name=".activities.DaftarBonusActivity" />
         <activity android:name=".activities.CartDetailActivity" />

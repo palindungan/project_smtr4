@@ -43,7 +43,7 @@
                         android:layout_height="wrap_content"
                         android:padding="10dp"
                         android:backgroundTint="@color/colorWhite"
-                        android:hint="Pencaharian ... "
+                        android:hint="Pencaharian Menu ... "
                         android:textColorHint="@color/colorHint"
                         android:imeOptions="actionNext"
                         android:textColor="@color/colorPrimaryLight"

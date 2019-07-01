@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -60,6 +61,7 @@ public class HomeActivity extends AppCompatActivity {
     String getID;
 
     private Button link_daftar_menu, btn_daftar_bonus , btn_prasmanan; // btn
+    private TextView txt_welcome;
 
     // deklarasi untuk drawer
     private DrawerLayout dl;
@@ -83,6 +85,12 @@ public class HomeActivity extends AppCompatActivity {
         link_daftar_menu = findViewById(R.id.link_daftar_menu);
         btn_daftar_bonus = findViewById(R.id.btn_daftar_bonus);
         btn_prasmanan = findViewById(R.id.btn_prasmanan);
+        txt_welcome = findViewById(R.id.txt_welcome);
+
+        try {
+            String getNM = customer.get(SessionManager.NM_CUSTOMER);
+            txt_welcome.setText("WELCOME, "+getNM+" !");
+        } catch (Exception e) {}
 
         // untuk drawer
         dl = (DrawerLayout) findViewById(R.id.activity_home);

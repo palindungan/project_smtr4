@@ -129,7 +129,7 @@ public class MenuActivity extends AppCompatActivity implements MenuView {
     public void setMeal(List<Meals.Meal> meal) {
         ViewPagerHeaderAdapter headerAdapter = new ViewPagerHeaderAdapter(meal,this);
         viewPagerMeal.setAdapter(headerAdapter);
-        viewPagerMeal.setPadding(20,0,150,0);
+        viewPagerMeal.setPadding(20,0,185,0);
         headerAdapter.notifyDataSetChanged();
 
         headerAdapter.setOnItemClickListener((view, position) -> {
@@ -145,7 +145,7 @@ public class MenuActivity extends AppCompatActivity implements MenuView {
     public void setCategory(List<Categories.Category> category) {
         RecyclerViewMenuAdapter menuAdapter = new RecyclerViewMenuAdapter(category,this);
         recyclerViewCategory.setAdapter(menuAdapter);
-        GridLayoutManager layoutManager = new GridLayoutManager(this,3, GridLayoutManager.VERTICAL,false);
+        GridLayoutManager layoutManager = new GridLayoutManager(this,2, GridLayoutManager.VERTICAL,false);
         recyclerViewCategory.setLayoutManager(layoutManager);
         recyclerViewCategory.setNestedScrollingEnabled(true);
         menuAdapter.notifyDataSetChanged();

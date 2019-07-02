@@ -20,6 +20,7 @@ import com.example.sicat.activities.CartActivity;
 import com.example.sicat.common.Common;
 import com.example.sicat.controllers.SessionManager;
 import com.example.sicat.model.Bonus;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -61,8 +62,8 @@ public class DaftarBonusAdapter extends RecyclerView.Adapter<DaftarBonusAdapter.
         }
 
         daftarViewHolder.txt_product_name.setText(dataModelArrayList.get(i).getNm_menu());
-        daftarViewHolder.txt_product_kat.setText(dataModelArrayList.get(i).getNm_kat());
-        daftarViewHolder.txt_product_tipe.setText(dataModelArrayList.get(i).getTipe());
+        Picasso.get().load(dataModelArrayList.get(i).getGambar()).into(daftarViewHolder.img_product);
+        //  Picasso.get().load(strMealThumb).into(mealThumb);
 
         daftarViewHolder.btn_pilih.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,17 +137,15 @@ public class DaftarBonusAdapter extends RecyclerView.Adapter<DaftarBonusAdapter.
     public class DaftarViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         protected ImageView img_product;
-        protected TextView txt_product_name, txt_product_kat, txt_product_tipe;
-        protected Button btn_pilih;
+        protected TextView txt_product_name;
+        protected ImageView btn_pilih;
 
         public DaftarViewHolder(@NonNull View itemView) {
             super(itemView);
 
             img_product = (ImageView) itemView.findViewById(R.id.img_product);
             txt_product_name = (TextView) itemView.findViewById(R.id.txt_product_name);
-            txt_product_kat = (TextView)itemView.findViewById(R.id.txt_product_kat);
-            txt_product_tipe = (TextView) itemView.findViewById(R.id.txt_product_tipe);
-            btn_pilih = (Button) itemView.findViewById(R.id.btn_pilih);
+            btn_pilih = (ImageView) itemView.findViewById(R.id.btn_pilih);
 
             ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(this);

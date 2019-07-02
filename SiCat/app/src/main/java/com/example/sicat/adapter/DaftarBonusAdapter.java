@@ -3,12 +3,12 @@ package com.example.sicat.adapter;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.Image;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,18 +20,21 @@ import com.example.sicat.activities.CartActivity;
 import com.example.sicat.common.Common;
 import com.example.sicat.controllers.SessionManager;
 import com.example.sicat.model.Bonus;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class ListBonus extends BaseAdapter {
+import butterknife.ButterKnife;
 
-    private Context context;
-    private ArrayList<Bonus> dataModelArrayList;
-    SessionManager sessionManager; // session
-    // private static String URL_BONUS="http://192.168.56.1/project_smtr4/api/transaksi/Get_paket_by_id"; // url http request
+public class DaftarBonusAdapter extends RecyclerView.Adapter<DaftarBonusAdapter.DaftarViewHolder> {
 
-    public ListBonus(Context context, ArrayList<Bonus> dataModelArrayList) {
+    Context context;
+    ArrayList<Bonus> dataModelArrayList;
+
+    SessionManager sessionManager;
+
+    private static ClickListener clickListener;
+
+    public DaftarBonusAdapter(Context context, ArrayList<Bonus> dataModelArrayList) {
         this.context = context;
         this.dataModelArrayList = dataModelArrayList;
 
@@ -39,72 +42,43 @@ public class ListBonus extends BaseAdapter {
         sessionManager = new SessionManager(context);
     }
 
+    @NonNull
     @Override
-    public int getCount() {
-        return dataModelArrayList.size();
+    public DaftarViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View itemView = LayoutInflater.from(context).inflate(R.layout.item_daftar_bonus,viewGroup,false);
+        return new DaftarViewHolder(itemView);
     }
 
     @Override
-    public Object getItem(int position) {
-        return dataModelArrayList.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
-        if (convertView == null) {
-            holder = new ViewHolder();
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.item_daftar_bonus, null, true);
-            holder.img_product = (ImageView) convertView.findViewById(R.id.img_product);
-            holder.txt_product_name = (TextView) convertView.findViewById(R.id.txt_product_name);
-            holder.txt_product_kat = (TextView) convertView.findViewById(R.id.txt_product_kat);
-            holder.txt_product_tipe = (TextView) convertView.findViewById(R.id.txt_product_tipe);
-            holder.btn_pilih = (Button) convertView.findViewById(R.id.btn_pilih);
-            convertView.setTag(holder);
-        } else {
-            // the getTag returns the viewHolder object set as a tag to the view
-            holder = (ViewHolder) convertView.getTag();
-        }
-        // Compiler akan mengatur gambar ini di imageview.
+    public void onBindViewHolder(@NonNull DaftarViewHolder daftarViewHolder, int i) {
 
         // untuk kondisi ada button pilih / tidak
         Boolean status = sessionManager.getGantiBonus();
         if(status==false){
-            holder.btn_pilih.setVisibility(View.GONE);
+            daftarViewHolder.btn_pilih.setVisibility(View.GONE);
         }else {
-            holder.btn_pilih.setVisibility(View.VISIBLE);
+            daftarViewHolder.btn_pilih.setVisibility(View.VISIBLE);
         }
 
-        //Picasso.get().load(cartList.get(position).gambar).into(holder.img_product);
-        Picasso.get().load(dataModelArrayList.get(position).getGambar()).into(holder.img_product);
+        daftarViewHolder.txt_product_name.setText(dataModelArrayList.get(i).getNm_menu());
+        daftarViewHolder.txt_product_kat.setText(dataModelArrayList.get(i).getNm_kat());
+        daftarViewHolder.txt_product_tipe.setText(dataModelArrayList.get(i).getTipe());
 
-        // Kemudian akan mengatur informasi lain di tampilan teks masing-masing.
-        holder.txt_product_name.setText(dataModelArrayList.get(position).getNm_menu());
-        holder.txt_product_kat.setText(dataModelArrayList.get(position).getNm_kat());
-        holder.txt_product_tipe.setText(dataModelArrayList.get(position).getTipe());
-
-        holder.btn_pilih.setOnClickListener(new View.OnClickListener() {
+        daftarViewHolder.btn_pilih.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 int id_tabel  = sessionManager.getIdTabel();
 
                 //ambil dari model
-                String id_menu = dataModelArrayList.get(position).getId_menu();
-                String nm_menu = dataModelArrayList.get(position).getNm_menu();
-                String nm_kat = dataModelArrayList.get(position).getNm_kat();
-                String tipe = dataModelArrayList.get(position).getTipe();
-                int hrg_porsi = dataModelArrayList.get(position).getHrg_porsi();
-                String gambar = dataModelArrayList.get(position).getGambar();
-                String deskripsi = dataModelArrayList.get(position).getDeskripsi();
-                String id_bonus = dataModelArrayList.get(position).getId_bonus();
-                String id_kat = dataModelArrayList.get(position).getId_kat();
+                String id_menu = dataModelArrayList.get(i).getId_menu();
+                String nm_menu = dataModelArrayList.get(i).getNm_menu();
+                String nm_kat = dataModelArrayList.get(i).getNm_kat();
+                String tipe = dataModelArrayList.get(i).getTipe();
+                int hrg_porsi = dataModelArrayList.get(i).getHrg_porsi();
+                String gambar = dataModelArrayList.get(i).getGambar();
+                String deskripsi = dataModelArrayList.get(i).getDeskripsi();
+                String id_bonus = dataModelArrayList.get(i).getId_bonus();
+                String id_kat = dataModelArrayList.get(i).getId_kat();
 
                 // dialog
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
@@ -150,28 +124,46 @@ public class ListBonus extends BaseAdapter {
                 // menampilkan alert dialog
                 alertDialog.show();
                 // end of dialog
-
             }
         });
-
-        return convertView;
-    }
-
-    // tambahan
-    @Override
-    public int getViewTypeCount() {
-        return getCount();
     }
 
     @Override
-    public int getItemViewType(int position) {
-        return position;
+    public int getItemCount() {
+        return dataModelArrayList.size();
     }
 
-    private class ViewHolder {
+    public class DaftarViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+
         protected ImageView img_product;
         protected TextView txt_product_name, txt_product_kat, txt_product_tipe;
         protected Button btn_pilih;
+
+        public DaftarViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            img_product = (ImageView) itemView.findViewById(R.id.img_product);
+            txt_product_name = (TextView) itemView.findViewById(R.id.txt_product_name);
+            txt_product_kat = (TextView)itemView.findViewById(R.id.txt_product_kat);
+            txt_product_tipe = (TextView) itemView.findViewById(R.id.txt_product_tipe);
+            btn_pilih = (Button) itemView.findViewById(R.id.btn_pilih);
+
+            ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            clickListener.onClick(v, getAdapterPosition());
+        }
     }
 
+    public void setOnItemClickListener(ClickListener clickListener) {
+        DaftarBonusAdapter.clickListener = clickListener;
+    }
+
+
+    public interface ClickListener {
+        void onClick(View view, int position);
+    }
 }

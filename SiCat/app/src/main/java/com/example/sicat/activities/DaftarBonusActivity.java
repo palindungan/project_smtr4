@@ -2,18 +2,16 @@ package com.example.sicat.activities;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -24,8 +22,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.sicat.R;
-import com.example.sicat.adapter.ListBonus;
-import com.example.sicat.common.Common;
+import com.example.sicat.adapter.DaftarBonusAdapter;
 import com.example.sicat.model.Bonus;
 
 import org.json.JSONArray;
@@ -50,12 +47,12 @@ public class DaftarBonusActivity extends AppCompatActivity {
 
     private String URLstring = "http://192.168.56.1/project_smtr4/api/transaksi/data_bonus";
     private static ProgressDialog mProgressDialog;
-    private ListView listView;
+    private RecyclerView recycleBonus;
 
     ArrayList<Bonus> dataModelArrayList;
     ArrayList<Bonus> dataModelArrayList2;
 
-    private ListBonus listAdapter;
+    private DaftarBonusAdapter daftarBonusAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +62,7 @@ public class DaftarBonusActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         initActionBar();
 
-        listView = findViewById(R.id.lv_bonus);
+        recycleBonus = findViewById(R.id.recycleBonus);
 
         // untuk fitur pencaharian
         btn_cari = (Button) findViewById(R.id.btn_cari);
@@ -137,8 +134,19 @@ public class DaftarBonusActivity extends AppCompatActivity {
     private void setupListview() {
         removeSimpleProgressDialog();
         //will remove progress dialog
-        listAdapter = new ListBonus(this, dataModelArrayList);
-        listView.setAdapter(listAdapter);
+        daftarBonusAdapter = new DaftarBonusAdapter(this, dataModelArrayList);
+        recycleBonus.setAdapter(daftarBonusAdapter);
+        GridLayoutManager layoutManager = new GridLayoutManager(this,2, GridLayoutManager.VERTICAL,false);
+        recycleBonus.setLayoutManager(layoutManager);
+        recycleBonus.setNestedScrollingEnabled(true);
+        daftarBonusAdapter.notifyDataSetChanged();
+
+        daftarBonusAdapter.setOnItemClickListener(new DaftarBonusAdapter.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+
+            }
+        });
     }
 
     public static void removeSimpleProgressDialog() {
@@ -261,7 +269,18 @@ public class DaftarBonusActivity extends AppCompatActivity {
     private void setupListview2() {
         removeSimpleProgressDialog();
         //will remove progress dialog
-        listAdapter = new ListBonus(this, dataModelArrayList2);
-        listView.setAdapter(listAdapter);
+        daftarBonusAdapter = new DaftarBonusAdapter(this, dataModelArrayList2);
+        recycleBonus.setAdapter(daftarBonusAdapter);
+        GridLayoutManager layoutManager = new GridLayoutManager(this,2, GridLayoutManager.VERTICAL,false);
+        recycleBonus.setLayoutManager(layoutManager);
+        recycleBonus.setNestedScrollingEnabled(true);
+        daftarBonusAdapter.notifyDataSetChanged();
+
+        daftarBonusAdapter.setOnItemClickListener(new DaftarBonusAdapter.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+
+            }
+        });
     }
 }

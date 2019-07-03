@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -25,6 +26,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.sicat.R;
+import com.example.sicat.activities.detail.DetailActivity;
 import com.example.sicat.adapter.DaftarBonusAdapter;
 import com.example.sicat.common.Common;
 import com.example.sicat.model.Bonus;
@@ -62,6 +64,8 @@ public class DaftarBonusActivity extends AppCompatActivity {
     // untuk icon cart
     NotificationBadge badge;
     ImageView cart_icon;
+
+    public static final String EXTRA_DETAIL2 = "detail";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,7 +157,10 @@ public class DaftarBonusActivity extends AppCompatActivity {
         daftarBonusAdapter.setOnItemClickListener(new DaftarBonusAdapter.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-
+                TextView nm_menu = view.findViewById(R.id.txt_product_name);
+                Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+                intent.putExtra(EXTRA_DETAIL2, nm_menu.getText().toString());
+                startActivity(intent);
             }
         });
     }

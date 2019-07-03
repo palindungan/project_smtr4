@@ -39,6 +39,7 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.example.sicat.activities.DaftarBonusActivity.EXTRA_DETAIL2;
 import static com.example.sicat.activities.daftar_menu.MenuActivity.EXTRA_DETAIL;
 
 public class DetailActivity extends AppCompatActivity implements DetailView {
@@ -89,11 +90,20 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
 
         //TODO #9 Get data from the intent
         Intent intent = getIntent();
-        String mealName = intent.getStringExtra(EXTRA_DETAIL);
 
         //TODO #10 Declare the presenter (put the name of the meal name from the data intent to the presenter)
         DetailPresenter presenter = new DetailPresenter(this);
-        presenter.getMealById(mealName);
+
+        try {
+            String mealName = intent.getStringExtra(EXTRA_DETAIL);
+            presenter.getMealById(mealName);
+        }catch (Exception e){}
+
+        try {
+            String mealName2 = intent.getStringExtra(EXTRA_DETAIL2);
+            presenter.getMealById(mealName2);
+        }catch (Exception e){}
+
     }
 
     private void setupActionBar() {

@@ -24,10 +24,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingLeft="20dp"
         android:paddingTop="?attr/actionBarSize"
-        android:paddingRight="20dp"
-        android:paddingBottom="20dp">
+        >
 
         <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -50,7 +48,7 @@
 
                     <android.support.v7.widget.CardView
                         app:cardUseCompatPadding="true"
-                        app:cardCornerRadius="10dp"
+                        app:cardCornerRadius="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
@@ -93,7 +91,7 @@
 
                     <android.support.v7.widget.CardView
                         app:cardUseCompatPadding="true"
-                        app:cardCornerRadius="10dp"
+                        app:cardCornerRadius="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
@@ -135,7 +133,7 @@
 
                     <android.support.v7.widget.CardView
                         app:cardUseCompatPadding="true"
-                        app:cardCornerRadius="10dp"
+                        app:cardCornerRadius="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
@@ -177,7 +175,7 @@
 
                     <android.support.v7.widget.CardView
                         app:cardUseCompatPadding="true"
-                        app:cardCornerRadius="10dp"
+                        app:cardCornerRadius="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
@@ -221,7 +219,7 @@
 
                     <android.support.v7.widget.CardView
                         app:cardUseCompatPadding="true"
-                        app:cardCornerRadius="10dp"
+                        app:cardCornerRadius="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
@@ -263,7 +261,7 @@
 
                     <android.support.v7.widget.CardView
                         app:cardUseCompatPadding="true"
-                        app:cardCornerRadius="10dp"
+                        app:cardCornerRadius="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1">

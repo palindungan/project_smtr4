@@ -45,6 +45,12 @@ public class RecyclerViewMealByCategory extends RecyclerView.Adapter<RecyclerVie
 
         String strMealName = meals.get(i).getNmMenu();
         viewHolder.mealName.setText(strMealName);
+
+        String strProduckKat = meals.get(i).getNmKat();
+        viewHolder.txt_product_kat.setText(strProduckKat);
+
+        String strProductTipe = meals.get(i).getTipe();
+        viewHolder.txt_product_tipe.setText(strProductTipe);
     }
 
 
@@ -58,6 +64,10 @@ public class RecyclerViewMealByCategory extends RecyclerView.Adapter<RecyclerVie
         ImageView mealThumb;
         @BindView(R.id.mealName)
         TextView mealName;
+        @BindView(R.id.txt_product_kat)
+        TextView txt_product_kat;
+        @BindView(R.id.txt_product_tipe)
+        TextView txt_product_tipe;
         RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

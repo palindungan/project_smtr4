@@ -57,11 +57,15 @@ public class DaftarBonusAdapter extends RecyclerView.Adapter<DaftarBonusAdapter.
         Boolean status = sessionManager.getGantiBonus();
         if(status==false){
             daftarViewHolder.btn_pilih.setVisibility(View.GONE);
+            daftarViewHolder.txt_product_tipe.setVisibility(View.VISIBLE);
         }else {
             daftarViewHolder.btn_pilih.setVisibility(View.VISIBLE);
+            daftarViewHolder.txt_product_tipe.setVisibility(View.GONE);
         }
 
         daftarViewHolder.txt_product_name.setText(dataModelArrayList.get(i).getNm_menu());
+        daftarViewHolder.txt_product_tipe.setText(dataModelArrayList.get(i).getTipe());
+        daftarViewHolder.txt_product_kat.setText(dataModelArrayList.get(i).getNm_kat());
         Picasso.get().load(dataModelArrayList.get(i).getGambar()).into(daftarViewHolder.img_product);
         //  Picasso.get().load(strMealThumb).into(mealThumb);
 
@@ -137,7 +141,7 @@ public class DaftarBonusAdapter extends RecyclerView.Adapter<DaftarBonusAdapter.
     public class DaftarViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         protected ImageView img_product;
-        protected TextView txt_product_name;
+        protected TextView txt_product_name,txt_product_tipe,txt_product_kat;
         protected ImageView btn_pilih;
 
         public DaftarViewHolder(@NonNull View itemView) {
@@ -145,6 +149,8 @@ public class DaftarBonusAdapter extends RecyclerView.Adapter<DaftarBonusAdapter.
 
             img_product = (ImageView) itemView.findViewById(R.id.img_product);
             txt_product_name = (TextView) itemView.findViewById(R.id.txt_product_name);
+            txt_product_tipe = (TextView) itemView.findViewById(R.id.txt_product_tipe);
+            txt_product_kat = (TextView) itemView.findViewById(R.id.txt_product_kat);
             btn_pilih = (ImageView) itemView.findViewById(R.id.btn_pilih);
 
             ButterKnife.bind(this, itemView);

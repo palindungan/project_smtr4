@@ -1,40 +1,21 @@
 package com.example.sicat.activities;
 
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.nfc.Tag;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.sicat.Database.DataSource.CartRepository;
 import com.example.sicat.Database.Local.CartDataSource;
 import com.example.sicat.Database.Local.CartDatabase;
@@ -44,15 +25,8 @@ import com.example.sicat.common.Common;
 import com.example.sicat.controllers.SessionManager;
 import com.nex3z.notificationbadge.NotificationBadge;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -68,6 +42,7 @@ public class HomeActivity extends AppCompatActivity {
     private ActionBarDrawerToggle t;
     private NavigationView nv;
 
+    // untuk icon cart
     NotificationBadge badge;
     ImageView cart_icon;
 
@@ -162,7 +137,7 @@ public class HomeActivity extends AppCompatActivity {
         Common.cartRepository = CartRepository.getInstance(CartDataSource.getInstance(Common.cartDatabase.cartDAO()));
     }
 
-    // method untuk menciptakan option menu
+    // method untuk menciptakan option menu // untuk icon cart
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_action_bar, menu);
@@ -183,6 +158,7 @@ public class HomeActivity extends AppCompatActivity {
         return true;
     }
 
+    // untuk icon cart
     private void updateCartCount() {
         if(badge == null) return;
         runOnUiThread(new Runnable() {
@@ -199,7 +175,7 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    // method untuk aksi option menu (jika di pilih / click)
+    // method untuk aksi option menu (jika di pilih / click) // untuk icon cart
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -215,6 +191,7 @@ public class HomeActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    // untuk icon cart
     @Override
     protected void onResume() {
         super.onResume();

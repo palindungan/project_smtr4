@@ -6,12 +6,19 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.sicat.R;
+import com.example.sicat.activities.CartActivity;
+import com.example.sicat.activities.DaftarBonusActivity;
 import com.example.sicat.activities.daftar_menu.MenuActivity;
 import com.example.sicat.adapter.ViewPagerCategoryAdapter;
+import com.example.sicat.common.Common;
 import com.example.sicat.model.Categories;
+import com.nex3z.notificationbadge.NotificationBadge;
 
 import java.util.List;
 
@@ -27,6 +34,10 @@ public class CategoryActivity extends AppCompatActivity {
     TabLayout tabLayout;
     @BindView(R.id.viewPager)
     ViewPager viewPager;
+
+    // untuk icon cart
+    NotificationBadge badge;
+    ImageView cart_icon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,13 +75,61 @@ public class CategoryActivity extends AppCompatActivity {
         }
     }
 
+    // method untuk menciptakan option menu // untuk icon cart
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_action_bar, menu);
+
+        View view = menu.findItem(R.id.cart_menu).getActionView();
+        badge = (NotificationBadge)view.findViewById(R.id.badge);
+        cart_icon = (ImageView)view.findViewById(R.id.cart_icon);
+
+        cart_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CategoryActivity.this, CartActivity.class));
+            }
+        });
+
+        updateCartCount();
+
+        return true;
+    }
+
+    // untuk icon cart
+    private void updateCartCount() {
+        if(badge == null) return;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (Common.cartRepository.countCartItems() == 0)
+                    badge.setVisibility(View.INVISIBLE);
+                else {
+                    badge.setVisibility(View.VISIBLE);
+                    badge.setText(String.valueOf(Common.cartRepository.countCartItems()));
+                }
+            }
+        });
+
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case android.R.id.home:
                 onBackPressed();
                 break;
+            case R.id.cart_icon:
+                // return true;
+                break;
         }
         return true;
+    }
+
+    // untuk icon cart
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateCartCount();
     }
 }

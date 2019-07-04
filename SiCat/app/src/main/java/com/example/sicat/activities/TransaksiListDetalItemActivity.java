@@ -1,5 +1,6 @@
 package com.example.sicat.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -17,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.sicat.R;
+import com.example.sicat.activities.detail.DetailActivity;
 import com.example.sicat.adapter.TransaksiListDetailItemAdapter;
 import com.example.sicat.controllers.SessionManager;
 import com.example.sicat.model.DetailTransaksi;
@@ -48,6 +51,8 @@ public class TransaksiListDetalItemActivity extends AppCompatActivity {
     private static String URL_Nya="http://192.168.56.1/project_smtr4/api/transaksi_list/Get_detail_by_id/"; // url http request
 
     String id_prasmanan;
+
+    public static final String EXTRA_DETAIL3 = "detail";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -181,7 +186,11 @@ public class TransaksiListDetalItemActivity extends AppCompatActivity {
         transaksiListDetailItemAdapter.setOnItemClickListener(new TransaksiListDetailItemAdapter.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Toast.makeText(TransaksiListDetalItemActivity.this ,position,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(TransaksiListDetalItemActivity.this ,"posisi : "+position,Toast.LENGTH_SHORT).show();
+                TextView nm_menu = view.findViewById(R.id.txt_product_name);
+                Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+                intent.putExtra(EXTRA_DETAIL3, nm_menu.getText().toString());
+                startActivity(intent);
             }
         });
 

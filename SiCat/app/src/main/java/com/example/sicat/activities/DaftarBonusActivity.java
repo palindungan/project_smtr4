@@ -343,7 +343,10 @@ public class DaftarBonusActivity extends AppCompatActivity {
         daftarBonusAdapter.setOnItemClickListener(new DaftarBonusAdapter.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-
+                TextView nm_menu = view.findViewById(R.id.txt_product_name);
+                Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+                intent.putExtra(EXTRA_DETAIL2, nm_menu.getText().toString());
+                startActivity(intent);
             }
         });
     }

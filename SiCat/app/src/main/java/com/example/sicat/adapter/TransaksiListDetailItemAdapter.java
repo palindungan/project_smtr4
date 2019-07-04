@@ -48,9 +48,9 @@ public class TransaksiListDetailItemAdapter extends RecyclerView.Adapter<Transak
     @Override
     public void onBindViewHolder(@NonNull DetailViewHolder detailViewHolder, int i) {
 
-        detailViewHolder.txt_product_name.setText("NAMA MENU : "+dataModelArrayList.get(i).getNm_menu());
-        detailViewHolder.txt_product_kat.setText("KATEGORI : "+dataModelArrayList.get(i).getNm_kat());
-        detailViewHolder.txt_product_tipe.setText("NAMA TIPE : "+dataModelArrayList.get(i).getTipe());
+        detailViewHolder.txt_product_name.setText(dataModelArrayList.get(i).getNm_menu());
+        detailViewHolder.txt_product_kat.setText(dataModelArrayList.get(i).getNm_kat());
+        detailViewHolder.txt_product_tipe.setText(dataModelArrayList.get(i).getTipe());
 
         //  Picasso.get().load(dataModelArrayList.get(position).getGambar()).into(holder.img_product);
         Picasso.get().load(dataModelArrayList.get(i).getGambar()).into(detailViewHolder.img_product);

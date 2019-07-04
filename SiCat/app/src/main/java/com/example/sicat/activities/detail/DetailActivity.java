@@ -40,6 +40,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.example.sicat.activities.DaftarBonusActivity.EXTRA_DETAIL2;
+import static com.example.sicat.activities.TransaksiListDetalItemActivity.EXTRA_DETAIL3;
 import static com.example.sicat.activities.daftar_menu.MenuActivity.EXTRA_DETAIL;
 
 public class DetailActivity extends AppCompatActivity implements DetailView {
@@ -102,6 +103,11 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
         try {
             String mealName2 = intent.getStringExtra(EXTRA_DETAIL2);
             presenter.getMealById(mealName2);
+        }catch (Exception e){}
+
+        try {
+            String mealName3 = intent.getStringExtra(EXTRA_DETAIL3);
+            presenter.getMealById(mealName3);
         }catch (Exception e){}
 
     }

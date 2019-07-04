@@ -45,15 +45,16 @@ public class TransaksiListAdapter extends RecyclerView.Adapter<TransaksiListAdap
     public void onBindViewHolder(@NonNull TransaksiViewHolder transaksiViewHolder, int i) {
 
         //dataModelArrayList.get(position).getNm_menu()
-        transaksiViewHolder.txt_id_prasmanan.setText("KODE PRASMANAN : "+dataModelArrayList.get(i).getId_prasmanan());
-        transaksiViewHolder.txt_nm_paket.setText("NAMA PAKET : "+dataModelArrayList.get(i).getNm_paket());
+        transaksiViewHolder.txt_id_prasmanan.setText(""+dataModelArrayList.get(i).getId_prasmanan());
+        transaksiViewHolder.txt_nm_paket.setText(""+dataModelArrayList.get(i).getNm_paket());
+        transaksiViewHolder.txt_tgl_pemesanan.setText(""+dataModelArrayList.get(i).getTgl_pemesanan());
 
         String status = dataModelArrayList.get(i).getStatus();
 
         if(status.equals("belum_lunas")){
-            transaksiViewHolder.txt_status.setText("STATUS : Belum Lunas");
+            transaksiViewHolder.txt_status.setText("Belum Lunas");
         }else if(status.equals("pending")){
-            transaksiViewHolder.txt_status.setText("STATUS : Pending");
+            transaksiViewHolder.txt_status.setText("Pending");
         }
     }
 
@@ -64,7 +65,7 @@ public class TransaksiListAdapter extends RecyclerView.Adapter<TransaksiListAdap
 
     public class TransaksiViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        TextView txt_id_prasmanan,txt_nm_paket,txt_status;
+        TextView txt_id_prasmanan,txt_nm_paket,txt_status,txt_tgl_pemesanan;
 
         public TransaksiViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -72,6 +73,7 @@ public class TransaksiListAdapter extends RecyclerView.Adapter<TransaksiListAdap
             txt_id_prasmanan = (TextView) itemView.findViewById(R.id.txt_id_prasmanan);
             txt_nm_paket = (TextView) itemView.findViewById(R.id.txt_nm_paket);
             txt_status = (TextView) itemView.findViewById(R.id.txt_status);
+            txt_tgl_pemesanan= (TextView) itemView.findViewById(R.id.txt_tgl_pemesanan);
 
             ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(this);

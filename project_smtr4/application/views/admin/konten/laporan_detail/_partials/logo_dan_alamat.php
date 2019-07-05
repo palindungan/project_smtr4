@@ -16,7 +16,9 @@
     <hr style="border-width: 3px">
     <div class="row">
         <div class="col col-md-12">
-            <address class="text-center" style="font-size: 18">LAPORAN TRANSAKSI (PRASMANAN) <br>PERIODE date1 SAMPAI date2</address>
+
+            <address class="text-center" style="font-size: 18">LAPORAN TRANSAKSI (PRASMANAN) <br> PERIODE <?php echo $date1 ?> SAMPAI <?php echo $date2 ?> </address>
+
         </div>
     </div>
 

@@ -3,6 +3,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Laporan extends CI_Controller
 {
+
+    // konstraktor
+    function __construct()
+    {
+        parent::__construct();
+
+        // untuk mengakses model data (database)
+        $this->load->model("admin/M_laporan");
+    }
+
     public function index()
     {
         $data['path'] = 'admin/konten/v_laporan';
@@ -12,6 +22,16 @@ class Laporan extends CI_Controller
     // untuk ke halaman laporan transaksi
     public function detail_transaksi()
     {
+        // mengambil data
+        $date1 = $this->input->post('date1');
+        $date2 = $this->input->post('date2');
+
+        // memasukkan data ke dalam array assoc
+        $data = array(
+            'date1' => $date1,
+            'date2' => $date2
+        );
+
         $data['path'] = 'admin/konten/laporan_detail/konten/v_laporan_transaksi';
         $this->load->view('admin/konten/laporan_detail/_view', $data);
     }

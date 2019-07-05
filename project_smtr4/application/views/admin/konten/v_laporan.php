@@ -36,7 +36,7 @@
                 </div>
                 <div class="card-body card-block">
 
-                    <form action="mpdf/laporan/cetak_laporan.php" target="_black" method="post">
+                    <form action="<?php echo base_url(); ?>admin/laporan/detail_transaksi" target="_black" method="post">
 
                         <label class=" form-control-label">
                             <h6>Mulai</h6>

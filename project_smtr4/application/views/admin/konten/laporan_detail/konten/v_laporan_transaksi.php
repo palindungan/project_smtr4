@@ -2,6 +2,34 @@
 foreach ($totalTransaksi as $d) {
     $getTotalTransaksi = $d->GetTotal;
 }
+
+foreach ($totalPorsi as $d) {
+    $totalPorsi = $d->GetTotalPorsi;
+}
+
+foreach ($TotalTransaksiPending as $d) {
+    $TotalTransaksiPending = $d->GetTotalPending;
+}
+
+foreach ($TotalTransaksiBelumLunas as $d) {
+    $TotalTransaksiBelumLunas = $d->GetTotalBelumLunas;
+}
+
+foreach ($TotalTransaksiLunas as $d) {
+    $TotalTransaksiLunas = $d->GetTotalLunas;
+}
+
+foreach ($TotalPembayaran as $d) {
+    $TotalPembayaran = $d->getTotalPembayaran;
+}
+
+foreach ($TotalDp as $d) {
+    $TotalDp = $d->getTotalDp;
+}
+
+foreach ($TotalSisa as $d) {
+    $TotalSisa = $d->getTotalSisa;
+}
 ?>
 
 <div class="col-md-12">
@@ -35,23 +63,23 @@ foreach ($totalTransaksi as $d) {
                                 <!-- Detail pemasukan -->
 
                                 <tr>
-                                    <td class="">Total Pelanggan</td>
-                                    <td class="text-right">000000</td>
-                                </tr>
-
-                                <tr>
-                                    <td class="">Total Transaksi</td>
+                                    <td class="">Total Seluruh Transaksi</td>
                                     <td class="text-right"><?php echo $getTotalTransaksi ?> </td>
                                 </tr>
 
                                 <tr>
-                                    <td class="">Total menu</td>
-                                    <td class="text-right">000000</td>
+                                    <td class="">Total Transaksi Pending</td>
+                                    <td class="text-right"><?php echo $TotalTransaksiPending ?></td>
                                 </tr>
 
                                 <tr>
-                                    <td class="">Total Menu Bonus</td>
-                                    <td class="text-right">000000</td>
+                                    <td class="">Total Transaksi Belum Lunas</td>
+                                    <td class="text-right"><?php echo $TotalTransaksiBelumLunas ?></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="">Total Transaksi Lunas</td>
+                                    <td class="text-right"><?php echo $TotalTransaksiLunas ?></td>
                                 </tr>
 
                                 <!-- Detail pemasukan -->
@@ -81,17 +109,17 @@ foreach ($totalTransaksi as $d) {
                                 <!-- Detail Pengeluaran -->
                                 <tr>
                                     <td class="">Total Pembayaran</td>
-                                    <td class="text-right">Rp. 000000</td>
+                                    <td class="text-right">Rp. <?php echo number_format($TotalPembayaran, 2, ",", "."); ?></td>
                                 </tr>
                                 <tr>
-                                    <td class="">Total Uang Dp</td>
-                                    <td class="text-right">Rp. 000000</td>
+                                    <td class="">Total Uang Dp </td>
+                                    <td class="text-right">Rp. <?php echo number_format($TotalDp, 2, ",", "."); ?></td>
                                 </tr>
                                 <tr>
                                     <td class="">Total Sisa Bayar</td>
-                                    <td class="text-right">Rp. 000000</td>
+                                    <td class="text-right">Rp. <?php echo number_format($TotalSisa, 2, ",", "."); ?></td>
                                 </tr>
-                                <!-- Detail Pengeluaran -->
+                                <!-- Detail Pengeluaran  -->
 
                             </tbody>
                         </table>

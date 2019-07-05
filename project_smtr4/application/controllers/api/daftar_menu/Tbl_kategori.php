@@ -2,6 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 require APPPATH . '/libraries/REST_Controller.php';
+
 use Restserver\Libraries\REST_Controller;
 
 class Tbl_kategori extends REST_Controller
@@ -35,7 +36,7 @@ class Tbl_kategori extends REST_Controller
             foreach ($query->result_array() as $row) {
 
                 $path2 = "upload/gambar_kategori/" . $row["gmbr_kat"];
-                $finalPath = "http://192.168.56.1/project_smtr4/" . $path2;
+                $finalPath = "http://192.168.43.112/project_smtr4/" . $path2;
 
                 // kumpulan data
                 $data = array(

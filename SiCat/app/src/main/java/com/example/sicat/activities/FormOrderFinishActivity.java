@@ -77,8 +77,8 @@ public class FormOrderFinishActivity extends AppCompatActivity {
 
     SessionManager sessionManager;
 
-    private static String URL_UPLOAD = "http://192.168.56.1/project_smtr4/api/transaksi/Data_prasmanan/";
-    private static String URL_UPLOAD_DETAIL = "http://192.168.56.1/project_smtr4/api/transaksi/Data_prasmanan_detail/";
+    private static String URL_UPLOAD = "http://192.168.43.112/project_smtr4/api/transaksi/Data_prasmanan/";
+    private static String URL_UPLOAD_DETAIL = "http://192.168.43.112/project_smtr4/api/transaksi/Data_prasmanan_detail/";
     private static final String TAG = FormOrderFinishActivity.class.getSimpleName(); // getting the info
 
     List<Cart> cartList = new ArrayList<>();

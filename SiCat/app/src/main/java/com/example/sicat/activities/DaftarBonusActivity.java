@@ -50,9 +50,9 @@ public class DaftarBonusActivity extends AppCompatActivity {
 
     Button btn_cari;
     EditText searching;
-    private String URLstring2 = "http://192.168.56.1/project_smtr4/api/daftar_bonus/search_like";
+    private String URLstring2 = "http://192.168.43.112/project_smtr4/api/daftar_bonus/search_like";
 
-    private String URLstring = "http://192.168.56.1/project_smtr4/api/transaksi/data_bonus";
+    private String URLstring = "http://192.168.43.112/project_smtr4/api/transaksi/data_bonus";
     private static ProgressDialog mProgressDialog;
     private RecyclerView recycleBonus;
 

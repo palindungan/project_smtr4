@@ -45,7 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText nm_customer, almt_customer, no_hp, email, username, password, c_password;
     private Button btn_regist;
     private ProgressBar loading;
-    private static String URL_REGIST = "http://192.168.43.112/project_smtr4/api/crud_customer/tbl_customer/";
+    private static String URL_REGIST = "http://192.168.56.1/project_smtr4/api/crud_customer/tbl_customer/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

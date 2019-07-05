@@ -46,7 +46,7 @@ public class TransaksiListActivity extends AppCompatActivity {
 
     TransaksiListAdapter transaksiListAdapter;
 
-    private static String URL_Nya="http://192.168.43.112/project_smtr4/api/transaksi_list/Get_prasmanan_by_id/"; // url http request
+    private static String URL_Nya="http://192.168.56.1/project_smtr4/api/transaksi_list/Get_prasmanan_by_id/"; // url http request
     String id_customer;
 
     String EXTRA_ID_PRASMANAN = "EXTRA_ID_PRASMANAN";

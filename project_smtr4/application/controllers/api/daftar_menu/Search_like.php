@@ -2,7 +2,6 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 require APPPATH . '/libraries/REST_Controller.php';
-
 use Restserver\Libraries\REST_Controller;
 
 class Search_like extends REST_Controller
@@ -42,7 +41,7 @@ class Search_like extends REST_Controller
 
 
                     $path2 = "upload/gambar_menu/" . $row["gambar"];
-                    $finalPath = "http://192.168.43.112/project_smtr4/" . $path2;
+                    $finalPath = "http://192.168.56.1/project_smtr4/" . $path2;
 
                     // kumpulan data
                     $data = array(

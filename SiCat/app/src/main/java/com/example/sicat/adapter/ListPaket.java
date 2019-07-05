@@ -40,7 +40,7 @@ public class ListPaket extends BaseAdapter {
     private Context context;
     private ArrayList<Paket> dataModelArrayList;
     SessionManager sessionManager; // session
-    private static String URL_PAKET="http://192.168.43.112/project_smtr4/api/transaksi/Get_paket_by_id"; // url http request
+    private static String URL_PAKET="http://192.168.56.1/project_smtr4/api/transaksi/Get_paket_by_id"; // url http request
 
     public ListPaket(Context context, ArrayList<Paket> dataModelArrayList) {
         this.context = context;

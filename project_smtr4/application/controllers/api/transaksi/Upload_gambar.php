@@ -2,7 +2,6 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 require APPPATH . '/libraries/REST_Controller.php';
-
 use Restserver\Libraries\REST_Controller;
 
 class Upload_gambar extends REST_Controller
@@ -23,7 +22,7 @@ class Upload_gambar extends REST_Controller
 
         $path = "./upload/bukti_bayar/$where.jpeg";
         $path2 = "/upload/bukti_bayar/$where.jpeg";
-        $finalPath = "http://192.168.43.112/project_smtr4/" . $path2;
+        $finalPath = "http://192.168.56.1/project_smtr4/" . $path2;
 
         $data = array(
             'photo'           =>  $finalPath

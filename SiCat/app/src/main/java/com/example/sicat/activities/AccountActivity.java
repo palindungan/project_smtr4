@@ -51,8 +51,8 @@ public class AccountActivity extends AppCompatActivity {
     SessionManager sessionManager;
     String getID;
     private static final String TAG = AccountActivity.class.getSimpleName(); // getting the info
-    private static String URL_READ = "http://192.168.43.112/project_smtr4/api/crud_customer/Read_detail_customer/";
-    private static String URL_EDIT ="http://192.168.43.112/project_smtr4/api/crud_customer/Edit_detail_customer/";
+    private static String URL_READ = "http://192.168.56.1/project_smtr4/api/crud_customer/Read_detail_customer/";
+    private static String URL_EDIT ="http://192.168.56.1/project_smtr4/api/crud_customer/Edit_detail_customer/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

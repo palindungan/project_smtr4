@@ -26,8 +26,13 @@ class Laporan extends CI_Controller
         $date1 = $this->input->post('date1');
         $date2 = $this->input->post('date2');
 
+        //SET @p0='2019-06-24 00:00:00.000000'; SET @p1='2019-07-03 00:00:00.000000'; SELECT `GetTotal`(@p0, @p1) AS `GetTotal`; 
+
+        $totalTransaksi = $this->M_laporan->getTotalTransaksi($date1, $date2)->result();
+
         // memasukkan data ke dalam array assoc
         $data = array(
+            'totalTransaksi' => $totalTransaksi,
             'date1' => $date1,
             'date2' => $date2
         );

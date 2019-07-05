@@ -1,3 +1,9 @@
+<?php
+foreach ($totalTransaksi as $d) {
+    $getTotalTransaksi = $d->GetTotal;
+}
+?>
+
 <div class="col-md-12">
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -35,7 +41,7 @@
 
                                 <tr>
                                     <td class="">Total Transaksi</td>
-                                    <td class="text-right">000000</td>
+                                    <td class="text-right"><?php echo $getTotalTransaksi ?> </td>
                                 </tr>
 
                                 <tr>

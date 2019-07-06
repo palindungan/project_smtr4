@@ -34,6 +34,8 @@ class Home extends CI_Controller
             'CountKeterangan' => $CountKeterangan
         );
 
+        $data['tbl_data_prasmanan_pending'] = $this->M_home->tampil_data_prasmanan_pending()->result();
+
         $data['path'] = 'admin/konten/v_home';
         $this->load->view('admin/_view', $data);
     }

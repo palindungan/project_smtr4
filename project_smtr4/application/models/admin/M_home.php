@@ -42,4 +42,9 @@ class M_home extends CI_Model
         $query = $this->db->query("SELECT GetCountKeterangan() AS GetCountKeterangan");
         return $query;
     }
+
+    function tampil_data_prasmanan_pending()
+    {
+        return $this->db->get('tabel_prasmanan_pending');
+    }
 }

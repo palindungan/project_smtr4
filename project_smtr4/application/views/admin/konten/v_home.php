@@ -145,6 +145,36 @@ foreach ($CountKeterangan as $d) {
                 </div>
             </div>
 
+            <div class="card">
+                <div class="card-header">
+                    <h3>Data Pemesanan Prasmanan (Pending)</h3>
+                </div>
+                <div class="card-body">
+                    <table id="data_table" class="table">
+                        <thead>
+                            <tr>
+                                <th>Kode Prasmanan</th>
+                                <th>Nama Customer</th>
+                                <th>Nama Paket</th>
+                                <th>Status</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($tbl_data_prasmanan_pending as $d) {  ?>
+                                <tr>
+                                    <td><?php echo $d->id_prasmanan ?></td>
+                                    <td><?php echo $d->nm_customer ?></td>
+                                    <td><?php echo $d->nm_paket ?></td>
+                                    <td><?php echo $d->status ?></td>
+
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

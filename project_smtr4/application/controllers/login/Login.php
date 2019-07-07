@@ -50,16 +50,12 @@ class Login extends CI_Controller
                     // link
                     redirect('admin/home');
                 } else {
-                    $this->load->view('login/v_login');
-                    echo "Password Anda Salah !";
+                    echo "<script> alert('Password Anda Salah'); window.location.href = '" . base_url() . "login/login'; </script>";
                 }
             }
         } else {
 
-            echo "<script type='javascript/text'>";
-            echo "alert('There are no fields to generate a report')";
-            echo "window.location.href = '" . base_url() . "admin/ahm/panel'";
-            echo "</script>";
+            echo "<script> alert('Username Tidak Ada'); window.location.href = '" . base_url() . "login/login'; </script>";
         }
     }
 

@@ -60,7 +60,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nm_menu">Nama</label>
-                                <input type="text" class="form-control" id="nm_menu" placeholder="Nama" name="nm_menu" value="<?php echo $d2->nm_menu ?>">
+                                <input type="text" class="form-control" id="nm_menu" placeholder="Nama" name="nm_menu" value="<?php echo $d2->nm_menu ?>" required="" oninvalid="this.setCustomValidity('isi Nama Menu')" oninput="setCustomValidity('')">
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="id_kat">Kategori</label>
-                                <select class="form-control select2" id="id_kat" name="id_kat">
+                                <select class="form-control select2" id="id_kat" name="id_kat" required="">
                                     <option>-</option>
                                     <?php foreach ($tbl_data_kat as $d) {  ?>
                                         <option value="<?php echo $d->id_kat ?>" <?php if ($d2->id_kat == $d->id_kat) {
@@ -82,8 +82,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="tipe">Tipe</label>
-                                <select class="form-control" id="tipe" name="tipe">
-                                    <option>-</option>
+                                <select class="form-control" id="tipe" name="tipe" required="" oninvalid="this.setCustomValidity('Pilih Tipe Menu')" oninput="setCustomValidity('')">
+                                    <option value="">-</option>
                                     <option value="makanan" <?php if ($d2->tipe == "makanan") {
                                                                 echo "selected";
                                                             } ?>>Makanan</option>
@@ -99,7 +99,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="hrg_porsi">Harga Porsi</label>
-                                <input type="number" class="form-control" id="hrg_porsi" placeholder="Harga" name="hrg_porsi" value="<?php echo $d2->hrg_porsi ?>">
+                                <input type="number" class="form-control" id="hrg_porsi" placeholder="Harga" name="hrg_porsi" value="<?php echo $d2->hrg_porsi ?>" required="" oninvalid="this.setCustomValidity('Isi Harga')" oninput="setCustomValidity('')">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -107,7 +107,7 @@
                                 <label>File upload</label>
                                 <input type="file" name="gambar" class="file-upload-default" id="image_file" value="<?php echo $d2->gambar ?>">
                                 <div class="input-group col-xs-12">
-                                    <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Gambar">
+                                    <input type="text" name="nama_gambar" class="form-control file-upload-info" disabled placeholder="Upload Gambar">
                                     <span class="input-group-append">
                                         <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
                                     </span>
@@ -118,7 +118,7 @@
 
                     <div class="form-group">
                         <label for="deskripsi">Deksripsi</label>
-                        <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi"><?php echo $d2->deskripsi ?></textarea>
+                        <textarea class="form-control" id="deskripsi" rows="3" name="deskripsi" required="" oninvalid="this.setCustomValidity('Isi Deskripsi')" oninput="setCustomValidity('')"><?php echo $d2->deskripsi ?></textarea>
                     </div>
 
                     <button type="submit" class="btn btn-primary mr-2">Update</button>
@@ -127,7 +127,7 @@
                     </form>
 
                 <?php
-            } ?>
+                } ?>
 
             </div>
         </div>

@@ -54,7 +54,11 @@ class Data_Menu extends CI_Controller
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('gambar')) {
-            echo $this->upload->display_errors();
+
+            // pemberitahuan dan pindah page window
+            echo "<script>alert('Isi Gambar dengan Benar !!'); window.location = '" . base_url('admin/menu/data_menu/tambah_menu') . "';</script>";
+
+            //echo $this->upload->display_errors();
         } else {
             $data = $this->upload->data();
 
@@ -110,13 +114,16 @@ class Data_Menu extends CI_Controller
     {
         // hapus file lama
         $id = $this->input->post('id_menu');
+        $nama_gambar = $this->input->post('nama_gambar');
 
         // mengambil nama gambar
         $data = $this->M_data_menu->get_nama_gambar($id);
 
-        // lokasi gambar berada
-        $path = './upload/gambar_menu/';
-        unlink($path . $data->gambar); // hapus data di folder dimana data tersimpan
+        if (!empty($nama_gambar)) {
+            // lokasi gambar berada
+            $path = './upload/gambar_menu/';
+            unlink($path . $data->gambar); // hapus data di folder dimana data tersimpan
+        }
         // end of hapus file lama
 
         // tambah gambar ke database dan local folder
@@ -126,7 +133,38 @@ class Data_Menu extends CI_Controller
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('gambar')) {
-            echo $this->upload->display_errors();
+            //echo $this->upload->display_errors();
+
+            $data = $this->upload->data();
+
+            // End of tambah gambar ke database dan local folder
+
+            // code tambah ke database
+
+            $id_menu = $this->input->post('id_menu');
+            $nm_menu = $this->input->post('nm_menu');
+            $id_kat = $this->input->post('id_kat');
+            $tipe = $this->input->post('tipe');
+            $hrg_porsi = $this->input->post('hrg_porsi');
+            $deskripsi = $this->input->post('deskripsi');
+
+            $data2 = array(
+                'id_menu' => $id_menu,
+                'nm_menu' => $nm_menu,
+                'id_kat' => $id_kat,
+                'tipe' => $tipe,
+                'hrg_porsi' => $hrg_porsi,
+                'deskripsi' => $deskripsi
+            );
+
+            // memasukkan data ke dalam array assoc
+            $where['id_menu'] = $id_menu;
+
+            $this->M_data_menu->update_data($where, $data2, 'tbl_menu');
+
+            redirect('admin/menu/data_menu/data_tabel_menu');
+
+            // end of code tambah ke database
         } else {
             $data = $this->upload->data();
 

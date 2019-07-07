@@ -42,7 +42,7 @@ foreach ($CountKeterangan as $d) {
                                 <h2 class="counter-count"><?php echo $GetCountUserWeb; ?></h2>
                             </div>
                             <div class="icon">
-                                <i class="ik ik-award"></i>
+                                <i class="ik ik-monitor"></i>
                             </div>
                         </div>
                     </div>
@@ -58,7 +58,7 @@ foreach ($CountKeterangan as $d) {
                                 <h2 class="counter-count"><?php echo $GetCountUserAndroid; ?></h2>
                             </div>
                             <div class="icon">
-                                <i class="ik ik-thumbs-up"></i>
+                                <i class="ik ik-smartphone"></i>
                             </div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@ foreach ($CountKeterangan as $d) {
                                 <h2 class="counter-count"><?php echo $GetCountMenu; ?></h2>
                             </div>
                             <div class="icon">
-                                <i class="ik ik-calendar"></i>
+                                <i class="ik ik-shopping-bag"></i>
                             </div>
                         </div>
                     </div>
@@ -90,7 +90,7 @@ foreach ($CountKeterangan as $d) {
                                 <h2 class="counter-count"><?php echo $GetCountBonus; ?></h2>
                             </div>
                             <div class="icon">
-                                <i class="ik ik-message-square"></i>
+                                <i class="ik ik-gift"></i>
                             </div>
                         </div>
                     </div>
@@ -106,7 +106,7 @@ foreach ($CountKeterangan as $d) {
                                 <h2 class="counter-count"><?php echo $GetCountKategori; ?></h2>
                             </div>
                             <div class="icon">
-                                <i class="ik ik-award"></i>
+                                <i class="ik ik-box"></i>
                             </div>
                         </div>
                     </div>
@@ -122,7 +122,7 @@ foreach ($CountKeterangan as $d) {
                                 <h2 class="counter-count"><?php echo $GetCountPaket; ?></h2>
                             </div>
                             <div class="icon">
-                                <i class="ik ik-thumbs-up"></i>
+                                <i class="ik ik-file-text"></i>
                             </div>
                         </div>
                     </div>

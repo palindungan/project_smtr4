@@ -145,7 +145,9 @@ foreach ($CountKeterangan as $d) {
                 </div>
             </div>
 
-            <div class="card">
+        </div>
+
+        <div class="card">
                 <div class="card-header">
                     <h3>Data Pemesanan Prasmanan (Pending)</h3>
                 </div>
@@ -174,8 +176,6 @@ foreach ($CountKeterangan as $d) {
                     </table>
                 </div>
             </div>
-
-        </div>
     </div>
 </div>
 

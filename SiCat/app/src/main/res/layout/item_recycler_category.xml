@@ -22,7 +22,7 @@
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/categoryThumb"
-            android:scaleType="centerInside"
+            android:scaleType="centerCrop"
             android:padding="5dp"
             android:src="@drawable/sample_image_category"
             android:layout_width="match_parent"

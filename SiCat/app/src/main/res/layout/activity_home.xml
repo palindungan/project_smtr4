@@ -91,15 +91,33 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:cardCornerRadius="5dp"
-                        app:cardElevation="5dp">
+                        app:cardElevation="5dp"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true">
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/background"
+                                android:visibility="visible" />
                             <ImageView
-                                android:src="@drawable/sample_image_meal"
+                                android:src="@drawable/bg_food_3"
                                 android:layout_width="match_parent"
                                 android:scaleType="centerCrop"
-                                android:layout_height="match_parent" />
+                                android:layout_height="match_parent"
+                                android:alpha="0.6"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Daftar Menu Makanan"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:layout_alignParentBottom="true"
+                                android:layout_margin="10dp"
+                                android:textSize="18dp"/>
                         </RelativeLayout>
                     </android.support.v7.widget.CardView>
 
@@ -118,15 +136,36 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:cardCornerRadius="5dp"
-                        app:cardElevation="5dp">
+                        app:cardElevation="5dp"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true">
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/background"
+                                android:visibility="visible" />
+
                             <ImageView
-                                android:src="@drawable/bg_face"
+                                android:src="@drawable/bg_food_4"
                                 android:layout_width="match_parent"
                                 android:scaleType="centerCrop"
-                                android:layout_height="match_parent" />
+                                android:layout_height="match_parent"
+                                android:alpha="0.6"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Daftar Pondok Menu Bonus"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:layout_alignParentBottom="true"
+                                android:layout_margin="10dp"
+                                android:textSize="18dp"/>
                         </RelativeLayout>
                     </android.support.v7.widget.CardView>
 
@@ -145,15 +184,36 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:cardCornerRadius="5dp"
-                        app:cardElevation="5dp">
+                        app:cardElevation="5dp"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true">
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/background"
+                                android:visibility="visible" />
+
                             <ImageView
-                                android:src="@drawable/background_atas_menu_home1"
+                                android:src="@drawable/bg_food_2"
                                 android:layout_width="match_parent"
                                 android:scaleType="centerCrop"
-                                android:layout_height="match_parent" />
+                                android:layout_height="match_parent"
+                                android:alpha="0.6"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Pemesanan Prasmanan"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:layout_alignParentBottom="true"
+                                android:layout_margin="10dp"
+                                android:textSize="18dp"/>
                         </RelativeLayout>
                     </android.support.v7.widget.CardView>
                 </LinearLayout>
@@ -172,15 +232,36 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         app:cardCornerRadius="5dp"
-                        app:cardElevation="5dp">
+                        app:cardElevation="5dp"
+                        android:foreground="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true">
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/background"
+                                android:visibility="visible" />
+
                             <ImageView
-                                android:src="@drawable/background_atas_menu_home1"
+                                android:src="@drawable/bg_food_1"
                                 android:layout_width="match_parent"
                                 android:scaleType="centerCrop"
-                                android:layout_height="match_parent" />
+                                android:layout_height="match_parent"
+                                android:alpha="0.6"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Panduan Pemesanan"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:layout_alignParentBottom="true"
+                                android:layout_margin="10dp"
+                                android:textSize="18dp"/>
                         </RelativeLayout>
                     </android.support.v7.widget.CardView>
                 </LinearLayout>

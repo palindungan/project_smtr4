@@ -57,32 +57,38 @@ class Data_User extends CI_Controller
         $password = $this->input->post('password');
         $level = $this->input->post('level');
 
-        // memasukkan data ke dalam array assoc
-        $data = array(
-            'id_user' => $id_user,
-            'nm_user' => $nm_user,
-            'almt_user' => $almt_user,
-            'jenkel_user' => $jenkel_user,
-            'no_hp' => $no_hp,
-            'username' => $username,
-            'password' => password_hash($password, PASSWORD_DEFAULT),
-            'level' => $level
-        );
+        $c_password = $this->input->post('c_password');
+        if ($c_password == $password) {
 
-        // mengambil jumlah baris
-        $cek = $this->M_data_user->ambil_data($username)->num_rows();
+            // memasukkan data ke dalam array assoc
+            $data = array(
+                'id_user' => $id_user,
+                'nm_user' => $nm_user,
+                'almt_user' => $almt_user,
+                'jenkel_user' => $jenkel_user,
+                'no_hp' => $no_hp,
+                'username' => $username,
+                'password' => password_hash($password, PASSWORD_DEFAULT),
+                'level' => $level
+            );
 
-        if ($cek > 0) {
+            // mengambil jumlah baris
+            $cek = $this->M_data_user->ambil_data($username)->num_rows();
 
-            // pemberitahuan dan pindah page window
-            echo "<script>alert('Tidak Boleh Ada 2 Username yang Sama'); window.location = '" . base_url('admin/user/data_user') . "';</script>";
-        } else {
+            if ($cek > 0) {
 
-            // mengirim data ke model untuk diinputkan ke dalam database
-            $this->M_data_user->input_data('user', $data);
+                // pemberitahuan dan pindah page window
+                echo "<script>alert('Tidak Boleh Ada 2 Username yang Sama'); window.location = '" . base_url('admin/user/data_user/tambah_user') . "';</script>";
+            } else {
 
-            // kembali ke halaman utama
-            redirect('admin/user/data_user/tambah_user');
+                // mengirim data ke model untuk diinputkan ke dalam database
+                $this->M_data_user->input_data('user', $data);
+
+                // kembali ke halaman utama
+                redirect('admin/user/data_user/tambah_user');
+            }
+        } else {   // pemberitahuan dan pindah page window
+            echo "<script>alert('Password dan konfirmasi password harus sama !!'); window.location = '" . base_url('admin/user/data_user/tambah_user') . "';</script>";
         }
     }
 
@@ -109,40 +115,41 @@ class Data_User extends CI_Controller
         $password = $this->input->post('password');
         $level = $this->input->post('level');
 
-        if (isset($_GET['nm_user'])) {
-            if ($_GET['nm_user'] == " ") {
-                echo "<h4 style='color:red'>Nama Belum Di Masukkan !</h4>";
-            }
-        }
+        $c_password = $this->input->post('c_password');
 
-        // memasukkan data ke dalam array assoc
-        $data = array(
-            'id_user' => $id_user,
-            'nm_user' => $nm_user,
-            'almt_user' => $almt_user,
-            'jenkel_user' => $jenkel_user,
-            'no_hp' => $no_hp,
-            'username' => $username,
-            'password' => password_hash($password, PASSWORD_DEFAULT),
-            'level' => $level
-        );
-
-        // mengambil jumlah baris
-        $cek = $this->M_data_user->ambil_data($username)->num_rows();
-
-        if ($cek > 1) {
-
-            // pemberitahuan dan pindah page window
-            echo "<script>alert('Tidak Boleh Ada 2 Username yang Sama'); window.location = '" . base_url('admin/user/data_user') . "';</script>";
-        } else {
+        if ($c_password == $password) {
 
             // memasukkan data ke dalam array assoc
-            $where['id_user'] = $id_user;
+            $data = array(
+                'id_user' => $id_user,
+                'nm_user' => $nm_user,
+                'almt_user' => $almt_user,
+                'jenkel_user' => $jenkel_user,
+                'no_hp' => $no_hp,
+                'username' => $username,
+                'password' => password_hash($password, PASSWORD_DEFAULT),
+                'level' => $level
+            );
 
-            $this->M_data_user->update_data($where, $data, 'user');
+            // mengambil jumlah baris
+            $cek = $this->M_data_user->ambil_data($username)->num_rows();
 
-            // kembali ke halaman utama
-            redirect('admin/user/data_user/data_tabel_user');
+            if ($cek > 1) {
+
+                // pemberitahuan dan pindah page window
+                echo "<script>alert('Tidak Boleh Ada 2 Username yang Sama'); window.location = '" . base_url('admin/user/data_user/data_tabel_user') . "';</script>";
+            } else {
+
+                // memasukkan data ke dalam array assoc
+                $where['id_user'] = $id_user;
+
+                $this->M_data_user->update_data($where, $data, 'user');
+
+                // kembali ke halaman utama
+                redirect('admin/user/data_user/data_tabel_user');
+            }
+        } else {   // pemberitahuan dan pindah page window
+            echo "<script>alert('Password dan konfirmasi password harus sama !!'); window.location = '" . base_url('admin/user/data_user/data_tabel_user') . "';</script>";
         }
     }
 }

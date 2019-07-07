@@ -58,7 +58,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="nm_user">Nama</label>
-                            <input type="text" class="form-control" id="nm_user" placeholder="Nama" name="nm_user">
+                            <input type="text" class="form-control" id="nm_user" placeholder="Nama" name="nm_user" required="" oninvalid="this.setCustomValidity('Nama Wajib Diisi')" oninput="setCustomValidity('')">
                         </div>
                     </div>
                 </div>
@@ -66,8 +66,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="jenkel_user">Jenis Kelamin</label>
-                            <select class="form-control" id="jenkel_user" name="jenkel_user">
-                                <option>-</option>
+                            <select class="form-control" id="jenkel_user" name="jenkel_user" required="" oninvalid="this.setCustomValidity('Pilih Jenis Kelamin')" oninput="setCustomValidity('')">
+                                <option value="">-</option>
                                 <option value="pria">Pria</option>
                                 <option value="wanita">Wanita</option>
                             </select>
@@ -77,7 +77,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="no_hp">No Hp</label>
-                            <input type="text" class="form-control" id="no_hp" placeholder="No Hp" name="no_hp">
+                            <input type="text" class="form-control" id="no_hp" placeholder="No Hp" name="no_hp" required="" oninvalid="this.setCustomValidity('Isi No Hp')" oninput="setCustomValidity('')">
                         </div>
                     </div>
                 </div>
@@ -86,14 +86,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+                            <input type="text" class="form-control" id="username" placeholder="Username" name="username" required="" oninvalid="this.setCustomValidity('Isi Username')" oninput="setCustomValidity('')">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="level">Level</label>
-                            <select class="form-control" id="level" name="level">
-                                <option>-</option>
+                            <select class="form-control" id="level" name="level" required="" oninvalid="this.setCustomValidity('Pilih Level')" oninput="setCustomValidity('')">
+                                <option value="">-</option>
                                 <option value="owner">Owner</option>
                                 <option value="admin">Admin</option>
                                 <option value="kasir">Kasir</option>
@@ -106,20 +106,20 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                            <input type="password" class="form-control" id="password" placeholder="Password" name="password" required="" oninvalid="this.setCustomValidity('Isi Password')" oninput="setCustomValidity('')">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="c_password">Konfirmasi Password</label>
-                            <input type="password" class="form-control" id="c_password" placeholder="Konfirmasi Password" name="c_password">
+                            <input type="password" class="form-control" id="c_password" placeholder="Konfirmasi Password" name="c_password" required="" oninvalid="this.setCustomValidity('Isi Konfirmasi Password')" oninput="setCustomValidity('')">
                         </div>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="almt_user">Alamat</label>
-                    <textarea class="form-control" id="almt_user" rows="3" name="almt_user"></textarea>
+                    <textarea class="form-control" id="almt_user" rows="3" name="almt_user" required="" oninvalid="this.setCustomValidity('Isi Alamat')" oninput="setCustomValidity('')"></textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary mr-2">Simpan</button>

@@ -57,7 +57,7 @@ class Login extends CI_Controller
                         redirect('admin/home');
                     } elseif ($level = "kasir") {
                         // link
-                        redirect('admin/home');
+                        redirect('kasir/home');
                     }
                 } else {
                     echo "<script> alert('Password Anda Salah'); window.location.href = '" . base_url() . "login/login'; </script>";

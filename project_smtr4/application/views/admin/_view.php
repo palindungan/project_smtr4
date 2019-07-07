@@ -26,6 +26,9 @@
             if ($this->session->userdata('level') == "owner") {
                 $this->load->view('_partials/left_sidebar_owner');
             }
+            if ($this->session->userdata('level') == "kasir") {
+                $this->load->view('_partials/left_sidebar_kasir');
+            }
 
             ?>
 

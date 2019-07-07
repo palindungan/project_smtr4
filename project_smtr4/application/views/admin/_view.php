@@ -1,7 +1,7 @@
 <?php
 
 if ($this->session->userdata('status') != "login" || $this->session->userdata('level') != $this->uri->segment('1')) {
-    redirect('login/login');
+    redirect('login/login/logout');
 }
 
 ?>

@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
     SessionManager sessionManager; // session
     String getID;
 
-    private Button link_daftar_menu, btn_daftar_bonus , btn_prasmanan; // btn
+    private CardView link_daftar_menu, btn_daftar_bonus , btn_prasmanan; // btn
     private TextView txt_welcome;
 
     // deklarasi untuk drawer

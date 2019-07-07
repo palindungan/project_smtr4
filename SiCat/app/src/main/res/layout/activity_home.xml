@@ -22,68 +22,169 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <ImageView
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="274dp"
-                    android:src="@drawable/background_atas_menu_home1"/>
+                    android:layout_height="274dp">
 
-                <TextView
-                    android:id="@+id/txt_welcome"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="WELCOME, USER !"
-                    android:textSize="28dp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/background"
+                        android:visibility="visible" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Pilih Menu yang Tersedia"
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:alpha="0.4"
+                        android:src="@drawable/background_atas_menu_home1" />
+
+                    <TextView
+                        android:id="@+id/txt_welcome_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:text="Restaurant Catering App"
+                        android:textColor="@color/white"
+                        android:textSize="30dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_welcome_2"
+                        android:layout_centerInParent="true"
+                        android:text="Solusi Untuk Melakukan Pemesanan Katering"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="10dp"
+                        android:text="Henny Catering"
+                        android:textColor="@color/white"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/txt_welcome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_margin="5dp"
+                        android:text="Selamat Datang , User"
+                        android:textColor="@color/white" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/link_daftar_menu"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="5dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:src="@drawable/sample_image_meal"
+                                android:layout_width="match_parent"
+                                android:scaleType="centerCrop"
+                                android:layout_height="match_parent" />
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/btn_daftar_bonus"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="5dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:src="@drawable/bg_face"
+                                android:layout_width="match_parent"
+                                android:scaleType="centerCrop"
+                                android:layout_height="match_parent" />
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/btn_prasmanan"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="5dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:src="@drawable/background_atas_menu_home1"
+                                android:layout_width="match_parent"
+                                android:scaleType="centerCrop"
+                                android:layout_height="match_parent" />
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="7dp"
                     android:layout_marginBottom="15sp"
-                    android:textSize="17dp"/>
+                    android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/link_daftar_menu"
-                    android:layout_width="360dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center"
-                    android:drawableLeft="@drawable/ic_daftar_menu_fix"
-                    android:drawablePadding="50dp"
-                    android:paddingRight="50dp"
-                    android:paddingLeft="50dp"
-                    android:text="Daftar Menu"
-                    android:gravity="left|center"
-                    android:textSize="15sp"/>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/btn_panduan"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="5dp">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:src="@drawable/background_atas_menu_home1"
+                                android:layout_width="match_parent"
+                                android:scaleType="centerCrop"
+                                android:layout_height="match_parent" />
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
 
-                <Button
-                    android:id="@+id/btn_daftar_bonus"
-                    android:text="Daftar Bonus"
-                    android:layout_gravity="center"
-                    android:layout_width="360dp"
-                    android:layout_height="100dp"
-                    android:drawableLeft="@drawable/ic_daftar_bonus_fix"
-                    android:paddingLeft="50dp"
-                    android:paddingRight="50dp"
-                    android:gravity="left|center"
-                    android:drawablePadding="50dp"
-                    android:textSize="15sp"/>
-
-                <Button
-                    android:id="@+id/btn_prasmanan"
-                    android:text="Pemesanan Prasmanan"
-                    android:layout_gravity="center"
-                    android:layout_width="360dp"
-                    android:layout_height="100dp"
-                    android:drawableLeft="@drawable/ic_menu_prasmanan_fix"
-                    android:drawablePadding="6dp"
-                    android:gravity="center_vertical|center"
-                    android:paddingLeft="43dp"
-                    android:paddingRight="43dp"
-                    android:textSize="15sp"
-                    android:layout_marginBottom="25dp"/>
 
             </LinearLayout>
 

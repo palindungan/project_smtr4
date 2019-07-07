@@ -35,19 +35,6 @@
             <!-- bagian isi konten -->
             <?php $this->load->view($path); ?>
 
-            <!-- bagian chat sistem -->
-
-            <!-- bagian right_sidebar_chat -->
-            <?php $this->load->view('_partials/right_sidebar_chat'); ?>
-
-            <!-- bagian isi chat -->
-            <?php $this->load->view('_partials/isi_chat'); ?>
-
-            <!-- end of bagian chat sistem -->
-
-            <!-- bagian footer -->
-            <!-- <?php $this->load->view('_partials/footer'); ?> -->
-
         </div>
     </div>
 

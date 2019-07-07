@@ -49,13 +49,13 @@ class Login extends CI_Controller
 
                     $level = $row['level'];
 
-                    if ($level = "owner") {
+                    if ($level == "owner") {
                         // link
                         redirect('owner/home');
-                    } elseif ($level = "admin") {
+                    } elseif ($level == "admin") {
                         // link
                         redirect('admin/home');
-                    } elseif ($level = "kasir") {
+                    } elseif ($level == "kasir") {
                         // link
                         redirect('kasir/home');
                     }

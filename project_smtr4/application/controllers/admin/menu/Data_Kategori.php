@@ -54,7 +54,11 @@ class Data_Kategori extends CI_Controller
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('gmbr_kat')) {
-            echo $this->upload->display_errors();
+
+            // pemberitahuan dan pindah page window
+            echo "<script>alert('Isi Gambar dengan Benar !!'); window.location = '" . base_url('admin/menu/data_kategori/tambah_kategori') . "';</script>";
+
+            //echo $this->upload->display_errors();
         } else {
             $data = $this->upload->data();
 
@@ -108,13 +112,16 @@ class Data_Kategori extends CI_Controller
     {
         // hapus file lama
         $id = $this->input->post('id_kat');
+        $nama_gambar = $this->input->post('nama_gambar');
 
         // mengambil nama gambar
         $data = $this->M_data_kategori->get_nama_gambar($id);
 
-        // lokasi gambar berada
-        $path = './upload/gambar_kategori/';
-        unlink($path . $data->gmbr_kat); // hapus data di folder dimana data tersimpan
+        if (!empty($nama_gambar)) {
+            // lokasi gambar berada
+            $path = './upload/gambar_kategori/';
+            unlink($path . $data->gmbr_kat); // hapus data di folder dimana data tersimpan
+        }
         // end of hapus file lama
 
         // tambah gambar ke database dan local folder
@@ -124,7 +131,35 @@ class Data_Kategori extends CI_Controller
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('gmbr_kat')) {
-            echo $this->upload->display_errors();
+            //echo $this->upload->display_errors();
+
+            $data = $this->upload->data();
+
+            // End of tambah gambar ke database dan local folder
+
+            // code tambah ke database
+
+            // mengambil dari inputan (name)
+            $id_kat = $this->input->post('id_kat');
+            $nm_kat = $this->input->post('nm_kat');
+            $desk_kat = $this->input->post('desk_kat');
+
+            $data2 = array(
+                'id_kat' => $id_kat,
+                'nm_kat' => $nm_kat,
+                'desk_kat' => $desk_kat
+            );
+
+            // memasukkan data ke dalam array assoc
+            $where['id_kat'] = $id_kat;
+
+            $this->M_data_kategori->update_data($where, $data2, 'tbl_kategori');
+
+            // kembali ke halaman utama
+            redirect('admin/menu/data_kategori/data_tabel_kategori');
+
+            // end of code tambah ke database
+
         } else {
             $data = $this->upload->data();
 

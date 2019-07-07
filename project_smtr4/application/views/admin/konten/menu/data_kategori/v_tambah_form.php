@@ -58,7 +58,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="nm_kat">Nama Kategori</label>
-                            <input type="text" class="form-control" id="nm_kat" name="nm_kat" placeholder="Nama Kategori">
+                            <input type="text" class="form-control" id="nm_kat" name="nm_kat" placeholder="Nama Kategori" required="" oninvalid="this.setCustomValidity('isi Nama Kategori')" oninput="setCustomValidity('')">
                         </div>
                     </div>
                 </div>
@@ -66,13 +66,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="desk_kat">Deksripsi</label>
-                            <textarea class="form-control" id="desk_kat" rows="3" name="desk_kat"></textarea>
+                            <textarea class="form-control" id="desk_kat" rows="3" name="desk_kat" required="" oninvalid="this.setCustomValidity('isi Deskripsi Kategori')" oninput="setCustomValidity('')"></textarea>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>File upload</label>
-                            <input required="" type="file" name="gmbr_kat" class="file-upload-default" id="image_file">
+                            <input type="file" name="gmbr_kat" class="file-upload-default" id="image_file">
                             <div class="input-group col-xs-12">
                                 <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Gambar">
                                 <span class="input-group-append">

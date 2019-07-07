@@ -61,8 +61,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="id_menu">Menu</label>
-                                <select class="form-control select2" id="id_menu" name="id_menu">
-                                    <option>-</option>
+                                <select class="form-control select2" id="id_menu" name="id_menu" required="">
+                                    <option value="">-</option>
                                     <?php foreach ($tbl_data_menu as $d) {  ?>
                                         <option value="<?php echo $d->id_menu ?>" <?php if ($d2->id_menu == $d->id_menu) {
                                                                                         echo "selected";
@@ -80,7 +80,7 @@
                     </form>
 
                 <?php
-            } ?>
+                } ?>
 
             </div>
         </div>

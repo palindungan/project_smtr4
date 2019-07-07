@@ -1,10 +1,10 @@
 <div class="app-sidebar colored">
     <div class="sidebar-header">
-        <a class="header-brand" href="index.html">
+        <a class="header-brand" href="">
             <div class="logo-img">
-                <img src="<?php echo base_url(); ?>assets/template/back/src/img/brand-white.svg" class="header-brand-img" alt="lavalite">
+                <img src="<?php echo base_url(); ?>upload/logo_catering.png" height="40" class="header-brand-img" alt="Logo">
             </div>
-            <span class="text">ThemeKit</span>
+            <span style="margin: 10px 5px 15px 65px;" class="text">SiKat</span>
         </a>
         <button type="button" class="nav-toggle"><i data-toggle="expanded" class="ik ik-toggle-right toggle-icon"></i></button>
         <button id="sidebarClose" class="nav-close"><i class="ik ik-x"></i></button>

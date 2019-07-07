@@ -55,23 +55,32 @@ class Data_Customer extends CI_Controller
         $username = $this->input->post('username');
         $password = $this->input->post('password');
 
-        // memasukkan data ke dalam array assoc
-        $data = array(
-            'id_customer' => $id_customer,
-            'nm_customer' => $nm_customer,
-            'almt_customer' => $almt_customer,
-            'jenkel_customer' => $jenkel_customer,
-            'no_hp' => $no_hp,
-            'email' => $email,
-            'username' => $username,
-            'password' => password_hash($password, PASSWORD_DEFAULT)
-        );
+        $c_password = $this->input->post('c_password');
 
-        // mengirim data ke model untuk diinputkan ke dalam database
-        $this->M_data_customer->input_data('tbl_customer', $data);
+        if ($c_password == $password) {
 
-        // kembali ke halaman utama
-        redirect('admin/user/data_customer/tambah_customer');
+            // memasukkan data ke dalam array assoc
+            $data = array(
+                'id_customer' => $id_customer,
+                'nm_customer' => $nm_customer,
+                'almt_customer' => $almt_customer,
+                'jenkel_customer' => $jenkel_customer,
+                'no_hp' => $no_hp,
+                'email' => $email,
+                'username' => $username,
+                'password' => password_hash($password, PASSWORD_DEFAULT)
+            );
+
+            // mengirim data ke model untuk diinputkan ke dalam database
+            $this->M_data_customer->input_data('tbl_customer', $data);
+
+            // kembali ke halaman utama
+            redirect('admin/user/data_customer/tambah_customer');
+        } else {
+
+            // pemberitahuan dan pindah page window
+            echo "<script>alert('Password dan konfirmasi password harus sama !!'); window.location = '" . base_url('admin/user/data_customer/tambah_customer') . "';</script>";
+        }
     }
 
     function hapus_aksi()
@@ -97,24 +106,31 @@ class Data_Customer extends CI_Controller
         $username = $this->input->post('username');
         $password = $this->input->post('password');
 
-        // memasukkan data ke dalam array assoc
-        $data = array(
-            'id_customer' => $id_customer,
-            'nm_customer' => $nm_customer,
-            'almt_customer' => $almt_customer,
-            'jenkel_customer' => $jenkel_customer,
-            'no_hp' => $no_hp,
-            'email' => $email,
-            'username' => $username,
-            'password' => password_hash($password, PASSWORD_DEFAULT)
-        );
+        $c_password = $this->input->post('c_password');
 
-        // memasukkan data ke dalam array assoc
-        $where['id_customer'] = $id_customer;
+        if ($c_password == $password) {
+            // memasukkan data ke dalam array assoc
+            $data = array(
+                'id_customer' => $id_customer,
+                'nm_customer' => $nm_customer,
+                'almt_customer' => $almt_customer,
+                'jenkel_customer' => $jenkel_customer,
+                'no_hp' => $no_hp,
+                'email' => $email,
+                'username' => $username,
+                'password' => password_hash($password, PASSWORD_DEFAULT)
+            );
 
-        $this->M_data_customer->update_data($where, $data, 'tbl_customer');
+            // memasukkan data ke dalam array assoc
+            $where['id_customer'] = $id_customer;
 
-        // kembali ke halaman utama
-        redirect('admin/user/data_customer/data_tabel_customer');
+            $this->M_data_customer->update_data($where, $data, 'tbl_customer');
+
+            // kembali ke halaman utama
+            redirect('admin/user/data_customer/data_tabel_customer');
+        } else {
+            // pemberitahuan dan pindah page window
+            echo "<script>alert('Password dan konfirmasi password harus sama !!'); window.location = '" . base_url('admin/user/data_customer/data_tabel_customer') . "';</script>";
+        }
     }
 }

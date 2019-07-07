@@ -23,7 +23,7 @@
                 <div class="nav-item <?php if ($this->uri->segment('2') == 'daftar_menu') {
                                             echo 'active';
                                         } ?>">
-                    <a href="<?php echo base_url(); ?>admin/daftar_menu/"><i class="ik ik-bar-chart-2"></i><span>Daftar Menu</span></a>
+                    <a href="<?php echo base_url(); ?>admin/daftar_menu/"><i class="ik ik-grid"></i><span>Daftar Menu</span></a>
                 </div>
 
                 <div class="nav-lavel">Pengolahan Data</div>

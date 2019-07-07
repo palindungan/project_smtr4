@@ -164,7 +164,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="sisa_bayar">Sisa Bayar</label>
-                                <input type="number" class="form-control" id="sisa_bayar" name="sisa_bayar" value="<?php echo $d2->sisa_bayar ?>">
+                                <input type="number" class="form-control" id="sisa_bayar" name="sisa_bayar" value="<?php echo $d2->sisa_bayar ?>" required="" oninvalid="this.setCustomValidity('isi Nominal Sisa Bayar')" oninput="setCustomValidity('')">
                             </div>
                         </div>
                     </div>
@@ -231,7 +231,7 @@
                     </form>
 
                 <?php
-            } ?>
+                } ?>
 
             </div>
         </div>

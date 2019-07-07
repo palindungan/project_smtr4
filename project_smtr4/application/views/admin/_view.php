@@ -1,11 +1,3 @@
-<?php
-
-// if ($this->session->userdata('level') != "admin") {
-//     redirect('login/login');
-// }
-
-?>
-
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -29,7 +21,7 @@
             <?php
 
             if ($this->session->userdata('level') == "admin") {
-                $this->load->view('_partials/left_sidebar');
+                $this->load->view('_partials/left_sidebar_admin');
             }
             if ($this->session->userdata('level') == "owner") {
                 $this->load->view('_partials/left_sidebar_owner');

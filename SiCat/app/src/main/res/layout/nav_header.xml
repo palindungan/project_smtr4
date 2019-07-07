@@ -3,13 +3,46 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="220dp"
-    android:gravity="center"
-    android:background="@color/colorPrimaryDark">
+    android:gravity="center">
 
-    <ImageView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/bg_nav_header"
-        android:scaleType="centerCrop"/>
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background"
+            android:visibility="visible" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/bg_nav_header"
+            android:scaleType="centerCrop"
+            android:alpha="0.5"/>
+
+        <TextView
+            android:layout_marginStart="15sp"
+            android:id="@+id/caption2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Restaurant Catering App"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_marginTop="160dp"
+            android:textSize="18dp"/>
+
+        <TextView
+            android:layout_marginStart="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Henny Catering"
+            android:textColor="@color/white"
+            android:layout_below="@+id/caption2"/>
+
+
+
+    </RelativeLayout>
 
 </LinearLayout>

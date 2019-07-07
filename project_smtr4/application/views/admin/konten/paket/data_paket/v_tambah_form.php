@@ -60,8 +60,9 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="nm_paket">Nama</label>
-								<input type="text" class="form-control" id="nm_paket" placeholder="Nama"
-									name="nm_paket">
+								<input type="text" class="form-control" id="nm_paket" placeholder="Nama" name="nm_paket"
+									required="" oninvalid="this.setCustomValidity('isi Nama Paket')"
+									oninput="setCustomValidity('')">
 							</div>
 						</div>
 					</div>
@@ -71,21 +72,26 @@
 							<div class="form-group">
 								<label for="hrg_paket">Harga Porsi</label>
 								<input type="number" class="form-control" id="hrg_paket" placeholder="Harga"
-									name="hrg_paket">
+									name="hrg_paket" required="" oninvalid="this.setCustomValidity('isi Harga Paket')"
+									oninput="setCustomValidity('')">
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
 								<label for="jml_menu">Jumlah Menu</label>
 								<input type="number" class="form-control" id="jml_menu" placeholder="Jumlah Menu"
-									name="jml_menu">
+									name="jml_menu" required=""
+									oninvalid="this.setCustomValidity('isi Jumlah Menu Makanan')"
+									oninput="setCustomValidity('')">
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group">
 								<label for="jml_bonus">Jumlah Bonus</label>
 								<input type="number" class="form-control" id="jml_bonus" placeholder="Jumlah Bonus"
-									name="jml_bonus">
+									name="jml_bonus" required=""
+									oninvalid="this.setCustomValidity('isi Jumlah Menu Bonus')"
+									oninput="setCustomValidity('')">
 							</div>
 						</div>
 					</div>
@@ -159,8 +165,8 @@
                                 <span class="input-group-prepend">
                                     <label class="input-group-text">Menu ke-` + index + `</label>
                                 </span>
-                                <select class="form-control select2" id="id_menu` + index + `" name="id_menu[]">
-                                    <option>-</option>
+                                <select class="form-control select2" id="id_menu` + index + `" name="id_menu[]" required="">
+                                    <option value="">-</option>
                                     <?php foreach ($tbl_data_menu as $d) {  ?>
                                         <option value="<?php echo $d->id_menu ?>"><?php echo $d->nm_menu ?></option>
                                     <?php } ?>
@@ -188,8 +194,8 @@
                                 <span class="input-group-prepend">
                                     <label class="input-group-text">Bonus ke-` + index + `</label>
                                 </span>
-                                <select class="form-control select2" id="id_bonus` + index + `" name="id_bonus[]">
-                                    <option>-</option>
+                                <select class="form-control select2" id="id_bonus` + index + `" name="id_bonus[]" required="">
+                                    <option value="">-</option>
                                     <?php foreach ($tbl_data_bonus as $d) {  ?>
                                         <option value="<?php echo $d->id_bonus ?>"><?php echo $d->nm_menu ?></option>
                                     <?php } ?>

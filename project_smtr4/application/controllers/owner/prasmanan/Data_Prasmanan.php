@@ -118,11 +118,11 @@ class Data_Prasmanan extends CI_Controller
 
         // kembali ke halaman utama
         if ($status == "pending") {
-            redirect('admin/prasmanan/data_prasmanan/data_tabel_pending');
+            redirect('owner/prasmanan/data_prasmanan/data_tabel_pending');
         } elseif ($status == "belum_lunas") {
-            redirect('admin/prasmanan/data_prasmanan/data_tabel_belum_lunas');
+            redirect('owner/prasmanan/data_prasmanan/data_tabel_belum_lunas');
         } elseif ($status == "lunas") {
-            redirect('admin/prasmanan/data_prasmanan/data_tabel_lunas');
+            redirect('owner/prasmanan/data_prasmanan/data_tabel_lunas');
         }
     }
 }

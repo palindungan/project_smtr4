@@ -1,8 +1,8 @@
 <?php
 
-if ($this->session->userdata('level') != "admin") {
-    redirect('login/login');
-}
+// if ($this->session->userdata('level') != "admin") {
+//     redirect('login/login');
+// }
 
 ?>
 
@@ -26,7 +26,16 @@ if ($this->session->userdata('level') != "admin") {
         <div class="page-wrap">
 
             <!-- bagian left_sidebar -->
-            <?php $this->load->view('_partials/left_sidebar'); ?>
+            <?php
+
+            if ($this->session->userdata('level') == "admin") {
+                $this->load->view('_partials/left_sidebar');
+            }
+            if ($this->session->userdata('level') == "owner") {
+                $this->load->view('_partials/left_sidebar_owner');
+            }
+
+            ?>
 
             <!-- bagian isi konten -->
             <?php $this->load->view($path); ?>

@@ -17,7 +17,7 @@
                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="<?php echo base_url(); ?>admin/home/"><i class="ik ik-home"></i></a>
+                                <a href="<?php echo base_url(); ?>owner/home/"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item"><a href="">UI</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Prasmanan</li>
@@ -35,17 +35,17 @@
                     <li class="nav-item">
                         <a class="nav-link <?php if ($this->uri->segment('4') == 'data_tabel_pending') {
                                                 echo 'active';
-                                            } ?>" href="<?php echo base_url(); ?>admin/prasmanan/data_prasmanan/data_tabel_pending">Data Pending</a>
+                                            } ?>" href="<?php echo base_url(); ?>owner/prasmanan/data_prasmanan/data_tabel_pending">Data Pending</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php if ($this->uri->segment('4') == 'data_tabel_belum_lunas') {
                                                 echo 'active';
-                                            } ?>" href="<?php echo base_url(); ?>admin/prasmanan/data_prasmanan/data_tabel_belum_lunas">Data Belum Lunas</a>
+                                            } ?>" href="<?php echo base_url(); ?>owner/prasmanan/data_prasmanan/data_tabel_belum_lunas">Data Belum Lunas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php if ($this->uri->segment('4') == 'data_tabel_lunas') {
                                                 echo 'active';
-                                            } ?>" href="<?php echo base_url(); ?>admin/prasmanan/data_prasmanan/data_tabel_lunas">Data Lunas</a>
+                                            } ?>" href="<?php echo base_url(); ?>owner/prasmanan/data_prasmanan/data_tabel_lunas">Data Lunas</a>
                     </li>
                 </ul>
             </div>
@@ -74,7 +74,7 @@
                                 <td><?php echo $d->status ?></td>
                                 <td>
                                     <div class="table-actions">
-                                        <a href="<?php echo site_url('admin/prasmanan/data_prasmanan/edit_data_belum_lunas/' . $d->id_prasmanan) ?>"><i class="ik ik-eye"></i></a>
+                                        <a href="<?php echo site_url('owner/prasmanan/data_prasmanan/edit_data_belum_lunas/' . $d->id_prasmanan) ?>"><i class="ik ik-eye"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -111,7 +111,7 @@
                     var m = $(this).attr("id");
                     // alert(m);
                     $.ajax({
-                        url: "<?php echo base_url() . 'admin/user/data_user/hapus_aksi'; ?>",
+                        url: "<?php echo base_url() . 'owner/user/data_user/hapus_aksi'; ?>",
                         type: "post",
                         data: {
                             id_user: m

@@ -47,8 +47,18 @@ class Login extends CI_Controller
                     );
                     $this->session->set_userdata($data_session);
 
-                    // link
-                    redirect('admin/home');
+                    $level = $row['level'];
+
+                    if ($level = "owner") {
+                        // link
+                        redirect('owner/home');
+                    } elseif ($level = "admin") {
+                        // link
+                        redirect('admin/home');
+                    } elseif ($level = "kasir") {
+                        // link
+                        redirect('admin/home');
+                    }
                 } else {
                     echo "<script> alert('Password Anda Salah'); window.location.href = '" . base_url() . "login/login'; </script>";
                 }

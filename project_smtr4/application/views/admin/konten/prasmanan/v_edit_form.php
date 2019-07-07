@@ -17,7 +17,7 @@
                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="<?php echo base_url(); ?>admin/home/"><i class="ik ik-home"></i></a>
+                                <a href="<?php echo base_url(); ?>owner/home/"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item"><a href="">UI</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Data Menu Makanan</li>
@@ -73,17 +73,17 @@
                     <li class="nav-item">
                         <a class="nav-link <?php if ($this->uri->segment('4') == 'edit_data_pending') {
                                                 echo 'active';
-                                            } ?>" href="<?php echo base_url(); ?>admin/prasmanan/data_prasmanan/data_tabel_pending">Data Pending</a>
+                                            } ?>" href="<?php echo base_url(); ?>owner/prasmanan/data_prasmanan/data_tabel_pending">Data Pending</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php if ($this->uri->segment('4') == 'edit_data_belum_lunas') {
                                                 echo 'active';
-                                            } ?>" href="<?php echo base_url(); ?>admin/prasmanan/data_prasmanan/data_tabel_belum_lunas">Data Belum Lunas</a>
+                                            } ?>" href="<?php echo base_url(); ?>owner/prasmanan/data_prasmanan/data_tabel_belum_lunas">Data Belum Lunas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?php if ($this->uri->segment('4') == 'edit_data_lunas') {
                                                 echo 'active';
-                                            } ?>" href="<?php echo base_url(); ?>admin/prasmanan/data_prasmanan/data_tabel_lunas">Data Lunas</a>
+                                            } ?>" href="<?php echo base_url(); ?>owner/prasmanan/data_prasmanan/data_tabel_lunas">Data Lunas</a>
                     </li>
                 </ul>
             </div>
@@ -93,7 +93,7 @@
 
                 <?php foreach ($tbl_prasmanan as $d2) { ?>
 
-                    <?php echo form_open_multipart('admin/prasmanan/data_prasmanan/update_aksi'); ?>
+                    <?php echo form_open_multipart('owner/prasmanan/data_prasmanan/update_aksi'); ?>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -262,7 +262,7 @@
         // ajax
         var m = $(this).attr("id");
         $.ajax({
-            url: "<?php echo base_url() . 'admin/prasmanan/data_prasmanan/lihat_detail'; ?>",
+            url: "<?php echo base_url() . 'owner/prasmanan/data_prasmanan/lihat_detail'; ?>",
             type: "post",
             data: {
                 id_prasmanan: m

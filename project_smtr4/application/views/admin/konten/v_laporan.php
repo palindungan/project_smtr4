@@ -17,7 +17,7 @@
                     <nav class="breadcrumb-container" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="<?php echo base_url(); ?>admin/home/"><i class="ik ik-home"></i></a>
+                                <a href="<?php echo base_url(); ?>owner/home/"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item"><a href="">UI</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Home</li>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="card-body card-block">
 
-                    <form action="<?php echo base_url(); ?>admin/laporan/detail_transaksi" target="_black" method="post">
+                    <form action="<?php echo base_url(); ?>owner/laporan/detail_transaksi" target="_black" method="post">
 
                         <label class=" form-control-label">
                             <h6>Mulai</h6>

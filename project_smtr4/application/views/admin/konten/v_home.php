@@ -144,7 +144,6 @@ foreach ($CountKeterangan as $d) {
                     </div>
                 </div>
             </div>
-
         </div>
 
         <div class="card">

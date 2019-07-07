@@ -60,7 +60,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="deskripsi">Deskripsi</label>
-                            <input type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="Deskripsi">
+                            <input type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="Deskripsi" required="" oninvalid="this.setCustomValidity('isi Keterangan Paket')" oninput="setCustomValidity('')">
                         </div>
                     </div>
                 </div>

@@ -61,7 +61,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="deskripsi">Deskripsi</label>
-                                <input type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="Deskripsi" value="<?php echo $d2->deskripsi ?>">
+                                <input type="text" class="form-control" id="deskripsi" name="deskripsi" placeholder="Deskripsi" value="<?php echo $d2->deskripsi ?>" required="" oninvalid="this.setCustomValidity('isi Keterangan Paket')" oninput="setCustomValidity('')">
                             </div>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                     </form>
 
                 <?php
-            } ?>
+                } ?>
 
             </div>
         </div>

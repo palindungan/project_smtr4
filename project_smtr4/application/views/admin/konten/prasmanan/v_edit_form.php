@@ -8,7 +8,7 @@
                     <div class="page-header-title">
                         <i class="ik ik-command bg-blue"></i>
                         <div class="d-inline">
-                            <h2>Data Tabel Prasmanan</h2>
+                            <h2>Data Tabel Pemesanan Prasmanan</h2>
                             <!-- <span>ini adalah deksripsi menu user</span> -->
                         </div>
                     </div>

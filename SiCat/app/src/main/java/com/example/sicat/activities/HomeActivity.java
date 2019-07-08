@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.example.sicat.Database.DataSource.CartRepository;
 import com.example.sicat.Database.Local.CartDataSource;
 import com.example.sicat.Database.Local.CartDatabase;
+import com.example.sicat.PanduanActivity;
 import com.example.sicat.R;
 import com.example.sicat.activities.daftar_menu.MenuActivity;
 import com.example.sicat.common.Common;
@@ -35,7 +36,7 @@ public class HomeActivity extends AppCompatActivity {
     SessionManager sessionManager; // session
     String getID;
 
-    private CardView link_daftar_menu, btn_daftar_bonus , btn_prasmanan; // btn
+    private CardView link_daftar_menu, btn_daftar_bonus , btn_prasmanan, btn_panduan; // btn
     private TextView txt_welcome;
 
     // deklarasi untuk drawer
@@ -61,6 +62,8 @@ public class HomeActivity extends AppCompatActivity {
         link_daftar_menu = findViewById(R.id.link_daftar_menu);
         btn_daftar_bonus = findViewById(R.id.btn_daftar_bonus);
         btn_prasmanan = findViewById(R.id.btn_prasmanan);
+        btn_panduan = findViewById(R.id.btn_panduan);
+
         txt_welcome = findViewById(R.id.txt_welcome);
 
         try {
@@ -118,6 +121,15 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // masuk ke dalam daftar bonus
                 Intent intent = new Intent(HomeActivity.this, DaftarBonusActivity.class);
+                startActivity(intent); // membuka activity lain
+            }
+        });
+
+        btn_panduan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // masuk ke dalam daftar bonus
+                Intent intent = new Intent(HomeActivity.this, PanduanActivity.class);
                 startActivity(intent); // membuka activity lain
             }
         });

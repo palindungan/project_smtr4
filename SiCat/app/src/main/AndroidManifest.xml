@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme2"
         tools:replace="android:theme">
-        <activity android:name=".activities.TransaksiListDetalItemActivity"></activity>
+        <activity android:name=".PanduanActivity"></activity>
+        <activity android:name=".activities.TransaksiListDetalItemActivity" />
         <activity android:name=".activities.TransaksiListDetailActivity" />
         <activity android:name=".activities.TransaksiListActivity" />
         <activity android:name=".activities.FormOrderFinishActivity" />

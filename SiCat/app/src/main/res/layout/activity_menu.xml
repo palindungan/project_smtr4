@@ -50,9 +50,9 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="15dp"
-                app:cardBackgroundColor="@color/colorPrimaryDark"
+                app:cardBackgroundColor="@color/colorPrimaryOrange"
                 app:cardCornerRadius="10dp"
-                android:alpha="0.7"
+                android:alpha="0.8"
                 app:cardElevation="0dp">
 
                 <LinearLayout
@@ -65,10 +65,10 @@
                         android:layout_height="wrap_content"
                         android:padding="10dp"
                         android:backgroundTint="@color/colorWhite"
-                        android:hint="Pencaharian Semua Menu ... "
-                        android:textColorHint="@color/colorHint"
+                        android:hint="Pencarian Semua Menu ... "
+                        android:textColorHint="@color/colorWhite"
                         android:imeOptions="actionNext"
-                        android:textColor="@color/colorPrimaryLight"
+                        android:textColor="@color/colorWhite"
                         android:gravity="center_vertical"
                         android:drawableLeft="@drawable/ic_search_primary_light"
                         android:drawableStart="@drawable/ic_search_primary_light"
@@ -78,7 +78,7 @@
                         android:id="@+id/btn_cari"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:backgroundTint="@color/colorPrimaryOrange"
                         android:text="Cari"
                         android:textColor="@android:color/white" />
 
@@ -109,7 +109,7 @@
                 android:id="@+id/titleCategory"
                 android:text="@string/meal_categories"
                 android:textSize="19dp"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorPrimaryDarkOrange"
                 android:textStyle="bold"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"

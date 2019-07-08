@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Si Cat</string>
+    <string name="app_name">SIKat</string>
 
     <string name="Login">Log In</string>
     <string name="signup">Don\'t have an Account? <b>Sign Up</b></string>

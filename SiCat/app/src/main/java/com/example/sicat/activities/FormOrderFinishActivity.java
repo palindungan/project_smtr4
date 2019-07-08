@@ -199,9 +199,26 @@ public class FormOrderFinishActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         // masuk form inputan transaksi pemesanan
 
-                        // data prasmanan
-                        UploadData(data_photo);
+                        String ket_acara = txt_ket_acara.getText().toString().trim();
+                        String tgl_pelunasan = txt_tgl_pelunasan.getText().toString().trim();
+                        String tgl_acara = txt_tgl_acara.getText().toString().trim();
+                        // data_photo
 
+                        try {
+                            // validasi
+                            if (!ket_acara.isEmpty() && !tgl_pelunasan.isEmpty()&& !tgl_acara.isEmpty()&& !data_photo.isEmpty()){
+                                // jika benar
+                                // data prasmanan
+                                UploadData(data_photo);
+                            } else {
+
+                                Toast.makeText(FormOrderFinishActivity.this,"Isi Data Dengan Benar",Toast.LENGTH_SHORT).show();
+
+                            }
+
+                        }catch (Exception e){
+                            Toast.makeText(FormOrderFinishActivity.this,"Isi Data Dengan Benar",Toast.LENGTH_SHORT).show();
+                        }
 
                     }
                 })

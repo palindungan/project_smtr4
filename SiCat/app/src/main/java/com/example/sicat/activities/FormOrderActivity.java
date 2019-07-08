@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sicat.R;
 import com.example.sicat.common.Common;
@@ -113,12 +114,20 @@ public class FormOrderActivity extends AppCompatActivity {
                 String tot_bayar = txt_tot_bayar.getText().toString().trim();
                 String kembalian = txt_kembalian.getText().toString().trim();
 
-                Intent intent = new Intent(FormOrderActivity.this,FormOrderFinishActivity.class);
-                intent.putExtra(EXTRA_JML_PORSI, jml_porsi);
-                intent.putExtra(EXTRA_TOT_BIAYA, tot_biaya);
-                intent.putExtra(EXTRA_TOT_BAYAR, tot_bayar);
-                intent.putExtra(EXTRA_SISA_BAYAR, kembalian);
-                startActivity(intent);
+                // validasi
+                if (!jml_porsi.isEmpty() && !tot_biaya.isEmpty()&& !tot_bayar.isEmpty()&& !kembalian.isEmpty()){
+                    // jika benar
+                    Intent intent = new Intent(FormOrderActivity.this,FormOrderFinishActivity.class);
+                    intent.putExtra(EXTRA_JML_PORSI, jml_porsi);
+                    intent.putExtra(EXTRA_TOT_BIAYA, tot_biaya);
+                    intent.putExtra(EXTRA_TOT_BAYAR, tot_bayar);
+                    intent.putExtra(EXTRA_SISA_BAYAR, kembalian);
+                    startActivity(intent);
+                } else {
+
+                    Toast.makeText(FormOrderActivity.this,"Isi Data Dengan Benar",Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
     }

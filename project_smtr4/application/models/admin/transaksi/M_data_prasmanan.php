@@ -19,7 +19,7 @@ class M_data_prasmanan extends CI_Model
         $kd = "";
         if ($q->num_rows() > 0) {
             foreach ($q->result() as $k) {
-                $tmp = ((int)$k->kd_max) + 1;
+                $tmp = ((int) $k->kd_max) + 1;
                 $kd = $kode . sprintf('%0' . $digit . 's',  $tmp);
             }
         } else {
@@ -94,6 +94,54 @@ class M_data_prasmanan extends CI_Model
         $this->db->from('tabel_detail_prasmanan_bonus tb');
 
         $where = "tb.id_prasmanan ='" . $id_prasmanan . "'";
+        $this->db->where($where);
+
+        return $this->db->get();
+    }
+
+    // mengambil data paket
+    function ambil_paket()
+    {
+        return $this->db->get('tbl_paket');
+    }
+
+    // mengambil data customer
+    function ambil_customer()
+    {
+        return $this->db->get('tbl_customer');
+    }
+
+    // mengambil data customer
+    function ambil_menu()
+    {
+        return $this->db->get('tabel_menu');
+    }
+
+    // mengambil data customer
+    function ambil_bonus()
+    {
+        return $this->db->get('tabel_bonus');
+    }
+
+    function get_by_id_paket($id_paket)
+    {
+        // pencarian semua yang sesuai id_paket
+        $this->db->select('*');
+        $this->db->from('tbl_detail_paket_menu tb');
+
+        $where = "tb.id_paket ='" . $id_paket . "'";
+        $this->db->where($where);
+
+        return $this->db->get();
+    }
+
+    function get_by_id_paket2($id_paket)
+    {
+        // pencarian semua yang sesuai id_paket
+        $this->db->select('*');
+        $this->db->from('tbl_detail_paket_bonus tb');
+
+        $where = "tb.id_paket ='" . $id_paket . "'";
         $this->db->where($where);
 
         return $this->db->get();

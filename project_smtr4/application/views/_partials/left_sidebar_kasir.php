@@ -18,12 +18,19 @@
                 <div class="nav-item <?php if ($this->uri->segment('2') == 'home') {
                                             echo 'active';
                                         } ?>">
-                    <a href="<?php echo base_url(); ?>admin/home/"><i class="ik ik-home"></i><span>Home</span></a>
+                    <a href="<?php echo base_url(); ?>kasir/home/"><i class="ik ik-home"></i><span>Home</span></a>
                 </div>
                 <div class="nav-item <?php if ($this->uri->segment('2') == 'daftar_menu') {
                                             echo 'active';
                                         } ?>">
-                    <a href="<?php echo base_url(); ?>admin/daftar_menu/"><i class="ik ik-grid"></i><span>Daftar Menu</span></a>
+                    <a href="<?php echo base_url(); ?>kasir/daftar_menu/"><i class="ik ik-grid"></i><span>Daftar Menu</span></a>
+                </div>
+
+                <div class="nav-lavel">Transaksi</div>
+                <div class="nav-item <?php if ($this->uri->segment('2') == 'prasmanan') {
+                                            echo 'active';
+                                        } ?>">
+                    <a href="<?php echo base_url(); ?>kasir/prasmanan/tambah_prasamanan"><i class="ik ik-tag"></i><span>Pesan Prasmanan</span></a>
                 </div>
 
             </nav>

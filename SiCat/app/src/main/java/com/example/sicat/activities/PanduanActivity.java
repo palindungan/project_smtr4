@@ -32,7 +32,7 @@ public class PanduanActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    private String URLstring = "http://192.168.56.1/project_smtr4/api/keterangan_paket/panduan";
+    private String URLstring = "http://192.168.43.112/project_smtr4/api/keterangan_paket/panduan";
 
     private RecyclerView recyclerPanduan;
     ArrayList<Panduan> dataModelArrayList;

@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 public class PaketListActivity extends AppCompatActivity {
 
-    private String URLstring = "http://192.168.56.1/project_smtr4/api/transaksi/data_paket";
+    private String URLstring = "http://192.168.43.112/project_smtr4/api/transaksi/data_paket";
     private static ProgressDialog mProgressDialog;
     private ListView listView;
 

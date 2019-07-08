@@ -2,6 +2,7 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 require APPPATH . '/libraries/REST_Controller.php';
+
 use Restserver\Libraries\REST_Controller;
 
 class Get_paket_by_id extends REST_Controller
@@ -32,7 +33,7 @@ class Get_paket_by_id extends REST_Controller
         foreach ($query->result_array() as $row) {
 
             $path2 = "upload/gambar_menu/" . $row["gambar"];
-            $finalPath = "http://192.168.56.1/project_smtr4/" . $path2;
+            $finalPath = "http://192.168.43.112/project_smtr4/" . $path2;
 
             // kumpulan data
             $data = array(
@@ -54,7 +55,7 @@ class Get_paket_by_id extends REST_Controller
         foreach ($query2->result_array() as $row) {
 
             $path3 = "upload/gambar_menu/" . $row["gambar"];
-            $finalPath2 = "http://192.168.56.1/project_smtr4/" . $path3;
+            $finalPath2 = "http://192.168.43.112/project_smtr4/" . $path3;
 
             // kumpulan data
             $data = array(

@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText username , password; // text input
     private Button btn_login; // btn login
     private ProgressBar loading; // loading
-    private static String URL_LOGIN="http://192.168.56.1/project_smtr4/api/login/login/"; // url http request
+    private static String URL_LOGIN="http://192.168.43.112/project_smtr4/api/login/login/"; // url http request
     SessionManager sessionManager; // session
 
     @Override

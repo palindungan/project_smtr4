@@ -2,13 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/account"
+        android:icon="@drawable/ic_account"
         android:title="My Account"/>
 
     <item android:id="@+id/transaksi_list"
+        android:icon="@drawable/ic_my_transaksi"
         android:title="Transaksi"
         />
 
     <item android:id="@+id/log_out"
+        android:icon="@drawable/ic_power"
         android:title="Log Out"/>
 
 </menu>

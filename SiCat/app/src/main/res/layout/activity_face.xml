@@ -97,7 +97,7 @@
                 android:layout_weight="1"
                 android:text="Log In"
                 android:textAllCaps="false"
-                android:textColor="@color/color1"
+                android:textColor="@color/colorPrimaryDarkOrange"
                 android:textSize="12dp"/>
 
             <Button
@@ -108,7 +108,7 @@
                 android:layout_weight="1"
                 android:text="Skip"
                 android:textAllCaps="false"
-                android:textColor="@color/color1"
+                android:textColor="@color/colorPrimaryDarkOrange"
                 android:textSize="12dp"/>
 
         </LinearLayout>

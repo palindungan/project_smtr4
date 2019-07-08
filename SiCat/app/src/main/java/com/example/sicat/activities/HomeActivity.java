@@ -68,9 +68,9 @@ public class HomeActivity extends AppCompatActivity {
             String getNM = customer.get(SessionManager.NM_CUSTOMER);
 
             if (getNM.equals("KOSONG")){
-                txt_welcome.setText("WELCOME, User !");
+                txt_welcome.setText("Selamat Datang, User !");
             }else {
-                txt_welcome.setText("WELCOME, "+getNM+" !");
+                txt_welcome.setText("Selamat Datang, "+getNM+" !");
             }
         } catch (Exception e) {}
 

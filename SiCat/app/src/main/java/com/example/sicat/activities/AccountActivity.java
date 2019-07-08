@@ -120,7 +120,40 @@ public class AccountActivity extends AppCompatActivity {
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SaveEditDetail();
+
+                // ambil data di inputan dimasukkan kedalam variable
+                String m_nm_customer = nm_customer.getText().toString().trim();
+                String m_almt_customer = almt_customer.getText().toString().trim();
+                String m_jenkel_customer = record;
+                String m_no_hp = no_hp.getText().toString().trim();
+                String m_email =email.getText().toString().trim();
+                String m_username = username.getText().toString().trim();
+                String m_password = password.getText().toString().trim();
+                String m_c_password = c_password.getText().toString().trim();
+
+                // validasi
+                if (!m_nm_customer.isEmpty() && !m_almt_customer.isEmpty()&& !m_jenkel_customer.isEmpty()&& !m_no_hp.isEmpty() && !m_email.isEmpty()&& !m_username.isEmpty() && !m_password.isEmpty() && !m_c_password.isEmpty()){
+                    // jika benar
+                    SaveEditDetail();
+                } else {
+                    // jika salah
+                    nm_customer.setError("Masukkan Nama Anda");
+                    almt_customer.setError("Masukkan Alamat");
+
+                    if (m_jenkel_customer.isEmpty()){
+                        Toast.makeText(AccountActivity.this,"Isikan Jenis Kelamin",Toast.LENGTH_SHORT).show();
+                    }
+
+                    no_hp.setError("Masukkan No Hp");
+
+                    email.setError("Masukkan Email");
+                    username.setError("Masukkan Username");
+
+                    password.setError("Masukkan Password");
+                    c_password.setError("Masukkan Konfirmasi Password");
+                }
+
+
             }
         });
 

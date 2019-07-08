@@ -13,14 +13,12 @@ import android.support.v7.widget.CardView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.sicat.Database.DataSource.CartRepository;
 import com.example.sicat.Database.Local.CartDataSource;
 import com.example.sicat.Database.Local.CartDatabase;
-import com.example.sicat.PanduanActivity;
 import com.example.sicat.R;
 import com.example.sicat.activities.daftar_menu.MenuActivity;
 import com.example.sicat.common.Common;

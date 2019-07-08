@@ -34,9 +34,18 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/gitchgitch"
-            android:text="SiCat"
+            android:text="SIKat"
             android:textColor="@color/colorWhite"
             android:textSize="30dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="55dp"
+            android:text="Sistem Informasi Katering"
+            android:textColor="@color/white"
+            android:textSize="19dp"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -44,7 +53,7 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="250dp">
 
             <ProgressBar
                 android:id="@+id/loading"
@@ -70,14 +79,14 @@
                     android:inputType="textEmailAddress"
                     android:textColor="@color/colorWhite"
                     android:textColorHint="@color/colorHint"
-                    android:textSize="20dp" />
+                    android:textSize="18dp" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/layout_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_below="@id/layout_username"
                 app:passwordToggleEnabled="true"
                 app:passwordToggleTint="@color/colorWhite"
@@ -93,7 +102,7 @@
                     android:inputType="textPassword"
                     android:textColor="@color/colorWhite"
                     android:textColorHint="@color/colorHint"
-                    android:textSize="20dp" />
+                    android:textSize="18dp" />
             </android.support.design.widget.TextInputLayout>
 
 
@@ -102,11 +111,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/layout_password"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/button_white"
                 android:text="@string/Login"
                 android:textAllCaps="false"
-                android:textColor="@color/colorRose"
+                android:textColor="@color/ColorOrangeA700"
                 android:textSize="12dp" />
 
         </RelativeLayout>

@@ -21,4 +21,30 @@
     <color name="colorWhiteDark">#DBDBDB</color>
     <color name="colorPrimaryLight">#CA7474</color>
     <color name="colorBackground">#F4F7F7</color>
+
+    <color name="colorOrange50">#fff3e0</color>
+    <color name="colorOrange100">#ffe0b2</color>
+    <color name="colorOrange200">#ffcc80</color>
+    <color name="ColorOrange300">#ffb74d</color>
+    <color name="ColorOrange400">#ffa726</color>
+    <color name="ColorOrange500">#ff9800</color>
+    <color name="ColorOrange600">#fb8c00</color>
+    <color name="ColorOrange700">#f57c00</color>
+    <color name="ColorOrange800">#ef6c00</color>
+    <color name="ColorOrange900">#e65100</color>
+    <color name="ColorOrangeA100">#ffd180</color>
+    <color name="ColorOrangeA200">#ffab40</color>
+    <color name="ColorOrangeA400">#ff9100</color>
+    <color name="ColorOrangeA700">#ff6d00</color>
+
+    <color name="colorPrimaryOrange">#FF9800</color>
+    <color name="colorPrimaryDarkOrange">#F57C00</color>
+    <color name="colorAccentOrange">#FFC107</color>
+    <color name="lightPrimaryColor">#FFE0B2</color>
+    <color name="icom">#FFFFFF</color>
+    <color name="secondaryText">#757575</color>
+    <color name="primaryText">#212121</color>
+    <color name="DividerColor">#BDBDBD</color>
+
+
 </resources>

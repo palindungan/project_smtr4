@@ -101,7 +101,7 @@
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@drawable/background"
+                                android:background="@drawable/background3"
                                 android:visibility="visible" />
                             <ImageView
                                 android:src="@drawable/bg_food_3"
@@ -147,7 +147,7 @@
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@drawable/background"
+                                android:background="@drawable/background3"
                                 android:visibility="visible" />
 
                             <ImageView
@@ -195,7 +195,7 @@
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@drawable/background"
+                                android:background="@drawable/background3"
                                 android:visibility="visible" />
 
                             <ImageView
@@ -243,7 +243,7 @@
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:background="@drawable/background"
+                                android:background="@drawable/background3"
                                 android:visibility="visible" />
 
                             <ImageView

@@ -33,4 +33,35 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
+
+
+    <style name="Base.Theme.RakhmatFadilah" parent="Theme.AppCompat.NoActionBar">
+
+        <item name="colorPrimary">@color/colorPrimaryOrange</item>
+
+        <!--   warna gelap untuk status bar dan contextual app bars -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkOrange</item>
+
+        <!--   theme UI controls seperti radioButton atau checkbox dan FloatActionButton -->
+        <item name="colorAccent">@color/colorAccentOrange</item>
+
+        <!--   warna untuk Judul Text  -->
+        <item name="android:textColorPrimary">@color/primaryText</item>
+
+        <!--   warna untuk menu overflow icon -->
+        <item name="android:textColorSecondary">@color/colorWhite</item>
+
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppBaseTheme1" parent="Base.Theme.RakhmatFadilah">
+
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme1" parent="AppBaseTheme1">
+
+    </style>
+
+
 </resources>

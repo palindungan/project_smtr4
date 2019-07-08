@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                 String mPassword = password.getText().toString().trim();
 
                 // validasi
-                if (!mUsername.isEmpty() || !mPassword.isEmpty()){
+                if (!mUsername.isEmpty() && !mPassword.isEmpty()){
                     // jika benar
                     login(mUsername , mPassword);
                 } else {
@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
                             e.printStackTrace();
                             loading.setVisibility(View.GONE);
                             btn_login.setVisibility(View.VISIBLE);
-                            Toast.makeText(LoginActivity.this ,"Error api (gagal response) :"+e.toString(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this ," Terjadi Kesalahan :"+e.toString(),Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
@@ -123,7 +123,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         loading.setVisibility(View.GONE);
                         btn_login.setVisibility(View.VISIBLE);
-                        Toast.makeText(LoginActivity.this ,"Error volley :"+error.toString(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this ,"Isi Username Dan Password Dengan Benar "+error.toString(),Toast.LENGTH_SHORT).show();
                     }
                 })
         {

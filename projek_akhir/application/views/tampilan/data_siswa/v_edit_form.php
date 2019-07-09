@@ -91,11 +91,11 @@
                                                         <select class="form-control select2" id="jk" name="jk" required="" oninvalid="this.setCustomValidity('Pilih Jenis Kelamin')" oninput="setCustomValidity('')">
                                                             <option value="">-</option>
                                                             <option value="L" <?php if ($d2->jk == "L") {
-                                                                echo "selected";
-                                                            } ?>>L</option>
+                                                                                    echo "selected";
+                                                                                } ?>>L</option>
                                                             <option value="P" <?php if ($d2->jk == "P") {
-                                                                echo "selected";
-                                                            } ?>>P</option>
+                                                                                    echo "selected";
+                                                                                } ?>>P</option>
                                                         </select>
                                                     </div>
 
@@ -139,8 +139,8 @@
                                                             <option value="">-</option>
                                                             <?php foreach ($data_kelas as $d) {  ?>
                                                                 <option value="<?php echo $d->kode_kelas ?>" <?php if ($d2->kode_kelas == $d->kode_kelas) {
-                                                                echo "selected";
-                                                            } ?>><?php echo $d->jenis_kelas ?></option>
+                                                                                                                    echo "selected";
+                                                                                                                } ?>><?php echo $d->jenis_kelas ?></option>
                                                             <?php } ?>
                                                         </select>
                                                     </div>

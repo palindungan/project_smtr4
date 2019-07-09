@@ -15,11 +15,7 @@
             <h6 class="dropdown-header">Data:</h6>
             <a class="dropdown-item" href="<?php echo base_url() . 'admin/data_guru/data_tabel'; ?>">Guru</a>
             <a class="dropdown-item" href="<?php echo base_url() . 'admin/data_siswa/data_tabel'; ?>">Siswa</a>
-        </div>
-        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <h6 class="dropdown-header">Input Data:</h6>
-            <a class="dropdown-item" href="#">Guru</a>
-            <a class="dropdown-item" href="#">Siswa</a>
+            <a class="dropdown-item" href="<?php echo base_url() . 'admin/data_kelas/data_tabel'; ?>">Kelas</a>
         </div>
     <li class="nav-item dropdown">
         <a class="nav-link" href='admin/mapel'>

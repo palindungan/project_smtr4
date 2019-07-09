@@ -178,7 +178,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="ket_acara">Keterangan Acara</label>
+                                <label for="ket_acara">Lokasi Acara</label>
                                 <input type="text" class="form-control" id="ket_acara" readonly="" name="ket_acara" value="<?php echo $d2->ket_acara ?>">
                             </div>
                         </div>

@@ -30,10 +30,10 @@
                                     </div>
                                     <form action="<?php echo base_url('login/login/aksi_login'); ?>" method="post">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Username">
+                                            <input type="text" class="form-control form-control-user" id="username" name="username" placeholder="Username" required="" oninvalid="this.setCustomValidity('isi Username')" oninput="setCustomValidity('')">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
+                                            <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password" required="" oninvalid="this.setCustomValidity('isi Password')" oninput="setCustomValidity('')">
                                         </div>
                                         <div class="sign-btn text-center">
                                             <button class="btn btn-primary btn-user btn-block">Masuk</button>

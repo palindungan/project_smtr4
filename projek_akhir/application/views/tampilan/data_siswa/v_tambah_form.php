@@ -104,6 +104,11 @@
                                                 </div>
 
                                                 <div class="form-group">
+                                                    <label>Username</label>
+                                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" required="" oninvalid="this.setCustomValidity('isi Username')" oninput="setCustomValidity('')">
+                                                </div>
+
+                                                <div class="form-group">
                                                     <label>Alamat</label>
                                                     <textarea class="form-control" id="alamat" name="alamat" placeholder="Alamat" rows="3" required="" oninvalid="this.setCustomValidity('isi Alamat Anda')" oninput="setCustomValidity('')"></textarea>
                                                 </div>
@@ -140,6 +145,11 @@
                                                 <div class="form-group">
                                                     <label>Nama Wali</label>
                                                     <input type="text" class="form-control" id="nama_wali" name="nama_wali" placeholder="Nama Wali" required="" oninvalid="this.setCustomValidity('isi Nama Wali')" oninput="setCustomValidity('')">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Password</label>
+                                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required="" oninvalid="this.setCustomValidity('isi Password')" oninput="setCustomValidity('')">
                                                 </div>
 
                                                 <div class="form-group">

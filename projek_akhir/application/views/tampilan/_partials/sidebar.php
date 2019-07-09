@@ -1,3 +1,11 @@
+<?php
+
+if ($this->session->userdata('status') != "login") {
+    redirect('login/login/logout');
+}
+
+?>
+
 <!-- Sidebar -->
 <ul class="sidebar navbar-nav">
     <li class="nav-item active">

@@ -86,7 +86,7 @@
 
                                                 <div class="form-group">
                                                     <label>Password</label>
-                                                    <input type="text" class="form-control" id="password" name="password" placeholder="Password" required="" oninvalid="this.setCustomValidity('isi Password')" oninput="setCustomValidity('')">
+                                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required="" oninvalid="this.setCustomValidity('isi Password')" oninput="setCustomValidity('')">
                                                 </div>
 
                                                 <!-- tombol submit disini -->
@@ -103,10 +103,10 @@
                                                     <label>Username</label>
                                                     <input type="text" class="form-control" id="username" name="username" placeholder="Username" required="" oninvalid="this.setCustomValidity('isi Username')" oninput="setCustomValidity('')">
                                                 </div>
-                                                
+
                                                 <div class="form-group">
                                                     <label>Konfirmasi Password</label>
-                                                    <input type="text" class="form-control" id="c_password" name="c_password" placeholder="Konfirmasi Password" required="" oninvalid="this.setCustomValidity('isi Konfirmasi Password')" oninput="setCustomValidity('')">
+                                                    <input type="password" class="form-control" id="c_password" name="c_password" placeholder="Konfirmasi Password" required="" oninvalid="this.setCustomValidity('isi Konfirmasi Password')" oninput="setCustomValidity('')">
                                                 </div>
                                             </div>
 

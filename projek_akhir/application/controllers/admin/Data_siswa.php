@@ -61,6 +61,9 @@ class Data_siswa extends CI_Controller
         $nama_wali = $this->input->post('nama_wali');
         $no_hp_wali = $this->input->post('no_hp_wali');
         $kode_kelas = $this->input->post('kode_kelas');
+
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
         // mengambil data dari form
 
         // menjadikan data menjadi array
@@ -75,7 +78,9 @@ class Data_siswa extends CI_Controller
             'no_hp' => $no_hp,
             'nama_wali' => $nama_wali,
             'no_hp_wali' => $no_hp_wali,
-            'kode_kelas' => $kode_kelas
+            'kode_kelas' => $kode_kelas,
+            'username' => $username,
+            'password' => $password
         );
         // menjadikan data menjadi array
 
@@ -112,6 +117,9 @@ class Data_siswa extends CI_Controller
         $nama_wali = $this->input->post('nama_wali');
         $no_hp_wali = $this->input->post('no_hp_wali');
         $kode_kelas = $this->input->post('kode_kelas');
+
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
         // mengambil data dari form
 
         // menjadikan data menjadi array
@@ -126,7 +134,9 @@ class Data_siswa extends CI_Controller
             'no_hp' => $no_hp,
             'nama_wali' => $nama_wali,
             'no_hp_wali' => $no_hp_wali,
-            'kode_kelas' => $kode_kelas
+            'kode_kelas' => $kode_kelas,
+            'username' => $username,
+            'password' => $password
         );
         // menjadikan data menjadi array
 

@@ -129,6 +129,6 @@ class Data_guru extends CI_Controller
         $this->M_data_guru->update_data($where, $data, 'guru');
 
         // pemberitahuan dan pindah page window
-        echo "<script>alert('Berhasil Menambah Data !!'); window.location = '" . base_url('admin/data_guru/data_tabel') . "';</script>";
+        echo "<script>alert('Berhasil Mengupdate Data !!'); window.location = '" . base_url('admin/data_guru/data_tabel') . "';</script>";
     }
 }

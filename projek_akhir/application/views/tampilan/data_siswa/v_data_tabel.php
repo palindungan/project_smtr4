@@ -35,7 +35,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Data Guru</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Data Siswa</h1>
                     </div>
 
                     <!-- Isi konten -->
@@ -50,16 +50,16 @@
 
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Tabel Data Guru</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Tabel Data Siswa</h6>
                                 </div>
                                 <div class="card-body">
 
                                     <!-- button menu tambah -->
-                                    <a href="<?php echo base_url() . 'admin/data_guru/tambah_data'; ?>" class="btn btn-light btn-icon-split">
+                                    <a href="<?php echo base_url() . 'admin/data_siswa/tambah_data'; ?>" class="btn btn-light btn-icon-split">
                                         <span class="icon text-gray-600">
                                             <i class="fas fa-arrow-right"></i>
                                         </span>
-                                        <span class="text">Tambah Barang</span>
+                                        <span class="text">Tambah Siswa</span>
                                     </a>
                                     <!-- button menu tambah -->
 
@@ -87,7 +87,7 @@
                                                                 <th>Nama Wali</th>
                                                                 <th>No Hp Wali</th>
                                                                 <th>Jenis Kelas</th>
-                                                                
+
                                                                 <th>option</th>
                                                             </tr>
                                                         </thead>
@@ -106,7 +106,7 @@
                                                                     <td><?php echo $d->nama_wali ?></td>
                                                                     <td><?php echo $d->no_hp_wali ?></td>
                                                                     <td><?php echo $d->jenis_kelas ?></td>
-                                                                   
+
                                                                     <td>
                                                                         <div>
                                                                             <a href="<?php echo site_url('admin/data_siswa/edit_data/' . $d->nisn) ?>">Edit</a>
@@ -176,10 +176,10 @@
                         var m = $(this).attr("id");
                         // alert(m);
                         $.ajax({
-                            url: "<?php echo base_url() . 'admin/data_guru/hapus_aksi/'; ?>",
+                            url: "<?php echo base_url() . 'admin/data_siswa/hapus_aksi/'; ?>",
                             type: "post",
                             data: {
-                                NIP: m
+                                nisn: m
                             },
                             success: function(data) {
                                 alert("Data " + name + " berhasil Terhapus");

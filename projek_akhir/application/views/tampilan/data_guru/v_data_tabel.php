@@ -59,7 +59,7 @@
                                         <span class="icon text-gray-600">
                                             <i class="fas fa-arrow-right"></i>
                                         </span>
-                                        <span class="text">Tambah Barang</span>
+                                        <span class="text">Tambah Guru</span>
                                     </a>
                                     <!-- button menu tambah -->
 

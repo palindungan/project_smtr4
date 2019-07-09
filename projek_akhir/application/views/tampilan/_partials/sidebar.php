@@ -13,6 +13,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <h6 class="dropdown-header">Data:</h6>
+            <a class="dropdown-item" href="<?php echo base_url() . 'admin/data_user/data_tabel'; ?>">User</a>
             <a class="dropdown-item" href="<?php echo base_url() . 'admin/data_guru/data_tabel'; ?>">Guru</a>
             <a class="dropdown-item" href="<?php echo base_url() . 'admin/data_siswa/data_tabel'; ?>">Siswa</a>
             <a class="dropdown-item" href="<?php echo base_url() . 'admin/data_kelas/data_tabel'; ?>">Kelas</a>

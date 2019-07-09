@@ -16,6 +16,7 @@
             <a class="dropdown-item" href="<?php echo base_url() . 'admin/data_guru/data_tabel'; ?>">Guru</a>
             <a class="dropdown-item" href="<?php echo base_url() . 'admin/data_siswa/data_tabel'; ?>">Siswa</a>
             <a class="dropdown-item" href="<?php echo base_url() . 'admin/data_kelas/data_tabel'; ?>">Kelas</a>
+            <a class="dropdown-item" href="<?php echo base_url() . 'admin/data_mapel/data_tabel'; ?>">Mapel</a>
         </div>
     <li class="nav-item dropdown">
         <a class="nav-link" href='admin/mapel'>

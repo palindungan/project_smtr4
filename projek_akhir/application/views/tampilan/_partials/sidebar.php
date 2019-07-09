@@ -19,13 +19,13 @@
             <a class="dropdown-item" href="<?php echo base_url() . 'admin/data_mapel/data_tabel'; ?>">Mapel</a>
         </div>
     <li class="nav-item dropdown">
-        <a class="nav-link" href='admin/mapel'>
+        <a class="nav-link" href="<?php echo base_url() . 'admin/mata_pelajaran'; ?>">
             <i class="fas fa-fw fa-folder"></i>
             <span>Mata Pelajaran</span>
         </a>
     </li>
     <li class="nav-item dropdown">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="<?php echo base_url() . 'admin/tabel_presensi'; ?>">
             <i class="fas fa-fw fa-table"></i>
             <span>Tabel Presensi</span>
         </a>

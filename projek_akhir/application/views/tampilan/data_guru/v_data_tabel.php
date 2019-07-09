@@ -77,28 +77,38 @@
                                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                                         <thead>
                                                             <tr>
-                                                                <th>Kode Barang</th>
-                                                                <th>Nama Barang</th>
-                                                                <th>Deskripsi</th>
-                                                                <th>Stok</th>
-                                                                <th>Harga</th>
-                                                                <th>Opsi</th>
+                                                                <th>NIP</th>
+                                                                <th>Nama Guru</th>
+                                                                <th>Alamat</th>
+                                                                <th>Email</th>
+                                                                <th>No HP</th>
+                                                                <th>Jenis Kelamin</th>
+                                                                <th>Kode Mapel</th>
+                                                                <th>Kelas</th>
+                                                                <th>option</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <th>asd</th>
-                                                                <th>asd</th>
-                                                                <th>asdd</th>
-                                                                <th>asd</th>
-                                                                <th>asd</th>
-                                                                <th>
-                                                                    <!-- fungsi hyperlink pada CI 3 -->
-                                                                    <?php echo anchor('admin/data_guru/edit_data/', 'Edit'); ?>
-                                                                    <button class="hapus" id="" name="">Hapus</button>
-                                                                    <!-- fungsi hyperlink pada CI 3 -->
-                                                                </th>
-                                                            </tr>
+                                                            <!-- ISI DATA AKAN MUNCUL DISINI -->
+                                                            <?php foreach ($tampil_data as $d) {  ?>
+                                                                <tr>
+                                                                    <td><?php echo $d->NIP ?></td>
+                                                                    <td><?php echo $d->nama_guru ?></td>
+                                                                    <td><?php echo $d->alamat ?></td>
+                                                                    <td><?php echo $d->email ?></td>
+                                                                    <td><?php echo $d->no_hp ?></td>
+                                                                    <td><?php echo $d->jk ?></td>
+                                                                    <td><?php echo $d->kode_mapel ?></td>
+                                                                    <td><?php echo $d->kode_kelas ?></td>
+                                                                    <td>
+                                                                        <div>
+                                                                            <a href="<?php echo site_url('admin/data_guru/edit_data/' . $d->NIP) ?>">Edit</a>
+                                                                            <a href="javascript:void(0)" class="hapus" id="<?php echo $d->NIP ?>" name="<?php echo $d->nama_guru ?>">Hapus</a>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            <?php } ?>
+
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -149,7 +159,7 @@
             // delete dan validasinya
             $(".hapus").click(function() {
                 var name = $(this).attr("name");
-                var jawab = confirm("Ingin Menghapus Data x ?");
+                var jawab = confirm("Ingin Menghapus Data " + name + " ?");
                 if (jawab === true) {
                     // kita set hapus false untuk mencegah duplicate request
                     var hapus = false;
@@ -162,7 +172,7 @@
                             url: "<?php echo base_url() . 'admin/barang/hapus/'; ?>",
                             type: "post",
                             data: {
-                                id_barang: m
+                                NIP: m
                             },
                             success: function(data) {
                                 alert("Data " + name + " berhasil Terhapus");

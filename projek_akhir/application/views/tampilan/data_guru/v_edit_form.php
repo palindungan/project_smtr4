@@ -68,12 +68,12 @@
                                     <div class="my-4"></div>
                                     <!-- space antar tombol dengan table -->
 
-                                    <form action="<?php echo base_url() . 'admin/Barang/tambah_aksi'; ?>" method="post">
+                                    <form action="<?php echo base_url() . 'admin/data_user/data_guru/update_aksi'; ?>" method="post">
                                         <div class="row">
                                             <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
-                                                    <label>Kode Barang</label>
-                                                    <input type="text" class="form-control" name="id_barang" placeholder="Kode Barang">
+                                                    <label>NIP</label>
+                                                    <input type="text" readonly="" class="form-control" name="NIP" placeholder="NIP" value="">
                                                 </div>
                                             </div>
                                         </div>
@@ -82,17 +82,22 @@
 
                                             <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
-                                                    <label>Nama Barang</label>
-                                                    <input type="text" class="form-control" name="nm_barang" placeholder="Nama Barang">
+                                                    <label>Nama Guru</label>
+                                                    <input type="text" class="form-control" name="nama_guru" placeholder="Nama Guru" value="">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Deskripsi</label>
-                                                    <textarea class="form-control" name="desk_barang" placeholder="Deskripsi" rows="3"></textarea>
+                                                    <label>Alamat</label>
+                                                    <textarea class="form-control" name="alamat" placeholder="Alamat" rows="3"></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Jenis Kelamin</label>
+                                                    <input type="text" class="form-control" name="jk" placeholder="Jenis Kelamin" value="">
                                                 </div>
 
                                                 <!-- tombol submit disini -->
                                                 <div class="form-group">
-                                                    <input type="submit" value="Tambah">
+                                                    <input type="submit" value="Update">
+                                                    <a href="<?php echo base_url() . 'admin/Barang'; ?>"> Batal</a>
                                                 </div>
                                                 <!-- tombol submit disini -->
 
@@ -100,13 +105,22 @@
 
                                             <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
-                                                    <label>Stok Barang</label>
-                                                    <input type="number" class="form-control" name="stok_barang" placeholder="Stok Barang">
+                                                    <label>Email</label>
+                                                    <input type="text" class="form-control" name="email" placeholder="Email" value="">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Harga Barang</label>
-                                                    <input type="number" class="form-control" name="hrg_barang" placeholder="Harga Barang">
+                                                    <label>No Hp</label>
+                                                    <input type="text" class="form-control" name="no_hp" placeholder="No Hp" value="">
                                                 </div>
+                                                <div class="form-group">
+                                                    <label>Kode Mapel</label>
+                                                    <input type="number" class="form-control" name="kode_mapel" placeholder="Kode Mapel" value="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Kelas</label>
+                                                    <input type="number" class="form-control" name="kode_kelas" placeholder="kode_kelas" value="">
+                                                </div>
+
                                             </div>
 
                                         </div>

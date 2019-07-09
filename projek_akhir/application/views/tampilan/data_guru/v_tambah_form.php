@@ -68,31 +68,41 @@
                                     <div class="my-4"></div>
                                     <!-- space antar tombol dengan table -->
 
-                                    <form action="<?php echo base_url() . 'admin/Barang/tambah_aksi'; ?>" method="post">
+                                    <form action="<?php echo base_url() . 'admin/data_guru/tambah_aksi'; ?>" method="post">
                                         <div class="row">
                                             <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
-                                                    <label>Kode Barang</label>
-                                                    <input type="text" class="form-control" name="id_barang" placeholder="Kode Barang">
+                                                    <label>NIP</label>
+                                                    <input type="text" class="form-control" id="NIP" name="NIP" placeholder="NIP" value="">
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="row">
-
                                             <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
-                                                    <label>Nama Barang</label>
-                                                    <input type="text" class="form-control" name="nm_barang" placeholder="Nama Barang">
+                                                    <label>Nama Guru</label>
+                                                    <input type="text" class="form-control" id="nama_guru" name="nama_guru" placeholder="Nama Guru" value="">
                                                 </div>
+
                                                 <div class="form-group">
-                                                    <label>Deskripsi</label>
-                                                    <textarea class="form-control" name="desk_barang" placeholder="Deskripsi" rows="3"></textarea>
+                                                    <label>Pilih Jenis Kelamin</label>
+                                                    <select class="form-control select2" id="jk" name="jk" required="">
+                                                        <option value="">-</option>
+                                                        <option value="L">L</option>
+                                                        <option value="P">P</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Alamat</label>
+                                                    <textarea class="form-control" id="alamat" name="alamat" placeholder="Alamat" rows="3"></textarea>
                                                 </div>
 
                                                 <!-- tombol submit disini -->
                                                 <div class="form-group">
-                                                    <input type="submit" value="Tambah">
+                                                    <input type="submit" value="Simpan">
+                                                    <a href="<?php echo base_url() . 'admin/data_guru/tambah_data'; ?>"> <input type="Button" value="Batal"></a>
                                                 </div>
                                                 <!-- tombol submit disini -->
 
@@ -100,13 +110,32 @@
 
                                             <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
-                                                    <label>Stok Barang</label>
-                                                    <input type="number" class="form-control" name="stok_barang" placeholder="Stok Barang">
+                                                    <label>Email</label>
+                                                    <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Harga Barang</label>
-                                                    <input type="number" class="form-control" name="hrg_barang" placeholder="Harga Barang">
+                                                    <label>No Hp</label>
+                                                    <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="No Hp" value="">
                                                 </div>
+                                                <div class="form-group">
+                                                    <label>Pilih Mapel</label>
+                                                    <select class="form-control select2" id="kode_mapel" name="kode_mapel" required="">
+                                                        <option value="">-</option>
+                                                        <?php foreach ($data_mapel as $d) {  ?>
+                                                            <option value="<?php echo $d->kode_mapel ?>"><?php echo $d->nama_mapel ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Pilih Kelas</label>
+                                                    <select class="form-control select2" id="kode_kelas" name="kode_kelas" required="">
+                                                        <option value="">-</option>
+                                                        <?php foreach ($data_kelas as $d) {  ?>
+                                                            <option value="<?php echo $d->kode_kelas ?>"><?php echo $d->jenis_kelas ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </div>
+
                                             </div>
 
                                         </div>

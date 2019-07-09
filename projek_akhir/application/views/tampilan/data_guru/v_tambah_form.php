@@ -35,8 +35,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <h1 class="h3 mb-0 text-gray-800">Data Guru</h1>
                     </div>
 
                     <!-- Isi konten -->
@@ -51,7 +50,7 @@
 
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Data Barang / Tambah Barang</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Data Guru / Tambah Guru</h6>
                                 </div>
                                 <div class="card-body">
 
@@ -73,7 +72,7 @@
                                             <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label>NIP</label>
-                                                    <input type="text" class="form-control" id="NIP" name="NIP" placeholder="NIP" value="">
+                                                    <input type="text" class="form-control" id="NIP" name="NIP" placeholder="NIP" required="" oninvalid="this.setCustomValidity('isi NIP')" oninput="setCustomValidity('')">
                                                 </div>
                                             </div>
                                         </div>
@@ -82,12 +81,12 @@
                                             <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label>Nama Guru</label>
-                                                    <input type="text" class="form-control" id="nama_guru" name="nama_guru" placeholder="Nama Guru" value="">
+                                                    <input type="text" class="form-control" id="nama_guru" name="nama_guru" placeholder="Nama Guru" required="" oninvalid="this.setCustomValidity('isi Nama Guru')" oninput="setCustomValidity('')">
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label>Pilih Jenis Kelamin</label>
-                                                    <select class="form-control select2" id="jk" name="jk" required="">
+                                                    <select class="form-control select2" id="jk" name="jk" required="" oninvalid="this.setCustomValidity('Pilih Jenis Kelamin')" oninput="setCustomValidity('')">
                                                         <option value="">-</option>
                                                         <option value="L">L</option>
                                                         <option value="P">P</option>
@@ -96,7 +95,7 @@
 
                                                 <div class="form-group">
                                                     <label>Alamat</label>
-                                                    <textarea class="form-control" id="alamat" name="alamat" placeholder="Alamat" rows="3"></textarea>
+                                                    <textarea class="form-control" id="alamat" name="alamat" placeholder="Alamat" rows="3" required="" oninvalid="this.setCustomValidity('isi Alamat Anda')" oninput="setCustomValidity('')"></textarea>
                                                 </div>
 
                                                 <!-- tombol submit disini -->
@@ -111,11 +110,11 @@
                                             <div class="col-lg-6 mb-4">
                                                 <div class="form-group">
                                                     <label>Email</label>
-                                                    <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="">
+                                                    <input type="text" class="form-control" id="email" name="email" placeholder="Email" required="" oninvalid="this.setCustomValidity('isi Nama Menu')" oninput="setCustomValidity('')">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>No Hp</label>
-                                                    <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="No Hp" value="">
+                                                    <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="No Hp" required="" oninvalid="this.setCustomValidity('isi No Hp')" oninput="setCustomValidity('')">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Pilih Mapel</label>

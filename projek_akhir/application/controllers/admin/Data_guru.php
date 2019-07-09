@@ -12,22 +12,6 @@ class Data_guru extends CI_Controller
         $this->load->model("admin/M_data_guru");
     }
 
-    /**
-     * Index Page for this controller.
-     *
-     * Maps to the following URL
-     * 		http://example.com/index.php/welcome
-     *	- or -
-     * 		http://example.com/index.php/welcome/index
-     *	- or -
-     * Since this controller is set as the default controller in
-     * config/routes.php, it's displayed at http://example.com/
-     *
-     * So any other public methods not prefixed with an underscore will
-     * map to /index.php/welcome/<method_name>
-     * @see https://codeigniter.com/user_guide/general/urls.html
-     */
-
     // untuk ke menu data tabel
     public function data_tabel()
     {
@@ -50,9 +34,21 @@ class Data_guru extends CI_Controller
     }
 
     // untuk ke menu edit data
-    public function edit_data()
+    public function edit_data($NIP)
     {
-        $this->load->view('tampilan/data_guru/v_edit_form');
+         // mengambil data dari model
+         $data['data_kelas'] = $this->M_data_guru->data_kelas()->result();
+
+         // mengambil data dari model
+         $data['data_mapel'] = $this->M_data_guru->data_mapel()->result();
+
+        // memasukkan data ke array
+        $where = array('NIP' => $NIP);
+
+        // fungsi result adalah mengenerate hasil querry menjadi array untuk di tampilkan
+        $data['edit_data'] = $this->M_data_guru->edit_data($where, 'guru')->result();
+
+        $this->load->view('tampilan/data_guru/v_edit_form', $data);
     }
 
     // aksi tambah
@@ -88,5 +84,51 @@ class Data_guru extends CI_Controller
 
         // pemberitahuan dan pindah page window
         echo "<script>alert('Berhasil Menambah Data !!'); window.location = '" . base_url('admin/data_guru/tambah_data') . "';</script>";
+    }
+
+    function hapus_aksi()
+    {
+        $NIP = $this->input->post('NIP');
+        // memasukkan data ke array
+        $where = array('NIP' => $NIP);
+
+        // menghapus data dengan memparsing ke model
+        $this->M_data_guru->hapus_data($where, 'guru');
+    }
+
+    function update_aksi()
+    {
+        // mengambil data dari form
+        $NIP = $this->input->post('NIP');
+        $nama_guru = $this->input->post('nama_guru');
+        $jk = $this->input->post('jk');
+        $alamat = $this->input->post('alamat');
+        $email = $this->input->post('email');
+        $no_hp = $this->input->post('no_hp');
+        $kode_mapel = $this->input->post('kode_mapel');
+        $kode_kelas = $this->input->post('kode_kelas');
+        // mengambil data dari form
+
+        // menjadikan data menjadi array
+        $data = array(
+            'NIP' => $NIP,
+            'nama_guru' => $nama_guru,
+            'jk' => $jk,
+            'alamat' => $alamat,
+            'email' => $email,
+            'no_hp' => $no_hp,
+            'kode_mapel' => $kode_mapel,
+            'kode_kelas' => $kode_kelas
+        );
+        // menjadikan data menjadi array
+
+        // memasukkan data ke array
+        $where = array('NIP' => $NIP);
+        // memasukkan data ke array
+
+        $this->M_data_guru->update_data($where, $data, 'guru');
+
+        // pemberitahuan dan pindah page window
+        echo "<script>alert('Berhasil Menambah Data !!'); window.location = '" . base_url('admin/data_guru/data_tabel') . "';</script>";
     }
 }

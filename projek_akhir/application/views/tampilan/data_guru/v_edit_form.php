@@ -35,8 +35,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <h1 class="h3 mb-0 text-gray-800">Data Guru</h1>
                     </div>
 
                     <!-- Isi konten -->
@@ -51,7 +50,7 @@
 
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Data Barang / Edit Barang</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Data Guru / Edit Guru</h6>
                                 </div>
                                 <div class="card-body">
 
@@ -68,63 +67,89 @@
                                     <div class="my-4"></div>
                                     <!-- space antar tombol dengan table -->
 
-                                    <form action="<?php echo base_url() . 'admin/data_user/data_guru/update_aksi'; ?>" method="post">
-                                        <div class="row">
-                                            <div class="col-lg-6 mb-4">
-                                                <div class="form-group">
-                                                    <label>NIP</label>
-                                                    <input type="text" readonly="" class="form-control" name="NIP" placeholder="NIP" value="">
+                                    <?php foreach ($edit_data as $d2) { ?>
+
+                                        <form action="<?php echo base_url() . 'admin/data_guru/update_aksi'; ?>" method="post">
+                                            <div class="row">
+                                                <div class="col-lg-6 mb-4">
+                                                    <div class="form-group">
+                                                        <label>NIP</label>
+                                                        <input type="text" class="form-control" id="NIP" name="NIP" placeholder="NIP" required="" readonly="" oninvalid="this.setCustomValidity('isi NIP')" oninput="setCustomValidity('')" value="<?php echo $d2->NIP; ?>">
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div class="row">
+                                            <div class="row">
+                                                <div class="col-lg-6 mb-4">
+                                                    <div class="form-group">
+                                                        <label>Nama Guru</label>
+                                                        <input type="text" class="form-control" id="nama_guru" name="nama_guru" placeholder="Nama Guru" required="" oninvalid="this.setCustomValidity('isi Nama Guru')" oninput="setCustomValidity('')" value="<?php echo $d2->nama_guru; ?>">
+                                                    </div>
 
-                                            <div class="col-lg-6 mb-4">
-                                                <div class="form-group">
-                                                    <label>Nama Guru</label>
-                                                    <input type="text" class="form-control" name="nama_guru" placeholder="Nama Guru" value="">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Alamat</label>
-                                                    <textarea class="form-control" name="alamat" placeholder="Alamat" rows="3"></textarea>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Jenis Kelamin</label>
-                                                    <input type="text" class="form-control" name="jk" placeholder="Jenis Kelamin" value="">
+                                                    <div class="form-group">
+                                                        <label>Pilih Jenis Kelamin</label>
+                                                        <select class="form-control select2" id="jk" name="jk" required="" oninvalid="this.setCustomValidity('Pilih Jenis Kelamin')" oninput="setCustomValidity('')">
+                                                            <option value="">-</option>
+                                                            <option value="L" <?php if ($d2->jk == "L") {
+                                                                echo "selected";
+                                                            } ?>>L</option>
+                                                            <option value="P" <?php if ($d2->jk == "P") {
+                                                                echo "selected";
+                                                            } ?>>P</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Alamat</label>
+                                                        <textarea class="form-control" id="alamat" name="alamat" placeholder="Alamat" rows="3" required="" oninvalid="this.setCustomValidity('isi Alamat Anda')" oninput="setCustomValidity('')"><?php echo $d2->alamat; ?></textarea>
+                                                    </div>
+
+                                                    <!-- tombol submit disini -->
+                                                    <div class="form-group">
+                                                        <input type="submit" value="Simpan">
+                                                        <a href="<?php echo base_url() . 'admin/data_guru/data_tabel'; ?>"> <input type="Button" value="Batal"></a>
+                                                    </div>
+                                                    <!-- tombol submit disini -->
                                                 </div>
 
-                                                <!-- tombol submit disini -->
-                                                <div class="form-group">
-                                                    <input type="submit" value="Update">
-                                                    <a href="<?php echo base_url() . 'admin/Barang'; ?>"> Batal</a>
+                                                <div class="col-lg-6 mb-4">
+                                                    <div class="form-group">
+                                                        <label>Email</label>
+                                                        <input type="text" class="form-control" id="email" name="email" placeholder="Email" required="" oninvalid="this.setCustomValidity('isi Email')" oninput="setCustomValidity('')" value="<?php echo $d2->email; ?>">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>No Hp</label>
+                                                        <input type="text" class="form-control" id="no_hp" name="no_hp" placeholder="No Hp" required="" oninvalid="this.setCustomValidity('isi No Hp')" oninput="setCustomValidity('')" value="<?php echo $d2->no_hp; ?>">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Pilih Mapel</label>
+                                                        <select class="form-control select2" id="kode_mapel" name="kode_mapel" required="">
+                                                            <option value="">-</option>
+                                                            <?php foreach ($data_mapel as $d) {  ?>
+                                                                <option value="<?php echo $d->kode_mapel ?>" <?php if ($d2->kode_mapel == $d->kode_mapel) {
+                                                                echo "selected";
+                                                            } ?>><?php echo $d->nama_mapel ?></option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>Pilih Kelas</label>
+                                                        <select class="form-control select2" id="kode_kelas" name="kode_kelas" required="">
+                                                            <option value="">-</option>
+                                                            <?php foreach ($data_kelas as $d) {  ?>
+                                                                <option value="<?php echo $d->kode_kelas ?>" <?php if ($d2->kode_kelas == $d->kode_kelas) {
+                                                                echo "selected";
+                                                            } ?>><?php echo $d->jenis_kelas ?></option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                                <!-- tombol submit disini -->
 
                                             </div>
+                                        </form>
 
-                                            <div class="col-lg-6 mb-4">
-                                                <div class="form-group">
-                                                    <label>Email</label>
-                                                    <input type="text" class="form-control" name="email" placeholder="Email" value="">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>No Hp</label>
-                                                    <input type="text" class="form-control" name="no_hp" placeholder="No Hp" value="">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Kode Mapel</label>
-                                                    <input type="number" class="form-control" name="kode_mapel" placeholder="Kode Mapel" value="">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Kelas</label>
-                                                    <input type="number" class="form-control" name="kode_kelas" placeholder="kode_kelas" value="">
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </form>
+                                    <?php
+                                    } ?>
 
                                 </div>
                             </div>

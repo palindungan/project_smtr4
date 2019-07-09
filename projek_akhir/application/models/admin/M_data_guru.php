@@ -4,7 +4,7 @@ class M_data_guru extends CI_Model
 {
     function tampil_data()
     {
-        return $this->db->get('guru');
+        return $this->db->get('tabel_guru');
     }
 
     function input_data($data, $table)

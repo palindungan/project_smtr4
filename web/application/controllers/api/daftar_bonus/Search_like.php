@@ -13,6 +13,7 @@ class Search_like extends REST_Controller
         parent::__construct($config);
         $this->load->database();
         $this->load->model("admin/menu/M_data_bonus");
+        $this->load->model("admin/menu/M_base_url");
     }
 
     //mengirim data detail
@@ -42,7 +43,7 @@ class Search_like extends REST_Controller
 
 
                     $path2 = "upload/gambar_menu/" . $row["gambar"];
-                    $finalPath = "http://192.168.43.112/project_smtr4/" . $path2;
+                    $finalPath = $this->M_base_url->alamat_url() . $path2;
 
                     // kumpulan data
                     $data = array(

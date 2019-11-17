@@ -13,6 +13,7 @@ class Get_prasmanan_by_id extends REST_Controller
         parent::__construct($config);
         $this->load->database();
         $this->load->model("admin/transaksi/M_data_prasmanan");
+        $this->load->model("admin/menu/M_base_url");
     }
 
     //mengirim data detail
@@ -41,7 +42,7 @@ class Get_prasmanan_by_id extends REST_Controller
                 foreach ($query->result_array() as $row) {
 
                     $path2 = "upload/bukti_bayar/" . $row["upload_bukti_bayar"];
-                    $finalPath = "http://192.168.43.112/project_smtr4/" . $path2;
+                    $finalPath =  $this->M_base_url->alamat_url() . $path2;
 
                     // kumpulan data
                     $data = array(

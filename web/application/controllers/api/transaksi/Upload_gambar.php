@@ -13,6 +13,7 @@ class Upload_gambar extends REST_Controller
         parent::__construct($config);
         $this->load->database();
         $this->load->model("admin/user/M_data_customer");
+        $this->load->model("admin/menu/M_base_url");
     }
 
     //Mengirim atau menambah data kontak baru
@@ -23,7 +24,7 @@ class Upload_gambar extends REST_Controller
 
         $path = "./upload/bukti_bayar/$where.jpeg";
         $path2 = "/upload/bukti_bayar/$where.jpeg";
-        $finalPath = "http://192.168.43.112/project_smtr4/" . $path2;
+        $finalPath =  $this->M_base_url->alamat_url() . $path2;
 
         $data = array(
             'photo'           =>  $finalPath

@@ -13,7 +13,7 @@ class Upload_gambar extends REST_Controller
         parent::__construct($config);
         $this->load->database();
         $this->load->model("admin/user/M_data_customer");
-        $this->load->model("admin/menu/M_base_url");
+        $this->load->model("api/M_base_url");
     }
 
     //Mengirim atau menambah data kontak baru

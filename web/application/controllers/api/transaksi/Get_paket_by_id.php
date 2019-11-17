@@ -13,7 +13,7 @@ class Get_paket_by_id extends REST_Controller
         parent::__construct($config);
         $this->load->database();
         $this->load->model("admin/paket/M_data_paket");
-        $this->load->model("admin/menu/M_base_url");
+        $this->load->model("api/M_base_url");
     }
 
     //mengirim data detail

@@ -13,7 +13,7 @@ class Search_like_and_category extends REST_Controller
         parent::__construct($config);
         $this->load->database();
         $this->load->model("admin/menu/M_data_menu");
-        $this->load->model("admin/menu/M_base_url");
+        $this->load->model("api/M_base_url");
     }
 
     //mengirim data detail

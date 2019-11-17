@@ -13,7 +13,7 @@ class Tbl_kategori extends REST_Controller
         parent::__construct($config);
         $this->load->database();
         $this->load->model("admin/menu/M_data_kategori");
-        $this->load->model("admin/menu/M_base_url");
+        $this->load->model("api/M_base_url");
     }
 
     //mengirim data detail

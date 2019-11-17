@@ -46,6 +46,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.sicat.Database.ModelDB.Cart;
 import com.example.sicat.R;
 import com.example.sicat.common.Common;
+import com.example.sicat.controllers.Base_url;
 import com.example.sicat.controllers.SessionManager;
 
 import org.json.JSONException;
@@ -77,8 +78,12 @@ public class FormOrderFinishActivity extends AppCompatActivity {
 
     SessionManager sessionManager;
 
-    private static String URL_UPLOAD = "http://192.168.43.112/project_smtr4/api/transaksi/Data_prasmanan/";
-    private static String URL_UPLOAD_DETAIL = "http://192.168.43.112/project_smtr4/api/transaksi/Data_prasmanan_detail/";
+    Base_url base_url = new Base_url();
+    String url = base_url.getUrl();
+
+
+    private String URL_UPLOAD = url + "transaksi/Data_prasmanan/";
+    private String URL_UPLOAD_DETAIL = url + "transaksi/Data_prasmanan_detail/";
     private static final String TAG = FormOrderFinishActivity.class.getSimpleName(); // getting the info
 
     List<Cart> cartList = new ArrayList<>();
@@ -206,18 +211,18 @@ public class FormOrderFinishActivity extends AppCompatActivity {
 
                         try {
                             // validasi
-                            if (!ket_acara.isEmpty() && !tgl_pelunasan.isEmpty()&& !tgl_acara.isEmpty()&& !data_photo.isEmpty()){
+                            if (!ket_acara.isEmpty() && !tgl_pelunasan.isEmpty() && !tgl_acara.isEmpty() && !data_photo.isEmpty()) {
                                 // jika benar
                                 // data prasmanan
                                 UploadData(data_photo);
                             } else {
 
-                                Toast.makeText(FormOrderFinishActivity.this,"Isi Data Dengan Benar",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(FormOrderFinishActivity.this, "Isi Data Dengan Benar", Toast.LENGTH_SHORT).show();
 
                             }
 
-                        }catch (Exception e){
-                            Toast.makeText(FormOrderFinishActivity.this,"Isi Data Dengan Benar",Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
+                            Toast.makeText(FormOrderFinishActivity.this, "Isi Data Dengan Benar", Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -361,13 +366,13 @@ public class FormOrderFinishActivity extends AppCompatActivity {
                                                             String id_bonus = cartList.get(i).id_bonus;
 
                                                             Log.d("cobaa", id_prasmanan + " " + id_menu + " " + id_bonus);
-                                                            UploadDataDetail(id_prasmanan,id_menu,id_bonus);
+                                                            UploadDataDetail(id_prasmanan, id_menu, id_bonus);
                                                         }
 
                                                         Common.cartRepository.emptyCart();
-                                                        sessionManager.setCart(false,"KOSONG","KOSONG","KOSONG","KOSONG","KOSONG");
-                                                        sessionManager.setDataGanti(false,0,false);
-                                                        Intent intent2 = new Intent(FormOrderFinishActivity.this,HomeActivity.class);
+                                                        sessionManager.setCart(false, "KOSONG", "KOSONG", "KOSONG", "KOSONG", "KOSONG");
+                                                        sessionManager.setDataGanti(false, 0, false);
+                                                        Intent intent2 = new Intent(FormOrderFinishActivity.this, HomeActivity.class);
                                                         startActivity(intent2);
                                                         compositeDisposable.clear();
                                                     }

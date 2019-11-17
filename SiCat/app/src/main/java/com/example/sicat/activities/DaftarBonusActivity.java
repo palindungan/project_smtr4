@@ -29,6 +29,7 @@ import com.example.sicat.R;
 import com.example.sicat.activities.detail.DetailActivity;
 import com.example.sicat.adapter.DaftarBonusAdapter;
 import com.example.sicat.common.Common;
+import com.example.sicat.controllers.Base_url;
 import com.example.sicat.model.Bonus;
 import com.nex3z.notificationbadge.NotificationBadge;
 
@@ -50,9 +51,13 @@ public class DaftarBonusActivity extends AppCompatActivity {
 
     Button btn_cari;
     EditText searching;
-    private String URLstring2 = "http://192.168.43.112/project_smtr4/api/daftar_bonus/search_like";
 
-    private String URLstring = "http://192.168.43.112/project_smtr4/api/transaksi/data_bonus";
+    Base_url base_url = new Base_url();
+    String url = base_url.getUrl();
+
+    private String URLstring2 = url + "daftar_bonus/search_like";
+
+    private String URLstring = url + "transaksi/data_bonus";
     private static ProgressDialog mProgressDialog;
     private RecyclerView recycleBonus;
 
@@ -87,7 +92,7 @@ public class DaftarBonusActivity extends AppCompatActivity {
                 // ambil value dari edit text
                 String cari = searching.getText().toString().trim();
 
-                Log.d("datanya",cari);
+                Log.d("datanya", cari);
                 retrieveJSON2(cari);
             }
         });
@@ -149,7 +154,7 @@ public class DaftarBonusActivity extends AppCompatActivity {
         //will remove progress dialog
         daftarBonusAdapter = new DaftarBonusAdapter(this, dataModelArrayList);
         recycleBonus.setAdapter(daftarBonusAdapter);
-        GridLayoutManager layoutManager = new GridLayoutManager(this,2, GridLayoutManager.VERTICAL,false);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
         recycleBonus.setLayoutManager(layoutManager);
         recycleBonus.setNestedScrollingEnabled(true);
         daftarBonusAdapter.notifyDataSetChanged();
@@ -200,9 +205,9 @@ public class DaftarBonusActivity extends AppCompatActivity {
         }
     }
 
-    private void initActionBar(){
+    private void initActionBar() {
         setSupportActionBar(toolbar);
-        if(getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
@@ -213,13 +218,13 @@ public class DaftarBonusActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_action_bar, menu);
 
         View view = menu.findItem(R.id.cart_menu).getActionView();
-        badge = (NotificationBadge)view.findViewById(R.id.badge);
-        cart_icon = (ImageView)view.findViewById(R.id.cart_icon);
+        badge = (NotificationBadge) view.findViewById(R.id.badge);
+        cart_icon = (ImageView) view.findViewById(R.id.cart_icon);
 
         cart_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DaftarBonusActivity.this,CartActivity.class));
+                startActivity(new Intent(DaftarBonusActivity.this, CartActivity.class));
             }
         });
 
@@ -230,7 +235,7 @@ public class DaftarBonusActivity extends AppCompatActivity {
 
     // untuk icon cart
     private void updateCartCount() {
-        if(badge == null) return;
+        if (badge == null) return;
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -246,8 +251,8 @@ public class DaftarBonusActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
 
             case android.R.id.home:
                 onBackPressed();
@@ -279,9 +284,9 @@ public class DaftarBonusActivity extends AppCompatActivity {
 
                             JSONArray jsonArray = jsonObject.getJSONArray("bonus");
 
-                            if(success.equals("1")){
+                            if (success.equals("1")) {
                                 dataModelArrayList2 = new ArrayList<>();
-                                for (int i = 0 ; i < jsonArray.length() ; i++){
+                                for (int i = 0; i < jsonArray.length(); i++) {
                                     Bonus playerModel = new Bonus();
                                     JSONObject object = jsonArray.getJSONObject(i);
                                     // mengambil data dari api
@@ -316,12 +321,11 @@ public class DaftarBonusActivity extends AppCompatActivity {
                         retrieveJSON();
                         removeSimpleProgressDialog();
                     }
-                })
-        {
+                }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("nm_menu",cari);
+                params.put("nm_menu", cari);
                 return params;
             }
         };
@@ -335,7 +339,7 @@ public class DaftarBonusActivity extends AppCompatActivity {
         //will remove progress dialog
         daftarBonusAdapter = new DaftarBonusAdapter(this, dataModelArrayList2);
         recycleBonus.setAdapter(daftarBonusAdapter);
-        GridLayoutManager layoutManager = new GridLayoutManager(this,2, GridLayoutManager.VERTICAL,false);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
         recycleBonus.setLayoutManager(layoutManager);
         recycleBonus.setNestedScrollingEnabled(true);
         daftarBonusAdapter.notifyDataSetChanged();

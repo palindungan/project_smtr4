@@ -18,6 +18,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.sicat.R;
+import com.example.sicat.controllers.Base_url;
 import com.example.sicat.controllers.SessionManager;
 
 import org.json.JSONArray;
@@ -30,10 +31,14 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
 
     // deklarasi variable
-    private EditText username , password; // text input
+    private EditText username, password; // text input
     private Button btn_login; // btn login
     private ProgressBar loading; // loading
-    private static String URL_LOGIN="http://192.168.43.112/project_smtr4/api/login/login/"; // url http request
+
+    Base_url base_url = new Base_url();
+    String url = base_url.getUrl();
+
+    private String URL_LOGIN = url + "login/login/"; // url http request
     SessionManager sessionManager; // session
 
     @Override
@@ -59,9 +64,9 @@ public class LoginActivity extends AppCompatActivity {
                 String mPassword = password.getText().toString().trim();
 
                 // validasi
-                if (!mUsername.isEmpty() && !mPassword.isEmpty()){
+                if (!mUsername.isEmpty() && !mPassword.isEmpty()) {
                     // jika benar
-                    login(mUsername , mPassword);
+                    login(mUsername, mPassword);
                 } else {
                     // jika salah
                     username.setError("Masukkan Username");
@@ -71,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void login(final String username , final String password) {
+    private void login(final String username, final String password) {
 
         loading.setVisibility(View.VISIBLE);
         btn_login.setVisibility(View.GONE);
@@ -86,8 +91,8 @@ public class LoginActivity extends AppCompatActivity {
 
                             JSONArray jsonArray = jsonObject.getJSONArray("login");
 
-                            if(success.equals("1")){
-                                for (int i = 0 ; i < jsonArray.length() ; i++){
+                            if (success.equals("1")) {
+                                for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject object = jsonArray.getJSONObject(i);
 
                                     // mengambil data dari api
@@ -99,10 +104,10 @@ public class LoginActivity extends AppCompatActivity {
                                     String email = object.getString("email").trim();
 
                                     // untuk memanggil session dan mengirim data untuk disimpan
-                                    sessionManager.createSession(id_customer,nm_customer,almt_customer,jenkel_customer,no_hp,email,username);
+                                    sessionManager.createSession(id_customer, nm_customer, almt_customer, jenkel_customer, no_hp, email, username);
 
                                     // data yang akan dikirim ke dalam intent / halaman lain
-                                    Intent intent = new Intent(LoginActivity.this,HomeActivity.class);
+                                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                     startActivity(intent); // membuka activity lain
 
                                     loading.setVisibility(View.GONE);
@@ -114,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
                             e.printStackTrace();
                             loading.setVisibility(View.GONE);
                             btn_login.setVisibility(View.VISIBLE);
-                            Toast.makeText(LoginActivity.this ," Terjadi Kesalahan :"+e.toString(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, " Terjadi Kesalahan :" + e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
@@ -123,15 +128,14 @@ public class LoginActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         loading.setVisibility(View.GONE);
                         btn_login.setVisibility(View.VISIBLE);
-                        Toast.makeText(LoginActivity.this ,"Isi Username Dan Password Dengan Benar "+error.toString(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Isi Username Dan Password Dengan Benar " + error.toString(), Toast.LENGTH_SHORT).show();
                     }
-                })
-        {
+                }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("username",username);
-                params.put("password",password);
+                params.put("username", username);
+                params.put("password", password);
                 return params;
             }
         };

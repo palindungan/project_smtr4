@@ -21,6 +21,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.sicat.R;
+import com.example.sicat.controllers.Base_url;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,14 +39,18 @@ public class RegisterActivity extends AppCompatActivity {
 
     // deklarasi variable
     private Spinner jenkel_customer;
-    String jenkel[]={"Pilih Jenis Kelamin","Pria","Wanita"};
-    ArrayAdapter <String> adapter;
-    String record= "";
+    String jenkel[] = {"Pilih Jenis Kelamin", "Pria", "Wanita"};
+    ArrayAdapter<String> adapter;
+    String record = "";
 
     private EditText nm_customer, almt_customer, no_hp, email, username, password, c_password;
     private Button btn_regist;
     private ProgressBar loading;
-    private static String URL_REGIST = "http://192.168.43.112/project_smtr4/api/crud_customer/tbl_customer/";
+
+    Base_url base_url = new Base_url();
+    String url = base_url.getUrl();
+
+    private String URL_REGIST = url + "crud_customer/tbl_customer/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,15 +67,14 @@ public class RegisterActivity extends AppCompatActivity {
         c_password = findViewById(R.id.c_password);
 
         // select option
-        jenkel_customer = (Spinner)findViewById(R.id.jenkel_customer);
-        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,jenkel);
+        jenkel_customer = (Spinner) findViewById(R.id.jenkel_customer);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, jenkel);
         jenkel_customer.setAdapter(adapter);
         jenkel_customer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                switch (position)
-                {
+                switch (position) {
                     case 0:
 
                         record = "";
@@ -115,16 +119,16 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private void initActionBar(){
+    private void initActionBar() {
         setSupportActionBar(toolbar);
-        if(getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
                 break;
@@ -150,14 +154,14 @@ public class RegisterActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        try{
+                        try {
                             // membuat json objek
                             JSONObject jsonObject = new JSONObject(response);
                             // mengambil data didalam json objek yang berindeks assoc success
                             String success = jsonObject.getString("success");
 
-                            if (success.equals("1")){
-                                Toast.makeText(RegisterActivity.this,"Register Berhasil!" , Toast.LENGTH_SHORT).show();
+                            if (success.equals("1")) {
+                                Toast.makeText(RegisterActivity.this, "Register Berhasil!", Toast.LENGTH_SHORT).show();
                                 loading.setVisibility(View.GONE);
                                 btn_regist.setVisibility(View.VISIBLE);
                             }
@@ -167,7 +171,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                             // jika gagal untuk menerima response
                             e.printStackTrace();
-                            Toast.makeText(RegisterActivity.this,"Register Gagal!"+e.toString() , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, "Register Gagal!" + e.toString(), Toast.LENGTH_SHORT).show();
                             loading.setVisibility(View.GONE);
                             btn_regist.setVisibility(View.VISIBLE);
                         }
@@ -178,23 +182,22 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
 
                         // jika terjadi kesalahan didalam volley
-                        Toast.makeText(RegisterActivity.this,"Register Telah Gagal!"+error.toString() , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "Register Telah Gagal!" + error.toString(), Toast.LENGTH_SHORT).show();
                         loading.setVisibility(View.GONE);
                         btn_regist.setVisibility(View.VISIBLE);
                     }
-                })
-        {
+                }) {
             // data yang akan dikirim ke file api
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params = new HashMap<>();
-                params.put("nm_customer",nm_customer);
-                params.put("almt_customer",almt_customer);
-                params.put("jenkel_customer",jenkel_customer);
-                params.put("no_hp",no_hp);
-                params.put("email",email);
-                params.put("username",username);
-                params.put("password",password);
+                Map<String, String> params = new HashMap<>();
+                params.put("nm_customer", nm_customer);
+                params.put("almt_customer", almt_customer);
+                params.put("jenkel_customer", jenkel_customer);
+                params.put("no_hp", no_hp);
+                params.put("email", email);
+                params.put("username", username);
+                params.put("password", password);
                 return params;
             }
         };

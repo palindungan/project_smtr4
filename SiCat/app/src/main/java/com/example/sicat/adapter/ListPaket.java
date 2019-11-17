@@ -23,6 +23,7 @@ import com.example.sicat.Database.ModelDB.Cart;
 import com.example.sicat.R;
 import com.example.sicat.activities.CartActivity;
 import com.example.sicat.common.Common;
+import com.example.sicat.controllers.Base_url;
 import com.example.sicat.controllers.SessionManager;
 import com.example.sicat.model.Paket;
 import com.squareup.picasso.Picasso;
@@ -40,7 +41,11 @@ public class ListPaket extends BaseAdapter {
     private Context context;
     private ArrayList<Paket> dataModelArrayList;
     SessionManager sessionManager; // session
-    private static String URL_PAKET="http://192.168.43.112/project_smtr4/api/transaksi/Get_paket_by_id"; // url http request
+
+    Base_url base_url = new Base_url();
+    String url = base_url.getUrl();
+
+    private String URL_PAKET = url + "transaksi/Get_paket_by_id"; // url http request
 
     public ListPaket(Context context, ArrayList<Paket> dataModelArrayList) {
         this.context = context;
@@ -80,7 +85,7 @@ public class ListPaket extends BaseAdapter {
             holder.btn_pilih = (Button) convertView.findViewById(R.id.btn_pilih);
             convertView.setTag(holder);
         } else {
-        // the getTag returns the viewHolder object set as a tag to the view
+            // the getTag returns the viewHolder object set as a tag to the view
             holder = (ViewHolder) convertView.getTag();
         }
         // Compiler akan mengatur gambar ini di imageview.
@@ -100,11 +105,11 @@ public class ListPaket extends BaseAdapter {
                 String hrg_paket = String.valueOf(dataModelArrayList.get(position).getHrg_paket());
                 String jml_menu = String.valueOf(dataModelArrayList.get(position).getJml_menu());
                 String jml_bonus = String.valueOf(dataModelArrayList.get(position).getJml_bonus());
-                sessionManager.setCart(status,id_paket,nm_paket,hrg_paket,jml_menu,jml_bonus);
+                sessionManager.setCart(status, id_paket, nm_paket, hrg_paket, jml_menu, jml_bonus);
 
                 retrieveJSON(id_paket);
 
-                Intent intent = new Intent(context,CartActivity.class);
+                Intent intent = new Intent(context, CartActivity.class);
                 context.startActivity(intent); // membuka activity lain
             }
         });
@@ -113,7 +118,7 @@ public class ListPaket extends BaseAdapter {
     }
 
     private void retrieveJSON(String id_paket) {
-                //
+        //
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_PAKET,
                 new Response.Listener<String>() {
                     @Override
@@ -128,8 +133,8 @@ public class ListPaket extends BaseAdapter {
 
                             JSONArray jsonArray = jsonObject.getJSONArray("data");
 
-                            if(success.equals("1")){
-                                for (int i = 0 ; i < jsonArray.length() ; i++){
+                            if (success.equals("1")) {
+                                for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject object = jsonArray.getJSONObject(i);
 
                                     // mengambil data dari api
@@ -144,13 +149,14 @@ public class ListPaket extends BaseAdapter {
                                     String gambar = object.getString("gambar").trim();
                                     String deskripsi = object.getString("deskripsi").trim();
 
-                                    try{
+                                    try {
 
                                         id_bonus = object.getString("id_bonus").trim();
 
                                         //nm_menu = object.getString("nm_menu").trim()+" (BONUS)";
 
-                                    }catch (Exception e){}
+                                    } catch (Exception e) {
+                                    }
 
                                     cartItem.id_menu = id_menu;
                                     cartItem.nm_menu = nm_menu;
@@ -159,8 +165,8 @@ public class ListPaket extends BaseAdapter {
                                     cartItem.hrg_porsi = Integer.parseInt(hrg_porsi);
                                     cartItem.gambar = gambar;
                                     cartItem.deskripsi = deskripsi;
-                                    cartItem.id_bonus=id_bonus;
-                                    cartItem.id_kat=id_kat;
+                                    cartItem.id_bonus = id_bonus;
+                                    cartItem.id_kat = id_kat;
 
                                     // add to db
                                     Common.cartRepository.insertToCart(cartItem);
@@ -169,21 +175,20 @@ public class ListPaket extends BaseAdapter {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(context,"Error api (gagal response) :"+e.toString(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Error api (gagal response) :" + e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(context,"Error volley :"+error.toString(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Error volley :" + error.toString(), Toast.LENGTH_SHORT).show();
                     }
-                })
-        {
+                }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("id_paket",id_paket);
+                params.put("id_paket", id_paket);
                 return params;
             }
         };
@@ -204,7 +209,7 @@ public class ListPaket extends BaseAdapter {
     }
 
     private class ViewHolder {
-        protected TextView tv_id_paket, tv_nm_paket, tv_hrg_paket,tv_jml_menu,tv_jml_bonus;
+        protected TextView tv_id_paket, tv_nm_paket, tv_hrg_paket, tv_jml_menu, tv_jml_bonus;
         protected Button btn_pilih;
     }
 }

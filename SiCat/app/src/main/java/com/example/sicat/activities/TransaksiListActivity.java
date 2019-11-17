@@ -21,6 +21,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.sicat.R;
 import com.example.sicat.adapter.TransaksiListAdapter;
+import com.example.sicat.controllers.Base_url;
 import com.example.sicat.controllers.SessionManager;
 import com.example.sicat.model.Transaksi;
 
@@ -46,21 +47,24 @@ public class TransaksiListActivity extends AppCompatActivity {
 
     TransaksiListAdapter transaksiListAdapter;
 
-    private static String URL_Nya="http://192.168.43.112/project_smtr4/api/transaksi_list/Get_prasmanan_by_id/"; // url http request
+    Base_url base_url = new Base_url();
+    String url = base_url.getUrl();
+
+    private String URL_Nya = url + "transaksi_list/Get_prasmanan_by_id/"; // url http request
     String id_customer;
 
     String EXTRA_ID_PRASMANAN = "EXTRA_ID_PRASMANAN";
     String EXTRA_NM_PAKET = "EXTRA_NM_PAKET";
     String EXTRA_JML_PORSI = "EXTRA_JML_PORSI";
-    String EXTRA_TOT_BIAYA  = "EXTRA_TOT_BIAYA";
+    String EXTRA_TOT_BIAYA = "EXTRA_TOT_BIAYA";
     String EXTRA_TOT_DP = "EXTRA_TOT_DP";
     String EXTRA_SISA_BAYAR = "EXTRA_SISA_BAYAR";
     String EXTRA_KET_ACARA = "EXTRA_KET_ACARA";
-    String EXTRA_TGL_ACARA  = "EXTRA_TGL_ACARA";
+    String EXTRA_TGL_ACARA = "EXTRA_TGL_ACARA";
     String EXTRA_TGL_PEMESANAN = "EXTRA_TGL_PEMESANAN";
     String EXTRA_TGL_PELUNASAN = "EXTRA_TGL_PELUNASAN";
     String EXTRA_UPLOAD_BUKTI_BAYAR = "EXTRA_UPLOAD_BUKTI_BAYAR";
-    String EXTRA_STATUS  = "EXTRA_STATUS";
+    String EXTRA_STATUS = "EXTRA_STATUS";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,16 +88,16 @@ public class TransaksiListActivity extends AppCompatActivity {
         recycler_transaksi.setHasFixedSize(true);
     }
 
-    private void initActionBar(){
+    private void initActionBar() {
         setSupportActionBar(toolbar);
-        if(getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
 
             case android.R.id.home:
                 onBackPressed();
@@ -114,10 +118,10 @@ public class TransaksiListActivity extends AppCompatActivity {
 
                             JSONArray jsonArray = jsonObject.getJSONArray("data");
 
-                            if(success.equals("1")){
+                            if (success.equals("1")) {
                                 dataModelArrayList = new ArrayList<>();
 
-                                for (int i = 0 ; i < jsonArray.length() ; i++){
+                                for (int i = 0; i < jsonArray.length(); i++) {
 
                                     Transaksi playerModel = new Transaksi();
                                     JSONObject object = jsonArray.getJSONObject(i);
@@ -164,21 +168,20 @@ public class TransaksiListActivity extends AppCompatActivity {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(TransaksiListActivity.this ,"Error api (gagal response) :"+e.toString(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(TransaksiListActivity.this, "Error api (gagal response) :" + e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(TransaksiListActivity.this ,"Error volley :"+error.toString(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TransaksiListActivity.this, "Error volley :" + error.toString(), Toast.LENGTH_SHORT).show();
                     }
-                })
-        {
+                }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("id_customer",id_customer);
+                params.put("id_customer", id_customer);
                 return params;
             }
         };
@@ -209,7 +212,7 @@ public class TransaksiListActivity extends AppCompatActivity {
                 String upload_bukti_bayar = dataModelArrayList.get(position).getUpload_bukti_bayar();
                 String status = dataModelArrayList.get(position).getStatus();
 
-                Intent intent = new Intent(TransaksiListActivity.this,TransaksiListDetailActivity.class);
+                Intent intent = new Intent(TransaksiListActivity.this, TransaksiListDetailActivity.class);
                 intent.putExtra(EXTRA_ID_PRASMANAN, id_prasmanan);
                 intent.putExtra(EXTRA_NM_PAKET, nm_paket);
                 intent.putExtra(EXTRA_JML_PORSI, jml_porsi);

@@ -21,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.sicat.R;
 import com.example.sicat.activities.detail.DetailActivity;
 import com.example.sicat.adapter.TransaksiListDetailItemAdapter;
+import com.example.sicat.controllers.Base_url;
 import com.example.sicat.controllers.SessionManager;
 import com.example.sicat.model.DetailTransaksi;
 import com.example.sicat.model.Transaksi;
@@ -48,11 +49,15 @@ public class TransaksiListDetalItemActivity extends AppCompatActivity {
 
     TransaksiListDetailItemAdapter transaksiListDetailItemAdapter;
 
-    private static String URL_Nya="http://192.168.43.112/project_smtr4/api/transaksi_list/Get_detail_by_id/"; // url http request
+    Base_url base_url = new Base_url();
+    String url = base_url.getUrl();
+
+    private String URL_Nya = url + "transaksi_list/Get_detail_by_id/"; // url http request
 
     String id_prasmanan;
 
     public static final String EXTRA_DETAIL3 = "detail";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +70,7 @@ public class TransaksiListDetalItemActivity extends AppCompatActivity {
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin(); // untuk mengecek apakah sudah login apa belum
 
-        recycler_detail_transaksi =(RecyclerView) findViewById(R.id.recycler_detail_transaksi);
+        recycler_detail_transaksi = (RecyclerView) findViewById(R.id.recycler_detail_transaksi);
         recycler_detail_transaksi.setLayoutManager(new LinearLayoutManager(this));
         recycler_detail_transaksi.setNestedScrollingEnabled(true);
         recycler_detail_transaksi.setHasFixedSize(true);
@@ -76,16 +81,16 @@ public class TransaksiListDetalItemActivity extends AppCompatActivity {
         retrieveJSON(id_prasmanan);
     }
 
-    private void initActionBar(){
+    private void initActionBar() {
         setSupportActionBar(toolbar);
-        if(getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
 
             case android.R.id.home:
                 onBackPressed();
@@ -105,10 +110,10 @@ public class TransaksiListDetalItemActivity extends AppCompatActivity {
 
                             JSONArray jsonArray = jsonObject.getJSONArray("data");
 
-                            if(success.equals("1")){
+                            if (success.equals("1")) {
                                 dataModelArrayList = new ArrayList<>();
 
-                                for (int i = 0 ; i < jsonArray.length() ; i++){
+                                for (int i = 0; i < jsonArray.length(); i++) {
 
                                     DetailTransaksi playerModel = new DetailTransaksi();
                                     JSONObject object = jsonArray.getJSONObject(i);
@@ -117,13 +122,14 @@ public class TransaksiListDetalItemActivity extends AppCompatActivity {
                                     String id_bonus = "kosong";
 
                                     // mengambil data dari api
-                                    try{
+                                    try {
 
                                         id_bonus = object.getString("id_bonus").trim();
 
                                         //nm_menu = object.getString("nm_menu").trim()+" (BONUS)";
 
-                                    }catch (Exception e){}
+                                    } catch (Exception e) {
+                                    }
 
                                     String id_menu = object.getString("id_menu").trim();
                                     String nm_menu = object.getString("nm_menu").trim();
@@ -153,21 +159,20 @@ public class TransaksiListDetalItemActivity extends AppCompatActivity {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(TransaksiListDetalItemActivity.this ,"Error api (gagal response) :"+e.toString(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(TransaksiListDetalItemActivity.this, "Error api (gagal response) :" + e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(TransaksiListDetalItemActivity.this ,"Error volley :"+error.toString(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TransaksiListDetalItemActivity.this, "Error volley :" + error.toString(), Toast.LENGTH_SHORT).show();
                     }
-                })
-        {
+                }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("id_prasmanan",id_prasmanan);
+                params.put("id_prasmanan", id_prasmanan);
                 return params;
             }
         };

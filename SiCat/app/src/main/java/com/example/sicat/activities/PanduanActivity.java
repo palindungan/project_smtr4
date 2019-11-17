@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -16,6 +17,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.sicat.R;
 import com.example.sicat.adapter.PanduanAdapter;
+import com.example.sicat.controllers.Base_url;
 import com.example.sicat.model.Panduan;
 
 import org.json.JSONArray;
@@ -32,7 +34,10 @@ public class PanduanActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    private String URLstring = "http://192.168.43.112/project_smtr4/api/keterangan_paket/panduan";
+    Base_url base_url = new Base_url();
+    String url = base_url.getUrl();
+
+    private String URLstring = url + "keterangan_paket/panduan";
 
     private RecyclerView recyclerPanduan;
     ArrayList<Panduan> dataModelArrayList;
@@ -77,7 +82,7 @@ public class PanduanActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
 
-                    Toast.makeText(getApplicationContext(), "Error Request "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Error Request " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
         },
@@ -85,7 +90,7 @@ public class PanduanActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         //displaying the error in toast if occurrs
-                        Toast.makeText(getApplicationContext(), "Error Volley "+error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Error Volley " + error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
         // request queue
@@ -97,22 +102,29 @@ public class PanduanActivity extends AppCompatActivity {
         //will remove progress dialog
         panduanAdapter = new PanduanAdapter(this, dataModelArrayList);
         recyclerPanduan.setAdapter(panduanAdapter);
-        GridLayoutManager layoutManager = new GridLayoutManager(this,1, GridLayoutManager.VERTICAL,false);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false);
         recyclerPanduan.setLayoutManager(layoutManager);
         recyclerPanduan.setNestedScrollingEnabled(true);
         panduanAdapter.notifyDataSetChanged();
+
+        panduanAdapter.setOnItemClickListener(new PanduanAdapter.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+
+            }
+        });
     }
 
-    private void initActionBar(){
+    private void initActionBar() {
         setSupportActionBar(toolbar);
-        if(getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
                 break;

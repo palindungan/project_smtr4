@@ -16,6 +16,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.sicat.R;
 import com.example.sicat.adapter.ListPaket;
+import com.example.sicat.controllers.Base_url;
 import com.example.sicat.model.Paket;
 
 import org.json.JSONArray;
@@ -26,7 +27,10 @@ import java.util.ArrayList;
 
 public class PaketListActivity extends AppCompatActivity {
 
-    private String URLstring = "http://192.168.43.112/project_smtr4/api/transaksi/data_paket";
+    Base_url base_url = new Base_url();
+    String url = base_url.getUrl();
+
+    private String URLstring = url + "transaksi/data_paket";
     private static ProgressDialog mProgressDialog;
     private ListView listView;
 

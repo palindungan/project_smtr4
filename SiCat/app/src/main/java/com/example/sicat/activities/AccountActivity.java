@@ -23,6 +23,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.sicat.R;
+import com.example.sicat.controllers.Base_url;
 import com.example.sicat.controllers.SessionManager;
 
 import org.json.JSONArray;
@@ -42,17 +43,21 @@ public class AccountActivity extends AppCompatActivity {
 
     // deklarasi
     private Spinner jenkel_customer;
-    String jenkel[]={"Pilih Jenis Kelamin","Pria","Wanita"};
+    String jenkel[] = {"Pilih Jenis Kelamin", "Pria", "Wanita"};
     ArrayAdapter<String> adapter;
-    String record= "";
+    String record = "";
 
-    private EditText id_customer , nm_customer , almt_customer, no_hp , email , username , password ,c_password;
+    private EditText id_customer, nm_customer, almt_customer, no_hp, email, username, password, c_password;
     private Button btn_save, btn_cancel;
     SessionManager sessionManager;
     String getID;
     private static final String TAG = AccountActivity.class.getSimpleName(); // getting the info
-    private static String URL_READ = "http://192.168.43.112/project_smtr4/api/crud_customer/Read_detail_customer/";
-    private static String URL_EDIT ="http://192.168.43.112/project_smtr4/api/crud_customer/Edit_detail_customer/";
+
+    Base_url base_url = new Base_url();
+    String url = base_url.getUrl();
+
+    private String URL_READ = url + "crud_customer/Read_detail_customer/";
+    private String URL_EDIT = url + "crud_customer/Edit_detail_customer/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,15 +82,14 @@ public class AccountActivity extends AppCompatActivity {
         btn_cancel = findViewById(R.id.btn_cancel);
 
         // select option
-        jenkel_customer = (Spinner)findViewById(R.id.jenkel_customer);
-        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,jenkel);
+        jenkel_customer = (Spinner) findViewById(R.id.jenkel_customer);
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, jenkel);
         jenkel_customer.setAdapter(adapter);
         jenkel_customer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                switch (position)
-                {
+                switch (position) {
                     case 0:
 
                         record = "";
@@ -114,7 +118,7 @@ public class AccountActivity extends AppCompatActivity {
         });
 
         // untuk menerima data dari session
-        HashMap<String , String> customer = sessionManager.getCustomerDetail();
+        HashMap<String, String> customer = sessionManager.getCustomerDetail();
         getID = customer.get(sessionManager.ID_CUSTOMER);
 
         btn_save.setOnClickListener(new View.OnClickListener() {
@@ -126,13 +130,13 @@ public class AccountActivity extends AppCompatActivity {
                 String m_almt_customer = almt_customer.getText().toString().trim();
                 String m_jenkel_customer = record;
                 String m_no_hp = no_hp.getText().toString().trim();
-                String m_email =email.getText().toString().trim();
+                String m_email = email.getText().toString().trim();
                 String m_username = username.getText().toString().trim();
                 String m_password = password.getText().toString().trim();
                 String m_c_password = c_password.getText().toString().trim();
 
                 // validasi
-                if (!m_nm_customer.isEmpty() && !m_almt_customer.isEmpty()&& !m_jenkel_customer.isEmpty()&& !m_no_hp.isEmpty() && !m_email.isEmpty()&& !m_username.isEmpty() && !m_password.isEmpty() && !m_c_password.isEmpty()){
+                if (!m_nm_customer.isEmpty() && !m_almt_customer.isEmpty() && !m_jenkel_customer.isEmpty() && !m_no_hp.isEmpty() && !m_email.isEmpty() && !m_username.isEmpty() && !m_password.isEmpty() && !m_c_password.isEmpty()) {
                     // jika benar
                     SaveEditDetail();
                 } else {
@@ -140,8 +144,8 @@ public class AccountActivity extends AppCompatActivity {
                     nm_customer.setError("Masukkan Nama Anda");
                     almt_customer.setError("Masukkan Alamat");
 
-                    if (m_jenkel_customer.isEmpty()){
-                        Toast.makeText(AccountActivity.this,"Isikan Jenis Kelamin",Toast.LENGTH_SHORT).show();
+                    if (m_jenkel_customer.isEmpty()) {
+                        Toast.makeText(AccountActivity.this, "Isikan Jenis Kelamin", Toast.LENGTH_SHORT).show();
                     }
 
                     no_hp.setError("Masukkan No Hp");
@@ -173,25 +177,25 @@ public class AccountActivity extends AppCompatActivity {
     }
 
     // mengambil detail user
-    private void getUserDetail(){
+    private void getUserDetail() {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading...");
         progressDialog.show();
 
-        StringRequest stringRequest =  new StringRequest(Request.Method.POST, URL_READ,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_READ,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         progressDialog.dismiss();
-                        Log.i(TAG,response.toString());
+                        Log.i(TAG, response.toString());
 
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("success");
                             JSONArray jsonArray = jsonObject.getJSONArray("read");
 
-                            if (success.equals("1")){
-                                for (int i = 0 ; i<jsonArray.length();i++) {
+                            if (success.equals("1")) {
+                                for (int i = 0; i < jsonArray.length(); i++) {
 
                                     JSONObject object = jsonArray.getJSONObject(i);
 
@@ -206,8 +210,7 @@ public class AccountActivity extends AppCompatActivity {
                                     nm_customer.setText(o_nm_customer);
                                     almt_customer.setText(o_almt_customer);
 
-                                    switch (o_jenkel_customer)
-                                    {
+                                    switch (o_jenkel_customer) {
                                         case "pria":
 
                                             jenkel_customer.setSelection(1);
@@ -230,7 +233,7 @@ public class AccountActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                             progressDialog.dismiss();
-                            Toast.makeText(AccountActivity.this,"Error Reading Detail"+e.toString(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AccountActivity.this, "Error Reading Detail" + e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
@@ -238,14 +241,13 @@ public class AccountActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
-                        Toast.makeText(AccountActivity.this,"Error Volley Reading Detail"+error.toString(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AccountActivity.this, "Error Volley Reading Detail" + error.toString(), Toast.LENGTH_SHORT).show();
                     }
-                })
-        {
+                }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params = new HashMap<>();
-                params.put("id_customer",getID);
+                Map<String, String> params = new HashMap<>();
+                params.put("id_customer", getID);
 
                 return params;
             }
@@ -262,7 +264,7 @@ public class AccountActivity extends AppCompatActivity {
     }
 
     // menyimpan data
-    private void SaveEditDetail(){
+    private void SaveEditDetail() {
 
         final String nm_customer = this.nm_customer.getText().toString().trim();
         final String almt_customer = this.almt_customer.getText().toString().trim();
@@ -276,25 +278,25 @@ public class AccountActivity extends AppCompatActivity {
         progressDialog.setMessage("Saving...");
         progressDialog.show();
 
-        StringRequest stringRequest =  new StringRequest(Request.Method.POST, URL_EDIT,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_EDIT,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         progressDialog.dismiss();
 
-                        try{
+                        try {
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("success");
 
-                            if (success.equals("1")){
-                                Toast.makeText(AccountActivity.this,"Berhasil terupdate",Toast.LENGTH_SHORT).show();
-                                sessionManager.createSession(getID,nm_customer,almt_customer,jenkel_customer,no_hp,email,username);
+                            if (success.equals("1")) {
+                                Toast.makeText(AccountActivity.this, "Berhasil terupdate", Toast.LENGTH_SHORT).show();
+                                sessionManager.createSession(getID, nm_customer, almt_customer, jenkel_customer, no_hp, email, username);
                             }
 
-                        }catch (JSONException e){
+                        } catch (JSONException e) {
                             e.printStackTrace();
                             progressDialog.dismiss();
-                            Toast.makeText(AccountActivity.this,"Error api"+e.toString(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AccountActivity.this, "Error api" + e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
@@ -302,21 +304,20 @@ public class AccountActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
-                        Toast.makeText(AccountActivity.this,"Error Volley"+error.toString(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AccountActivity.this, "Error Volley" + error.toString(), Toast.LENGTH_SHORT).show();
                     }
-                })
-        {
+                }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params = new HashMap<>();
-                params.put("id_customer",getID);
-                params.put("nm_customer",nm_customer);
-                params.put("almt_customer",almt_customer);
-                params.put("jenkel_customer",jenkel_customer);
-                params.put("no_hp",no_hp);
-                params.put("email",email);
-                params.put("username",username);
-                params.put("password",password);
+                Map<String, String> params = new HashMap<>();
+                params.put("id_customer", getID);
+                params.put("nm_customer", nm_customer);
+                params.put("almt_customer", almt_customer);
+                params.put("jenkel_customer", jenkel_customer);
+                params.put("no_hp", no_hp);
+                params.put("email", email);
+                params.put("username", username);
+                params.put("password", password);
                 return params;
             }
         };
@@ -326,16 +327,16 @@ public class AccountActivity extends AppCompatActivity {
 
     }
 
-    private void initActionBar(){
+    private void initActionBar() {
         setSupportActionBar(toolbar);
-        if(getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
                 break;
